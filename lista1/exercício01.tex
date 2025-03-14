@@ -1,0 +1,48 @@
+\begin{exercício}{Produto escalar em \(\mathcal{C}^1([0,1], \mathbb{R})\)}{ex1}
+   Considere o espaço vetorial \(\mathcal{C}^1([0,1], \mathbb{R})\) de funções reais contínuas com primeiras derivadas contínuas definidas no intervalo fechado \([0,1]\). Qual das seguintes definições pode ser um produto escalar?
+   \begin{enumerate}[label=(\alph*)]
+      \item \(\braket{f}{g} = f(0) g(0) + \int_0^1 \dli{x} f'(x)g'(x)\)
+      \item \(\braket{f}{g} = \int_0^1 \dli{x} f'(x)g'(x)\)
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+   Definamos a forma
+   \begin{align*}
+      \omega : \mathcal{C}^1([0,1], \mathbb{R}) \times \mathcal{C}^1([0,1], \mathbb{R}) &\to \mathbb{R}\\
+                                                                                  (f,g) &\mapsto \int_0^1 \dli{x} f'(x)g'(x),
+   \end{align*}
+   que corresponde ao item (b). Pela comutatividade da multiplicação de números reais, temos
+   \begin{equation*}
+      \omega(f,g) = \int_0^1 \dli{x} f'(x) g'(x) = \int_0^1 g'(x) f'(x) = \omega(g, f)
+   \end{equation*}
+   para todos \(f,g \in \mathcal{C}^1([0,1], \mathbb{R}),\) isto é, \(\omega\) é simétrico. Sejam \(f,g,h \in \mathcal{C}^1([0,1], \mathbb{R})\) e \(\alpha, \beta \in \mathbb{R}\), então
+   \begin{align*}
+      \omega(f, \alpha g + \beta h) &= \int_0^1 \dli{x} f'(x) \left[\alpha g'(x) + \beta h'(x)\right]\\
+                                    &= \int_0^1 \dli{x} \left[\alpha f'(x) g'(x) + \beta f'(x) h'(x)\right]\\
+                                    &= \left[\int_0^1 \dli{x} \alpha f'(x) g'(x) \right] + \left[\int_0^1 \dli{x} \beta f'(x)h'(x)\right]\\
+                                    &= \alpha \left[\int_0^1 \dli{x} f'(x) g'(x)\right] + \beta \left[\int_0^1 \dli{x} f'(x) h'(x)\right]\\
+                                    &= \alpha \omega(f, g) + \beta \omega(f, h),
+   \end{align*}
+   logo \(\omega\) é sesquilinear. Seja \(f \in \mathcal{C}^1([0,1], \mathbb{R})\), então
+   \begin{equation*}
+      \omega(f,f) = \int_0^1 \dli{x} f'(x) f'(x) = \int_0^1 \dli{x} \left[f'(x)\right]^2 \geq 0,
+   \end{equation*}
+   já que \(f'\) é uma função a valores reais. Sendo \(0\) a função constante identicamente nula, é evidente que \(\omega(0,0) = 0\). Suponhamos que \(\omega(f,f) = 0\), então devemos ter \(f' = 0,\) já que \(f'\) só poderia se anular em um conjunto de medida nula, mas \(f'\) é contínua, portanto este conjunto só pode ser vazio. Entretanto, sendo \(c\) a função constante \(c(x) = 1\) é contínua e tem derivada contínua com \(c'(x) = 0\) para todo \(x \in [0,1]\), portanto \(\omega(c,c) = 0\). Isso é suficiente para mostrar que a aplicação definida em (b) não é um produto escalar neste espaço linear.
+
+   Consideremos agora a forma definida segundo (a),
+   \begin{align*}
+      \braket{\noarg}{\noarg}: \mathcal{C}^1([0,1], \mathbb{R}) \times \mathcal{C}^1([0,1], \mathbb{R}) &\to \mathbb{R}\\
+      (f,g) &\mapsto f(0) g(0) + \omega(f,g).
+   \end{align*}
+   Pelo que já foi mostrado, temos
+   \begin{equation*}
+      \braket{f}{g} = f(0) g(0) + \omega(f, g) = g(0) f(0) + \omega(g, f) = \braket{g}{f},
+   \end{equation*}
+   \begin{align*}
+      \braket{f}{\alpha g + \beta h} &= f(0) \left[\alpha g(0) + \beta h(0)\right] + \omega(f, \alpha g + \beta h)\\
+                                     &= \alpha f(0) g(0) + \beta f(0) h(0) + \alpha \omega(f, g) + \beta \omega(f, h)\\
+                                     &= \alpha \left[f(0) g(0) + \omega(f,g)\right] + \beta \left[f(0) h(0) + \omega(f,h)\right]\\
+                                     &= \alpha \braket{f}{g} + \beta \braket{f}{h},
+   \end{align*}
+   para todos \(f,g,h \in \mathcal{C}^1([0,1], \mathbb{R})\) e \(\alpha, \beta \in \mathbb{R}\), isto é, \(\braket{\noarg}{\noarg}\) é uma forma sesquilinear simétrica. Como \(\omega(0,0) = 0,\) segue que \(\braket{0}{0} = 0\). Tomemos \(f \in \mathcal{C}^1([0,1], \mathbb{R})\) tal que \(\braket{f}{f} = 0\), então \(f(0) = 0\) e \(f' = 0\), pois \(\braket{f}{f} = \left[f(0)\right]^2 + \omega(f,f)\) é a soma de dois números não negativos, e \(\omega(f,f) = 0\) implica \(f' = 0\), como discutido. Como \(f\) é contínua, constante, e igual a \(0\) em um ponto, segue que é identicamente nula. Assim, mostramos que \(\braket{\noarg}{\noarg}\) é positiva-definida, concluindo que é um produto escalar neste espaço linear.
+\end{proof}
