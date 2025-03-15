@@ -13,5 +13,31 @@
     \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Sejam \(A, B\) operadores que dependem de um parâmetro contínuo e seja \(C = AB\), então para todo \(x\) no domínio e para \(\varepsilon\) suficientemente pequeno, temos
+    \begin{align*}
+       C(x + \varepsilon) - C(x) &= A(x + \varepsilon)B(x + \varepsilon) - A(x) B(x)\\
+                                 &= A(x + \varepsilon) B(x + \varepsilon) - A(x + \varepsilon) B(x) + A(x + \varepsilon) B(x) - A(x) B(x)\\
+                                 &= A(x + \varepsilon) \left[B(x + \varepsilon) - B(x)\right] + \left[A(x + \varepsilon) - A(x)\right]B(x),
+    \end{align*}
+    portanto
+    \begin{align*}
+       \diff{C}{x} &= \lim_{\epsilon \to 0}{\left[A(x + \epsilon) \frac{B(x + \epsilon) - B(x)}{\epsilon} + \frac{A(x + \epsilon) - A(x)}{\epsilon} B(x)\right]}\\
+                   &= \lim_{\epsilon \to 0}{\left[A(x + \epsilon) \frac{B(x + \epsilon) - B(x)}{\epsilon}\right]} + \lim_{\epsilon \to 0}{\left[\frac{A(x + \epsilon) - A(x)}{\epsilon} B(x)\right]}\\
+                   &= \lim_{\epsilon \to 0}{\left[A(x + \epsilon)\right]}\lim_{\epsilon \to 0}{\left[\frac{B(x + \epsilon) - B(x)}{\epsilon}\right]} + \lim_{\epsilon \to 0}{\left[\frac{A(x + \epsilon) - A(x)}{\epsilon}\right]}\lim_{\epsilon \to 0}{\left[B(x)\right]}\\
+                   &= A(x) B'(x) + A'(x)B(x),
+    \end{align*}
+    isto é, a derivada definida satisfaz a regra de Leibniz.
+
+    Se \(A\) é um operador invertível, então \(A^{-1} A = A A^{-1} = \unity\). Notemos que
+    \begin{equation*}
+       \diff{\unity}{x} = \lim_{\epsilon \to 0}{\frac{\unity(x + \epsilon) - \unity}{\epsilon}} = \lim_{\epsilon \to 0}{\frac{\unity - \unity}{\epsilon}} = 0,
+    \end{equation*}
+    portanto da regra de Leibniz segue que
+    \begin{align*}
+       0 = \diff{\unity}{x} = \diff{(AA^{-1})}{x} = 
+       \diff{A}{x} A^{-1} + A \diff{(A^{-1})}{x} &\implies A \diff{(A^{-1})}{x} = - \diff{A}{x} A^{-1}\\
+                                                 &\implies A^{-1} A \diff{(A^{-1})}{x} = - A^{-1} \diff{A}{x} A^{-1}\\
+                                                 &\implies \diff{(A^{-1})}{x} = - A^{-1} \diff{A}{x} A^{-1},
+    \end{align*}
+    como desejado.
 \end{proof}
