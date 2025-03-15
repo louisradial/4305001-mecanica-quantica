@@ -1,4 +1,4 @@
-\begin{exercício}{}{ex4}
+\begin{exercício}{Operador estatístico de um estado de mistura}{ex4}
     Suponha que tenhamos um sistema com momento angular total 1. Escolha uma base correspondente aos três autovetores da componente \(z\) do momento angular, \(J_z\), com autovalores \(+1, 0, -1\), respectivamente. Seja um conjunto descrito pela matriz densidade
     \begin{equation*}
         \rho = \frac14 \begin{pmatrix}
@@ -14,5 +14,34 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Notemos que \(\Tr(\rho) = \frac{2 + 1 + 1}{4} = 1\) e que \(\rho = \herm{\rho}\), pois suas entradas são reais e é uma matriz simétrica. Para que seja um operador estatístico, deve ser positivo, isto é, para todo \(\ket{\psi} \in \mathcal{H}\) deve valer que \(\bra{\psi}\rho\ket{\psi} \geq 0\). Seja \(\ket{\psi} \in \mathcal{H}\), então existem \(\alpha, \beta, \gamma \in \mathbb{C}\) tais que \( \ket{\psi} = \alpha \ket{1} + \beta \ket{0} + \gamma \ket{-1}\), de modo que
+   \begin{align*}
+      \rho \ket{\psi} &= \frac\alpha4\rho \ket{1} + \frac\beta4\rho\ket{0} + \frac\gamma4\rho\ket{-1}\\
+                      &= \frac\alpha4\left(2\ket{1} + \ket{0} + \ket{-1}\right) + \frac\beta4 \left(\ket{1} + \ket{0}\right) + \frac\gamma4 \left(\ket{1} + \ket{-1}\right)\\
+                      &= \frac{2\alpha + \beta + \gamma}{4}\ket{1} + \frac{\alpha + \beta}{4}\ket{0} + \frac{\alpha + \gamma}{4}\ket{-1},
+   \end{align*}
+   resultando em
+   \begin{align*}
+      \bra{\psi}\rho\ket{\psi} &= \frac{2\alpha + \beta + \gamma}{4}\braket{\psi}{1} + \frac{\alpha + \beta}{4}\braket{\psi}{0} + \frac{\alpha + \gamma}{4}\braket{\psi}{-1}\\
+                               &= \frac{2\alpha + \beta + \gamma}{4} \conj{\alpha} + \frac{\alpha + \beta}{4}\conj{\beta} + \frac{\alpha + \gamma}{4}\conj{\gamma}\\
+                               &= \frac{2 \abs{\alpha}^2 + \beta \conj{\alpha} + \gamma \conj{\alpha} + \alpha \conj{\beta} + \abs{\beta}^2 + \alpha \conj{\gamma} + \abs{\gamma}^2}{4}\\
+                               &= \frac{2 \abs{\alpha}^2 + 2 \Re(\alpha \conj{\beta}) + 2 \Re(\alpha \conj{\gamma}) + \abs{\beta}^2 + \abs{\gamma}^2}{4}.
+   \end{align*}
+   Como \(\abs{\Re(\alpha \beta^*)} \leq \abs{\alpha \beta^*} = \abs{\alpha} \abs{\beta},\) segue que
+   \begin{equation*}
+      \abs{\bra{\psi}\rho\ket{\psi}} \geq \frac{2 \abs{\alpha}^2 - 2 \abs{\alpha}\abs{\beta} - 2 \abs{\alpha}\abs{\gamma} + \abs{\beta}^2 + \abs{\gamma}^2}{4} = \frac{(\abs{\alpha} - \abs{\beta})^2 + (\abs{\alpha} - \abs{\gamma}^2)}{4} \geq 0,
+   \end{equation*}
+   portanto \(\rho\) é positivo, determinando que \(\rho\) pode ser entendido como um operador estatístico. Notemos que
+   \begin{equation*}
+      \rho^2\ket{2} = \frac14 \rho \left(\ket{1} + \ket{2}\right) = \frac{1}{16}\left(2 \ket{1} + \ket{0} + \ket{-1}\right) + \frac{1}{16}\left(\ket{1} + \ket{0}\right) = \frac{1}{16}\left(3\ket{1} + 2\ket{0} + \ket{-1}\right) \neq \rho \ket{2},
+   \end{equation*}
+   isto é, \(\rho^2 \neq \rho\). Como o operador estatístico não é um projetor ortogonal, \(\rho\) só pode representar um estado de mistura. O valor esperado de \(J_z\) é dado por
+   \begin{equation*}
+      \mean{J_z}_\rho = \Tr(\rho J_z) = \sum_{m \in \set{-1, 0, 1}} \bra{m}\rho J_z \ket{m} = \sum_{m \in \set{-1,0,1}} m \bra{m}\rho\ket{m} = \frac{-1 + 2}{4} = \frac{1}{4}
+   \end{equation*}
+   e o valor esperado de \(J_z^2\) é dado por
+   \begin{equation*}
+      \mean{J_z^2}_\rho = \Tr(\rho J_z^2) = \sum_{m \in \set{-1, 0, 1}} \bra{m}\rho J_z^2 \ket{m} = \sum_{m \in \set{-1,0,1}} m^2 \bra{m}\rho\ket{m} = \frac{1 + 2}{4} = \frac{3}{4},
+   \end{equation*}
+   portanto o desvio padrão para uma medida de \(J_z\) é \(\Delta_\rho{J_z} = \sqrt{\left(\frac{3}{4}\right)^2 - \left(\frac{1}{4}\right)^2} = \frac{\sqrt{11}}{4}.\)
 \end{proof}
