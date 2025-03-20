@@ -1,6 +1,72 @@
+% vim: spl=pt
+\begin{theorem}{Teorema de Ehrenfest}{ehrenfest}
+    Para um operador \(A\), 
+    \begin{equation*}
+       \diff{\mean{A}}{t} = \frac{1}{i \hbar} \mean{[A, H]} + \mean*{\diffp{A}{t}}
+    \end{equation*}
+    é a evolução temporal de seu valor esperado em um dado estado.
+\end{theorem}
+\begin{proof}
+   Para um operador \(X\) qualquer, segue da regra de Leibniz que
+   \begin{equation*}
+      \diff*{\Tr(X)}{t} = \diff*{\sum_{n} \bra{n}X\ket{n}}{t} = \sum_{n} \left(\diffp*{\bra{n}}{t}\right)X \ket{n} + \sum_{n} \bra{n} \diffp{X}{t} \ket{n} + \sum_{n} \bra{n}X \left(\diffp*{\ket{n}}{t}\right),
+   \end{equation*}
+   portanto pela evolução temporal de estados puros, \(i \hbar \partial_t \ket{n} = H \ket{n}\), e pelo hamiltoniano ser hermitiano, temos
+   \begin{align*}
+      \diff*{\Tr(X)}{t} &= - \frac{1}{i \hbar} \sum_n \bra{n} H^\dag X \ket{n} + \Tr\left(\diffp{X}{t}\right) + \frac{1}{i \hbar}\sum_n \bra{n} X H \ket{n}\\
+                        &= -\frac{1}{i \hbar} \sum_{n} \bra{n}HX \ket{n} + \Tr\left(\diffp{X}{t}\right) + \frac{1}{i \hbar} \sum_n \bra{n} XH \ket{n}\\
+                        &= \frac{1}{i \hbar} \left[\Tr(XH) - \Tr(HX)\right] + \Tr\left(\diffp{X}{t}\right)\\
+                        &= \Tr\left(\diffp{X}{t}\right),
+   \end{align*}
+   já que \(\Tr(XH) = \Tr(XH)\) pela ciclicidade do traço.
+
+   Se \(\rho\) é um operador estatístico, temos pelo teorema espectral que
+   \begin{equation*}
+      \rho = \sum_{j} \lambda_j \ket{\lambda_j}\bra{\lambda_j},
+   \end{equation*}
+   então por um procedimento semelhante ao anterior, obtemos
+   \begin{align*}
+      i \hbar \diffp{\rho}{t} &= \sum_{j} \lambda_j \left(i \hbar \diffp*{\ket{\lambda_j}}{t}\right)\bra{\lambda_j} + \sum_{j} \lambda_j \ket{\lambda_j} \left(i \hbar \diffp*{\bra{\lambda_j}}{t}\right)\\
+                             &= \sum_{j} \lambda_j H \ket{\lambda_j}\bra{\lambda_j} - \sum_{j} \lambda_j \ket{\lambda_j}\bra{\lambda_j}H\\
+                             &= H \left(\sum_{j} \lambda_j \ket{\lambda_j}\bra{\lambda_j}\right) - \left(\sum_j \lambda_j \ket{\lambda_j}\bra{\lambda_j}\right) H\\
+                             &= H \rho - \rho H\\
+                             &= [H, \rho].
+   \end{align*}
+   Assim, para um estado descrito pelo operador estatístico \(\rho\), temos
+   \begin{equation*}
+      \diff{\mean{A}_\rho}{t} = \diff*{\Tr(\rho A)}{t} = \Tr\left(\diffp{\rho}{t}A + \rho \diffp{A}{t}\right) = \Tr\left(\frac{1}{i \hbar}[H, \rho]A\right) + \Tr\left(\rho \diffp{A}{t}\right) = \frac{1}{i \hbar} \Tr\left([H,\rho]A\right) + \mean*{\diffp{A}{t}}_\rho.
+   \end{equation*}
+   Pela linearidade e ciclicidade do traço, temos
+   \begin{equation*}
+      \Tr\left([H, \rho]A\right) = \Tr(H\rho A) - \Tr(\rho H A) = \Tr(\rho A H) - \Tr(\rho H A) = \Tr(\rho [A, H]) = \mean{[A, H]}_\rho,
+   \end{equation*}
+   isto é,
+   \begin{equation*}
+       \diff{\mean{A}_\rho}{t} = \frac{1}{i \hbar} \mean{[A, H]}_\rho + \mean*{\diffp{A}{t}}_\rho
+   \end{equation*}
+   como desejado.
+\end{proof}
+
 \begin{exercício}{Vetor de polarização de uma partícula em um campo magnético externo}{ex5}
-   Considere a aplicação do formalismo de matriz densidade para o problema de uma partícula de spin \(\frac12\) em um campo magnético estático \(\vetor{B}\). Em geral, a partícula com spin terá ambém um momento magnético, orientado ao longo da direção do spin. Para partículas de spin \(\frac12\), o operador de momento magnético tem a forma \(\vetor{\mu} = \frac12 \gamma \vetor{\sigma}\), onde \(\vetor{\sigma}\) são as matrizes de Pauli e \(\gamma\) é uma constante chamada de fator giromagnético. Lembre-se que o Hamiltoniano do sistema é \(H = -\vetor{\mu}\cdot \vetor{B}\).A partícula de spin \(\frac12\) pode ter uma orientação de spin, ou \emph{vetor de polarização}, dado por \(\vetor{P} = \mean{\vetor{\sigma}}.\) Qual é a variação temporal, \(\diff{\vetor{P}}{t}\), do vetor de polarização? Expresse sua resposta da forma mais simplies que puder, sem assumir a pureza do estado.
+   Considere a aplicação do formalismo de matriz densidade para o problema de uma partícula de spin \(\frac12\) em um campo magnético estático \(\vetor{B}\). Em geral, a partícula com spin terá ambém um momento magnético, orientado ao longo da direção do spin. Para partículas de spin \(\frac12\), o operador de momento magnético tem a forma \(\vetor{\mu} = \frac12 \gamma \vetor{\sigma}\), onde \(\vetor{\sigma}\) são as matrizes de Pauli e \(\gamma\) é uma constante chamada de fator giromagnético. Lembre-se que o Hamiltoniano do sistema é \(H = -\vetor{\mu}\cdot \vetor{B}\).
+   A partícula de spin \(\frac12\) pode ter uma orientação de spin, ou \emph{vetor de polarização}, dado por \(\vetor{P} = \mean{\vetor{\sigma}}.\) Qual é a variação temporal, \(\diff{\vetor{P}}{t}\), do vetor de polarização? Expresse sua resposta da forma mais simples que puder, sem assumir a pureza do estado.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Recordemos\footnote{Ver \href{https://github.com/louisradial/4300429-grupos-e-tensores/releases/tag/lista1}{Exercício 7}.} que as matrizes de Pauli satisfazem as relações de comutação
+   \begin{equation*}
+      [\sigma_a, \sigma_b] = 2i \epsilon_{abc} \sigma_c,
+   \end{equation*}
+   onde \(\epsilon_{abc}\) é o símbolo de Levi-Civita. Assim, da bilinearidade do comutador, obtemos
+   \begin{equation*}
+      [\sigma_a, H] = [\sigma_a, - \frac12 \gamma \vetor{\sigma} \cdot \vetor{B}] = [\sigma_a, - \frac12 \gamma \sigma_b B_b] = - \frac12 \gamma B_b [\sigma_a, \sigma_b] = -i \gamma \epsilon_{abc} B_b \sigma_c,
+   \end{equation*}
+   isto é,
+   \begin{equation*}
+      [\vetor{\sigma}, H] = [\sigma_a, H]\vetor{e}_a = - i \gamma \epsilon_{abc} B_b \sigma_c \vetor{e}_a = -i \gamma \vetor{B} \times \vetor{\sigma} = i \gamma \vetor{\sigma} \times \vetor{B} = 2i \vetor{\mu} \times \vetor{B}.
+   \end{equation*}
+   Já que \(\vetor{\sigma}\) não depende explicitamente do tempo, temos pelo \cref{thm:ehrenfest} que
+   \begin{equation*}
+      \diff{\vetor{P}}{t} = \diff{\mean{\vetor{\sigma}}}{t} = \frac{1}{i \hbar} \mean{[\vetor{\sigma}, H]} + \mean*{\diffp{\vetor{\sigma}}{t}} = \frac{2}{\hbar} \mean{\vetor{\mu} \times \vetor{B}}
+   \end{equation*}
+   é a variação temporal do vetor de polarização.
 \end{proof}
