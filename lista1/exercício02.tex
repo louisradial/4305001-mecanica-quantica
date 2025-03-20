@@ -1,11 +1,12 @@
+% vim: spl=pt
 \begin{exercício}{Operadores em \(\ell_2(\mathbb{C})\)}{ex2}
    Considere \(\ell_2(\mathbb{C})\), o espaço euclidiano  de dimensão infinita de quadrado somável dotado do produto escalar \(\braket{x}{y} = \sum_{n \in \mathbb{N}} \conj{x}_n y_n\). Para as aplicações definidas em \(\ell_2\) a seguir, determine se
    \begin{enumerate}[label=(\alph*)]
-       \item é uma aplicação linear;
-       \item é um operador limitado;
-       \item é um operador hermitiano;
-       \item a equação homogênea admite soluções não triviais; e 
-       \item a equação não homogênea sempre admite solução.
+      \item é uma aplicação linear;
+      \item é um operador limitado;
+      \item é um operador hermitiano;
+      \item a equação homogênea admite soluções não triviais; e 
+      \item a equação não homogênea sempre admite solução.
    \end{enumerate}
    As aplicações consideradas são
    \begin{align*}
@@ -16,47 +17,47 @@
    \end{align*}
 \end{exercício}
 \begin{proof}[Resolução]
-    Tomemos primeiro a função \(C\), que claramente satisfaz \(C0 = 0\). Notemos que a função tem sua imagem em \(\ell_2(\mathbb{C})\), pois para todo \(z \in \ell_2(\mathbb{C})\) temos
-    \begin{equation*}
-       \sum_{n = 1}^{\infty} \conj{(Cz)_n} (Cz)_n = \sum_{n = 2}^{\infty} \abs{z_{n-1}}^2 = \sum_{n = 1}^\infty \abs{z_n}^2 = \braket{z}{z} < \infty,
-    \end{equation*}
-    logo \(Cz\) é de quadrado somável. Em particular, mostramos que \(\norm{Cz} = \norm{z},\) isto é, \(C\) é uma isometria. Sejam \(x = (x_1, x_2, \dots) \in \ell_2(\mathbb{C})\), \(y = (y_1, y_2, \dots) \in \ell_2(\mathbb{C})\), e \(\alpha, \beta \in \mathbb{C}\), então
-    \begin{align*}
-       C(\alpha x + \beta y) &= C \left(\alpha x_1 + \beta y_1, \alpha x_2 + \beta y_2, \dots\right)\\
-                             &= \left(0, \alpha x_1 + \beta y_1, \alpha x_2 + \beta y_2, \dots\right)\\
-                             &= (0, \alpha x_1, \alpha x_2, \dots) + (0, \beta y_1, \beta y_2, \dots)\\
-                             &= \alpha (0, x_1, x_2, \dots) + \beta (0, y_1, y_2, \dots)\\
-                             &= \alpha Cx + \beta Cy,
-    \end{align*}
-    portanto \(C\) é um operador linear. Por ser uma isometria, é um operador limitado com norma operatorial igual a 1. Tomemos \(e_1 = (1, 0, \dots)\) e \(e_2 = (0, 1, 0, \dots)\), ambos com norma igual a 1, portanto \(e_1, e_2 \in \ell_2(\mathbb{C})\). É evidente que \(e_2 = Ce_1,\) portanto \(\braket{e_2}{Ce_1} = \norm{e_2}^2 = 1,\) mas temos
-    \begin{equation*}
-       \braket{Ce_2}{e_1} = \braket{(0,0,1,0,\dots)}{(1,0,\dots)} = \sum_{n = 1}^\infty \delta_{n3} \delta_{n1} = 0,
-    \end{equation*}
-    portanto \(C\) não é hermitiano. Notemos que a única solução da equação homogênea \(Cx = 0\) é a trivial, pois é necessário que \(x_n = 0\) para todo \(n \in \mathbb{N}\). Seja \(a \in \ell_2(\mathbb{C}),\) e consideremos a equação não homogênea \(Cx = a,\) então devemos ter \(x_n = a_{n+1}\) para todo \(n \in \mathbb{N}\) e devemos ter \(a_1 = 0\). Assim, a equação \(Cx = e_1\) não admite solução, isto é, não é garantido que haja soluções para equações não homogêneas arbitrárias.
+   Tomemos primeiro a função \(C\), que claramente satisfaz \(C0 = 0\). Notemos que a função tem sua imagem em \(\ell_2(\mathbb{C})\), pois para todo \(z \in \ell_2(\mathbb{C})\) temos
+   \begin{equation*}
+      \sum_{n = 1}^{\infty} \conj{(Cz)_n} (Cz)_n = \sum_{n = 2}^{\infty} \abs{z_{n-1}}^2 = \sum_{n = 1}^\infty \abs{z_n}^2 = \braket{z}{z} < \infty,
+   \end{equation*}
+   logo \(Cz\) é de quadrado somável. Em particular, mostramos que \(\norm{Cz} = \norm{z},\) isto é, \(C\) é uma isometria. Sejam \(x = (x_1, x_2, \dots) \in \ell_2(\mathbb{C})\), \(y = (y_1, y_2, \dots) \in \ell_2(\mathbb{C})\), e \(\alpha, \beta \in \mathbb{C}\), então
+   \begin{align*}
+      C(\alpha x + \beta y) &= C \left(\alpha x_1 + \beta y_1, \alpha x_2 + \beta y_2, \dots\right)\\
+                            &= \left(0, \alpha x_1 + \beta y_1, \alpha x_2 + \beta y_2, \dots\right)\\
+                            &= (0, \alpha x_1, \alpha x_2, \dots) + (0, \beta y_1, \beta y_2, \dots)\\
+                            &= \alpha (0, x_1, x_2, \dots) + \beta (0, y_1, y_2, \dots)\\
+                            &= \alpha Cx + \beta Cy,
+   \end{align*}
+   portanto \(C\) é um operador linear. Por ser uma isometria, é um operador limitado com norma operatorial igual a 1. Tomemos \(e_1 = (1, 0, \dots)\) e \(e_2 = (0, 1, 0, \dots)\), ambos com norma igual a 1, portanto \(e_1, e_2 \in \ell_2(\mathbb{C})\). É evidente que \(e_2 = Ce_1,\) portanto \(\braket{e_2}{Ce_1} = \norm{e_2}^2 = 1,\) mas temos
+   \begin{equation*}
+      \braket{Ce_2}{e_1} = \braket{(0,0,1,0,\dots)}{(1,0,\dots)} = \sum_{n = 1}^\infty \delta_{n3} \delta_{n1} = 0,
+   \end{equation*}
+   portanto \(C\) não é hermitiano. Notemos que a única solução da equação homogênea \(Cx = 0\) é a trivial, pois é necessário que \(x_n = 0\) para todo \(n \in \mathbb{N}\). Seja \(a \in \ell_2(\mathbb{C}),\) e consideremos a equação não homogênea \(Cx = a,\) então devemos ter \(x_n = a_{n+1}\) para todo \(n \in \mathbb{N}\) e devemos ter \(a_1 = 0\). Assim, a equação \(Cx = e_1\) não admite solução, isto é, não é garantido que haja soluções para equações não homogêneas arbitrárias.
 
-    Agora consideramos \(G\), que também satisfaz \(G0 = 0\) trivialmente. Seja \(z \in \ell_2(\mathbb{C})\), então
-    \begin{equation*}
-       \sum_{n = 1}^{\infty} \conj{(Gz)_n} (Gz)_n = \sum_{n = 1}^{\infty} \frac{\abs{z_{n}}^2}{n^2} \leq \sum_{n = 1}^\infty \abs{z_n}^2 = \braket{z}{z} < \infty,
-    \end{equation*}
-    logo a sua imagem de fato pertence a \(\ell_2(\mathbb{C})\). Sejam \(x = (x_1, x_2, \dots) \in \ell_2(\mathbb{C})\), \(y = (y_1, y_2, \dots) \in \ell_2(\mathbb{C})\), e \(\alpha, \beta \in \mathbb{C}\), então
-    \begin{align*}
-       G(\alpha x + \beta y) &= G \left(\alpha x_1 + \beta y_1, \alpha x_2 + \beta y_2, \dots\right)\\
-                             &= \left(\alpha x_1 + \beta y_1, \frac{\alpha x_2 + \beta y_2}{2}, \dots\right)\\
-                             &= (\alpha x_1, \frac{\alpha x_2}{2}, \dots) + (\beta y_1, \frac{\beta y_2}{2}, \dots)\\
-                             &= \alpha (x_1, \frac{x_2}{2}, \dots) + \beta (y_1, \frac{y_2}{2}, \dots)\\
-                             &= \alpha Gx + \beta Gy,
-    \end{align*}
-    portanto \(G\) é um operador linear. Como vimos, para todo \(z \in \ell_2(\mathbb{C})\), temos \(\norm{Gz} < \norm{z},\) portanto \(G\) é limitado, com norma operatorial limitada superiormente por \(1\). Notemos que para todos \(x,y \in \ell_2(\mathbb{C})\) temos
-    \begin{equation*}
-       \braket{x}{Gy} = \sum_{n = 1}^\infty \conj{x_n}\frac{y_n}{n} = \sum_{n=1}^\infty \conj{\left(\frac{x_n}{n}\right)}y_n = \braket{Gx}{y},
-    \end{equation*}
-    portanto \(G\) é hermitiano. Notemos que a única solução da equação homogênea \(Gx = 0\) é a trivial, pois é necessário que \(\frac{x_n}{n} = 0\) para todo \(n \in \mathbb{N}\). Seja \(a \in \ell_2(\mathbb{C}),\) e consideremos a equação não homogênea \(Gx = a,\) então devemos ter \(x_n = n a_{n}\) para todo \(n \in \mathbb{N}\). Entretanto, não é claro que \(x \in \ell_2(\mathbb{C})\), pois temos
-    \begin{equation*}
-       \sum_{n = 1}^\infty \abs{x_n}^2 = \sum_{n = 1}^\infty n^2 \abs{a_n}^2 \geq \norm{a}^2.
-    \end{equation*}
-    Tomemos \(a\) tal que \(a_n = \frac{1}{n^{\frac32}},\) que pertence a \(\ell_2(\mathbb{C})\) pois \(\sum_{n \in \mathbb{N}} \abs{a_n}^2\) é uma p-série com \(p > 1\), mas a solução de \(Gx = a\) é tal que
-    \begin{equation*}
-       \sum_{n = 1}^\infty \abs{x_n}^2 = \sum_{n = 1}^\infty \frac{n^2}{n^3} = \sum_{n = 1}^\infty \frac1n,
-    \end{equation*}
-    isto é, \(x \notin \ell_2(\mathbb{C})\). Assim, não há sempre soluções para a equação não homogênea em \(\ell_2(\mathbb{C}).\)
+   Agora consideramos \(G\), que também satisfaz \(G0 = 0\) trivialmente. Seja \(z \in \ell_2(\mathbb{C})\), então
+   \begin{equation*}
+      \sum_{n = 1}^{\infty} \conj{(Gz)_n} (Gz)_n = \sum_{n = 1}^{\infty} \frac{\abs{z_{n}}^2}{n^2} \leq \sum_{n = 1}^\infty \abs{z_n}^2 = \braket{z}{z} < \infty,
+   \end{equation*}
+   logo a sua imagem de fato pertence a \(\ell_2(\mathbb{C})\). Sejam \(x = (x_1, x_2, \dots) \in \ell_2(\mathbb{C})\), \(y = (y_1, y_2, \dots) \in \ell_2(\mathbb{C})\), e \(\alpha, \beta \in \mathbb{C}\), então
+   \begin{align*}
+      G(\alpha x + \beta y) &= G \left(\alpha x_1 + \beta y_1, \alpha x_2 + \beta y_2, \dots\right)\\
+                            &= \left(\alpha x_1 + \beta y_1, \frac{\alpha x_2 + \beta y_2}{2}, \dots\right)\\
+                            &= (\alpha x_1, \frac{\alpha x_2}{2}, \dots) + (\beta y_1, \frac{\beta y_2}{2}, \dots)\\
+                            &= \alpha (x_1, \frac{x_2}{2}, \dots) + \beta (y_1, \frac{y_2}{2}, \dots)\\
+                            &= \alpha Gx + \beta Gy,
+   \end{align*}
+   portanto \(G\) é um operador linear. Como vimos, para todo \(z \in \ell_2(\mathbb{C})\), temos \(\norm{Gz} < \norm{z},\) portanto \(G\) é limitado, com norma operatorial limitada superiormente por \(1\). Notemos que para todos \(x,y \in \ell_2(\mathbb{C})\) temos
+   \begin{equation*}
+      \braket{x}{Gy} = \sum_{n = 1}^\infty \conj{x_n}\frac{y_n}{n} = \sum_{n=1}^\infty \conj{\left(\frac{x_n}{n}\right)}y_n = \braket{Gx}{y},
+   \end{equation*}
+   portanto \(G\) é hermitiano. Notemos que a única solução da equação homogênea \(Gx = 0\) é a trivial, pois é necessário que \(\frac{x_n}{n} = 0\) para todo \(n \in \mathbb{N}\). Seja \(a \in \ell_2(\mathbb{C}),\) e consideremos a equação não homogênea \(Gx = a,\) então devemos ter \(x_n = n a_{n}\) para todo \(n \in \mathbb{N}\). Entretanto, não é claro que \(x \in \ell_2(\mathbb{C})\), pois temos
+   \begin{equation*}
+      \sum_{n = 1}^\infty \abs{x_n}^2 = \sum_{n = 1}^\infty n^2 \abs{a_n}^2 \geq \norm{a}^2.
+   \end{equation*}
+   Tomemos \(a\) tal que \(a_n = \frac{1}{n^{\frac32}},\) que pertence a \(\ell_2(\mathbb{C})\) pois \(\sum_{n \in \mathbb{N}} \abs{a_n}^2\) é uma p-série com \(p > 1\), mas a solução de \(Gx = a\) é tal que
+   \begin{equation*}
+      \sum_{n = 1}^\infty \abs{x_n}^2 = \sum_{n = 1}^\infty \frac{n^2}{n^3} = \sum_{n = 1}^\infty \frac1n,
+   \end{equation*}
+   isto é, \(x \notin \ell_2(\mathbb{C})\). Assim, não há sempre soluções para a equação não homogênea em \(\ell_2(\mathbb{C}).\)
 \end{proof}
