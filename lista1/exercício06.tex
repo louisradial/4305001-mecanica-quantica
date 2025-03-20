@@ -1,3 +1,4 @@
+% vim: spl=pt
 \begin{exercício}{Magnetização de um sistema na presença de um campo magnético externo}{ex6}
    Considere um sistema de \(N\) partículas de spin \(\frac12\) por unidade de volume em equilíbrio térmico, em um campo magnético externo \(\vetor{B}\). Lembre-se que a distribuição canônica é
    \begin{equation*}
@@ -6,9 +7,51 @@
    onde \(\beta = \frac{1}{k T}\) e a função de partição é dada por \(Z = \Tr(e^{-\beta H})\). Tal sistema de partículas tenderá a se orientar ao longo do campo magnético, resultando em uma magnetização \(\vetor{M}\).
    \begin{enumerate}[label=(\alph*)]
       \item Forneça uma expressão para \(\vetor{M}\).
-      \item Qual a magnetização no limite ded altas temperaturas (em ordem mais baixa)?
+      \item Qual a magnetização no limite de altas temperaturas (em ordem mais baixa)?
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Orientemos o sistema de coordenadas de forma que \(\vetor{B} = B \vetor{e}_z,\) então o Hamiltoniano é dado por \(H = - B \mu_z\). Na base \(\set{\ket{+}, \ket{-}}\) que diagonaliza \(\mu_z\) com
+   \begin{equation*}
+      \mu_z \ket{+} = \frac12\gamma \ket{+}
+      \quad\text{e}\quad
+      \mu_z \ket{-} = -\frac12\gamma \ket{-},
+   \end{equation*}
+   \begin{equation*}
+      Z = \Tr(e^{-\beta B \mu_z}) = \bra{+}e^{-\beta B \mu_z}\ket{+} + \bra{-}e^{-\beta B \mu_z}\ket{-} = e^{-\frac12 \gamma \beta B}\braket{+}{+}  + e^{\frac12 \gamma \beta B} \braket{-}{-} = 2 \cosh\left(\frac12 \gamma \beta B\right)
+   \end{equation*}
+   como a função de partição. Com isso, temos
+   \begin{equation*}
+      \rho \ket{\pm} = \frac1{2 \cosh\left(\frac12 \gamma \beta B\right)} e^{- \beta B \mu_z} \ket{\pm} = \frac{e^{\mp \frac12 \gamma \beta B}}{2\cosh\left(\frac12 \gamma \beta B\right)}\ket{\pm},
+   \end{equation*}
+   logo
+   \begin{equation*}
+      \mean{\mu_x} = \Tr(\rho \mu_x) = \bra{+} \rho \mu_x \ket{+} + \bra{-} \rho \mu_x \ket{-} = \frac12 \gamma \left(\bra{+} \rho \ket{-} - \bra{-} \rho \ket{+}\right) = 0
+   \end{equation*}
+   e
+   \begin{equation*}
+      \mean{\mu_y} = \Tr(\rho \mu_y) = \bra{+} \rho \mu_y \ket{+} + \bra{-} \rho \mu_y \ket{-} = \frac12 i\gamma \left(\bra{+} \rho \ket{-} - \bra{-} \rho \ket{+}\right) = 0.
+   \end{equation*}
+   Dessa forma, obtemos
+   \begin{align*}
+      \mean{\vetor{\mu}} = \mean{\mu_z}\vetor{e}_z = \Tr(\rho \mu_z)\vetor{e}_z 
+      &= \left[\bra{+} \rho \mu_z \ket{+} + \bra{-} \rho \mu_z \ket{-}\right]\vetor{e}_z\\
+      &= \frac12 \gamma \left(\bra{+} \rho \ket{+} - \bra{-} \rho \ket{-}\right)\vetor{e}_z\\
+      &= \frac\gamma{4\cosh\left(\frac12 \gamma \beta B\right)} \left(e^{-\frac12 \gamma \beta B} - e^{\frac12 \gamma \beta B}\right)\vetor{e}_z\\
+      &= - \frac12\gamma \frac{\sinh\left(\frac12 \gamma \beta B\right)}{\cosh\left(\frac12 \gamma \beta B\right)}\vetor{e}_z\\
+      &= - \frac12 \gamma \tanh\left(\frac12 \gamma \beta B\right)\vetor{e}_z
+   \end{align*}
+   e concluímos que a magnetização \(\vetor{M}\) é dada por
+   \begin{equation*}
+      \vetor{M} = N \mean{\vetor{\mu}} = -\frac12 N \gamma \tanh\left(\frac12 \gamma \beta B\right) \vetor{e}_z.
+   \end{equation*}
+   Usando a expansão
+   \begin{equation*}
+      \tanh \xi = \tanh(0) + \frac{1}{\cosh^2(0)} \xi + O(\xi^2) = \xi + O(\xi^2),
+   \end{equation*}
+   temos
+   \begin{equation*}
+      \vetor{M} = \left[- \frac14 N \gamma^2 \beta B + O(\beta^2)\right]\vetor{e}_z = - \frac{N \gamma^2 B}{4 k_B T}\vetor{e}_z
+   \end{equation*}
+   como a expressão assintótica para a magnetização no limite de altas temperaturas.
 \end{proof}
