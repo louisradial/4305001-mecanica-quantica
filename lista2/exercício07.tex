@@ -1,0 +1,20 @@
+% vim: spl=pt
+\begin{exercício}{}{exercício07}
+    Se \(A\) e \(B\) são dois operadores que não comutam entre si mas comutam com \(\commutator{A}{B}\), pode-se mostrar que 
+    \begin{equation*}
+        e^{A + B} = e^A e^B e^{-\frac12 \commutator{A}{B}}.
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que \(\commutator{B}{e^{xA}} = e^{xA} \commutator{B}{A}x;\)
+        \item Definido \(G(x) = e^{xA}e^{xB}\), mostre que
+            \begin{equation*}
+                \diff{G}{x} = (A + B + \commutator{A}{B}x)G.
+            \end{equation*}
+        \item Integre a equação do item anterior para obter a relação desejada.
+        \item Mostre ainda que para \(A\) e \(B\) arbitrários
+            \begin{equation*}
+                \lim_{(\alpha, \beta)\to (0,0)} e^{\alpha A} e^{\beta B} = e^{\alpha A + \beta B + \frac12 \alpha \beta \commutator{A}{B} + X},
+            \end{equation*}
+            onde \(X\) depende de potências superiores de \(\alpha\) e \(\beta\).
+    \end{enumerate}
+\end{exercício}
