@@ -6,3 +6,42 @@
     \end{equation*}
     quando o hamiltoniano \(H\) é explicitamente dependente do tempo.
 \end{exercício}
+\begin{proof}[Resolução]
+    O operador linear \(U(t,t')\) de evolução temporal é definido pela relação 
+    \begin{equation*}
+        \ket{\Psi; t} = U(t, t') \ket{\Psi; t'}
+    \end{equation*}
+    para todos \(t, t'.\) Desta definição é claro que \(U(t, t) = \unity\) para todo \(t\). Temos também a regra de composição \(U(t, \tilde{t}) U(\tilde{t}, t') = U(t, t')\), já que
+    \begin{equation*}
+        U(t, \tilde{t}) U(\tilde{t}, t') \ket{\Psi; t'} = U(t, \tilde{t}) \ket{\Psi; \tilde{t}} = \ket{\Psi; t} = U(t, t') \ket{\Psi; t'}.
+    \end{equation*}
+    Das últimas observações, segue que \(U(t, t') U(t', t) = U(t, t) = \unity = U(t',t') = U(t', t) U(t, t')\) para todos \(t, t',\) isto é, \(U(t, t')\) é invertível para todos \(t, t'.\) É natural exigir que \(U(t, t')\) preserve o produto interno, isto é, \(\braket{\Phi; t'}{\Psi; t'} = \braket{\Phi; t}{\Psi; t}\), portanto de sua invertibilidade concluímos que \(U(t, t')\) é unitário, com \(U(t, t') = \herm{U}(t', t)\).
+
+    Para \(\delta t\) infinitesimal, temos \(U(t + \delta t, t) = \unity - i \Omega(t, \delta t),\) com \(\Omega(t, \delta t)\) infinitesimal. Da  regra de composição, segue que \(\Omega(t, \delta t) = \delta t \Omega(t)\), pois
+    \begin{align*}
+        \unity - i \Omega(t, \delta t_1 + \delta t_2) &= U(t + \delta t_1 + \delta t_2, t)\\
+                                                      &= U(t + \delta t_1 + \delta t_2, t + \delta t_1) U(t + \delta t_1, t)\\
+                                                      &= \left(\unity - i \Omega(t + \delta t_1, \delta t_2)\right)\left(\unity - i \Omega(t, \delta t_1)\right)\\
+                                                      &= \unity - i \left[\Omega(t + \delta t_1, \delta t_2) + \Omega(t, \delta t_1)\right]\\
+                                                      &= \unity - i\left[\Omega(t, \delta t_1) + \Omega(t, \delta t_2)\right],
+    \end{align*}
+    isto é, \(\Omega(t, \delta t_1 + \delta t_2) = \Omega(t, \delta t_1) + \Omega(t, \delta t_2)\), donde inferimos a linearidade na segunda variável pela continuidade do operador. Agora, concluímos que \(\Omega(t)\) é hermitiano, pois
+    \begin{equation*}
+        \unity + i \delta t \Omega(t) = U(t, t + \delta t) = \herm{U}(t + \delta t, t) = \unity + i \delta t \herm{\Omega}(t),
+    \end{equation*}
+    isto é, \(\herm{\Omega}(t) = \Omega(t)\). 
+
+    Como o hamiltoniano \(H(t)\) é o gerador infinitesimal de translações temporais, identificamos \(\Omega(t) = \frac{1}{\hbar} H(t)\). Notemos que
+    \begin{equation*}
+        U(t + \delta t, t') = U(t + \delta t, t) U(t, t') = \left(\unity - \frac{i}{\hbar} \delta t H(t)\right) U(t, t') = U(t, t') + \frac{1}{i\hbar} H(t) U(t, t'),
+    \end{equation*}
+    logo 
+    \begin{equation*}
+        i \hbar \frac{U(t + \delta t, t') - U(t, t')}{\delta t} = H(t) U(t, t').
+    \end{equation*}
+    Tomando o limite \(\delta t \to 0\), obtemos
+    \begin{equation*}
+        i \hbar \diffp{U(t, t')}{t} = H(t) U(t, t'),
+    \end{equation*}
+    como desejado.
+\end{proof}
