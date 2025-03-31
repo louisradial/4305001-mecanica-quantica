@@ -1,5 +1,37 @@
 % vim: spl=pt
-\begin{exercício}{}{exercício02}
+\begin{lemma}{Exponencial de uma matriz de Pauli}{pauli}
+    Segue que
+    \begin{equation*}
+        \exp(-i \xi \sigma_2) = \cos(\xi)\unity - i\sin(\xi) \sigma_2
+    \end{equation*}
+    para todo \(\xi \in \mathbb{C}\).
+\end{lemma}
+\begin{proof}
+    Como \(\sigma_2^2 = \unity\), temos
+    \begin{equation*}
+        (-i \xi \sigma_2)^{2n - 1} = (-1)^{n} i\xi^{2n - 1} \sigma_2
+        \quad\text{e}\quad
+        (-i \xi \sigma_2)^{2n} = (-1)^n \xi^{2n} \unity
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\). De fato, para \(n = 1,\) as expressões fornecem \(-i \xi \sigma_2\) e \(-\xi^2 \unity\), como deveriam. Assumindo as expressões válidas para algum \(m \in \mathbb{N}\), temos
+    \begin{equation*}
+        (-i \xi \sigma_2)^{2m + 1} = (-i \xi \sigma_2)^{2m} (-i\xi \sigma_2) = (-1)^m \xi^{2m} \unity (-i \xi \sigma_2) = (-1)^{m+1}i\xi^{2m + 1} \sigma_2
+    \end{equation*}
+    e
+    \begin{equation*}
+        (-i \xi \sigma_2)^{2m + 2} = (-i \xi \sigma_2)^{2m + 1} (-i \xi \sigma_2) = (-1)^{m+1} i\xi^{2m + 1} \sigma_2 (-i \xi \sigma_2) = (-1)^{m+1} \xi^{2m + 2} \unity,
+    \end{equation*}
+    isto é, as expressões são também válidas para \(m + 1\). Pelo princípio da indução finita, concluímos que as expressões seguem para todo \(n \in \mathbb{N}\). Dessa forma,
+    \begin{align*}
+        \exp(-i \xi \sigma_2) &= \unity + \sum_{n = 1}^\infty \frac{(-i \xi \sigma_2)^n}{n!}\\
+                              &= \unity + \sum_{n = 1}^\infty \frac{(-i \xi \sigma_2)^{2n - 1}}{(2n -1)!} + \sum_{n = 1}^\infty \frac{(-i \xi \sigma_2)^{2n}}{(2n)!}\\
+                              &= \left(1 + \sum_{n = 1}^\infty \frac{(-1)^n \xi^{2n}}{(2n)!}\right)\unity + i \left(\sum_{n = 1}^\infty \frac{(-1)^n \xi^{2n - 1}}{(2n - 1)!}\right) \sigma_2\\
+                              &= \left(\sum_{n = 0}^\infty \frac{(-1)^n \xi^{2n}}{(2n)!}\right)\unity - i \left(\sum_{n = 1}^\infty \frac{(-1)^{n+1} \xi^{2n - 1}}{(2n - 1)!}\right)\sigma_2\\
+                              &= \cos(\xi)\unity - i\sin(\xi)\sigma_2,
+    \end{align*}
+    como desejado.
+\end{proof}
+\begin{exercício}{Evolução temporal de um sistema de spin \(\frac12\)}{exercício02}
     Os operadores \(S_j\), com \(j \in \set{1,2,3}\), obedecem às relações de comutação 
     \begin{equation*}
         \commutator{S_k}{S_\ell} = i \hbar \epsilon_{k\ell m} S_m,
@@ -12,5 +44,71 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Como \(H(t) = a S_3(t),\) segue que \(S_3\) é uma constante de movimento, isto é, \(S_3(t) = \frac12 \hbar \sigma_3.\) Utilizando as relações de comutação em mesmo instante, obtemos
+    \begin{equation*}
+        i \hbar \partial_t S_j(t) = \commutator{S_j(t)}{H(t)} = a\commutator{S_j(t)}{S_3(t)} = i \hbar a \epsilon_{j3k}S_k(t) \implies \partial_t S_j(t) = a \epsilon_{kj3} S_k(t)
+    \end{equation*}
+    para \(j \in \set{1,2}\). Podemos reunir estes resultados matricialmente por
+    \begin{equation*}
+        \diffp*{\begin{pmatrix}
+            S_1(t)\\
+            S_2(t)
+        \end{pmatrix}}{t} = \underbrace{\begin{pmatrix}
+        0 && -a\\
+        a && 0
+    \end{pmatrix}}_{-ia \sigma_2} \begin{pmatrix}
+            S_1(t)\\
+            S_2(t)
+        \end{pmatrix},
+    \end{equation*}
+    portanto como a matriz dos coeficientes é constante, obtemos
+    \begin{equation*}
+        \begin{pmatrix}
+            S_1(t)\\
+            S_2(t)
+        \end{pmatrix} = \begin{pmatrix}
+        \cos(at) && -\sin(at)\\
+        \sin(at) && \cos(at)
+        \end{pmatrix}
+        \begin{pmatrix}
+            S_1(0)\\
+            S_2(0)
+        \end{pmatrix}
+    \end{equation*}
+    pelo \cref{lem:pauli}. Isto é,
+    \begin{equation*}
+        S_1(t) = \frac12 \hbar \left[\cos(a t) \sigma_1 - \sin(a t) \sigma_2\right],
+        \quad
+        S_2(t) = \frac12 \hbar \left[\sin(a t) \sigma_1 + \cos(a t) \sigma_2\right],
+        \quad\text{e}\quad
+        S_3(t) = \frac12 \hbar \sigma_3
+    \end{equation*}
+    são os operadores em um dado instante \(t\).
+
+    Como o hamiltoniano é constante e diagonalizado nesta base, temos
+    \begin{align*}
+        \ket{\Psi; t} = U(t) \ket{\Psi} &= \exp\left(\frac{at}{i\hbar}S_3\right) \ket{\Psi}\\
+                                        &= \frac{1}{\sqrt{2}}\exp\left(\frac{at}{i\hbar}S_3\right)\ket{+} + \frac{1}{\sqrt{2}}\exp\left(\frac{at}{i\hbar}S_3\right)\ket{-}\\
+                                        &= \frac{1}{\sqrt{2}} \exp\left(\frac{at \hbar}{2i \hbar} \right) \ket{+} + \frac{1}{\sqrt{2}} \exp\left(-\frac{at \hbar}{2i \hbar} \right) \ket{-}\\
+                                        &= \frac{1}{\sqrt{2}} \exp\left(\frac{at}{2i}\right) \ket{+} + \frac{1}{\sqrt{2}} \exp\left(-\frac{at}{2i} \right) \ket{-}
+    \end{align*}
+    como o estado no instante \(t\). Notemos que
+    \begin{equation*}
+        S_1(0)\ket{\Psi} = \frac{\hbar}{2}\ket{\Psi}
+        \quad\text{e}\quad
+        S_2(0) \ket{\Psi} = -\frac{i\hbar}{2}\ket{+} + \frac{i \hbar}{2} \ket{-},
+        \implies
+        \bra{\Psi}S_1(0)\ket{\Psi} = \frac{\hbar}{2}
+        \quad\text{e}\quad
+        \bra{\Psi}S_2(0) \ket{\Psi} = 0
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \mean{S_1(t)} = \frac12 \hbar \cos(at),
+        \quad
+        \mean{S_2(t)} = \frac12 \hbar \sin(at),
+        \quad\text{e}\quad
+        \mean{S_3(t)} = 0
+    \end{equation*}
+    são os valores esperados dos operadores no instante \(t\).
 \end{proof}
