@@ -1,4 +1,66 @@
 % vim: spl=pt
+\begin{lemma}{Comutador de um produto}{baccab}
+    Vale
+    \begin{equation*}
+        \commutator{A}{BC} = \commutator{A}{B}C + B \commutator{A}{C}
+    \end{equation*}
+    para quaisquer operadores \(A, B, C.\)
+\end{lemma}
+\begin{proof}
+    Temos
+    \begin{equation*}
+        \commutator{A}{BC} = ABC - BAC + BAC - BCA = (AB - BA)C + B(AC - CA) = \commutator{A}{B}C + B\commutator{A}{C}
+    \end{equation*}
+    como desejado.
+\end{proof}
+\begin{lemma}{Relações de comutação canônica e funções de momento e posição}{ccr}
+    Vale
+    \begin{equation*}
+        \commutator{x}{g(p)} = i \hbar \diffp{g}{p}
+        \quad\text{e}\quad
+        \commutator{f(x)}{p} = i \hbar \diffp{f}{p}
+    \end{equation*}
+    para funções analíticas \(f\) e \(g\).
+\end{lemma}
+\begin{proof}
+    Mostremos que
+    \begin{equation*}
+        \commutator{x}{p^n} = i \hbar n p^{n - 1}
+        \quad\text{e}\quad
+        \commutator{x^n}{p} = i \hbar n x^{n-1}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\). Evidentemente, as expressões são válidas para \(n = 1\). Supondo válidas para algum \(m \in \mathbb{N}\), temos pelo \cref{lem:baccab} que
+    \begin{align*}
+        \commutator{x}{p^{m+1}} &= \commutator{x}{p^m}p + p^m\commutator{x}{p}&
+        \commutator{x^{m+1}}{p} &= -\commutator{p}{x^m}x - x^m\commutator{p}{x}\\
+                                &= i \hbar m p^m + i\hbar p^m&
+                                &= i \hbar m x^m + i \hbar x^m\\
+                                &= i \hbar (m+1) p^m&
+                                &= i \hbar(m + 1) x^m,
+    \end{align*}
+    isto é, são válidas para \(m+1.\) Pelo princípio de indução finita, concluímos que as expressões seguem para todo \(n \in \mathbb{N}\).
+    
+    Como \(f\) e \(g\) são analíticas, temos
+    \begin{equation*}
+        f(x) = f_0 \unity + \sum_{n \in \mathbb{N}} f_n x^n
+        \quad\text{e}\quad
+        g(p) = g_0 \unity + \sum_{n \in \mathbb{N}} g_n p^n,
+    \end{equation*}
+    com \(f_n, g_n \in \mathbb{C}\). Assim, obtemos
+    \begin{align*}
+        \commutator{x}{g(p)} &= \commutator*{x}{g_0 \unity + \sum_{n \in \mathbb{N}} g_n p^n} &
+        \commutator{f(x)}{p} &= \commutator*{f_0 \unity + \sum_{n \in \mathbb{N}} f_n x^n}{p}\\
+                             &= \commutator{x}{\sum_{n \in \mathbb{N}} g_n p^n} &
+                             &= \commutator{\sum_{n \in \mathbb{N}} f_n x^n}{p} \\
+                             &= \sum_{n \in \mathbb{N}} g_n \commutator{x}{p^n} &
+                             &= \sum_{n \in \mathbb{N}} f_n \commutator{x^n}{p} \\
+                             &= i\hbar \sum_{n \in \mathbb{N}} g_n n p^n &
+                             &= i\hbar \sum_{n \in \mathbb{N}} f_n n x^n \\
+                             &= i \hbar \diffp{g}{p}&
+                             &= i \hbar \diffp{f}{p},
+    \end{align*}
+    como desejado.
+\end{proof}
 \begin{exercício}{}{exercício04}
     Considere uma partícula livre em uma dimensão.
     \begin{enumerate}[label=(\alph*)]
