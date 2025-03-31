@@ -1,5 +1,5 @@
 % vim: spl=pt
-\begin{exercício}{}{exercício05}
+\begin{exercício}{Evolução temporal para o oscilador harmônico}{exercício05}
     Considere uma partícula sob a ação do potencial harmônico unidimensional
     \begin{equation*}
         V(x) = \lambda x + \frac12 m \omega^2 x^2.
@@ -11,5 +11,58 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Em termo dos operadores adimensionais
+    \begin{equation*}
+        \tilde{p} = \sqrt{\frac{1}{m \hbar \omega}} p
+        \quad\text{e}\quad
+        \tilde{x} = \sqrt{\frac{m \omega}{\hbar}} \left(x + \frac{\lambda}{m \omega^2}\right),
+    \end{equation*}
+    temos
+    \begin{equation*}
+        \commutator{\tilde{x}}{\tilde{p}} = \frac{1}{\hbar} \commutator*{x + \frac{\lambda}{m \omega^2}}{p} = i
+    \end{equation*}
+    e
+    \begin{equation*}
+        \frac{\hbar \omega}{2}\tilde{x}^2 = \frac{m \omega^2}{2} \left(x^2 + \frac{2\lambda x}{m \omega^2}+ \frac{\lambda^2}{m^2 \omega^4}\right) = V(x) + \frac{\lambda^2}{2 m \omega^2}.
+    \end{equation*}
+    Assim, o hamiltoniano é dado por
+    \begin{equation*}
+        H = \frac{\hbar \omega}{2} \left(\tilde{p}^2 + \tilde{x}^2\right) - \frac{\lambda^2}{2m \omega^2},
+    \end{equation*}
+    com as relações de comutação
+    \begin{equation*}
+        \commutator{\tilde{x}}{H} = \frac{\hbar \omega}{2} \commutator{\tilde{x}}{\tilde{p}^2} = i \hbar \omega \tilde{p}
+    \end{equation*}
+    e
+    \begin{equation*}
+        \commutator{\tilde{p}}{H} = -\frac{\hbar \omega}{2} \commutator{\tilde{x}^2}{\tilde{p}} = - i\hbar \omega \tilde{x},
+    \end{equation*}
+    logo
+    \begin{equation*}
+        \diff{\tilde{x}}{t} = \omega \tilde{p}\quad\text{e}\quad\diff{\tilde{p}}{t} = - \omega \tilde{x}
+    \end{equation*}
+    são as equações de movimento do sistema. Notemos que\footnote{Poderíamos aplicar o \cref{lem:pauli} como feito no \cref{ex:exercício02}, mas optamos por outra forma de solução.}
+    \begin{equation*}
+        \diff*{(\tilde{x} + i\tilde{p})}{t} = -i\omega(\tilde{x} + i \tilde{p})\quad\text{e}\quad
+        \diff*{(\tilde{x} - i\tilde{p})}{t} = i\omega(\tilde{x} - i \tilde{p}),
+    \end{equation*}
+    logo
+    \begin{equation*}
+        \tilde{x}(t) + i \tilde{p}(t) = e^{-i \omega t} \left(\tilde{x}(0) + i \tilde{p}(0)\right)
+        \quad\text{e}\quad
+        \tilde{x}(t) - i \tilde{p}(t) = e^{i \omega t} \left(\tilde{x}(0) - i \tilde{p}(0)\right)
+    \end{equation*}
+    e obtemos
+    \begin{equation*}
+        \tilde{x}(t) = \cos(\omega t) \tilde{x}(0) + \sin(\omega t) \tilde{p}(0)
+        \quad\text{e}\quad
+        \tilde{p}(t) = - \sin(\omega t) \tilde{x}(0) + \cos(\omega t) \tilde{p}(0).
+    \end{equation*}
+    Retornando aos operadores originais, temos
+    \begin{equation*}
+        x(t) = \sin(\omega t) \frac{p(0)}{m \omega}+ \cos(\omega t) \left(x(0) + \frac{\lambda}{m \omega^2}\right) - \frac{\lambda}{m \omega^2}
+        \quad\text{e}\quad
+        p(t) = \cos(\omega t) p(0) - \sin(\omega t) \left( m \omega x(0) + \frac{\lambda}{\omega}\right)
+    \end{equation*}
+    como suas expressões no instante \(t\).
 \end{proof}
