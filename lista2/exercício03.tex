@@ -1,6 +1,6 @@
 % vim: spl=pt
-\begin{exercício}{}{exercício03}
-    Assuma que \(\ket{a_1}\) e \(\ket{a_2}\) são autokets de um operador hermitiano \(A\), cujos autovalores são \(a_1\) e \(a_2,\) respectivamente. O hamiltoniano do sistema é dado por
+\begin{exercício}{Evolução temporal de um sistema de dois níveis}{exercício03}
+    Assuma que \(\ket{a_1}\) e \(\ket{a_2}\) são autokets de um operador hermitiano \(A\), cujos autovalores são \(a_1\) e \(a_2,\) respectivamente, com \(a_1 \neq a_2\). O hamiltoniano do sistema é dado por
     \begin{equation*}
          H = \delta \ket{a_1}\bra{a_2} + \delta \ket{a_2}\bra{a_1},
     \end{equation*}
@@ -12,5 +12,28 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Definamos os estados
+    \begin{equation*}
+        \ket{\pm} = \frac1{\sqrt{2}} \ket{a_1} \pm \frac1{\sqrt{2}} \ket{a_2},
+    \end{equation*}
+    então como \(\braket{a_1}{a_2} = 0\) pela não degenerescência do espectro de \(A\), temos
+    \begin{equation*}
+        H\ket{\pm} = \frac{\delta}{\sqrt{2}} \ket{a_1} \braket{a_2}{\pm} + \frac{\delta}{\sqrt{2}}\ket{a_1} \braket{a_1}{\pm} = \pm\frac{\delta}{2} \ket{a_1} + \frac{\delta}{2}\ket{a_2} = \pm \frac12 \delta \ket{\pm},
+    \end{equation*}
+    logo \(\sigma(H) = \set{- \frac12 \delta, \frac12 \delta}\) é o espectro do hamiltoniano e os autovetores de \(H\) são \(\ket{+}\) e \(\ket{-}\).
+
+    Seja \(\ket{\Psi} = \ket{a_1}\) o estado inicial, então 
+    \begin{equation*}
+        \ket{\Psi} = \ket{+}\braket{+}{a_1} + \ket{-}\braket{-}{a_1} = \frac{1}{\sqrt{2}} \ket{+} + \frac{1}{\sqrt{2}}\ket{-}.
+    \end{equation*}
+    Sua evolução temporal é dada por
+    \begin{align*}
+        \ket{\Psi; t} = \exp\left(\frac{t}{i\hbar} H\right)\ket{\Psi} 
+        &= \frac{1}{\sqrt{2}}\exp\left(\frac{t}{i\hbar} H\right)\ket{+} + \frac{1}{\sqrt{2}} \exp\left({t}{i \hbar} H\right)\ket{-}\\
+        &= \frac{1}{\sqrt{2}} \exp\left(\frac{\delta t}{2i \hbar}\right)\ket{+} + \frac{1}{\sqrt{2}} \exp\left(-\frac{\delta t}{2i \hbar}\right)\ket{-}\\
+        &= \frac{1}{\sqrt{2}} \exp\left(\frac{\delta t}{2i \hbar}\right)\left(\frac1{\sqrt{2}}\ket{a_1} + \frac1{\sqrt{2}}\ket{a_2}\right) + \frac{1}{\sqrt{2}} \exp\left(-\frac{\delta t}{2i \hbar}\right)\left(\frac1{\sqrt{2}}\ket{a_1} - \frac1{\sqrt{2}}\ket{a_2}\right)\\
+        &= \frac12\left[\exp\left(-\frac{i\delta t}{2\hbar}\right) + \exp\left(\frac{i\delta t}{2 \hbar}\right)\right]\ket{a_1} - \frac12\left[\exp\left(\frac{i \delta t}{2i \hbar}\right) - \exp\left(-\frac{i \delta t}{2i \hbar}\right)\right]\ket{a_2}\\
+        &= \cos\left(\frac{\delta t}{2 \hbar}\right) \ket{a_1} - i \sin\left(\frac{\delta t}{2 \hbar}\right) \ket{a_2}.
+    \end{align*}
+    Desta forma, vemos que  \(\abs{\braket{a_2}{\Psi; t}}^2 = \sin^2\left(\frac{\delta t}{2 \hbar}\right)\) é a probabilidade de encontrar o sistema no estado \(\ket{a_2}\) no instante \(t\).
 \end{proof}
