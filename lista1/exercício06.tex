@@ -11,39 +11,43 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-   Orientemos o sistema de coordenadas de forma que \(\vetor{B} = B \vetor{e}_z,\) então o Hamiltoniano é dado por \(H = - B \mu_z\). Na base \(\set{\ket{+}, \ket{-}}\) que diagonaliza \(\mu_z\) com
+   Orientemos o sistema de coordenadas de forma que \(\vetor{B} = B \vetor{e}_z,\) então o Hamiltoniano é dado por \(H = - B \mu_z\), onde \(\mu_z = \frac12 \gamma \sum_{j = 1}^N \sigma_z^{(j)}\) em que 
    \begin{equation*}
-      \mu_z \ket{+} = \frac12\gamma \ket{+}
-      \quad\text{e}\quad
-      \mu_z \ket{-} = -\frac12\gamma \ket{-},
+      \sigma_z^{(j)} = \underbrace{\unity \otimes \unity \otimes \dots \otimes \unity}_{j-1} \otimes \sigma_z \otimes \unity \otimes \unity \dots \otimes \unity.
    \end{equation*}
+   Na base \(\set{\ket{+}, \ket{-}}\) que diagonaliza \(\sigma_z\) com \(\sigma_z\ket{m} = m \ket{m}\), temos
    \begin{equation*}
-      Z = \Tr(e^{-\beta B \mu_z}) = \bra{+}e^{-\beta B \mu_z}\ket{+} + \bra{-}e^{-\beta B \mu_z}\ket{-} = e^{-\frac12 \gamma \beta B}\braket{+}{+}  + e^{\frac12 \gamma \beta B} \braket{-}{-} = 2 \cosh\left(\frac12 \gamma \beta B\right)
+      \mu_z \ket{m_1 m_2 \dots m_N} = \frac12 \gamma \sum_{j = 1}^N \sigma_z^{(j)} \ket{m_1 m_2 \dots m_N} = \frac12 \gamma \sum_{j = 1}^N m_j \ket{m_1 m_2 \dots m_N},
    \end{equation*}
-   como a função de partição. Com isso, temos
-   \begin{equation*}
-      \rho \ket{\pm} = \frac1{2 \cosh\left(\frac12 \gamma \beta B\right)} e^{- \beta B \mu_z} \ket{\pm} = \frac{e^{\mp \frac12 \gamma \beta B}}{2\cosh\left(\frac12 \gamma \beta B\right)}\ket{\pm},
-   \end{equation*}
-   logo
-   \begin{equation*}
-      \mean{\mu_x} = \Tr(\rho \mu_x) = \bra{+} \rho \mu_x \ket{+} + \bra{-} \rho \mu_x \ket{-} = \frac12 \gamma \left(\bra{+} \rho \ket{-} - \bra{-} \rho \ket{+}\right) = 0
-   \end{equation*}
-   e
-   \begin{equation*}
-      \mean{\mu_y} = \Tr(\rho \mu_y) = \bra{+} \rho \mu_y \ket{+} + \bra{-} \rho \mu_y \ket{-} = \frac12 i\gamma \left(\bra{+} \rho \ket{-} - \bra{-} \rho \ket{+}\right) = 0.
-   \end{equation*}
-   Dessa forma, obtemos
+   onde \(\ket{m_1 m_2 \dots m_N} = \bigotimes_{j = 1}^N \ket{m_j}\). Denotando \(\set{m_j}^N\) como a palavra \(\set{m_1, m_2, \dots m_N}\) em que cada \(m_j\) pode tomar os valores \(\pm 1\), a função de partição é dada por
    \begin{align*}
-      \mean{\vetor{\mu}} = \mean{\mu_z}\vetor{e}_z = \Tr(\rho \mu_z)\vetor{e}_z 
-      &= \left[\bra{+} \rho \mu_z \ket{+} + \bra{-} \rho \mu_z \ket{-}\right]\vetor{e}_z\\
-      &= \frac12 \gamma \left(\bra{+} \rho \ket{+} - \bra{-} \rho \ket{-}\right)\vetor{e}_z\\
-      &= \frac\gamma{4\cosh\left(\frac12 \gamma \beta B\right)} \left(e^{-\frac12 \gamma \beta B} - e^{\frac12 \gamma \beta B}\right)\vetor{e}_z\\
-      &= - \frac12\gamma \frac{\sinh\left(\frac12 \gamma \beta B\right)}{\cosh\left(\frac12 \gamma \beta B\right)}\vetor{e}_z\\
-      &= - \frac12 \gamma \tanh\left(\frac12 \gamma \beta B\right)\vetor{e}_z
+      Z = \Tr(e^{- \beta H}) &= \sum_{\set{m_j}^N} \bra{m_1m_2 \dots m_N} e^{\beta B \mu_z} \ket{m_1 m_2 \dots m_N}\\
+                             &= \sum_{\set{m_j}^N} \bra{m_1 m_2 \dots m_N} \exp\left(\frac12 \beta \gamma B \sum_{k = 1}^{N}{m_k}\right)\ket{m_1 m_2 \dots m_N}\\
+                             &= \sum_{\set{m_j}^N} \exp\left(\frac12 \beta \gamma B \sum_{k = 1}^N m_k\right)\\
+                             &= \sum_{\set{m_j}^N} \prod_{k = 1}^N \exp\left(\frac12 \beta \gamma B m_k\right)\\
+                             &= \sum_{m_1 \in \set{\pm1}}{\exp\left(\frac12 \beta \gamma B m_1\right)}\sum_{m_2 \in \set{\pm1}}{\exp\left(\frac12 \beta \gamma B m_2\right)}\dots \sum_{m_N \in \set{\pm1}}{\exp\left(\frac12 \beta \gamma B m_N\right)}\\
+                             &= \prod_{k = 1}^N \sum_{m \in \set{\pm1}} \exp\left(\frac12 \beta \gamma B m\right)\\
+                             &= \left[\exp\left(-\frac12 \beta \gamma B\right) + \exp\left(\frac12 \beta \gamma B\right)\right]^N\\
+                             &= \left[2 \cosh\left(\frac12 \beta \gamma B\right)\right]^N
    \end{align*}
-   e concluímos que a magnetização \(\vetor{M}\) é dada por
+   Como \(\bra{m} \sigma_x \ket{m} = \braket{m}{-m} = 0\) e \(\bra{m} \sigma_y \ket{m} = im \braket{m}{-m} = 0\), notemos que
    \begin{equation*}
-      \vetor{M} = N \mean{\vetor{\mu}} = -\frac12 N \gamma \tanh\left(\frac12 \gamma \beta B\right) \vetor{e}_z.
+      \bra{m_1\dots m_N} \mu_x \rho \ket{m_1 \dots m_N} = \frac{\exp\left(\frac12 \beta \gamma B \sum_{j = 1}^N m_j\right)}{Z}\bra{m_1\dots m_N} \mu_x \ket{m_1\dots m_N} = 0
+   \end{equation*}
+   e analogamente para \(\mu_y,\) portanto \(\mean{\mu_x}_\rho = \mean{\mu_y}_{\rho} = 0.\) Dessa forma, \(\mean{\vetor{\mu}}_\rho = \mean{\mu_z}_{\rho} \vetor{e}_z\) e temos
+   \begin{align*}
+      \Tr(\rho \mu_z) &= \sum_{\set{m_j}^N} \bra{m_1 \dots m_N}\rho \mu_z \ket{m_1 \dots m_N}\\
+                      &= \frac12 \gamma \sum_{\set{m_j}^N} \sum_{k = 1}^N m_k \bra{m_1 \dots m_N} \rho \ket{m_1 \dots m_N}\\
+                      &= \frac{\gamma}{2Z} \sum_{\set{m_j}^N} \sum_{k = 1}^N m_k \exp\left(\frac12 \beta \gamma B \sum_{\ell = 1}^N m_\ell\right)\\
+                      &= \frac{1}{\beta Z} \sum_{\set{m_j}^N} \left(\frac12 \beta \gamma \sum_{k = 1}^N m_k\right)\exp\left(\frac12 \beta \gamma B\sum_{\ell = 1}^N m_{\ell}\right) \\
+                      &= \frac{1}{\beta Z} \sum_{\set{m_j}^N} \diffp*{\exp\left(\frac12 \beta \gamma B \sum_{\ell = 1}^N m_{\ell}\right)}{B}\\
+                      &= \frac{1}{\beta Z} \diffp*{\underbrace{\left[\sum_{\set{m_j}^N} \exp\left(\frac12 \beta \gamma B \sum_{\ell = 1}^N m_{\ell}\right)\right]}_{Z}}{B}\\
+                      &= \frac{1}{\beta} \diffp{\ln Z}{B}\\
+                      &= \frac{N \gamma}{2} \tanh\left(\frac12 \beta \gamma B\right).
+   \end{align*}
+   Com este resultado, vemos que a magnetização é dada por \(\vetor{M} = \mean{\vetor{\mu}}_\rho = \frac12 N \gamma \tanh\left(\frac12 \beta \gamma B\right)\vetor{e}_z,\) ou então
+   \begin{equation*}
+      \vetor{M} = \frac{N\gamma}{2 \norm{\vetor{B}}} \tanh\left(\frac12 \beta \gamma \norm{\vetor{B}}\right) \vetor{B}.
    \end{equation*}
    Usando a expansão
    \begin{equation*}
@@ -51,7 +55,7 @@
    \end{equation*}
    temos
    \begin{equation*}
-      \vetor{M} = \left[- \frac14 N \gamma^2 \beta B + O(\beta^2)\right]\vetor{e}_z = - \frac{N \gamma^2 B}{4 k_B T}\vetor{e}_z
+      \vetor{M} = \frac{N \gamma^2}{4k_B T}\vetor{B}
    \end{equation*}
    como a expressão assintótica para a magnetização no limite de altas temperaturas.
 \end{proof}
