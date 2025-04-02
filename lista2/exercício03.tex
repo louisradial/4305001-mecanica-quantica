@@ -18,9 +18,9 @@
     \end{equation*}
     então como \(\braket{a_1}{a_2} = 0\) pela não degenerescência do espectro de \(A\), temos
     \begin{equation*}
-        H\ket{\pm} = \frac{\delta}{\sqrt{2}} \ket{a_1} \braket{a_2}{\pm} + \frac{\delta}{\sqrt{2}}\ket{a_1} \braket{a_1}{\pm} = \pm\frac{\delta}{2} \ket{a_1} + \frac{\delta}{2}\ket{a_2} = \pm \frac12 \delta \ket{\pm},
+        H\ket{\pm} = \delta \ket{a_1} \braket{a_2}{\pm} + \delta \ket{a_1} \braket{a_1}{\pm} = \pm\frac{\delta}{\sqrt{2}} \ket{a_1} + \frac{\delta}{\sqrt{2}}\ket{a_2} = \pm \delta \ket{\pm},
     \end{equation*}
-    logo \(\sigma(H) = \set{- \frac12 \delta, \frac12 \delta}\) é o espectro do hamiltoniano e os autovetores de \(H\) são \(\ket{+}\) e \(\ket{-}\).
+    logo \(\sigma(H) = \set{\delta, -\delta}\) é o espectro do hamiltoniano e os autovetores de \(H\) são \(\ket{+}\) e \(\ket{-}\).
 
     Seja \(\ket{\Psi} = \ket{a_1}\) o estado inicial, então 
     \begin{equation*}
@@ -29,11 +29,11 @@
     Sua evolução temporal é dada por
     \begin{align*}
         \ket{\Psi; t} = \exp\left(\frac{t}{i\hbar} H\right)\ket{\Psi} 
-        &= \frac{1}{\sqrt{2}}\exp\left(\frac{t}{i\hbar} H\right)\ket{+} + \frac{1}{\sqrt{2}} \exp\left({t}{i \hbar} H\right)\ket{-}\\
-        &= \frac{1}{\sqrt{2}} \exp\left(\frac{\delta t}{2i \hbar}\right)\ket{+} + \frac{1}{\sqrt{2}} \exp\left(-\frac{\delta t}{2i \hbar}\right)\ket{-}\\
-        &= \frac{1}{\sqrt{2}} \exp\left(\frac{\delta t}{2i \hbar}\right)\left(\frac1{\sqrt{2}}\ket{a_1} + \frac1{\sqrt{2}}\ket{a_2}\right) + \frac{1}{\sqrt{2}} \exp\left(-\frac{\delta t}{2i \hbar}\right)\left(\frac1{\sqrt{2}}\ket{a_1} - \frac1{\sqrt{2}}\ket{a_2}\right)\\
-        &= \frac12\left[\exp\left(-\frac{i\delta t}{2\hbar}\right) + \exp\left(\frac{i\delta t}{2 \hbar}\right)\right]\ket{a_1} - \frac12\left[\exp\left(\frac{i \delta t}{2i \hbar}\right) - \exp\left(-\frac{i \delta t}{2i \hbar}\right)\right]\ket{a_2}\\
-        &= \cos\left(\frac{\delta t}{2 \hbar}\right) \ket{a_1} - i \sin\left(\frac{\delta t}{2 \hbar}\right) \ket{a_2}.
+        &= \frac{1}{\sqrt{2}}\exp\left(\frac{t}{i\hbar} H\right)\ket{+} + \frac{1}{\sqrt{2}} \exp\left(\frac{t}{i \hbar} H\right)\ket{-}\\
+        &= \frac{1}{\sqrt{2}} \exp\left(\frac{\delta t}{i \hbar}\right)\ket{+} + \frac{1}{\sqrt{2}} \exp\left(-\frac{\delta t}{i \hbar}\right)\ket{-}\\
+        &= \frac{1}{\sqrt{2}} \exp\left(\frac{\delta t}{i \hbar}\right)\left(\frac1{\sqrt{2}}\ket{a_1} + \frac1{\sqrt{2}}\ket{a_2}\right) + \frac{1}{\sqrt{2}} \exp\left(-\frac{\delta t}{i \hbar}\right)\left(\frac1{\sqrt{2}}\ket{a_1} - \frac1{\sqrt{2}}\ket{a_2}\right)\\
+        &= \frac12\left[\exp\left(-\frac{i\delta t}{\hbar}\right) + \exp\left(\frac{i\delta t}{\hbar}\right)\right]\ket{a_1} - \frac12\left[\exp\left(\frac{i \delta t}{i \hbar}\right) - \exp\left(-\frac{i \delta t}{i \hbar}\right)\right]\ket{a_2}\\
+        &= \cos\left(\frac{\delta t}{\hbar}\right) \ket{a_1} - i \sin\left(\frac{\delta t}{\hbar}\right) \ket{a_2}.
     \end{align*}
-    Desta forma, vemos que  \(\abs{\braket{a_2}{\Psi; t}}^2 = \sin^2\left(\frac{\delta t}{2 \hbar}\right)\) é a probabilidade de encontrar o sistema no estado \(\ket{a_2}\) no instante \(t\).
+    Desta forma, vemos que  \(\abs{\braket{a_2}{\Psi; t}}^2 = \sin^2\left(\frac{\delta t}{\hbar}\right)\) é a probabilidade de encontrar o sistema no estado \(\ket{a_2}\) no instante \(t\).
 \end{proof}
