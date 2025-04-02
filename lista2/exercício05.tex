@@ -1,4 +1,85 @@
 % vim: spl=pt
+\begin{lemma}{Operador de translação espacial}{translação}
+    O operador de translação espacial \(T_a = \exp\left(- \frac{i p a}{\hbar}\right)\) satisfaz
+    \begin{equation*}
+        \herm{T}_a x T_a = x + a
+        \quad\text{e}\quad
+        T_a \ket{x'} = \ket{x' + a}
+    \end{equation*}
+    para todo \(a \in \mathbb{R}\) e todo \(x' \in \sigma(x)\).
+\end{lemma}
+\begin{proof}
+    Pelo \cref{lem:ccr}, temos
+    \begin{equation*}
+        x T_a = T_a x + \commutator{x}{T_a} = T_a x + i \hbar \diffp{T_a}{p} = T_a x + a T_a = T_a (x + a),
+    \end{equation*}
+    portanto da unitariedade de \(T_a\), temos \(\herm{T}_a x T_a = x + a.\) Seja \(\ket{x'}\) tal que \(x \ket{x'} = x' \ket{x'},\) então
+    \begin{equation*}
+        x T_a \ket{x'} = T_a (x + a) \ket{x'} = (x' + a) T_a \ket{x'},
+    \end{equation*}
+    isto é, \(T_a \ket{x'} = \ket{x' + a},\) como desejado.
+\end{proof}
+\begin{lemma}{Operador de número}{oscilador}
+    Sejam operadores \(b, \herm{b}\) tais que \(\commutator{b}{\herm{b}} = 1\) e que \(\herm{b}b\) admita zero como autovalor não degenerado\footnote{Deveríamos também exigir que \(b\) seja um operador fechado ou, equivalentemente, que \(\herm{b}b\) seja hermitiano, o que não é imediato como costumamos tomar na literatura. Ainda, assumimos que seu espectro é igual ao conjunto de autovalores, isto é, que o espectro residual e espectro contínuo são tomados como conjuntos vazios.}. O operador de número \(\herm{b}b\) tem espectro não degenerado \(\sigma(N) = \mathbb{N}_0\), os números inteiros não negativos, e os seus autovetores \(\setc{\ket{n}}{n \in \mathbb{N}_0}\) podem ser tomados de forma que
+    \begin{equation*}
+        b\ket{0} =0,\quad b \ket{n+1} = \sqrt{n+1} \ket{n},\quad\text{e}\quad \herm{b}\ket{n} = \sqrt{n+1} \ket{n+1}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}_0.\)
+\end{lemma}
+\begin{proof}
+    É claro que o operador hermitiano \(\herm{b}b\) é um operador positivo, pois temos
+    \begin{equation*}
+        \bra{\psi}\herm{b}b\ket{\psi} = \norm{b \ket{\psi}}^2 \geq 0
+    \end{equation*}
+    para todo \(\ket{\psi},\) logo seu espectro é não negativo. Para um autovetor \(\ket{\lambda},\) com \(\herm{b}b \ket{\lambda} = \lambda \ket{\lambda},\) temos
+    \begin{equation*}
+        \norm{b \ket{\lambda}}^2 = \bra{\lambda}\herm{b}b\ket{\lambda} = \lambda\braket{\lambda}{\lambda} = \lambda,
+    \end{equation*}
+    portanto como zero é um autovalor do operador de número temos \(b \ket{0} = 0\) e se \(\lambda > 0\) temos \(b \ket{\lambda} \neq 0\). De forma análoga, temos
+    \begin{equation*}
+        \norm{\herm{b} \ket{\lambda}}^2 = \bra{\lambda} b \herm{b} \ket{\lambda} = \bra{\lambda} \herm{b} b + 1\ket{\lambda} = \lambda + 1 > 0,
+    \end{equation*}
+    isto é \(\herm{b} \ket{\lambda} \neq 0\) para todo autovalor \(\lambda\). Notemos que
+    \begin{align*}
+        \commutator{\herm{b}b}{b} = - \commutator{b}{\herm{b}}b - \herm{b}\commutator{b}{b} = - b
+        \quad\text{e}\quad
+        \commutator{\herm{b}b}{\herm{b}} = - \commutator{\herm{b}}{\herm{b}}b - \herm{b}\commutator{\herm{b}}{b} = \herm{b},
+    \end{align*}
+    portanto para um autovalor \(\lambda > 0\) temos
+    \begin{equation*}
+        b \ket{\lambda} = \commutator{b}{\herm{b}b} \ket{\lambda} = b \herm{b}b \ket{\lambda} - \herm{b} b b\ket{\lambda} = \lambda b \ket{\lambda} - \herm{b} b b\ket{\lambda} \implies \herm{b} b b \ket{\lambda} = (\lambda - 1) b\ket{\lambda},
+    \end{equation*}
+    portanto \(b \ket{\lambda}\) é autovetor associado ao autovalor \(\lambda - 1,\) donde segue que \(\lambda \geq 1\). Semelhantemente, para um autovalor \(\lambda\) arbitrário, temos
+    \begin{equation*}
+        \herm{b}\ket{\lambda} = \commutator{\herm{b}b}{\herm{b}} \ket{\lambda} = \herm{b}b \herm{b}\ket{\lambda} - \herm{b} \herm{b}b\ket{\lambda} = \herm{b}b \herm{b}\ket{\lambda} - \lambda\herm{b}\ket{\lambda} \implies \herm{b}b \herm{b} \ket{\lambda} = (\lambda + 1) \herm{b}\ket{\lambda},
+    \end{equation*}
+    logo \(\herm{b}\ket{\lambda}\) é autovetor associado ao autovalor \(\lambda + 1.\) Em resumo, \(\herm{b}\) aumenta o autovalor em uma unidade e \(b\) reduz o autovalor em uma unidade, com \(b\ket{0} = 0\). Como zero é autovalor e como \(\herm{b}\) pode elevar o autovalor arbitrariamente, é claro que \(\mathbb{N}_0 \subset \sigma(\herm{b}b)\). Para mostrar a igualdade destes conjuntos, consideramos um autovalor não inteiro \(\lambda\) e notamos que nunca teremos \(a^k \ket{\lambda} = 0,\) pois \(\lambda - k\) jamais é inteiro. Entretanto, aplicando-se \(k = \ceil{\lambda} + 1\) vezes o operador \(b,\) obtemos um autovetor associado ao autovalor \(\lambda - \ceil{\lambda} - 1 < 0,\) o que contradiz a positividade de \(\herm{b}b.\) Assim, todos os seus autovalores são inteiros não negativos.
+
+    Mostremos por indução que o seu espectro é não degenerado. Por hipótese, o autovalor zero não é degenerado. Assumindo que não é degenerado para o autovalor \(n \in \mathbb{N},\) supomos por contradição que o autoespaço associado ao autovalor \(n + 1\) é degenerado com dimensão \(k > 1,\) isto é, existem \(k\) vetores \(\ffamily{\ket{n + 1_j}}{j = 1}{k}\) ortogonais tais que \(\herm{b}b\ket{n+1_j} = (n+1)\ket{n+1_j}.\) Assim, 
+    \begin{equation*}
+        \herm{b}\ket{n} = \sum_{j = 1}^k \alpha_j \ket{n + 1_j}
+        \quad\text{com}\quad
+        \sum_{j = 1}^k \abs{\alpha_j}^2 = \norm{\herm{b}\ket{n}}^2,
+    \end{equation*}
+    mas para um \(j \in \set{1, \dots, k}\) temos
+    \begin{equation*}
+        (n + 1) \ket{n+1_j} = \herm{b}b\ket{n+1_j} = \herm{b}\ket{n} = \sum_{\ell = 1}^k \alpha_{\ell} \ket{n+1_\ell},
+    \end{equation*}
+    donde segue que \(\alpha_{\ell} = (n+1) \delta_{j \ell}\), e então \(\herm{b}\ket{n} = (n+1) \ket{n + 1_j}\). Como este \(j\) é arbitrário, teríamos a mesma expressão para \(j = 1\) e \(j = 2,\) isto é, \(\ket{n+1_1} = \ket{n+1_2},\) o que contradiz a hipótese de que o autoespaço tem dimensão \(k > 1,\) e concluímos que o autoespaço associado ao autovalor \(n + 1\) é não degenerado. Pelo princípio da indução finita, inferimos que o espectro de \(\herm{b}b\) é não degenerado. Com isso, concluímos que
+    \begin{equation*}
+        \herm{b} \ket{n} = \beta_n\ket{n+1}
+        \quad\text{e}\quad
+        b \ket{n+1} = \gamma_{n+1} \ket{n}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}_0,\) onde \(\beta_n, \gamma_{n+1} \in \mathbb{C}.\) Como temos as normas \(\norm{b \ket{n}}^2 = n\) e \(\norm{\herm{b}\ket{n}}^2 = n+1,\) podemos tomar \(\beta_n = \sqrt{n}\) e \(\gamma_{n+1} = \sqrt{n+1}\), isto é, 
+    \begin{equation*}
+        b\ket{0} = 0,\quad
+        b\ket{n+1} = \sqrt{n+1} \ket{n}
+        \quad\text{e}\quad
+        \herm{b} \ket{n} = \sqrt{n} \ket{n+1}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}_0\), como desejado.
+\end{proof}
 \begin{exercício}{Evolução temporal para o oscilador harmônico}{exercício05}
     Considere uma partícula sob a ação do potencial harmônico unidimensional
     \begin{equation*}
@@ -41,28 +122,102 @@
     \begin{equation*}
         \diff{\tilde{x}}{t} = \omega \tilde{p}\quad\text{e}\quad\diff{\tilde{p}}{t} = - \omega \tilde{x}
     \end{equation*}
-    são as equações de movimento do sistema. Notemos que\footnote{Poderíamos aplicar o \cref{lem:pauli} como feito no \cref{ex:exercício02}, mas optamos por outra forma de solução.}
+    são as equações de movimento do sistema. Consideramos os operadores de aniquilação e de criação\footnote{Poderíamos aplicar o \cref{lem:pauli} como feito no \cref{ex:exercício02}, mas os operadores de aniquilação e criação são mais convenientes para o restante deste exercício.}
     \begin{equation*}
-        \diff*{(\tilde{x} + i\tilde{p})}{t} = -i\omega(\tilde{x} + i \tilde{p})\quad\text{e}\quad
-        \diff*{(\tilde{x} - i\tilde{p})}{t} = i\omega(\tilde{x} - i \tilde{p}),
+        b = \frac{1}{\sqrt{2}}(\tilde{x} + i \tilde{p})
+        \quad\text{e}\quad
+        \herm{b} = \frac{1}{\sqrt{2}}(\tilde{x} - i \tilde{p})
     \end{equation*}
+    e notemos que
+    \begin{align*}
+        \diff{b}{t} &= \frac{1}{\sqrt{2}}\diff*{(\tilde{x} + i\tilde{p})}{t}&
+        \diff{\herm{b}}{t} &= \frac{1}{\sqrt{2}}\diff*{(\tilde{x} - i\tilde{p})}{t}\\
+                           &= \frac{\omega}{\sqrt{2}}(\tilde{p} - i \tilde{x})&
+                           &= \frac{\omega}{\sqrt{2}}(\tilde{p} + i \tilde{x})\\
+                           &= -\frac{i \omega}{\sqrt{2}}(\tilde{x} + i \tilde{p})&
+                           &= \frac{i\omega}{\sqrt{2}}(\tilde{x} - i \tilde{p})\\
+                           &= -i \omega b&
+                           &= i \omega \herm{b}
+    \end{align*}
     logo
     \begin{equation*}
-        \tilde{x}(t) + i \tilde{p}(t) = e^{-i \omega t} \left(\tilde{x}(0) + i \tilde{p}(0)\right)
-        \quad\text{e}\quad
-        \tilde{x}(t) - i \tilde{p}(t) = e^{i \omega t} \left(\tilde{x}(0) - i \tilde{p}(0)\right)
+        b(t) = e^{-i \omega t} b_0 \quad\text{e}\quad \herm{b}(t) = e^{i \omega t} \herm{b}_0 \implies \tilde{x}(t) + i \tilde{p}(t) = e^{-i \omega t} (\tilde{x}_0 + i \tilde{p}_0) \quad\text{e}\quad \tilde{x}(t) - i \tilde{p}(t) = e^{i \omega t} (\tilde{x}_0 - i \tilde{p}_0) 
     \end{equation*}
     e obtemos
     \begin{equation*}
-        \tilde{x}(t) = \cos(\omega t) \tilde{x}(0) + \sin(\omega t) \tilde{p}(0)
+        \tilde{x}(t) = \cos(\omega t) \tilde{x}_0 + \sin(\omega t) \tilde{p}_0
         \quad\text{e}\quad
-        \tilde{p}(t) = - \sin(\omega t) \tilde{x}(0) + \cos(\omega t) \tilde{p}(0).
+        \tilde{p}(t) = - \sin(\omega t) \tilde{x}_0 + \cos(\omega t) \tilde{p}_0,
     \end{equation*}
+    onde \(\tilde{x}_0 = \tilde{x}(0)\) e \(\tilde{p}_0 = \tilde{p}(0).\)
     Retornando aos operadores originais, temos
     \begin{equation*}
-        x(t) = \sin(\omega t) \frac{p(0)}{m \omega}+ \cos(\omega t) \left(x(0) + \frac{\lambda}{m \omega^2}\right) - \frac{\lambda}{m \omega^2}
+        x(t) = \frac{\sin(\omega t)}{m \omega} p_0+ \cos(\omega t) \left(x_0 + \frac{\lambda}{m \omega^2}\right) - \frac{\lambda}{m \omega^2}
         \quad\text{e}\quad
-        p(t) = \cos(\omega t) p(0) - \sin(\omega t) \left( m \omega x(0) + \frac{\lambda}{\omega}\right)
+        p(t) = \cos(\omega t) p_0 - \sin(\omega t) \left( m \omega x_0 + \frac{\lambda}{\omega}\right)
     \end{equation*}
-    como suas expressões no instante \(t\).
+    como suas expressões no instante \(t\), com \(x(0) = x_0\) e \(p(0) = p_0\).
+
+    Notemos que 
+    \begin{align*}
+        \commutator{b}{\herm{b}} &= \frac12(\tilde{x} + i \tilde{p})(\tilde{x} - i \tilde{p}) - \frac12 (\tilde{x} - i \tilde{p})(\tilde{x} + i \tilde{p})\\
+                                  &= \frac12(\tilde{x}^2 + \tilde{p}^2 - i \commutator{\tilde{x}}{\tilde{p}}) - \frac12(\tilde{x}^2 + \tilde{p}^2 + i \commutator{\tilde{x}}{\tilde{p}})\\
+                                  &= -i \commutator{\tilde{x}}{\tilde{p}}\\
+                                  &= 1
+    \end{align*}
+    e, analogamente,
+    \begin{align*}
+        \anticommutator{b}{\herm{b}} &= \frac12(\tilde{x} + i \tilde{p})(\tilde{x} - i \tilde{p}) + \frac12 (\tilde{x} - i \tilde{p})(\tilde{x} + i \tilde{p})\\
+                                  &= \frac12(\tilde{x}^2 + \tilde{p}^2 - i \commutator{\tilde{x}}{\tilde{p}}) + \frac12(\tilde{x}^2 + \tilde{p}^2 + i \commutator{\tilde{x}}{\tilde{p}})\\
+                                  &= \tilde{x}^2 + \tilde{p}^2,
+    \end{align*}
+    portanto
+    \begin{equation*}
+        H = \frac12 \hbar \omega \anticommutator{b}{\herm{b}} - \frac{\lambda^2}{2m \omega^2} = \hbar \omega \herm{b} b + \frac12 \hbar \omega \commutator{b}{\herm{b}} - \frac{\lambda^2}{2m \omega^2} = \hbar \omega \herm{b} b + \frac12 \left(\hbar \omega - \frac{\lambda^2}{m \omega^2}\right),
+    \end{equation*}
+    isto é, o hamiltoniano é um polinômio do operador \(\herm{b}b\). Notemos que existe um estado \(\ket{0}\) tal que \(b\ket{0} = 0,\) uma vez que, em representação de coordenadas, esta equação se traduz em uma equação diferencial de primeira ordem com uma única solução independente, a saber
+    \begin{equation*}
+        b\ket{0} = 0 \implies \left(\tilde{x} + \diff*{}{\tilde{x}}\right) \braket{\tilde{x}}{0} = 0\implies \braket{\tilde{x}}{0} \sim e^{-\frac12 \tilde{x}^2},
+    \end{equation*}
+    portanto \(\herm{b}b\ket{0} = 0\) e inferimos que \(\ket{0}\) gera o núcleo do operador \(\herm{b}b\). Concluímos que, na base definida pelo \cref{lem:oscilador}, temos
+    \begin{equation*}
+        H \ket{n} = \left[\hbar \omega \left(n + \frac12 \right) - \frac{\lambda^2}{2m \omega^2}\right] \ket{n}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}_0\). Logo, o estado fundamental do sistema é dado por \(\ket{0}\). Nesse estado, temos
+    \begin{equation*}
+        \bra{0} \left(b \pm  \herm{b}\right) \ket{0} = \pm \braket{0}{1} = 0,
+    \end{equation*}
+    isto é, \(\bra{0}\tilde{x}(t)\ket{0} = \bra{0}\tilde{p}(t)\ket{0} = 0\). Disso, sabemos que \(\bra{0}x_0\ket{0} = - \frac{\lambda}{m \omega^2}\), \(\bra{0} p_0\ket{0} = 0\) e
+    \begin{equation*}
+        \bra{0}x(t)\ket{0} = \bra{0}\left[\sqrt{\frac\hbar{m \omega}} \tilde{x}(t) - \frac{\lambda}{m \omega^2}\right]\ket{0} = - \frac{\lambda}{m \omega^2}.
+    \end{equation*}
+    Temos também
+    \begin{align*}
+        \bra{0}x(t)x_0\ket{0} &= \bra{0}\left(\sqrt{\frac{\hbar}{m \omega}} \tilde{x}(t) - \frac{\lambda}{m \omega^2}\right)\left(\sqrt{\frac{\hbar}{m \omega}} \tilde{x}_0 - \frac{\lambda}{m \omega^2}\right)\ket{0}\\
+                              &= \frac{\hbar}{m \omega} \bra{0} \tilde{x}(t) \tilde{x}_0 \ket{0} -\frac{\lambda}{m\omega^2} \left[\bra{0}\tilde{x}(t)\ket{0}+ \bra{0}\tilde{x}_0\ket{0}\right] + \frac{\lambda^2}{m^2 \omega^4}\\
+                              &= \frac{\hbar}{2m \omega} \bra{0}(b + \herm{b})(b_0 + \herm{b}_0)\ket{0} + \frac{\lambda^2}{m^2 \omega^4}\\
+                              &= \frac{\hbar e^{-i \omega t}}{2m \omega} \bra{0} b_0 \herm{b}_0 \ket{0} + \frac{\lambda^2}{m^2 \omega^4}\\
+                              &= \frac{\hbar e^{-i \omega t}}{2 m \omega} + \frac{\lambda^2}{m^2 \omega^4}.
+    \end{align*}
+
+    Pelo \cref{lem:translação}, segue que
+    \begin{equation*}
+        \exp\left(\frac{i p_0 a}{\hbar}\right)x(t) \exp\left(-\frac{i p_0 a}{\hbar}\right) = \sin(\omega t) \frac{p_0}{m \omega}+ \cos(\omega t) \left(x_0 + a + \frac{\lambda}{m \omega^2}\right) - \frac{\lambda}{m \omega^2} = x(t) + a \cos(\omega t),
+    \end{equation*}
+    então se \(\ket{\psi} = \exp\left(-\frac{i p_0 a}{\hbar}\right)\ket{0}\) é o estado inicial do sistema, obtemos
+    \begin{align*}
+        \mean{x(t)} = \bra{\psi}x(t)\ket{\psi} &= \bra{0} \exp\left(\frac{i p_0 a}{\hbar}\right) x(t) \exp\left(-\frac{i p_0 a}{\hbar}\right)\ket{0}\\
+                                               &= \bra{0} \left[x(t) + a\right]\ket{0}\\
+                                               &= \bra{0} x(t) \ket{0} + a \cos(\omega t)\\
+                                               &= a \cos(\omega t) - \frac{\lambda}{m \omega^2}
+    \end{align*}
+    como a evolução temporal do valor esperado de \(x\) para este estado inicial. Ainda,
+    \begin{align*}
+        C(t) = \bra{\psi}x(t) x(0)\ket{\psi} &= \bra{0} \exp\left(\frac{i p_0 a}{\hbar}\right) x(t) \exp\left(-\frac{i p_0 a}{\hbar}\right) \exp\left(\frac{i p_0 a}{\hbar}\right) x_0 \exp\left(-\frac{i p_0 a}{\hbar}\right)\ket{0}\\
+                                             &= \bra{0} \left[x(t) + a \cos(\omega t)\right](x_0 + a)\ket{0}\\
+                                             &= \bra{0} x(t) x_0 \ket{0} + a \bra{0} x(t) \ket{0} + a \cos(\omega t) \bra{0} (x_0 + a) \ket{0}\\
+                                             &= \bra{0}x(t) x_0 \ket{0} - \frac{a\lambda}{m \omega^2} + a \left(a - \frac{\lambda}{m \omega^2}\right) \cos(\omega t)\\
+                                             &= \frac{\hbar e^{- i \omega t}}{ 2 m \omega} + \frac{\lambda^2}{m^2 \omega^4} - \frac{a \lambda}{m \omega^2} + a \left(a - \frac{\lambda}{m \omega^2}\right)\cos(\omega t)
+    \end{align*}
+    é a função de correlação para o estado inicial considerado.
 \end{proof}
