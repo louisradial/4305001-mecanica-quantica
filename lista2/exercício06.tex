@@ -1,4 +1,65 @@
 % vim: spl=pt
-\begin{exercício}{}{exercício06}
+\begin{exercício}{Equação de continuidade para soluções da equação de Schrödinger}{exercício06}
     A partir de \(\braket{\Psi_1; t}{\Psi_2; t},\) em que \(\ket{\Psi_{1,2}}\) são duas soluções da equação de Schrödinger dependente do tempo para \(H = \sum_{n=1}^N \frac{1}{2m_n} \vetor{p}_n^2 + V(\vetor{x}_1, \dots, \vetor{x}_N)\), encontre uma equação de continuidade para \(\Psi_1\) e \(\Psi_2\).
 \end{exercício}
+\begin{proof}[Resolução]
+    Como a evolução temporal é unitária, o produto escalar de estados puros é constante no tempo. De fato, para estados \(\ket{\psi_1; t_0}\) e \(\ket{\psi_2; t_0}\) em um instante inicial \(t_0\), temos
+    \begin{equation*}
+        \braket{\psi_1; t}{\psi_2; t} = \bra{\psi_1; t_0}\herm{U}(t, t_0) U(t, t_0)\ket{\psi_2; t_0} = \braket{\psi_1; t_0}{\psi_2; t_0}
+    \end{equation*}
+    para todo instante \(t\).
+
+    Consideramos agora o Hamiltoniano \(H\) constante no tempo com um potencial real diagonal, isto é, \(\bra{\vetor{r}'}V(\vetor{x}_1, \dots, \vetor{x}_N)\ket{\vetor{r}''} = V(\vetor{r}') \delta(\vetor{r}'' - \vetor{r}')\), onde \(\ket{\vetor{r}'} = \ket{\vetor{r}_1' \vetor{r}_2' \dots \vetor{r}_N'}\) e \(\vetor{x}_j \ket{\vetor{r}'} = \vetor{r}_j' \ket{\vetor{r}'}\). Denotaremos as funções de onda por
+    \begin{equation*}
+        \Psi_j(\vetor{r}'; t) = \braket{\vetor{r}'}{\Psi_j; t} = \braket{\vetor{r}_1' \dots \vetor{r}_N'}{\Psi_j; t} = \Psi_j(\vetor{r}_1', \dots, \vetor{r}_N'; t)
+    \end{equation*}
+    para \(j \in \set{1,2}.\) Neste caso, temos
+    \begin{equation*}
+        i \hbar \diffp*{\Psi_j(\vetor{r}'; t)}{t} = \left[\sum_{n=1}^N \frac{1}{2m_n} \left(\frac{\hbar}{i}\diffp*{}{\vetor{r}_n'}\right)^2 + V(\vetor{r}')\right]\Psi_j(\vetor{r}'; t).
+    \end{equation*}
+    para as funções de onda dos estados \(\ket{\Psi_1; t}\) e \(\ket{\Psi_2; t}\). Notemos que
+    \begin{equation*}
+        i \hbar \conj{\Psi}_1(\vetor{r}'; t)\diffp{\Psi_2(\vetor{r}'; t)}{t} = \conj{\Psi}_1(\vetor{r}'; t)\left[\sum_{n=1}^N \frac{1}{2m_n} \left(\frac{\hbar}{i}\diffp*{}{\vetor{r}_n'}\right)^2\Psi_2(\vetor{r'}; t) + V(\vetor{r}')\Psi_2(\vetor{r}'; t)\right]
+    \end{equation*}
+    e
+    \begin{equation*}
+        -i \hbar \diffp{\conj{\Psi}_1(\vetor{r}'; t)}{t}\Psi_2(\vetor{r}'; t) = \left[\sum_{n=1}^N \frac{1}{2m_n} \left(\frac{\hbar}{i}\diffp*{}{\vetor{r}_n'}\right)^2\conj{\Psi}_1(\vetor{r'}; t) + V(\vetor{r}')\conj\Psi_1(\vetor{r}'; t)\right]\Psi_2(\vetor{r}'; t),
+    \end{equation*}
+    pelo potencial ser real.
+
+    Consideramos \(w^{(12)}(\vetor{r}'; t) = \conj{\Psi}_1(\vetor{r}'; t)\Psi_2(\vetor{r}'; t)\), então da conservação do produto interno temos
+    \begin{equation*}
+        \diffp*{\int \dli{\vetor{r'}} w^{(12)}(\vetor{r}'; t)}{t} = \diffp*{\int \dli{\vetor{r}'} \braket{\Psi_1; t}{\vetor{r}'}\braket{\vetor{r'}}{\Psi_2; t}}{t} = \diffp*{\braket{\Psi_1; t}{\Psi_2; t}}{t} = 0.
+    \end{equation*}
+    Além desta conservação global, temos
+    \begin{align*}
+        i \hbar \diffp{w^{(12)}(\vetor{r}'; t)}{t} &= i \hbar \diffp{\conj{\Psi}_1(\vetor{r}'; t)}{t}\Psi_2(\vetor{r}'; t) + i \hbar \conj{\Psi}_1(\vetor{r}'; t)\diffp{\Psi_2(\vetor{r}'; t)}{t}\\
+                                            &= \conj\Psi_1(\vetor{r}'; t)\sum_{n=1}^N \frac{1}{2m_n} \left(\frac{\hbar}{i}\diffp*{}{\vetor{r}_n'}\right)^2\Psi_2(\vetor{r'}; t) - \Psi_2(\vetor{r}'; t)\sum_{n=1}^N \frac{1}{2m_n} \left(\frac{\hbar}{i}\diffp*{}{\vetor{r}_n'}\right)^2\conj\Psi_1(\vetor{r'}; t)\\
+                                            &= \sum_{n = 1}^N \frac{\hbar^2}{2m_n} \left[\Psi_2(\vetor{r}'; t) \left(\diffp*{}{\vetor{r}_n'}\right)^2 \conj{\Psi}_1(\vetor{r}'; t) - \conj{\Psi}_1(\vetor{r}'; t) \left(\diffp*{}{\vetor{r}'_n}\right)^2 \Psi_2(\vetor{r}'; t)\right].
+    \end{align*}
+    Notemos que
+    \begin{equation*}
+        \diffp*{}{\vetor{r}'_n} \cdot \left[\conj\Psi_1(\vetor{r}'; t) \diffp{\Psi_2(\vetor{r}'; t)}{\vetor{r}'_n}\right] = \diffp{\conj{\Psi}_1(\vetor{r}'; t)}{\vetor{r}'_n} \cdot \diffp{\Psi_2(\vetor{r}'; t)}{\vetor{r}'_n} + \conj{\Psi}_1(\vetor{r}'; t)\left(\diffp*{}{\vetor{r}'_n}\right)^2\Psi_2(\vetor{r}'; t)
+    \end{equation*}
+    e
+    \begin{equation*}
+        \diffp*{}{\vetor{r}'_n} \cdot \left[\Psi_2(\vetor{r}'; t) \diffp{\conj{\Psi}_1(\vetor{r}'; t)}{\vetor{r}'_n}\right] = \diffp{\Psi_2(\vetor{r}'; t)}{\vetor{r}'_n} \cdot \diffp{\conj{\Psi}_1(\vetor{r}'; t)}{\vetor{r}'_n} + \Psi_2(\vetor{r}'; t)\left(\diffp*{}{\vetor{r}'_n}\right)^2\conj{\Psi}_1(\vetor{r}'; t),
+    \end{equation*}
+    logo, definindo
+    \begin{equation*}
+        \vetor{j}^{(12)}_n(\vetor{r}'; t) = \frac{\hbar}{2im_n}\left[\Psi_2(\vetor{r}'; t) \diffp{\conj{\Psi}_1(\vetor{r}'; t)}{\vetor{r}'_n} - \conj\Psi_1(\vetor{r}'; t) \diffp{\Psi_2(\vetor{r}'; t)}{\vetor{r}'_n}\right],
+    \end{equation*}
+    obtemos
+    \begin{equation*}
+        \diffp*{}{\vetor{r}'_n} \cdot \vetor{j}_n^{(12)}(\vetor{r}'; t) = \frac{\hbar}{2i m_n} \left[\Psi_2(\vetor{r}'; t) \left(\diffp*{}{\vetor{r}_n'}\right)^2 \conj{\Psi}_1(\vetor{r}'; t) - \conj{\Psi}_1(\vetor{r}'; t) \left(\diffp*{}{\vetor{r}'_n}\right)^2 \Psi_2(\vetor{r}'; t)\right].
+    \end{equation*}
+    Assim, mostramos a equação de continuidade
+    \begin{equation*}
+        \diffp{w^{(k\ell)}(\vetor{r}'; t)}{t} - \sum_{n = 1}^N \diffp*{}{\vetor{r}'_n} \cdot \vetor{j}_n^{(k\ell)}(\vetor{r}'; t) = 0,
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        \diffp*{\left[\conj{\Psi}_k(\vetor{r}'; t) \Psi_\ell(\vetor{r}'; t)\right]}{t} = \sum_{n = 1}^N \frac{\hbar}{2i m_n} \diffp*{}{\vetor{r}_n'}\cdot \left[\Psi_\ell(\vetor{r}'; t) \diffp{\conj{\Psi}_k(\vetor{r}'; t)}{\vetor{r}'_n} - \conj\Psi_k(\vetor{r}'; t) \diffp{\Psi_\ell(\vetor{r}'; t)}{\vetor{r}'_n}\right]
+    \end{equation*}
+    com \(k, \ell \in \set{1,2}.\)
+\end{proof}
