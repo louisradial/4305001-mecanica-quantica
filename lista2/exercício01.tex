@@ -1,4 +1,71 @@
 % vim: spl=pt
+\begin{lemma}{Desigualdade de Cauchy-Schwarz}{cauchy_schwarz}
+    Em um espaço de produto interno \((V, \inner{\noarg}{\noarg})\) sobre o corpo\footnote{Estamos considerando \(\mathbb{K} = \mathbb{C}\) ou \(\mathbb{K} = \mathbb{R}.\)} \(\mathbb{K}\) vale
+    \begin{equation*}
+        \abs{\inner{u}{v}}^2 \leq \inner{u}{u} \inner{v}{v}
+    \end{equation*}
+    para todos \(u, v \in V.\) Ainda, a igualdade se dá se e somente se \(u\) e \(v\) são linearmente dependentes.
+\end{lemma}
+\begin{proof}
+     Suponha \(\set{x,y} \subset V\) linearmente dependente. Se um dos vetores é o vetor nulo, então a igualdade é satisfeita trivialmente. Podemos assumir sem perda de generalidade que \(x, y \in V\setminus\set{0}\), então existe \(\alpha \in \mathbb{K}\setminus\set{0}\) tal que \(\alpha x = y\). Assim, temos
+    \begin{equation*}
+        \abs*{\inner{x}{y}}^2 = \inner{x}{y}\inner{y}{x} = \inner{x}{\alpha x}\inner*{y}{\frac1\alpha y} = \inner{x}{x} \inner{y}{y},
+    \end{equation*}
+    isto é, a igualdade é satisfeita.
+
+    Suponha que \(\abs*{\inner{x}{y}} = \inner{x}{x} \inner{y}{y}\). Novamente, se algum dos dois vetores é o vetor nulo, então \(\set{x,y}\) é trivialmente linearmente dependente, portanto podemos assumir sem perda de generalidade que \(x, y \in V \setminus\set{0}\). Consideremos
+    \begin{equation*}
+        \inner*{y - \frac{\inner{x}{y}}{\inner{x}{x}}x}{y - \frac{\inner{x}{y}}{\inner{x}{x}}x} = \inner{y}{y} - \frac{\abs*{\inner{x}{y}}}{\inner{x}{x}}.
+    \end{equation*}
+    Por hipótese, o lado direito é nulo, portanto pelo produto interno ser positivo definido temos \(y - \frac{\inner{x}{y}}{\inner{x}{x}}x = 0\), logo \(\set{x,y}\) é linearmente dependente.
+\end{proof}
+
+\begin{lemma}{Relação de incerteza}{incerteza}
+    O desvio padrão de um observável \(X\) em um estado puro \(\ket{\phi}\) é a quantidade
+    \begin{equation*}
+        \Delta_\phi X = \sqrt{\mean{X^2}_\phi - \mean{X}^2_\phi}.
+    \end{equation*}
+    Em um estado puro \(\ket{\phi},\) vale
+    \begin{equation*}
+        \Delta_\phi A \Delta_\phi B \geq \frac12 \abs{\mean{\commutator{A}{B}}_\phi}^2
+    \end{equation*}
+    para quaisquer observáveis \(A\) e \(B\).
+\end{lemma}
+\begin{proof}
+    Para um observável \(X\) e um vetor \(\ket{\psi}\), denotaremos \(\ket{\psi_X} = (X - \mean{X}_\psi)\ket{\psi}.\) Se \(Y\) é também um observável, notemos que
+    \begin{align*}
+        \braket{\psi_X}{\psi_Y} &= \bra{\psi}(X - \mean{X}_\psi)(Y - \mean{Y}_\psi)\ket{\psi}\\
+                                &= \frac12 \bra{\psi} \commutator{X - \mean{X}_\psi}{Y - \mean{Y}_\psi}\ket\psi + \frac12 \bra{\psi}\anticommutator{X - \mean{X}_\psi}{Y - \mean{Y}_\psi}\ket{\psi}\\
+                                &= \frac12 \bra\psi \commutator{X}{Y} \ket\psi + \frac12 \mean{\anticommutator{X - \mean{X}_\psi}{Y - \mean{Y}_\psi}}_{\psi}\\
+                                &= \frac12 \mean*{\commutator{X}{Y}}_\psi + \frac12 \mean*{\anticommutator{X - \mean{X}_\psi}{Y - \mean{Y}_\psi}}_\psi
+    \end{align*}
+    portanto no caso particular \(Y = X,\)
+    \begin{align*}
+        \braket{\psi_X}{\psi_X} &= \mean*{X^2 - 2\mean{X}_\psi X + \mean{X}_\psi^2}_\psi\\
+                                &= \mean{X^2}_\psi - \mean{X}_\psi^2\\
+                                &= (\Delta_\psi X)^2
+    \end{align*}
+    Assim, para observáveis \(A\) e \(B\) e um estado puro \(\phi\), temos
+    \begin{equation*}
+        (\Delta_\phi A)^2(\Delta_\phi B)^2 = \braket{\phi_A}{\phi_A}\braket{\phi_B}{\phi_B} \geq \abs{\braket{\phi_A}{\phi_B}}^2 = \abs*{\frac12 \mean{\commutator{A}{B}}_\phi + \frac12 \mean{\anticommutator{A - \mean{A}_\phi}{B - \mean{B}_\phi}}_\phi}^2
+    \end{equation*}
+    pela \nameref{lem:cauchy_schwarz}. Relembremos que se \(X\) e \(Y\) são hermitianos, os operadores \(i\commutator{X}{Y}\) e \(\anticommutator{X}{Y}\) são hermitianos, pois temos
+    \begin{align*}
+        \herm{\commutator{X}{Y}} &= \herm{(XY)} - \herm{(YX)}&
+        \herm{\anticommutator{X}{Y}} &= \herm{(XY)} - \herm{(YX)}\\
+                                     &= \herm{Y} \herm{X} - \herm{X} \herm{Y}&
+                                 &= \herm{Y} \herm{X} + \herm{X} \herm{Y}\\
+                                 &= YX - XY&
+                                 &= YX + XY\\
+                                 &= -\commutator{X}{Y}&
+                                 &= \anticommutator{X}{Y}.
+    \end{align*}
+    Assim, como \(i \commutator{A}{B}\) é hermitiano, o valor esperado \(\mean{\commutator{A}{B}}_\phi\) é puramente imaginário e então
+    \begin{equation*}
+        (\Delta_\phi A)^2 (\Delta_\phi B)^2 \geq \frac14 \abs*{\mean{\commutator{A}{B}}_\phi}^2 + \frac14 \mean*{\anticommutator{A - \mean{A}_\phi}{B - \mean{B}_\phi}}_\phi^2 \geq \frac14 \abs*{\mean{\commutator{A}{B}}_\phi}^2,
+    \end{equation*}
+    e obtemos \((\Delta_\phi A) (\Delta_\phi B) \geq \frac12 \abs*{\mean{\commutator{A}{B}}_\phi}\).
+\end{proof}
 \begin{exercício}{Condição de igualdade para a relação de incerteza}{exercício01}
     Mostre que a relação de incerteza \(\Delta_\phi A \Delta_\phi B \geq \frac12\abs{\mean{\commutator{A}{B}}_\phi}\) torna-se uma igualdade quando \(\ket{\phi}\) é tal que \(A\ket{\phi} = \lambda B \ket{\phi}\), com \(\lambda = \frac{\mean{C}}{2i (\Delta_\phi B)^2}.\)
 \end{exercício}
