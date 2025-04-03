@@ -1,5 +1,94 @@
 % vim: spl=pt
-\begin{exercício}{}{exercício07}
+\begin{lemma}{Regra de Leibniz para comutadores}{leibniz}
+    Sejam \(X, Y\) operadores lineares que dependem suavemente de um parâmetro \(t \in \mathbb{R}\). Então
+    \begin{equation*}
+        \diff*{\commutator{X(t)}{Y(t)}}{t} = \commutator*{\diff{X}{t}}{Y(t)} + \commutator*{X(t)}{\diff{Y}{t}}
+    \end{equation*}
+    para todo \(t\).
+\end{lemma}
+\begin{proof}
+    Temos
+    \begin{align*}
+        \diff*{\commutator{X(t)}{Y(t)}}{t} &= \diff*{\left(X(t)Y(t) - Y(t)X(t)\right)}{t}\\
+                                           % &= \diff{X}{t} Y(t) + X(t)\diff{Y}{t} - \diff{Y}{t} X(t) - Y(t)\diff{X}{t}\\
+                                           &= \left(\diff{X}{t} Y(t) - Y(t) \diff{X}{t}\right) + \left(X(t) \diff{Y}{t} - \diff{Y}{t} X(t)\right)\\
+                                           &= \commutator*{\diff{X}{t}}{Y(t)} + \commutator*{X(t)}{\diff{Y}{t}}
+    \end{align*}
+    como desejado.
+\end{proof}
+
+\begin{lemma}{Derivada de um comutador iterado}{iterado}
+    Seja \(X\) um operador linear e seja \(Y(t)\) um operador linear que depende suavemente de um parâmetro real. Denotemos o comutador iterado por
+    \begin{equation*}
+        \commutator{X}{Y(t)}^{[1]} = \commutator{X}{Y(t)}
+        \quad\text{e}\quad
+        \commutator{X}{Y(t)}^{[n]} = \commutator*{X}{\commutator{X}{Y(t)}^{[n-1]}},
+    \end{equation*}
+    onde \(n \in \mathbb{N} \setminus \set{1}\). Então
+    \begin{equation*}
+        \diff*{\commutator{X}{Y(t)}^{[n]}}{t} = \commutator*{X}{\diff{Y}{t}}^{[n]}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\).
+\end{lemma}
+\begin{proof}
+    Pelo \cref{lem:leibniz}, segue que \(\diff*{\commutator{X}{Y(t)}}{t} = \commutator*{X}{\diff{Y}{t}}\), visto que \(X\) não depende de \(t\). Suponhamos que \(\diff*{\commutator{X}{Y(t)}^{[k]}}{t} = \commutator*{X}{\diff{Y}{t}}^{[k]}\) para algum \(k \in \mathbb{N}\), então
+    \begin{equation*}
+        \diff*{\commutator{X}{Y(t)}^{[k+1]}}{t} = \commutator*{X}{\diff*{\commutator{X}{Y(t)}^{[k]}}{t}} = \commutator*{X}{\commutator*{X}{\diff{Y}{t}}^{[k]}} = \commutator*{X}{\diff{Y}{t}}^{[k+1]}.
+    \end{equation*}
+    Concluímos a demonstração ao invocar o princípio da indução finita.
+\end{proof}
+
+\begin{lemma}{Operador comuta com a sua exponencial}{comuta}
+    Seja \(X\) um operador linear, então
+    \begin{equation*}
+        [X, \exp(\lambda X)] = 0
+    \end{equation*}
+    para todo \(\lambda \in \mathbb{C}\).
+\end{lemma}
+\begin{proof}
+    É claro que \(X\) comuta com suas potências pela associatividade do produto, logo
+    \begin{equation*}
+        X \exp(\lambda X) = X \left(\sum_{k=0}^\infty \frac{\lambda^k}{k!}X^k\right) = \sum_{k=0}^\infty \frac{\lambda^k}{k!}X^{k+1} = \left(\sum_{k=0}^\infty \frac{\lambda^k}{k!}X^k\right)X = \exp(\lambda X) X,
+    \end{equation*}
+    como desejado.
+\end{proof}
+
+\begin{lemma}{Lema de Campbell}{campbell}
+    Seja \(f(t)\) um operador dado por
+    \begin{equation*}
+        f(t) = \exp(tA) B\exp(-tA),
+    \end{equation*}
+    onde \(A\) e \(B\) são operadores. Este operador satisfaz
+    \begin{equation*}
+        \diff[n]{f}{t} = \commutator{A}{f(t)}^{[n]}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\) e, então
+    \begin{equation*}
+        \exp(tA)B\exp(-tA) = B + \sum_{n = 1}^\infty \frac{t^n}{n!}\commutator{A}{B}^{[n]}.
+    \end{equation*}
+    para todo \(t.\)
+\end{lemma}
+\begin{proof}[Resolução]
+    Pelo \cref{lem:comuta}, obtemos
+    \begin{equation*}
+        \diff{f}{t} = A \exp(tA) B\exp(-tA) - \exp(tA) B\exp(-tA) A = \commutator{A}{f(t)}
+    \end{equation*}
+    para todo \(t\). Suponhamos que \(\diff[k]{f}{t} = \commutator{A}{f(t)}^{[k]}\) para algum natural \(k > 1\), então
+    \begin{equation*}
+        \diff[k+1]{f}{t} = \diff*{\commutator{A}{f(t)}^{[k]}}{t} = \commutator*{A}{\diff{f}{t}}^{[k]} = \commutator*{A}{\commutator{A}{f(t)}}^{[k]} = \commutator{A}{f(t)}^{[k+1]},
+    \end{equation*}
+    onde utilizamos o \cref{lem:iterado}. Pelo princípio da indução finita, segue que
+    \begin{equation*}
+        \diff[n]{f}{t} = \commutator{A}{f(t)}^{[n]}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\). Desse modo, a série de Taylor em torno de \(t = 0\) para \(f(t)\) é
+    \begin{equation*}
+        \exp(tA)B\exp(-tA) = B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\diff[n]{f}{t}[t=0] = B + \sum_{n = 1}^{\infty} \frac{t^n}{n!}\commutator{A}{B}^{[n]},
+    \end{equation*}
+    como desejado.
+\end{proof}
+
+\begin{exercício}{Caso particular da série de Baker-Campbell-Hausdorff}{exercício07}
     Se \(A\) e \(B\) são dois operadores que não comutam entre si mas comutam com \(\commutator{A}{B}\), pode-se mostrar que 
     \begin{equation*}
         e^{A + B} = e^A e^B e^{-\frac12 \commutator{A}{B}}.
@@ -18,3 +107,33 @@
             onde \(X\) depende de potências superiores de \(\alpha\) e \(\beta\).
     \end{enumerate}
 \end{exercício}
+\begin{proof}[Resolução]
+    Pelo \cref{lem:campbell}, temos
+    \begin{equation*}
+        e^{-xA}Be^{xA} = B + \sum_{n = 1}^\infty \frac{(-t)^n}{n!} \commutator{A}{B}^{[n]},
+    \end{equation*}
+    então para \(\commutator{A}{B}\) central para \(A\) e \(B\), obtemos
+    \begin{equation*}
+        e^{-xA}Be^{xA} = B - x \commutator{A}{B} = B + x \commutator{B}{A} \implies \commutator{B}{e^{xA}} = B e^{xA} - e^{xA} B = e^{xA} \commutator{B}{A} x.
+    \end{equation*}
+
+    Para \(G(x) = e^{xA} e^{xB}\), temos
+    \begin{align*}
+        \diff{G}{x} &= A e^{xA} e^{xB} + e^{xA} B e^{xB}\\
+                    &= A G(x) + \left(B e^{xA} + \commutator{e^{xA}}{B}\right) e^{xB}\\
+                    &= A G(x) + B G(x) - e^{xA}\commutator{B}{A}x e^{xB}\\
+                    &= (A + B) G(x) + x\commutator{A}{B} e^{xA}e^{xB}\\
+                    &= \left(A + B + x \commutator{A}{B}\right) G(x),
+    \end{align*}
+    onde utilizamos que \(\commutator*{e^{xA}}{\commutator{A}{B}} = 0\) já que \(\commutator*{A}{\commutator{A}{B}} = 0.\) Notemos que \(M(x) = A + B + x\commutator{A}{B}\) comuta consigo em todo o seu domínio, pois temos
+    \begin{equation*}
+        \commutator{M(s)}{M(t)} = \commutator*{A + B + s\commutator{A}{B}}{A + B + t\commutator{A}{B}} = \commutator{A}{B} + \commutator{B}{A} = 0,
+    \end{equation*}
+    já que \(\commutator{A}{B}\) é central para \(A\) e \(B\). Assim, a solução diferencial para \(G\), \(G'(x) = M(x) G(x)\), tem sua solução dada por
+    \begin{align*}
+        G(x) = \exp\left(\int_0^x \dli{\xi} M(\xi)\right) G(0) 
+        &\implies e^{xA} e^{xB} = \exp\left(xA + xB + \frac{x^2}{2}\commutator{A}{B}\right)\\
+        &\implies \exp[x(A+B)] = \exp(xA) \exp(xB) \exp\left(- \frac{x^2}{2} \commutator{A}{B}\right),
+    \end{align*}
+    portanto para \(x = 1\) obtemos \(e^{A+B} = e^A e^B e^{-\frac12 \commutator{A}{B}}.\)
+\end{proof}
