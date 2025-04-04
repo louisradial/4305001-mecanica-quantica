@@ -2,12 +2,25 @@
 \begin{lemma}{Desigualdade de Cauchy-Schwarz}{cauchy_schwarz}
     Em um espaço de produto interno \((V, \inner{\noarg}{\noarg})\) sobre o corpo\footnote{Estamos considerando \(\mathbb{K} = \mathbb{C}\) ou \(\mathbb{K} = \mathbb{R}.\)} \(\mathbb{K}\) vale
     \begin{equation*}
-        \abs{\inner{u}{v}}^2 \leq \inner{u}{u} \inner{v}{v}
+        \abs{\inner{x}{y}}^2 \leq \inner{x}{x} \inner{y}{y}
     \end{equation*}
-    para todos \(u, v \in V.\) Ainda, a igualdade se dá se e somente se \(u\) e \(v\) são linearmente dependentes.
+    para todos \(x, y \in V.\) Ainda, a igualdade se dá se e somente se \(x\) e \(y\) são linearmente dependentes.
 \end{lemma}
 \begin{proof}
-     Suponha \(\set{x,y} \subset V\) linearmente dependente. Se um dos vetores é o vetor nulo, então a igualdade é satisfeita trivialmente. Podemos assumir sem perda de generalidade que \(x, y \in V\setminus\set{0}\), então existe \(\alpha \in \mathbb{K}\setminus\set{0}\) tal que \(\alpha x = y\). Assim, temos
+    A desigualdade é trivialmente satisfeita se pelo menos um dos vetores é o vetor nulo. Podemos assumir então que \(x, y \in V \setminus\set{0}\) e consideramos a inequação \(\inner*{\alpha x + y}{\alpha x + y} \geq 0,\) que vale para todo \(\alpha \in \mathbb{K}\), pela positividade da forma sesquilinear. Expandindo o produto interno com suas propriedades de sesquilinearidade, obtemos
+    \begin{align*}
+        \inner{\alpha x + y}{\alpha x + y} &= \alpha\inner{\alpha x + y}{x} + \inner*{\alpha x + y}{y}\\
+                                           &= \alpha \left(\conj{\alpha} \inner{x}{x} + \inner{y}{x}\right) + \conj{\alpha}\inner{x}{y} + \inner{y}{y}\\
+                                           &= \alpha\conj{\alpha}\inner{x}{x} + \alpha \inner{y}{x} + \conj{\alpha}\inner{x}{y} + \inner{y}{y}\\
+                                           &= \abs{\alpha}^2 \inner{x}{x} + 2\Re\left(\conj{\alpha}\inner{x}{y}\right) + \inner{y}{y}.
+    \end{align*}
+    Tomando \(\alpha = - \frac{\inner{x}{y}}{\inner{x}{x}}\), segue da simetria por conjugação que
+    \begin{equation*}
+        \inner{\alpha x + y}{\alpha x + y} = \inner{y}{y} - \frac{\abs*{\inner{x}{y}}^2}{\inner{x}{x}} \geq 0,
+    \end{equation*}
+    isto é, \(\abs*{\inner{x}{y}}^2 \leq \inner{x}{x} \inner{y}{y}\).
+
+    Suponha \(\set{x,y} \subset V\) linearmente dependente. Se um dos vetores é o vetor nulo, então a igualdade é satisfeita trivialmente. Podemos assumir sem perda de generalidade que \(x, y \in V\setminus\set{0}\), então existe \(\alpha \in \mathbb{K}\setminus\set{0}\) tal que \(\alpha x = y\). Assim, temos
     \begin{equation*}
         \abs*{\inner{x}{y}}^2 = \inner{x}{y}\inner{y}{x} = \inner{x}{\alpha x}\inner*{y}{\frac1\alpha y} = \inner{x}{x} \inner{y}{y},
     \end{equation*}
@@ -66,9 +79,22 @@
     \end{equation*}
     e obtemos \((\Delta_\phi A) (\Delta_\phi B) \geq \frac12 \abs*{\mean{\commutator{A}{B}}_\phi}\).
 \end{proof}
+
 \begin{exercício}{Condição de igualdade para a relação de incerteza}{exercício01}
-    Mostre que a relação de incerteza \(\Delta_\phi A \Delta_\phi B \geq \frac12\abs{\mean{\commutator{A}{B}}_\phi}\) torna-se uma igualdade quando \(\ket{\phi}\) é tal que \(A\ket{\phi} = \lambda B \ket{\phi}\), com \(\lambda = \frac{\mean{C}}{2i (\Delta_\phi B)^2}.\)
+    Mantendo a notação do \cref{lem:incerteza}, mostre que a relação de incerteza \(\Delta_\phi A \Delta_\phi B \geq \frac12\abs{\mean{\commutator{A}{B}}_\phi}\) torna-se uma igualdade quando \(\ket{\phi}\) é tal que \(\ket{\phi_A} = \lambda \ket{\phi_B}\), com \(\lambda = \frac{\mean{\commutator{A}{B}}}{2 (\Delta_\phi B)^2}.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Dos \cref{lem:cauchy_schwarz,lem:incerteza}, temos a igualdade
+    \begin{equation*}
+        (\Delta_\phi A)^2(\Delta_\phi B)^2 = \braket{\phi_A}{\phi_A}\braket{\phi_B}{\phi_B} = \abs{\braket{\phi_A}{\phi_B}}^2
+    \end{equation*}
+    se e somente se \(\ket{\phi_A}\) e \(\ket{\phi_B}\) forem linearmente dependentes. Então, se \(\ket{\phi_A} = \lambda \ket{\phi_B},\) temos
+    \begin{equation*}
+        (\Delta_\phi A) (\Delta_\phi B) = \abs*{\braket{\phi_A}{\phi_B}} = \abs{\lambda} \abs*{\braket{\phi_B}{\phi_B}} = \abs{\lambda} (\Delta_{\phi}B)^2
+    \end{equation*}
+    logo se \(\lambda = \frac{\abs{\mean{\commutator{A}{B}}_\phi}}{2 (\Delta_\phi B)^2}\), obtemos a igualdade
+    \begin{equation*}
+        (\Delta_\phi A)(\Delta_\phi B) = \frac12 \abs{\mean*{\commutator{A}{B}}_\phi},
+    \end{equation*}
+    como desejado.
 \end{proof}
