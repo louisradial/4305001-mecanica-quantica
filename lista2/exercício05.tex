@@ -191,9 +191,9 @@
     \begin{equation*}
         \bra{0}x(t)\ket{0} = \bra{0}\left[\sqrt{\frac\hbar{m \omega}} \tilde{x}(t) - \frac{\lambda}{m \omega^2}\right]\ket{0} = - \frac{\lambda}{m \omega^2}.
     \end{equation*}
-    Temos também
+    Temos também a função de correlação para o estado fundamental do oscilador harmônico
     \begin{align*}
-        \bra{0}x(t)x_0\ket{0} &= \bra{0}\left(\sqrt{\frac{\hbar}{m \omega}} \tilde{x}(t) - \frac{\lambda}{m \omega^2}\right)\left(\sqrt{\frac{\hbar}{m \omega}} \tilde{x}_0 - \frac{\lambda}{m \omega^2}\right)\ket{0}\\
+        C(t) = \bra{0}x(t)x_0\ket{0} &= \bra{0}\left(\sqrt{\frac{\hbar}{m \omega}} \tilde{x}(t) - \frac{\lambda}{m \omega^2}\right)\left(\sqrt{\frac{\hbar}{m \omega}} \tilde{x}_0 - \frac{\lambda}{m \omega^2}\right)\ket{0}\\
                               &= \frac{\hbar}{m \omega} \bra{0} \tilde{x}(t) \tilde{x}_0 \ket{0} -\frac{\lambda}{m\omega^2} \left[\bra{0}\tilde{x}(t)\ket{0}+ \bra{0}\tilde{x}_0\ket{0}\right] + \frac{\lambda^2}{m^2 \omega^4}\\
                               &= \frac{\hbar}{2m \omega} \bra{0}(b + \herm{b})(b_0 + \herm{b}_0)\ket{0} + \frac{\lambda^2}{m^2 \omega^4}\\
                               &= \frac{\hbar e^{-i \omega t}}{2m \omega} \bra{0} b_0 \herm{b}_0 \ket{0} + \frac{\lambda^2}{m^2 \omega^4}\\
@@ -211,13 +211,14 @@
                                                &= \bra{0} x(t) \ket{0} + a \cos(\omega t)\\
                                                &= a \cos(\omega t) - \frac{\lambda}{m \omega^2}
     \end{align*}
-    como a evolução temporal do valor esperado de \(x\) para este estado inicial. Ainda,
-    \begin{align*}
-        C(t) = \bra{\psi}x(t) x(0)\ket{\psi} &= \bra{0} \exp\left(\frac{i p_0 a}{\hbar}\right) x(t) \exp\left(-\frac{i p_0 a}{\hbar}\right) \exp\left(\frac{i p_0 a}{\hbar}\right) x_0 \exp\left(-\frac{i p_0 a}{\hbar}\right)\ket{0}\\
-                                             &= \bra{0} \left[x(t) + a \cos(\omega t)\right](x_0 + a)\ket{0}\\
-                                             &= \bra{0} x(t) x_0 \ket{0} + a \bra{0} x(t) \ket{0} + a \cos(\omega t) \bra{0} (x_0 + a) \ket{0}\\
-                                             &= \bra{0}x(t) x_0 \ket{0} - \frac{a\lambda}{m \omega^2} + a \left(a - \frac{\lambda}{m \omega^2}\right) \cos(\omega t)\\
-                                             &= \frac{\hbar e^{- i \omega t}}{ 2 m \omega} + \frac{\lambda^2}{m^2 \omega^4} - \frac{a \lambda}{m \omega^2} + a \left(a - \frac{\lambda}{m \omega^2}\right)\cos(\omega t)
-    \end{align*}
-    é a função de correlação para o estado inicial considerado.
+    como a evolução temporal do valor esperado de \(x\) para este estado inicial. 
+    % Ainda,
+    % \begin{align*}
+    %     C(t) = \bra{\psi}x(t) x(0)\ket{\psi} &= \bra{0} \exp\left(\frac{i p_0 a}{\hbar}\right) x(t) \exp\left(-\frac{i p_0 a}{\hbar}\right) \exp\left(\frac{i p_0 a}{\hbar}\right) x_0 \exp\left(-\frac{i p_0 a}{\hbar}\right)\ket{0}\\
+    %                                          &= \bra{0} \left[x(t) + a \cos(\omega t)\right](x_0 + a)\ket{0}\\
+    %                                          &= \bra{0} x(t) x_0 \ket{0} + a \bra{0} x(t) \ket{0} + a \cos(\omega t) \bra{0} (x_0 + a) \ket{0}\\
+    %                                          &= \bra{0}x(t) x_0 \ket{0} - \frac{a\lambda}{m \omega^2} + a \left(a - \frac{\lambda}{m \omega^2}\right) \cos(\omega t)\\
+    %                                          &= \frac{\hbar e^{- i \omega t}}{ 2 m \omega} + \frac{\lambda^2}{m^2 \omega^4} - \frac{a \lambda}{m \omega^2} + a \left(a - \frac{\lambda}{m \omega^2}\right)\cos(\omega t)
+    % \end{align*}
+    % é a função de correlação para o estado inicial considerado.
 \end{proof}
