@@ -3,5 +3,33 @@
    O Hamiltoniano de um sistema de dois níveis é dado por \(H = \alpha \vetor{n} \cdot \vetor{\sigma}\), onde \(\alpha \in \mathbb{R},\) \(\sigma_j\) são as matrizes de Pauli e \(\vetor{n} \in \setc{\vetor{r} \in \mathbb{R}^3}{\norm{\vetor{r}}^2 = 1}\) é um vetor unitário. Obtenha o operador evolução temporal do sistema.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Recordemos que\footnote{Ver \href{https://github.com/louisradial/4300429-grupos-e-tensores/releases/tag/lista1}{Exercício 7}.}
+   \begin{equation*}
+      \sigma_a \sigma_b = \delta_{ab} \unity + i \epsilon_{abc} \sigma_c.
+   \end{equation*}
+   Escrevamos \(\alpha = \hbar \omega\), então
+   \begin{equation*}
+      \left(\frac{1}{i \hbar} H\right)^{2m-1} = (-1)^{m} i\omega^{2m-1} \vetor{n} \cdot \vetor{\sigma}
+      \quad\text{e}\quad
+      \left(\frac{1}{i \hbar} H\right)^{2m} = (-1)^m \omega^{2m} \unity
+   \end{equation*}
+   para todo \(m \in \mathbb{N}\). De fato, para \(m = 1\) as expressões valem pois
+   \begin{equation*}
+      \left(\frac{1}{i\hbar} H\right)^2 = - \omega^2 n_i \sigma_i n_j \sigma_j = - \omega^2 n_i n_j (\delta_{ij} \unity + i \epsilon_{ijk} \sigma_k) = -\omega^2 \norm{\vetor{n}}^2 \unity = -\omega^2 \unity,
+   \end{equation*}
+   onde \(n_i n_j \epsilon_{ijk} = 0\) pois \(n_i n_j\) é simétrico e \(\epsilon_{ijk}\) é antissimétrico em relação a \(i \leftrightarrow j.\) Assumindo válidas para algum \(m \in \mathbb{N},\) temos
+   \begin{equation*}
+      \left(\frac{1}{i \hbar} H\right)^{2m+1} =\left(\frac{1}{i \hbar} H\right)^{2m}\left(\frac{1}{i \hbar} H\right) = \left[(-1)^m \omega^{2m} \unity\right] \left[-i \omega \vetor{n} \cdot \vetor{\sigma}\right] = (-1)^{m+1} i\omega^{2m + 1} \vetor{n} \cdot \vetor{\sigma}
+   \end{equation*}
+   e
+   \begin{equation*}
+      \left(\frac{1}{i \hbar} H\right)^{2m+2} =\left(\frac{1}{i \hbar} H\right)^{2m+1}\left(\frac{1}{i \hbar} H\right) = \left[(-1)^{m+1} i\omega^{2m + 1} \vetor{n} \cdot \vetor{\sigma}\right] \left[-i \omega \vetor{n} \cdot \vetor{\sigma}\right] = (-1)^{m+1} \omega^{2m + 2} \unity,
+   \end{equation*}
+   isto é, são válidas também para \(m + 1.\) Pelo princípio da indução finita, segue que as expressões seguem para todo \(m \in \mathbb{N}.\) Desse modo,
+   \begin{align*}
+      U(t) = \exp\left(\frac{t}{i\hbar}H\right) &= \unity + \sum_{m = 1}^\infty \frac{t^m}{m!}\left(\frac{1}{i \hbar} H\right)^{m}\\
+                                                &= \left[\sum_{m = 0}^\infty \frac{(-1)^m (\omega t)^{2m}}{(2m)!}\right]\unity + i\left[\sum_{m = 1}^\infty \frac{(-1)^m(\omega t)^{2m - 1}}{(2m-1)!}\right]\vetor{n}\cdot \vetor{\sigma}\\
+                                                &= \cos(\omega t) \unity - i \sin(\omega t) \vetor{n} \cdot \vetor{\sigma}
+   \end{align*}
+   é o operador evolução temporal do sistema.
 \end{proof}
