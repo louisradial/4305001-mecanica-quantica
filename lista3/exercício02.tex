@@ -1,4 +1,25 @@
 % vim: spl=pt
+\begin{lemma}{Integral gaussiana}{gaussiana}
+    Vale
+    \begin{equation*}
+       \int_{\mathbb{R}} \dli{\xi} \exp\left(-a \xi^2 + b \xi\right) = \sqrt{\frac{\pi}{a}} \exp\left(\frac{b^2}{4a}\right)
+    \end{equation*}
+    para todos \(b,c \in \mathbb{C}\) e \(a \in \setc{z \in \mathbb{C}\setminus\set{0}}{\Re(z) \geq 0}\).
+\end{lemma}
+\begin{proof}
+    Notemos que
+    \begin{equation*}
+       -a \xi^2 + b \xi = - a \left(\xi^2 - \frac{b}{a}\xi\right) = -a \left(\xi - \frac{b}{2a}\right)^2 + \frac{b^2}{4a},
+    \end{equation*}
+    portanto
+    \begin{align*}
+       \int_{\mathbb{R}} \dli{\xi} \exp\left(-a \xi^2 + b \xi\right) &= \exp\left(\frac{b^2}{4a}\right) \int_{\mathbb{R}} \dli\xi \exp\left[-a \left(\xi - \frac{b}{2a}\right)^2\right]\\
+                                                                     &= \exp\left(\frac{b^2}{4a}\right) \int_{\mathbb{R}} \dli\zeta \exp\left(-a \zeta^2\right)\\
+                                                                     &= \sqrt{\frac{\pi}{a}} \exp\left(\frac{b^2}{4a}\right)
+    \end{align*}
+    como proposto.
+\end{proof}
+
 \begin{exercício}{Evolução temporal de um pacote de onda gaussiano}{ex2}
    Calcule \(\varphi(x,t)\), a função de onda de partícula livre evoluída no tempo, dado que
    \begin{equation*}
@@ -7,5 +28,5 @@
    onde \(\sigma, k \in \mathbb{R}\) são constantes.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+
 \end{proof}

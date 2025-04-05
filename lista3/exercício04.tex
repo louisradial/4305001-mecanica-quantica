@@ -3,5 +3,24 @@
    Considere uma partícula livre se movendo em uma dimensão. Determine os propagadores \(K(x't'; xt) = \braket{x't'}{xt},\) \(K(x't'; pt) = \braket{x't'}{pt},\) e \(K(p't'; pt) = \braket{p't'}{pt}.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Consideramos \(t' > t\) e omitiremos os fatores \(\theta(t' - t)\) das expressões, exceto no resultado final de cada propagador. Com isso,
+    \begin{align*}
+       K(x't'; xt) &= \bra{x'}\exp\left[\frac{(t' - t) p^2}{2i m \hbar}\right]\ket{x}\\
+                   &= \int_{\mathbb{R}} \dli{\tilde{p}} \bra{x'}\exp\left[\frac{(t' - t) p^2}{2i m \hbar}\right]\ket{\tilde{p}}\braket{\tilde{p}}{x}\\
+                   &= \int_{\mathbb{R}} \dli{\tilde{p}} \exp\left[\frac{(t' - t) \tilde{p}^2}{2i m \hbar}\right]\braket{x'}{\tilde{p}}\braket{\tilde{p}}{x}\\
+                   &= \frac{1}{2\pi \hbar}\int_{\mathbb{R}} \dli{\tilde{p}}\exp\left[-\frac{i(t' - t) \tilde{p}^2}{2m \hbar} -i\frac{\tilde{p}(x' - x)}{\hbar}\right]\\
+                   &= \sqrt{\frac{m}{2i\pi \hbar (t'-t)}}\exp\left[\frac{i m (x' - x)^2}{2\hbar(t' - t)}\right]\theta(t' - t),
+    \end{align*}
+    \begin{align*}
+       K(x' t'; \tilde{p} t) &= \bra{x'} \exp\left[\frac{(t' - t) p^2}{2i m \hbar}\right]\ket{\tilde{p}}\\
+                             &= \exp\left[\frac{(t' - t)\tilde{p}^2}{2i m \hbar}\right] \braket{x'}{\tilde{p}}\\
+                             &= \frac{1}{\sqrt{2 \pi \hbar}} \exp\left[\frac{(t' - t) \tilde{p}^2}{2i m \hbar} + \frac{i \tilde{p} x'}{\hbar}\right] \theta(t' - t),
+    \end{align*}
+    e
+    \begin{align*}
+       K(p' t'; \tilde{p} t) &= \bra{p'}\exp\left[\frac{(t' - t) p^2}{2i m \hbar}\right]\ket{\tilde{p}}\\
+                             &= \exp\left[\frac{(t' - t) p'^2}{2i m \hbar}\right] \braket{p'}{\tilde{p}}\\
+                             &= \exp\left[\frac{(t' - t) p'^2}{2i m \hbar}\right] \delta(\tilde{p} - p') \theta(t' - t)
+    \end{align*}
+    são as expressões para os propagadores para a partícula livre.
 \end{proof}
