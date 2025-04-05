@@ -100,11 +100,11 @@
                 \diff{G}{x} = (A + B + \commutator{A}{B}x)G.
             \end{equation*}
         \item Integre a equação do item anterior para obter a relação desejada.
-        \item Mostre ainda que para \(A\) e \(B\) arbitrários
+        \item Mostre ainda que para \(X\) e \(Y\) arbitrários
             \begin{equation*}
-                \lim_{(\alpha, \beta)\to (0,0)} e^{\alpha A} e^{\beta B} = e^{\alpha A + \beta B + \frac12 \alpha \beta \commutator{A}{B} + X},
+                e^{\alpha X} e^{\beta Y} = e^{\alpha X + \beta Y + \frac12 \alpha \beta \commutator{X}{Y} + Z},
             \end{equation*}
-            onde \(X\) depende de potências superiores de \(\alpha\) e \(\beta\).
+            onde \(Z\) depende de potências superiores de \(\alpha\) e \(\beta\).
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
@@ -126,9 +126,12 @@
                     &= \left(A + B + x \commutator{A}{B}\right) G(x),
     \end{align*}
     onde utilizamos que \(\commutator*{e^{xA}}{\commutator{A}{B}} = 0\) já que \(\commutator*{A}{\commutator{A}{B}} = 0.\) Notemos que \(M(x) = A + B + x\commutator{A}{B}\) comuta consigo em todo o seu domínio, pois temos
-    \begin{equation*}
-        \commutator{M(s)}{M(t)} = \commutator*{A + B + s\commutator{A}{B}}{A + B + t\commutator{A}{B}} = \commutator{A}{B} + \commutator{B}{A} = 0,
-    \end{equation*}
+    \begin{align*}
+        \commutator{M(s)}{M(t)} &= \commutator*{A + B + s\commutator{A}{B}}{A + B + t\commutator{A}{B}}\\
+                                &= \commutator{A}{B} + t\commutator*{A}{\commutator{A}{B}} + \commutator{B}{A} + t \commutator*{B}{\commutator{A}{B}} + s\commutator*{\commutator{A}{B}}{A} + s\commutator*{\commutator{A}{B}}{B}\\
+                                &= (t - s) \left(\commutator*{A}{\commutator{A}{B}} + \commutator*{B}{\commutator{A}{B}}\right)\\
+                                &= 0
+    \end{align*}
     já que \(\commutator{A}{B}\) é central para \(A\) e \(B\). Assim, a solução diferencial para \(G\), \(G'(x) = M(x) G(x)\), tem sua solução dada por
     \begin{align*}
         G(x) = \exp\left(\int_0^x \dli{\xi} M(\xi)\right) G(0) 
@@ -136,4 +139,28 @@
         &\implies \exp[x(A+B)] = \exp(xA) \exp(xB) \exp\left(- \frac{x^2}{2} \commutator{A}{B}\right),
     \end{align*}
     portanto para \(x = 1\) obtemos \(e^{A+B} = e^A e^B e^{-\frac12 \commutator{A}{B}}.\)
+
+    Pelo \cref{lem:campbell}, temos
+    \begin{equation*}
+        \commutator{e^{\alpha sX}}{\beta Y} = \left(\sum_{n = 1}^\infty \frac{s^n}{n!} \commutator{\alpha X}{\beta Y}^{[n]}\right)e^{s \alpha X} = \beta \left(\sum_{n = 1}^\infty \frac{(\alpha s)^n}{n!} \commutator{X}{Y}^{[n]}\right)e^{s \alpha X},
+    \end{equation*}
+    para quaisquer operadores \(X\) e \(Y\) e parâmetros \(\alpha, \beta \ll 1\). Seja \(F(s) = e^{sX}e^{sY},\) então
+    \begin{equation*}
+        \diff{F}{s} = (\alpha X + \beta Y)F(s) + \commutator{e^{s \alpha X}}{\beta Y} e^{s \beta Y} = \underbrace{\left[\alpha X + \beta Y + \beta \sum_{n = 1}^\infty \frac{(\alpha s)^n}{n!} \commutator{X}{Y}^{[n]}\right]}_{K(s)} F(s).
+    \end{equation*}
+    Sendo \(Z(s)\) o operador de \(K(s)\) que contém termos de até segunda ordem em \(\alpha\) e \(\beta\),
+    \begin{equation*}
+        K(s) = \alpha X + \beta Y + \alpha \beta s \commutator{X}{Y} + Z(s),
+    \end{equation*}
+    observamos que
+    \begin{align*}
+        \commutator{K(s)}{K(r)} &= \commutator*{\alpha X + \beta Y + \alpha \beta s \commutator{X}{Y} + Z(s)}{\alpha X + \beta Y + \alpha \beta r \commutator{X}{Y} + Z(r)}\\
+                                &= \alpha \beta \left(\commutator{X}{Y} + \commutator{Y}{X}\right) + \alpha \beta (r - s) \commutator*{\alpha X+\beta Y}{\commutator{X}{Y}} + O(\alpha^3 \beta) + O(\alpha^2 \beta^2)\\
+                                &= O(\alpha^2 \beta).
+    \end{align*}
+    Como na aproximação considerada \(K\) comuta em parâmetros distintos, aproximamos a solução da equação diferencial \(F'(s) = K(s) F(s)\) por
+    \begin{equation*}
+        F(s) = \exp\left[\int_0^s \dli\zeta K(\zeta)\right] F(0) = \exp\left[s \alpha X + s \beta Y + \frac12 s^2 \alpha \beta \commutator{X}{Y} + \tilde{Z}(s)\right],
+    \end{equation*}
+    com \(\tilde{Z}(s) = \int_0^s \dli{\zeta} Z(\zeta).\) Assim, obtemos a expressão desejada tomando \(s = 1.\)
 \end{proof}
