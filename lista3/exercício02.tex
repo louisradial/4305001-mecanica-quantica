@@ -28,5 +28,19 @@
    onde \(\sigma, k \in \mathbb{R}\) são constantes.
 \end{exercício}
 \begin{proof}[Resolução]
-
+   Notemos que para \(t > 0\) temos
+   \begin{equation*}
+      \varphi(x', t) = \bra{x'} U(t) \ket{\varphi} = \int_{\mathbb{R}} \dli{x''} \bra{x'} U(t) \ket{x''} \braket{x''}{\varphi} = \int_{\mathbb{R}} \dli{x''} K(x't; x'') \varphi(x'', 0),
+   \end{equation*}
+   onde \(K(x't'; x'' t'')\) é o propagador para uma partícula livre em uma dimensão, dado por
+   \begin{equation*}
+      K(x't'; x'' t'') = \sqrt{\frac{m}{2\pi i \hbar (t' - t'')}} \exp\left[\frac{im (x' - x'')^2}{2 \hbar (t' - t'')}\right] \theta(t' - t''),
+   \end{equation*}
+   como mostrado no \cref{ex:ex4}. Assim sendo, temos
+   \begin{align*}
+      \varphi(x, t) &= \sqrt{\frac{m}{2\pi i \hbar t}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\int_{\mathbb{R}} \dli{\xi} \exp\left[-\frac12 \sigma^2 \xi^2 + ik\xi + \frac{i m (x - \xi)^2}{2 \hbar t}\right]\\
+                    &= \sqrt{\frac{m}{2\pi i \hbar t}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\exp\left(\frac{im x^2}{ 2 \hbar t}\right) \int_{\mathbb{R}} \dli\xi \exp\left[- \frac12\left(\sigma^2 + \frac{im}{\hbar t}\right)\xi^2 + i\left(k - \frac{mx}{\hbar t}\right)\xi\right]\\
+                    &= \sqrt{\frac{m}{i \hbar t\left(\sigma^2 + \frac{im}{\hbar t}\right)}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\exp\left[\frac{im x^2}{ 2 \hbar t} - \frac{\left(k - \frac{mx}{\hbar t}\right)^2}{2\left(\sigma^2 + \frac{im}{\hbar t}\right)}\right]
+   \end{align*}
+   como a evolução temporal da função de onda.
 \end{proof}
