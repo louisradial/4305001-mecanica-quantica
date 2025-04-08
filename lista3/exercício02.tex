@@ -4,7 +4,7 @@
     \begin{equation*}
        \int_{\mathbb{R}} \dli{\xi} \exp\left(-a \xi^2 + b \xi\right) = \sqrt{\frac{\pi}{a}} \exp\left(\frac{b^2}{4a}\right)
     \end{equation*}
-    para todos \(b,c \in \mathbb{C}\) e \(a \in \setc{z \in \mathbb{C}\setminus\set{0}}{\Re(z) \geq 0}\).
+    para todos \(b\in \mathbb{C}\) e \(a \in \setc{z \in \mathbb{C}\setminus\set{0}}{\Re(z) \geq 0}\).
 \end{lemma}
 \begin{proof}
     Notemos que
@@ -39,8 +39,8 @@
    como mostrado no \cref{ex:ex4}. Assim sendo, temos
    \begin{align*}
       \varphi(x, t) &= \sqrt{\frac{m}{2\pi i \hbar t}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\int_{\mathbb{R}} \dli{\xi} \exp\left[-\frac12 \sigma^2 \xi^2 + ik\xi + \frac{i m (x - \xi)^2}{2 \hbar t}\right]\\
-                    &= \sqrt{\frac{m}{2\pi i \hbar t}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\exp\left(\frac{im x^2}{ 2 \hbar t}\right) \int_{\mathbb{R}} \dli\xi \exp\left[- \frac12\left(\sigma^2 + \frac{im}{\hbar t}\right)\xi^2 + i\left(k - \frac{mx}{\hbar t}\right)\xi\right]\\
-                    &= \sqrt{\frac{m}{i \hbar t\left(\sigma^2 + \frac{im}{\hbar t}\right)}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\exp\left[\frac{im x^2}{ 2 \hbar t} - \frac{\left(k - \frac{mx}{\hbar t}\right)^2}{2\left(\sigma^2 + \frac{im}{\hbar t}\right)}\right]
+                    &= \sqrt{\frac{m}{2\pi i \hbar t}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\exp\left(\frac{im x^2}{ 2 \hbar t}\right) \int_{\mathbb{R}} \dli\xi \exp\left[- \frac12\left(\sigma^2 - \frac{im}{\hbar t}\right)\xi^2 + i\left(k - \frac{mx}{\hbar t}\right)\xi\right]\\
+                    &= \sqrt{\frac{m}{i \hbar t\left(\sigma^2 - \frac{im}{\hbar t}\right)}} \left(\frac{\sigma^2}{\pi}\right)^{\frac14}\exp\left[\frac{im x^2}{ 2 \hbar t} - \frac{\left(k - \frac{mx}{\hbar t}\right)^2}{2\left(\sigma^2 - \frac{im}{\hbar t}\right)}\right]
    \end{align*}
    como a evolução temporal da função de onda.
 \end{proof}
