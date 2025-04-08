@@ -1,7 +1,75 @@
 % vim: spl=pt
 \begin{exercício}{Propagador para uma partícula em um potencial linear em uma dimensão}{ex5}
-   Considere uma partícula se movendo em um potencial linear em uma dimensão. Determine os propagadores \(K(x't'; xt) = \braket{x't'}{xt},\) \(K(x't'; pt) = \braket{x't'}{pt},\) e \(K(p't'; pt) = \braket{p't'}{pt}.\)
+   Considere uma partícula se movendo em um potencial linear em uma dimensão. Determine os propagadores 
+   \begin{enumerate}[label=(\alph*)]
+       \item \(K(x't'; xt) = \braket{x't'}{xt},\)
+       \item \(K(x't'; pt) = \braket{x't'}{pt},\) e
+       \item \(K(p't'; pt) = \braket{p't'}{pt}.\)
+   \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Denotemos \(\Delta x = x' - x''\) e \(\Delta t = t' - t''\). Consideramos um potencial linear \(V(x) = m \alpha x\), então a ação clássica é dada pelo funcional
+   \begin{equation*}
+      S[x(t)] = m \int_{t''}^{t'} \dli{t} \left(\frac12 \dot{x}^2 - \alpha x\right),
+   \end{equation*}
+   com domínio dado pelo conjunto de trajetórias \(x(t)\) que satisfazem \(x(t'') = x''\) e \(x(t') = x'.\) Para um desvio infinitesimal \(\eta\) com \(\eta(t'') = \eta (t') = 0\), temos
+   \begin{align*}
+      S[x(t) + \eta(t)] &= m \int_{t''}^{t'} \dli{t} \left(\frac12 \dot{x}^2 + \dot{x} \dot\eta - \alpha x - \alpha \eta\right)\\
+                        &= S[x(t)] - m \int_{t''}^{t'} \dli{t} \alpha \eta - m\left[x(t) \eta(t)\right]_{t''}^{t'} - m \int_{t''}^{t'} \dli{t} \ddot{x} \eta\\
+                        &= S[x(t)] - m\int_{t''}^{t'} \dli{t} (\ddot{x}+ \alpha) \eta,
+   \end{align*}
+   isto é, \(\diff.d.{S}{x} = -m(\ddot{x} + \alpha)\). Assim, a trajetória clássica \(q(t)\) de \((t'', x'')\) até \((t', x')\) satisfaz
+   \begin{align*}
+      \diff.d.{S}{x}[x(t) = q(t)] = 0 &\implies \ddot{q}(t) = -\alpha\\
+                         &\implies \dot{q}(t) = v - \alpha (t - t'')\\
+                         &\implies q(t) = x'' + v(t - t'') - \frac12 \alpha (t - t'')^2,
+   \end{align*}
+   onde \(v = \frac{\Delta x}{\Delta t} + \frac12 \alpha \Delta t\). Assim, a ação para a trajetória clássica é dada por
+   \begin{align*}
+      S_{\mathrm{cl}} &= S[q(t)] = m\int_{t''}^{t'} \dli{t} \left[\frac12 \dot{q}^2(t) - \alpha q(t)\right]\\
+                      &= m \int_{t''}^{t'} \dli{t}\left[\frac12 v^2 + \frac12 \alpha^2 (t-t'')^2 - \alpha v (t - t'') - \alpha x'' - \alpha v(t - t'') + \frac12 \alpha^2 (t - t'')^2\right]\\
+                      &= m \int_{t''}^{t'} \dli{t} \left[\left(\frac12 v^2 - \alpha x''\right) + \alpha^2(t - t'')^2 - 2 \alpha v (t - t'')\right]\\
+                      &= m \left[\frac12 v^2 \Delta t- \alpha v \Delta t^2 + \frac13 \alpha^2 \Delta t^3 - \alpha x'' \Delta t\right]\\
+                      &= m\left[\frac12\left(\frac{\Delta x^2}{\Delta t^2} + \alpha \Delta x + \frac14 \alpha^2 \Delta t^2\right)\Delta t - \alpha \left(\frac{\Delta x}{\Delta t} + \frac12 \alpha \Delta t\right) \Delta t^2 + \frac13 \alpha^2 \Delta t^3 - \alpha x'' \Delta t\right]\\
+                      &= m\left[\frac{\Delta x^2}{2 \Delta t} + \frac12 \alpha \Delta x \Delta t + \frac18 \alpha^2 \Delta t^3 - \alpha \Delta x \Delta t - \frac12 \alpha^2 \Delta t^3 + \frac13 \alpha^2 \Delta t^3 - \alpha x'' \Delta t\right]\\
+                      &= m \left[\frac{\Delta x^2}{2 \Delta t} -\alpha \left(x'' + \frac12\Delta x\right) \Delta t - \frac1{24} \alpha^2 \Delta t^3\right]\\
+                      &= m \left[\frac{\Delta x^2}{2 \Delta t} -\alpha \bar{x}\Delta t - \frac1{24} \alpha^2 \Delta t^3\right],
+   \end{align*}
+   onde \(2\bar{x} = x' + x''.\) Para uma trajetória arbitrária \(x(t)\) com \(x(t') = x'\) e \(x(t'') = x'',\) podemos escrever \(x(t) = q(t) + y(t),\) onde \(y(t') = y(t'') = 0,\) portanto
+   \begin{align*}
+      S[x(t)] &= S[q] + m \int_{t''}^{t'} \dli{t} \left(\dot{q} \dot{y} + \frac12\dot{y}^2 - \alpha y\right)\\
+              &= S_{\mathrm{cl}} + \frac12 m \int_{t''}^{t'} \dli{t} \dot{y}^2 + m \left[\dot{q}(t) y(t)\right]_{t''}^{t'} - m \int_{t''}^{t'} \dli{t} \left(\ddot{q} + \alpha\right)y\\
+              &= S_{\mathrm{cl}} + \frac12 m \int_{t''}^{t'} \dli{t} \dot{y}^2\\
+              &= S_{\mathrm{cl}} + S^{\mathrm{livre}}[y(t)],
+   \end{align*}
+   onde \(S^{\mathrm{livre}}\) é a ação para a partícula livre com domínio dado pelo conjunto das trajetórias de \((0, t'')\) até \((0, t')\). Assim, o propagador é dado pela integral de trajetória
+   \begin{align*}
+      K(x't'; x''t'') &= \int_{(x'', t'')}^{(x', t')} \dlp{x(t)} \exp\left(\frac{i}{\hbar} S[x(t)]\right)\\
+                      &= \exp\left(\frac{i}{\hbar}S_{\mathrm{cl}}\right)\int_{(0,t'')}^{(0,t')} \dlp{y(t)} \exp\left(\frac{i}{\hbar} S^{\mathrm{livre}}[y(t)]\right)\\
+                      &= \exp\left[\frac{im}{\hbar}\left(-\alpha \bar{x} \Delta t - \frac1{24} \alpha^2 \Delta t^3\right)\right] \underbrace{\overbrace{\exp\left(\frac{im\Delta x^2}{2 \hbar \Delta t}\right)}^{\exp\left(\frac{i}{\hbar}S_{\mathrm{cl}}^{\mathrm{livre}}\right)} \int_{(0, t'')}^{(0, t')} \mathcal{D}\left(y(t)\right) \exp\left(\frac{i}{\hbar}S^{\mathrm{livre}}[y(t)]\right)}_{K^{\mathrm{livre}}(x't'; x''t'')}\\
+                      &= \sqrt{\frac{m}{2i\pi \hbar (t' - t'')}}\exp\left[\frac{im}{2\hbar}\left(\frac{(x' - x'')^2}{t' - t''} - \alpha (x' + x'')(t' - t'') - \frac{\alpha^2 (t' - t'')^3}{12}\right)\right]\theta(t' - t''),
+   \end{align*}
+   onde utilizamos o propagador utilizado para a partícula livre determinado no \cref{ex:ex4}. Com isso, repetindo a notação daquele exercício, temos
+   \begin{align*}
+      K(x't'; p't'') &= \bra{x'}U(t', t'')\ket{p'}\\
+                      &= \int_{\mathbb{R}} \dli{x''} \bra{x'}U(t', t'')\ket{x''}\braket{x''}{p'}\\
+                      &= \frac{1}{\sqrt{2 \pi \hbar}} \int_{\mathbb{R}}\dli{x''} K(x't'; x''t'') \exp\left(\frac{i x'' p'}{\hbar}\right)\\
+                      &= \sqrt{\frac{m}{(2\pi \hbar)^2 i \Delta t}}\exp\left(-\frac{i m \alpha^2 \Delta t^3}{24 \hbar}\right) \int_{\mathbb{R}} \dli{x''} \exp\left[\frac{i m}{2\hbar}\left(\frac{(x'- x'')^2}{\Delta t} - \alpha (x' + x'') \Delta t + \frac{2x'' p'}{m}\right)\right]\\
+                      &= \frac1{2\pi \hbar}\sqrt{\frac{m}{i \Delta t}}\exp\left(-\frac{i m \alpha^2 \Delta t^3}{24 \hbar}\right) \int_{\mathbb{R}} \dli{\xi} \exp\left[\frac{i m}{2\hbar}\left(\frac{\xi^2}{\Delta t} - \alpha (\xi + 2x') \Delta t + \frac{2(x'+\xi) p'}{m}\right)\right]\\
+                      &= \frac{1}{2\pi \hbar}\sqrt{\frac{m}{ i \Delta t}}\exp\left[\frac{i x' (p' - m \alpha \Delta t)}{\hbar} - \frac{i m \alpha^2 \Delta t^3}{24 \hbar}\right] \int_{\mathbb{R}} \dli{\xi} \exp\left[\frac{i (2p' - m \alpha \Delta t) \xi}{2 \hbar} - \frac{m\xi^2}{2i \hbar\Delta t}\right]\\
+                      &= \frac1{2 \pi \hbar}\sqrt{\frac{m}{i \Delta t}} \sqrt{\frac{2 \pi i \hbar \Delta t}{m}}\exp\left[\frac{i x' (p' - m \alpha \Delta t)}{\hbar} - \frac{i m \alpha^2 \Delta t^3}{24 \hbar} - \frac{\frac{(2p' - m \alpha \Delta t)^2}{4 \hbar^2}}{\frac{4m}{2i \hbar \Delta t}}\right]\\
+                      &= \frac1{\sqrt{2 \pi \hbar}}\exp\left[\frac{i x' (p' - m \alpha \Delta t)}{\hbar} - \frac{i m \alpha^2 \Delta t^3}{24 \hbar} - \frac{i \Delta t(2p' - m \alpha \Delta t)^2}{8 m \hbar}\right]\theta(\Delta t)
+   \end{align*}
+   e
+   \begin{align*}
+      K(p't'; p'' t'') &= \bra{p'}U(t', t'')\ket{p''}\\
+                       &= \int_{\mathbb{R}} \dli{x'} \braket{p'}{x'}\bra{x'}U(t',t'')\ket{p''}\\
+                       &= \frac{1}{\sqrt{2\pi \hbar}}\int_{\mathbb{R}}\dli{x'} \exp\left(-\frac{i x' p'}{\hbar}\right)K(x't'; p'' t'')\\
+                       &= \frac{1}{2\pi \hbar}\int_{\mathbb{R}}\dli{x'} \exp\left[\frac{i x' (p'' - p' - m \alpha \Delta t)}{\hbar} - \frac{i m \alpha^2 \Delta t^3}{24 \hbar} - \frac{i \Delta t(2p'' - m \alpha \Delta t)^2}{8 m \hbar}\right]\\
+                       &= \delta(p'' - p' - m \alpha \Delta t) \exp\left[ - \frac{i m \alpha^2 \Delta t^3}{24 \hbar} - \frac{i \Delta t(2p'' - m \alpha \Delta t)^2}{8 m \hbar}\right]\\
+                       &= \delta(p'' - p' - m \alpha \Delta t) \exp\left[\frac{(p'' - p')^3 + 3(p'' - p')(p'' + p')^2}{24i m^2 \alpha \hbar}\right]\\
+                       &= \delta(p'' - p' - m \alpha \Delta t)\exp\left[\frac{(p'' - p')(p'^2 + p' p'' + p''^2)}{6i m^2 \alpha \hbar}\right]\\
+                       &=  \delta\left[p'' - p' - m \alpha (t' - t'')\right]\exp\left(\frac{p''^3 - p'^3}{6i m^2 \alpha \hbar}\right) \theta(t' - t'')
+   \end{align*}
+   como as demais expressões para o propagador.
 \end{proof}
