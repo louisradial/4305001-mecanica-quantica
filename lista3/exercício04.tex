@@ -1,4 +1,22 @@
 % vim: spl=pt
+\begin{lemma}{Função de transformação entre posição e momento}{transformada}
+   Sendo \(\ket{x'}\) um autovetor de posição com \(x\ket{x'} = x' \ket{x'}\) e \(\ket{p'}\) um autovetor de momento com \(p\ket{p'} = p' \ket{p'},\) então
+   \begin{equation*}
+      \braket{x'}{p'} = \frac{1}{\sqrt{2\pi \hbar}} \exp\left(\frac{i p' q'}{\hbar}\right).
+   \end{equation*}
+\end{lemma}
+\begin{proof}
+   Recordemos\footnote{Ver \href{https://github.com/louisradial/4305001-mecanica-quantica/releases/tag/lista2}{Lema 6}.} que o operador translação espacial é o operador unitário dado por \(T_a = \exp\left(-\frac{i a p}{\hbar}\right)\) e que satisfaz \(T_a\ket{x'} = \ket{x' + a}.\) Analogamente, o operador de translação no espaço de momento \(K_k = \exp\left(\frac{i k x}{\hbar}\right)\) satisfaz \(K_k\ket{p'} = \ket{p' + k}.\) Assim, sendo \(x\ket{0_x} = 0\) e \(p \ket{0_p} = 0\), temos
+   \begin{equation*}
+      \braket{x'}{p'} = \bra{0_x} \herm{T}_{x'} \ket{p'} = \exp\left(\frac{i p' x'}{\hbar}\right)\braket{0_x}{p'} = \exp\left(\frac{i p' x'}{\hbar}\right)\braket{0_x}K_{p'}{0_p} = \exp\left(\frac{i p' x'}{\hbar}\right) \braket{0_x}{0_p}.
+   \end{equation*}
+   Da relação de ortogonalidade \(\braket{x'}{x''} = \delta(x'' - x'),\) temos
+   \begin{equation*}
+      \delta(x'' - x') = \int \dli{p'} \braket{x'}{p'}\braket{p'}{x''} = \abs*{\braket{0_x}{0_p}}^2\int \dli{p'} \exp\left(\frac{i p' (x'' - x')}{\hbar}\right) = 2\pi \hbar \abs*{\braket{0_x}{0_p}}^2 \delta(x'' - x'),
+   \end{equation*}
+   portanto podemos tomar \(\braket{0_x}{0_p} = \frac{1}{\sqrt{2\pi \hbar}}\), a menos de uma fase.
+\end{proof}
+
 \begin{exercício}{Propagador para uma partícula livre em uma dimensão}{ex4}
    Considere uma partícula livre se movendo em uma dimensão. Determine os propagadores 
    \begin{enumerate}[label=(\alph*)]
