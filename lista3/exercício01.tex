@@ -1,7 +1,27 @@
 % vim: spl=pt
 \begin{exercício}{Dependência temporal do propagador para um Hamiltoniano constante}{ex1}
-   Considere um sistema cujo Hamiltoniano é independente do tempo. Demonstre que \(K(x't'; xt) = \braket{x't'}{xt}\) depende de \(t' - t.\)
+   Considere um sistema cujo Hamiltoniano é independente do tempo. Demonstre que \(K(x't'; x''t'') = \braket{x't'}{x''t''}\theta(t' - t'')\) depende de \(t' - t''.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Na representação de Heisenberg, o ket \(\ket{x't'}\) é autovetor de \(x(t')\) associado ao autovalor \(x',\) então afirmamos que, a menos de uma fase, \(\ket{x't'} = \herm{U}(t',t_0)\ket{x't_0}\) com \(x_0 \ket{x' t_0} = x' \ket{x' t_0}\) e \(x(t_0) = x_0.\) De fato, temos
+   \begin{align*}
+      x(t') \herm{U}(t', t_0) \ket{x' t_0} &= \herm{U}(t', t_0) x_0 U(t',t_0) \herm{U}(t', t_0)\ket{x' t_0}\\
+                                           &= \herm{U}(t', t_0) x_0\ket{x' t_0}\\
+                                           &= x' \herm{U}(t', t_0) \ket{x' t_0},
+   \end{align*}
+   logo \(\herm{U}(t', t_0) \ket{x' t_0}\) é autovetor de \(x(t')\) associado ao autovalor \(x'\). Assim, o propagador é dado por
+   \begin{align*}
+      K(x' t'; x''t'') &= \braket{x't'}{x'' t''} \theta(t' - t'')\\
+                       &= \bra{x't_0}U(t', t_0)\herm{U}(t'', t_0)\ket{x''t_0} \theta(t' - t'')\\
+                       &= \bra{x't_0}U(t', t_0) U(t_0, t'') \ket{x''t_0} \theta(t' - t'')\\
+                       &= \bra{x't_0} U(t', t'') \ket{x''t_0} \theta(t' - t'')\\
+                       &= \bra{x'} U(t', t'') \ket{x''} \theta(t' - t'')
+   \end{align*}
+   onde omitimos o instante \(t_0\) da notação no último passo.
+
+   Para um sistema com Hamiltoniano independente do tempo, o operador evolução temporal é dado por \(U(t', t'') = \exp\left(-\frac{i (t' - t'') H}{\hbar}\right)\), portanto
+   \begin{equation*}
+      K(x't'; x''t'') = \bra{x'}U(t', t'')\ket{x''} \theta(t' - t'') = \bra{x'} \exp\left(-\frac{i (t' - t'') H}{\hbar}\right) \ket{x''} \theta(t' - t'')
+   \end{equation*}
+   é a expressão do propagador, que depende explicitamente apenas da diferença \(t' - t''.\)
 \end{proof}
