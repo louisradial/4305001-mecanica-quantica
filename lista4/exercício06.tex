@@ -3,6 +3,17 @@
    Seja \(T_y(a)\) um operador de translação de \(a\) paralela ao eixo \(Oy\), \(T_y(a) \vetor{r} = \vetor{r} + a \vetor{e}_y.\) Se \(R_x(\theta)\) é uma rotação pelo ângulo \(\theta\) em torno do eixo \(Ox,\) mostre que \(R_x(\theta) T_y(a) R_x(-\theta)\) é uma translação ao longo de um eixo a ser determinado. Use isso para deduzir a relação de comutação \(\commutator{J_x}{P_y} = i P_z.\)
 \end{exercício}
 \begin{proof}[Resolução]
-
+    Notemos que
+    \begin{align*}
+       R_x(\theta) T_y(a) R_x(-\theta) \vetor{r} &= R_x(\theta) \left[ R_x(-\theta) \vetor{r} + a \vetor{e}_y\right]\\
+                                                 &= \vetor{r} + a R_x(\theta)\vetor{e}_y,
+    \end{align*}
+    para todo \(\vetor{r} \in \mathbb{R}^3,\) isto é, \(R_x(\theta) T_y(a) R_x(-\theta)\) é uma translação por \(a\) paralelo ao eixo definido pelo vetor unitário \(R_x(\theta)\vetor{e}_y,\) ou seja, ao longo do eixo definido por \(\cos\theta \vetor{e}_y + \sin\theta\vetor{e}_z.\) Para \(\theta\) infinitesimal, este vetor corresponde a \(\vetor{e}_y + \theta \vetor{e}_z\) em primeira ordem de \(\theta\), logo para \(a\) infinitesimal obtemos
+    \begin{align*}
+       \unity - i (P_y  + \theta P_z) &= (\unity - i \theta J_x) (\unity - i a P_y) (\unity + i \theta J_x)\\
+                                      &= \unity - i a P_y - a \theta (J_x P_y - P_y J_x) + \theta^2 J_x^2 - i a \theta^2 J_x P_y J_x\\
+                                      &= \unity - ia \left(P_y - i\theta \commutator{J_x}{P_y}\right) + O(\theta^2),
+    \end{align*}
+    e concluímos que \(P_z = -i\commutator{J_x}{P_y},\) como desejado.
 \end{proof}
 
