@@ -1,0 +1,35 @@
+% vim: spl=pt
+\begin{exercício}{Representação de um grupo de Lie e álgebra de Lie associada}{ex7}
+   Considere um grupo de Lie \(G\) que é uma variedade diferenciável de dimensão \(N\). Consideramos uma carta de coordenadas \(\theta : G_e \to \mathbb{R}^N\) definida na componente conexa \(G_e\) do elemento neutro \(e\) do grupo com \(\theta(e) = 0,\) e consideremos o mapa inverso \(g : \mathbb{R}^N \to G_e\), uma parametrização de \(G_e\). A lei de composição é dada por uma função suave \(f : \mathbb{R}^N \times \mathbb{R}^N \to \mathbb{R}^N\),
+   \begin{equation*}
+       g(\bar{\theta}) g(\theta) = g \circ f(\bar{\theta}, \theta).
+   \end{equation*}
+   Com esta carta de coordenadas, consideramos uma representação unitária \(U(\theta)\) do grupo, portanto
+   \begin{equation*}
+       U(\bar{\theta})U(\theta) = U \circ f(\bar{\theta}, \theta).
+   \end{equation*}
+   \begin{enumerate}[label=(\alph*)]
+       \item Mostre que \(f(\bar{\theta}, 0) = \bar{\theta}\) e que \(f(0, \theta) = \theta\). Mostre que
+          \begin{equation*}
+             f_a(\bar{\theta}, \theta) = \theta_a + \bar{\theta}_a + f_{abc} \bar{\theta}_b \theta_c
+          \end{equation*}
+          em até segunda ordem de \(\theta\) e \(\bar{\theta}\).
+       \item Mostre que nas vizinhanças de \(U(\theta) = \unity\), podemos escrever
+          \begin{equation*}
+             U(\theta) = \unity - i \theta_a T_a - \frac12 \theta_b \theta_c T_{bc}
+          \end{equation*}
+          em até segunda ordem de \(\theta\).
+       \item Calcule o produto \(U(\bar{\theta})U(\theta)\) em até segunda ordem de cada variável e mostre que a lei de composição implica que
+          \begin{equation*}
+          T_{bc} = T_{b} T_{c} - i f_{abc} T_a.
+          \end{equation*}
+       \item Utilize a simetria de \(T_{ab}\) para deduzir
+          \begin{equation*}
+          \commutator{T_b}{T_c} = i C_{abc} T_a,
+          \end{equation*}
+          com \(C_{abc} = -C_{acb}.\) Expresse as constantes de estrutura \(C_{abc}\) em função de \(f_{abc}.\)
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    
+\end{proof}

@@ -1,0 +1,29 @@
+% vim: spl=pt
+\begin{exercício}{Propagador de partícula livre no formalismo de integral de trajetória}{ex1}
+    Determine o propagador de partícula livre em uma dimensão \(K(x't', x'',t'')\) usando integrais de trajetória.
+    \begin{enumerate}[label=(\alph*)]
+       \item Escreva a única trajetória clássica \(x_{\mathrm{cl}}(t)\) que liga \((x'',t'')\) a \((x',t')\) e calcule \(S_{\mathrm{cl}}(x't',x''t'').\)
+       \item Mostre que se \(y(t) = x(t) - x_{\mathrm{cl}}(t)\), então
+          \begin{equation*}
+             S[x(t)] = S[x_{\mathrm{cl}(t)} + y(t)] = \frac12m\int_{t''}^{t'} \dli{t} \left[\dot{x}_{\mathrm{cl}}^2(t) + \dot{y}^2(t)\right].
+          \end{equation*}
+       \item Mostre que agora podemos escrever
+          \begin{equation*}
+             K(x't', x''t'') = F(t' - t'') \exp\left(\frac{i}{\hbar} S_{\mathrm{cl}}(x't', x''t'')\right),
+          \end{equation*}
+          onde
+          \begin{equation*}
+             F(\Delta t) = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{y_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{y_1} \exp\left[\frac{im}{2 \hbar \tau} \sum_{j = 0}^{\kappa - 1}(y_{k+1} - y_k)^2\right]}.
+          \end{equation*}
+       \item Mostre que a forma quadrática anterior pode ser diagonalizada levando ao resultado
+          \begin{equation*}
+             F(\Delta t) = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}} \sqrt{\frac{m}{2\pi i \hbar \tau \det \Lambda}},
+          \end{equation*}
+          onde \(\Lambda\) é a matriz diagonalizada.
+       \item Mostre que \(\det \Lambda = 1 + \kappa.\)
+       \item Encontre a expressão para o propagador \(K(x't', x''t'').\)
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    
+\end{proof}
