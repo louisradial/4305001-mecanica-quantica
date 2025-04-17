@@ -1,7 +1,59 @@
 % vim: spl=pt
+\begin{lemma}{Relações de comutação canônica e funções de operadores}{ccr}
+    Sejam \(A\) e \(B\) operadores tais que \(\commutator{A}{B} = c \unity,\) com \(c \in \mathbb{C}\) constante. Vale
+    \begin{equation*}
+        \commutator{A}{g(B)} = c \diffp{g}{B}
+        \quad\text{e}\quad
+        \commutator{f(A)}{B} = c \diffp{f}{A}
+    \end{equation*}
+    para funções analíticas \(f\) e \(g\).
+\end{lemma}
+\begin{proof}
+    Mostremos que
+    \begin{equation*}
+        \commutator{A}{B^n} = c n B^{n - 1}
+        \quad\text{e}\quad
+        \commutator{A^n}{B} = c n A^{n-1}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\). Evidentemente, as expressões são válidas para \(n = 1\). Supondo válidas para algum \(m \in \mathbb{N}\), temos 
+    \begin{align*}
+        \commutator{A}{B^{m+1}} &= \commutator{A}{B^m}B + B^m\commutator{A}{B}&
+        \commutator{A^{m+1}}{B} &= -\commutator{B}{A^m}A - A^m\commutator{B}{A}\\
+                                &= c m B^m + i\hbar B^m&
+                                &= c m A^m + i \hbar A^m\\
+                                &= c (m+1) B^m&
+                                &= c (m + 1) A^m,
+    \end{align*}
+    isto é, são válidas para \(m+1.\) Pelo princípio de indução finita, concluímos que as expressões seguem para todo \(n \in \mathbb{N}\).
+
+    Como \(f\) e \(g\) são analíticas, temos
+    \begin{equation*}
+        f(A) = f_0 \unity + \sum_{n \in \mathbb{N}} f_n A^n
+        \quad\text{e}\quad
+        g(B) = g_0 \unity + \sum_{n \in \mathbb{N}} g_n B^n,
+    \end{equation*}
+    com \(f_n, g_n \in \mathbb{C}\). Assim, obtemos
+    \begin{align*}
+        \commutator{A}{g(B)} &= \commutator*{A}{g_0 \unity + \sum_{n \in \mathbb{N}} g_n B^n} &
+        \commutator{f(A)}{B} &= \commutator*{f_0 \unity + \sum_{n \in \mathbb{N}} f_n A^n}{B}\\
+                             &= \commutator{A}{\sum_{n \in \mathbb{N}} g_n B^n} &
+                             &= \commutator{\sum_{n \in \mathbb{N}} f_n A^n}{B} \\
+                             &= \sum_{n \in \mathbb{N}} g_n \commutator{A}{B^n} &
+                             &= \sum_{n \in \mathbb{N}} f_n \commutator{A^n}{B} \\
+                             &= c \sum_{n \in \mathbb{N}} g_n n B^n &
+                             &= c \sum_{n \in \mathbb{N}} f_n n A^n \\
+                             &= c \diffp{g}{B}&
+                             &= c \diffp{f}{B},
+    \end{align*}
+    como desejado.
+\end{proof}
 \begin{exercício}{Tempo não é um operador na mecânica quântica}{ex4}
     Considere um operador associado ao tempo \(\hat{t}\) tal que \( \commutator{\hat{t}}{H} = - i \hbar\), onde \(H\) é o Hamiltoniano do sistema. Demonstre que o espectro de \(H\) deve ser contínuo e conclua que tal operador não existe.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Na hipótese em que há tal operador, é natural exigir também que seja um observável, pois poderíamos com ele medir tempo. Assim sendo, consideremos o operador de translação de energia, \(M_{\hbar \omega} = e^{-i \omega \hat{t}}\), que é unitário. Seja \(\ket{E'}\) um autovetor de \(H\), então
+    \begin{equation*}
+        HM_{\hbar \omega}\ket{E'} =  M_{\hbar \omega} H\ket{E'} + \commutator{H}{M_{\hbar \omega}} \ket{E'} = E' M_{\hbar \omega} \ket{E'} + i \hbar (-i \omega) M_{\hbar \omega} \ket{E'} = (E' + \hbar \omega) M_{\hbar \omega} \ket{E'},
+    \end{equation*}
+    portanto \(M_{\hbar \omega} \ket{E'}\) é autovetor de \(H\) associado ao autovalor \(E' + \hbar \omega.\) Como isto vale para todo \(\omega \in \mathbb{R},\) segue que o espectro de \(H\) é toda a reta real, portanto não é limitado inferiormente. Por este motivo, não pode haver um operador como \(\hat{t}.\)
 \end{proof}
