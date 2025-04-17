@@ -6,11 +6,72 @@
    \end{equation*}
    \begin{enumerate}[label=(\alph*)]
       \item Mostre que \(\Tr R_{\vetor{n}}(\theta) = 1 + 2 \cos\theta.\)
-      \item Use o fato que as componentes de um vetor \(\vetor{V}\) sobre essa rotação se transformam como \(\tilde{V}_i = [R_{\vetor{n}}(\theta)]_{ij} V_j + \theta \epsilon_{ijk} n_j V_k + O(\theta^2)\) para determinar uma representação para os operadores hermitianos \(T_i\).
+      \item Use o fato que as componentes de um vetor \(\vetor{V}\) sobre essa rotação se transformam como \(\tilde{V}_i = [R_{\vetor{n}}(\theta)]_{ij} V_j = \delta_{ij}V_j + \theta \epsilon_{ijk} n_j V_k + O(\theta^2)\) para determinar uma representação para os operadores hermitianos \(T_i\).
       \item Mostre que \((\vetor{T}\cdot \vetor{n})^3 = \vetor{T}\cdot \vetor{n}.\)
       \item Mostre que \(\exp\left(-i\theta\vetor{T}\cdot\vetor{n}\right) = \unity - i \sin\theta (\vetor{T} \cdot \vetor{n}) - (1 - \cos\theta) (\vetor{T}\cdot \vetor{n})^2.\)
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Seja \(\vetor{a} \in \mathbb{R}^3\) um vetor unitário contido no plano definido por \(\vetor{n},\) então \(\set{\vetor{a}, \vetor{n} \times \vetor{a}, \vetor{n}}\) é uma base ortonormal de \(\mathbb{R}^3\) positivamente orientada. Com isso, temos \(R_{\vetor{n}}(\theta)\vetor{n} = \vetor{n},\)
+   \begin{equation*}
+      R_{\vetor{n}}(\theta)\vetor{a} = \cos\theta \vetor{a} + \sin\theta \vetor{n}\times \vetor{a}
+      \quad\text{e}\quad
+      R_{\vetor{n}}(\theta)(\vetor{n} \times \vetor{a}) = -\sin\theta \vetor{a} + \cos\theta \vetor{n}\times \vetor{a},
+   \end{equation*}
+   logo
+   \begin{align*}
+      \Tr R_{\vetor{n}}(\theta) = \inner{\vetor{a}}{R_{\vetor{n}}(\theta)\vetor{a}} + \inner{\vetor{n} \times \vetor{a}}{R_{\vetor{n}}(\theta)(\vetor{n} \times \vetor{a})} + \inner{\vetor{n}}{R_{\vetor{n}}(\theta)\vetor{n}} = 1 + 2\cos\theta.
+   \end{align*}
+
+   Para um ângulo infinitesimal \(\theta,\) temos \(R_{\vetor{n}}(\theta) = \unity - i \theta \vetor{T} \cdot \vetor{n}\) portanto \(R_{\vetor{n}}(\theta)_{jk} = \delta_{jk} - i \theta n_\ell {T_\ell}_{jk}\) são as componentes da rotação na base canônica de \(\mathbb{R}^3\), onde \({T_{\ell}}_{jk}\) é a componente \(jk\) do operador \(T_{\ell}\), isto é, \({T_\ell}_{jk} = \inner{\vetor{e}_j}{T_\ell \vetor{e}_k}\). Assim, como \([R_{\vetor{n}}(\theta) \vetor{v}]_j = \delta_{ji} v_i + \theta \epsilon_{j\ell k} n_\ell v_k,\) para todo \(\vetor{v} \in \mathbb{R}^3,\) podemos identificar \({T_{\ell}}_{jk} = i\epsilon_{j \ell k}\). Nesta base, obtemos
+   \begin{equation*}
+       T_1 \doteq \begin{pmatrix}
+          0 && 0 && 0\\
+          0 && 0 && -i\\
+          0 && i && 0
+       \end{pmatrix},\quad
+       T_2 \doteq \begin{pmatrix}
+          0 && 0 && i\\
+          0 && 0 && 0\\
+          -i && 0 && 0
+       \end{pmatrix},
+       \quad\text{e}\quad
+       T_3 \doteq \begin{pmatrix}
+          0 && -i && 0\\
+          i && 0 && 0\\
+          0 && 0 && 0
+       \end{pmatrix}
+   \end{equation*}
+   como as matrizes que representam os geradores do grupo de rotação.
+
+   Notemos que 
+   \begin{equation*}
+      \inner{\vetor{e}_j}{T_k T_{\ell} \vetor{e}_m} = i \epsilon_{n \ell m}\inner{\vetor{e}_j}{T_k \vetor{e}_n} = - \epsilon_{n \ell m} \epsilon_{h k n} = \delta_{mj} \delta_{k\ell} - \delta_{\ell j} \delta_{km}
+   \end{equation*}
+   e então
+   \begin{equation*}
+      \inner{\vetor{e}_i}{T_j T_k T_{\ell} \vetor{e}_m} = (\delta_{mn} \delta_{k\ell} - \delta_{\ell n} \delta_{km}) \inner{\vetor{e_i}}{T_j \vetor{e}_n} = i\epsilon_{i j n}(\delta_{mn} \delta_{k\ell} - \delta_{\ell n} \delta_{km}) = i\epsilon_{ijm} \delta_{k\ell} - \epsilon_{ij \ell} \delta_{km}.
+   \end{equation*}
+   Com isso,
+   \begin{align*}
+      \inner{\vetor{e}_i}{(\vetor{T} \cdot \vetor{n})^3\vetor{e}_m} 
+      &= n_j n_k n_\ell \inner{\vetor{e}_i}{T_j T_k T_\ell \vetor{e_m}}\\
+      &= in_j n_k n_\ell (\epsilon_{ijm} \delta_{k\ell} - \epsilon_{ij\ell} \delta_{km})\\
+      &= i\inner{\vetor{n}}{\vetor{n}} n_j \epsilon_{ijm} - i\inner{\vetor{e}_i}{\vetor{n}\times \vetor{n}} n_m\\
+      &=  n_j {T_j}_{im}\\
+      &= \inner{\vetor{e}_i}{n_jT_j \vetor{e}_m}\\
+      &= \inner{\vetor{e}_i}{(\vetor{T} \cdot \vetor{n})\vetor{e}_m},
+   \end{align*}
+   portanto \((\vetor{T} \cdot \vetor{n})^3 = (\vetor{T} \cdot \vetor{n}).\) 
+
+   Assim, é claro que \((\vetor{T} \cdot \vetor{n})^{2k - 1} = \vetor{T} \cdot \vetor{n}\) e \((\vetor{T} \cdot \vetor{n})^{2k} = (\vetor{T} \cdot \vetor{n})^2\) para todo \(k \in \mathbb{N}.\) Desse modo,
+   \begin{align*}
+      R_{\vetor{n}}(\theta) = \exp( - i\theta \vetor{T} \cdot \vetor{n}) 
+      &= \unity + \sum_{m = 1}^\infty \frac{(-1)^m (i \theta \vetor{T} \cdot \vetor{n})^m}{m!}\\
+      &= \unity + i\sum_{k = 1}^\infty\left[\frac{(-1)^k \theta^{2k - 1}}{(2k - 1)!} (\vetor{T} \cdot \vetor{n})^{2k - 1}\right] + \sum_{k = 1}^\infty\left[\frac{(-1)^k \theta^{2k}}{(2k)!} (\vetor{T} \cdot \vetor{n})^{2k}\right]\\
+      &= \unity + i\left[\sum_{k = 1}^\infty\frac{(-1)^k \theta^{2k - 1}}{(2k - 1)!} \right](\vetor{T} \cdot \vetor{n}) + \left[\sum_{k = 1}^\infty\frac{(-1)^k \theta^{2k}}{(2k)!} \right](\vetor{T} \cdot \vetor{n})^{2}\\
+      &= \unity - i \sin\theta (\vetor{T} \cdot \vetor{n}) + \left[-1 + \sum_{k = 0}^\infty \frac{(-1)^k\theta^{2k}}{(2k)!}\right] (\vetor{T} \cdot \vetor{n})^2\\
+      &= \unity - i\sin\theta(\vetor{T} \cdot \vetor{n}) + \left[\cos\theta - 1\right] (\vetor{T}\cdot\vetor{n})^2,
+   \end{align*}
+   como desejado.
 \end{proof}
