@@ -31,5 +31,50 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Como cartas de coordenadas são injetoras, é claro que \(g\) é injetora, portanto 
+    \begin{equation*}
+     g(\theta) = eg(\theta) = g(0) g(\theta) = g\circ f(0,\theta)
+    \end{equation*}
+    implica que \(f(0,\theta) = \theta,\) e analogamente temos \(f(\bar{\theta}, 0) = \bar{\theta}.\) Notemos que
+    \begin{equation*}
+       \diffp{f^a}{\theta^b}[(0,0)] = \lim_{\epsilon \to 0}{\frac{f_a(0, \epsilon \vetor{e}_b) - f_a(0,0)}{\epsilon}} = \lim_{\epsilon \to 0}{\frac{\inner{\dl{x}^a}{\epsilon \vetor{e}_b}}{\epsilon}} = \delta\indices{^a_b}
+    \end{equation*}
+    e \(\diffp{f^a}{\bar{\theta}^b}[(0,0)] = \delta\indices{^a_b},\) analogamente. Assim, denotando \(f\indices{^a_{bc}} = \diffp{f^a}{\bar{\theta}^b,\theta^c}[(0,0)] = \diffp{f^a}{\theta^c,\bar{\theta}^b}[(0,0)],\) temos
+    \begin{align*}
+       f^a(\bar{\theta}, \theta) 
+       &= f^a(0,0) + \diffp{f^a}{\bar{\theta}^b}[(0,0)] \bar{\theta}^b + \diffp{f^a}{\theta^b}[(0,0)]\theta^b\\
+       &{}+ \frac12 \left[\diffp{f^a}{\theta^b,\theta^c}[(0,0)] \theta^b \theta^c + \diffp{f^a}{\bar{\theta}^b,\theta^c}[(0,0)] \bar{\theta}^b \theta^c + \diffp{f^a}{\theta^b,\bar{\theta}^c}[(0,0)] \theta^b \bar{\theta}^c + \diffp{f^a}{\bar{\theta}^b,\bar{\theta}^c}[(0,0)] \bar{\theta}^b \bar{\theta}^c \right]\\
+       &= \delta\indices{^a_b}(\bar{\theta}^b + \theta^b) + \frac12\left[ f\indices{^a_{bc}} \bar{\theta}^b \theta^c + f\indices{^a_{cb}}\theta^b \bar{\theta}^c\right] + O(\theta^2) + O(\bar{\theta}^2)\\
+       &= \bar{\theta}^a + \theta^a + f\indices{^a_{bc}}\bar{\theta}^b\theta^c,
+    \end{align*}
+    desprezando os termos de ordem superior.
+
+    Expandindo \(U(\theta)\) em até segunda segunda ordem, temos
+    \begin{align*}
+       U(\theta) &= U(0) + \diffp{U}{\theta^a}[\theta = 0] \theta^a + \frac12 \diffp{U}{\theta^b,\theta^c}[\theta = 0] \theta^b\theta^c\\
+                 &= \unity - i T_a \theta^a - \frac12 T_{bc} \theta^b \theta^c,
+    \end{align*}
+    onde definimos \(T_a = i \diffp{U}{\theta^a}[\theta = 0]\) e \(T_{bc} = - \diffp{U}{\theta^b,\theta^c}[\theta=0] = - \diffp{U}{\theta^c,\theta^b} = T_{cb}.\) Assim,
+    \begin{align*}
+       U(\bar{\theta}) U(\theta) &= \left(\unity - i T_a \bar{\theta}^a - \frac12 T_{bc} \bar{\theta}^b \bar{\theta}^c\right)\left(\unity - i T_k \theta^k - \frac12 T_{\ell m} \theta^\ell \theta^m\right)\\
+                                 &= \unity -i T_a \bar{\theta}^a - \frac12 T_{bc} \bar{\theta}^b \bar{\theta}^c -i T_k \theta^k - T_a T_k \bar{\theta}^a \theta^k - \frac12 T_{\ell m} \theta^\ell \theta^m\\
+                                 &= \unity - i T_a (\bar{\theta}^a + \theta^a) - \frac12 T_b T_c \bar{\theta}^b \theta^c + O(\theta^2) + O(\bar{\theta})^2
+    \end{align*}
+    e
+    \begin{align*}
+       U(\bar{\theta}) U(\theta) &= U \circ f(\bar{\theta},\theta)\\
+                                 &= \unity - i T_a f^a(\bar{\theta}, \theta) -\frac12 T_{bc} f^{b}(\bar{\theta}, \theta) f^{c}(\bar{\theta},\theta)\\
+                                 &= \unity - iT_a (\bar{\theta}^a + \theta^a + f\indices{^a_{bc}} \bar{\theta}^b \theta^c) - \frac12 T_{bk} (\bar{\theta}^b + \theta^b + f\indices{^b_{cd}} \bar{\theta}^c \theta^d)(\bar{\theta}^k + \theta^k + f\indices{^k_{\ell m}} \bar{\theta}^\ell \theta^m)\\
+                                 &= \unity - i T_a(\bar{\theta}^a + \theta^a) -i T_a f\indices{^a_{bc}} \bar{\theta}^b \theta^c - \frac12 T_{bk} (\bar{\theta}^b \theta^k + \theta^b \bar{\theta}^k) + O(\theta^2) + O(\bar{\theta}^2)\\
+                                 &= \unity - iT_a(\bar{\theta}^a \theta^a) - (iT_a f\indices{^a_{bc}} - T_{bc})\bar{\theta}^b \theta^c,
+    \end{align*}
+    portanto
+    \begin{equation*}
+       iT_a f\indices{^a_{bc}} - T_{bc} = \frac12 T_b T_c \implies T_{bc} = i T_a f\indices{^a_{bc}} - \frac12 T_b T_c.
+    \end{equation*}
+    Desse modo, obtemos da simetria \(T_{bc} = T_{cb}\) que
+    \begin{equation*}
+       \commutator{T_b}{T_c} = 2i T_a (f\indices{^a_{bc}} - f\indices{^a_{cb}}),
+    \end{equation*}
+    isto é, as constantes de estrutura são dadas por \(C\indices{^a_{bc}} = 2 (f\indices{^a_{bc}} - f\indices{^a_{cb}}).\)
 \end{proof}
