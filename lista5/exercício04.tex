@@ -31,9 +31,13 @@
     \end{equation*}
     Como \(T^{ij}\) é simétrico e de traço nulo, podemos tomar \(w_{ij}\) como simétrico e de traço nulo. De fato, expandimos \(w_{ij}\) em sua parte de traço, \(\frac13 w\indices{^\ell_{\ell}}\delta_{ij},\) sua parte antissimétrica, \(w_{[ij]},\) e sua parte simétrica, \(w_{(ij)}\), então
     \begin{equation*}
-        w_{ij} T^{ij} = \left(\frac13 w\indices{^\ell_{\ell}} \delta_{ij} + w_{[ij]}+ w_{(ij)}\right)T^{ij} = \frac13 w\indices{^\ell_\ell} T^i_i w_{[ij]} T^{(ij)} + w_{(ij)}T^{(ij)} = w_{(ij)} T^{ij},
+        w_{ij} T^{ij} = \left(\frac13 w\indices{^\ell_{\ell}} \delta_{ij} + w_{[ij]}+ w_{(ij)}\right)T^{ij} = \frac13 w\indices{^\ell_\ell} T\indices{^k_k} + w_{[ij]} T^{(ij)} + w_{(ij)}T^{(ij)} = \frac13 w\indices{^\ell_\ell} T\indices{^k_k} + w_{(ij)} T^{ij},
     \end{equation*}
-    isto é, apenas a parte simétrica de \(w_{ij}\) contribui para o operador estatístico.
+    isto é, a parte antissimétrica não contribui para o operador estatístico. Ainda, notemos que
+    \begin{equation*}
+        T\indices{^k_k} = \delta_{ij} T^{ij} = \frac12 \delta_{ij} \anticommutator{J^i}{J^j} - \frac23 \delta_{ij} \delta^{ij} = (J^1)^2 + (J^2)^2 + (J^3)^2 - 2 = \vetor{J}^2 - 2 = 0,
+    \end{equation*}
+    portanto a parte de traço \(w\indices{^\ell_\ell}\) não contribui para o operador estatístico.
 
     Notemos que
     \begin{align*}
