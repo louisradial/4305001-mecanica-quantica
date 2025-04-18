@@ -1,6 +1,6 @@
 % vim: spl=pt
 \begin{exercício}{Propagador de partícula livre no formalismo de integral de trajetória}{ex1}
-    Determine o propagador de partícula livre em uma dimensão \(K(x't', x'',t'')\) usando integrais de trajetória.
+    Determine o propagador de partícula livre em uma dimensão \(K(x't', x''t'')\) usando integrais de trajetória.
     \begin{enumerate}[label=(\alph*)]
        \item Escreva a única trajetória clássica \(x_{\mathrm{cl}}(t)\) que liga \((x'',t'')\) a \((x',t')\) e calcule \(S_{\mathrm{cl}}(x't',x''t'').\)
        \item Mostre que se \(y(t) = x(t) - x_{\mathrm{cl}}(t)\), então
@@ -25,5 +25,100 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
-\end{proof}
+   Denotemos \(\Delta x = x' - x''\) e \(\Delta t = t' - t''\). Seja a ação \(S\) dada pelo funcional
+   \begin{equation*}
+      S[x(t)] = \frac12 m \int_{t''}^{t'} \dli{t} \dot{x}^2,
+   \end{equation*}
+   com domínio dado pelo conjunto de trajetórias \(x(t)\) que satisfazem \(x(t'') = x''\) e \(x(t') = x'\) e seja a ação \(\tilde{S}\) dada pelo mesmo funcional com domínio dado pelo conjunto de desvios \(\eta(t)\) que satisfazem \(\eta(t') = \eta(t'') = 0\). Para um desvio \(\eta\) e uma trajetória \(x,\) segue que \(x + \eta\) está no domínio de \(S,\) e temos
+   \begin{align*}
+      S[x(t) + \eta(t)] &= m \int_{t''}^{t'} \dli{t} \left(\frac12 \dot{x}^2 + \dot{x} \dot\eta + \dot{\eta}^2\right)\\
+                        &= S[x(t)] + \tilde{S}[\eta(t)] - m\left[x(t) \eta(t)\right]_{t''}^{t'} - m \int_{t''}^{t'} \dli{t} \ddot{x} \eta\\
+                        &= S[x(t)] + \tilde{S}[\eta(t)] - m\int_{t''}^{t'} \dli{t} \ddot{x} \eta.
+   \end{align*}
+   Tomando \(\eta\) infinitesimal, temos \(\tilde{S}[\eta(t)] \to 0\) e vemos que \(\diff.d.{S}{x} = -m\ddot{x}\). Assim, a trajetória clássica \(q(t)\) de \((t'', x'')\) até \((t', x')\) satisfaz
+   \begin{align*}
+      \diff.d.{S}{x}[x(t) = q(t)] = 0 &\implies \ddot{q}(t) = 0\\
+                                      &\implies \dot{q}(t) = v\\
+                                      &\implies q(t) = x'' + v(t - t''),
+   \end{align*}
+   onde \(v = \frac{\Delta x}{\Delta t}\). Assim, a ação para a trajetória clássica é dada por
+   \begin{align*}
+      S_{\mathrm{cl}} &= S[q(t)] = \frac12 m\int_{t''}^{t'} \dli{t} \dot{q}^2(t)\\
+                      &= \frac12 m \int_{t''}^{t'} \dli{t} v^2\\
+                      &= \frac12 m v^2 \Delta t\\
+                      &= \frac12 m \frac{\Delta x^2}{\Delta t}.
+   \end{align*}
+   Para uma trajetória arbitrária \(x(t)\) com \(x(t') = x'\) e \(x(t'') = x'',\) podemos escrever \(x(t) = q(t) + y(t),\) onde \(y(t') = y(t'') = 0,\) portanto
+   \begin{equation*}
+      S[x(t)] = S[q(t)] + \tilde{S}[y(t)] - m \int_{t''}^{t'}\dli{t} \ddot{q} y = S_{\mathrm{cl}} + \tilde{S}[y(t)],
+   \end{equation*}
+   já que a derivada funcional de \(S\) se anula para \(q\). Assim, o propagador é dado pela integral de trajetória
+   \begin{align*}
+      K(x't'; x''t'') &= \int_{(x'', t'')}^{(x', t')} \dlp{x(t)} \exp\left(\frac{i}{\hbar} S[x(t)]\right)\\
+                      &= \exp\left(\frac{i}{\hbar}S_{\mathrm{cl}}\right)\underbrace{\int_{(0,t'')}^{(0,t')} \dlp{y(t)} \exp\left(\frac{i}{\hbar} \tilde{S}[y(t)]\right)}_{F( t' - t'')},
+   \end{align*}
+   onde \(F(t' - t'')\) é o propagador de \((0,t'')\) até \((0, t'),\) que é igual ao propagador de \((0,0)\) até \((0, t' - t''),\) já que o Hamiltoniano não depende explicitamente do tempo, e é dado por
+   \begin{equation*}
+      F(\Delta t) = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{y_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{y_1} \exp\left[\frac{im}{2 \hbar \tau} \sum_{j = 0}^{\kappa - 1}(y_{j+1} - y_j)^2\right]}
+   \end{equation*}
+   pela definição de integral de trajetória.
+
+   Consideramos a matriz \(\Lambda\) quadrada \((\kappa-1) \times (\kappa-1)\) cujos elementos são dados por
+   \begin{equation*}
+      \Lambda_{ij} = -\delta^{i + 1}_{j}  + 2\delta^{i}_{j} - \delta^{i - 1}_{j}
+   \end{equation*}
+   para \(i,j \in \set{1, \dots, \kappa-1}.\) Notemos que
+   \begin{align*}
+      \sum_{j = 0}^{\kappa - 1} (y_{j + 1} - y_{j})^2 
+      &= \sum_{j = 0}^{\kappa - 1} y_{j + 1}^2 + \sum_{j = 0}^{\kappa - 1} y_j^2 - \sum_{j = 0}^{\kappa - 1} y_{j} y_{j + 1} - \sum_{j = 0}^{\kappa -1}\\
+      &= \sum_{j = 1}^{\kappa} y_j^2 + \sum_{j = 1}^{\kappa - 1} y_j^2 - \sum_{j = 1}^{\kappa - 1} y_j y_{j+1} - \sum_{j = 1}^{\kappa} y_{j-1} y_j\\
+      &= \sum_{j = 1}^{\kappa-1} y_j^2 + \sum_{j = 1}^{\kappa - 1} y_j^2 - \sum_{j = 1}^{\kappa - 1} y_j y_{j+1} - \sum_{j = 1}^{\kappa-1} y_{j-1} y_j\\
+      &= \sum_{j = 1}^{\kappa - 1} (2 y_j^2 - y_j y_{j+1} - y_{j-1} y_j)\\
+      &= \sum_{j = 1}^{\kappa - 1} y_j \sum_{i = 0}^{\kappa - 1} (2 \delta^i_j - \delta^{i-1}_{j} - y^{i + 1}_{j})y_i\\
+      &= \sum_{j = 1}^{\kappa - 1} \sum_{i = 1}^{\kappa - 1} y_j \Lambda_{ij} y_i,
+   \end{align*}
+   onde usamos que \(y_0 =  y(t'') = 0 = y(t') = y_\kappa\). Notemos que \(\Lambda\) é simétrica e real, portanto é real-diagonalizável, isto é, existe uma matriz ortogonal \(M\) e uma matriz diagonal \(\lambda = \operatorname{diag}(\set{\lambda_j})\) tais que \(\Lambda = M\lambda M^{\top}\), onde \(\lambda_k\) são os autovalores de \(\Lambda.\) Na integral de trajetória, consideramos a mudança de variável \(\eta = M^\top y,\) de forma que 
+   \begin{equation*}
+      \sum_{j = 1}^{\kappa - 1} (y_{j+1} - y_j)^2 = \inner{y}{\Lambda y} =\inner{y}{M \lambda M^\top y} = \inner{M^\top y}{\lambda \eta} = \inner{\eta}{\lambda \eta} = \sum_{j = 1}^{\kappa - 1} \lambda_j \eta_j^2
+   \end{equation*}
+   e que o determinante do jacobiano da transformação é unitário, já que \(\diffp{\eta_j}{y_k} = M_{jk}\) e \(M\) é ortogonal. Assim, obtemos
+   \begin{align*}
+      F(\Delta t) &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{\eta_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{\eta_1} \exp\left[\frac{im}{2 \hbar \tau} \sum_{j = 1}^{\kappa - 1} \lambda_j \eta_j^2\right]}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{\eta_{\kappa - 1}} \exp\left[\frac{im \lambda_{\kappa - 1} \eta_{\kappa - 1}^2}{2 \hbar \tau}\right]\dots \int_{\mathbb{R}} \dli{\eta_1} \exp\left[\frac{im \lambda_1 \eta_{1}^2}{2 \hbar \tau}\right]}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2} \prod_{j = 1}^{\kappa - 1} \int_{\mathbb{R}} \dli{\eta} \exp\left[-\frac{m \lambda_j \eta^2}{2i \hbar \tau}\right]}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2} \prod_{j = 1}^{\kappa - 1} \sqrt{\frac{2\pi i\hbar \tau}{m \lambda_j}}}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\sqrt{\frac{m}{2\pi i \hbar \tau \det \Lambda}}},
+   \end{align*}
+   pois \(\det{\Lambda} = \det{M \lambda M^\top} = \det{\lambda} = \prod_{j = 1}^{\kappa - 1}{\lambda_{j}}.\)
+
+   Mostraremos por indução em \(\kappa\) que \(\det{\Lambda} = \kappa\) para todo \(\kappa \geq 2\). Denotaremos \(\Lambda_{\kappa}\) como a matriz \(\Lambda\) para um dado \(\kappa\) para deixar claro qual a dimensão considerada. Notemos que para \(m > 2\) vale
+   \begin{align*}
+      \det \Lambda_{m + 1} &= \det \begin{pmatrix}
+         2 && -1 && 0 && \dots\\
+         -1 && 2 && -1 && \dots\\
+         0 && -1 && 2 && \dots\\
+         \vdots && \vdots && \vdots && \ddots
+      \end{pmatrix}_{m \times m}\\
+                           &= 2 \det \Lambda_m - (-1) \det \begin{pmatrix}
+                              -1 && -1 && 0 && \dots\\
+                              0 && 2 && -1 && \dots\\
+                              0 && -1 && 2 && \dots\\
+                              \vdots && \vdots && \vdots && \ddots
+                           \end{pmatrix}_{(m-1) \times (m-1)}\\
+                           &= 2\det \Lambda_m - \det \Lambda_{m -1}
+      \end{align*}
+      Para \(\kappa = 2,\) temos \(\Lambda_2 = [2]\) e para \(\kappa = 3,\) temos \(\Lambda_3 = \left(\begin{smallmatrix}
+            2 && -1\\
+            -1 && 2
+      \end{smallmatrix}\right),\) portanto \(\det{\Lambda_2} = 2\) e \(\det{\Lambda_3} = 3,\) de acordo com a expressão afirmada. Assumindo válida para todo \(3 < n < m,\) temos pela relação de recorrência que
+      \begin{equation*}
+         \det \Lambda_{m} = 2 \det{\Lambda_{m - 1}} - \det{\Lambda_{m - 2}} = 2(m - 1) - (m - 2) = m,
+      \end{equation*}
+      portanto a expressão vale para \(m.\) Pelo princípio de indução completa, concluímos que \(\det \Lambda = \kappa\) para todo \(\kappa \geq 2.\) Com isso, concluímos que
+      \begin{align*}
+         K(x't'\xi''t'') &= \exp\left(\frac{i}{\hbar} S_{\mathrm{cl}}\right)F(t'' - t') \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t'' - t}}{\sqrt{\frac{m}{2\pi i \hbar \tau \det \Lambda}}}\\
+                         &= \exp\left[\frac{i m (x' - x'')^2}{2 \hbar (t' - t'')}\right] \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t'' - t}}{\sqrt{\frac{m}{2\pi i \hbar \tau \kappa}}}\\
+                         &= \sqrt{\frac{m}{2\pi i \hbar (t' - t'')}}\exp\left[\frac{i m (x' - x'')^2}{2 \hbar (t' - t'')}\right]
+      \end{align*}
+      é a expressão para o propagador para a partícula livre.
+   \end{proof}
