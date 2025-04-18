@@ -3,5 +3,112 @@
    Usando integrais de trajetória, calcule o propagador \(\braket{x_f t_f}{x_i t_i}\) para uma partícula de massa \(m\) sujeita a um potencial harmônico unidimensional \(V(x) = \frac12 m \omega^2 x^2\), onde \(\omega\) é a frequência de oscilação.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Seja \(S\) a ação dada pelo funcional
+   \begin{equation*}
+      S[x(t)] = \frac12 m \int_{t_i}^{t_f} \dli{t} (\dot{x}^2 - \omega^2 x^2),
+   \end{equation*}
+   com domínio dado pelo conjunto de trajetórias \(x(t)\) que satisfazem \(x(t_i) = x_i\) e \(x(t_f) = x_f\), e seja \(\tilde{S}\) a ação dada pelo mesmo funcional com domínio dado pelo conjunto de trajetórias \(\eta(t)\) que satisfazem \(\eta(t_i) = \eta(t_f) = 0.\) Assim, temos
+   \begin{align*}
+      S[x(t) + \eta(t)]
+      &= \frac12 m\int_{t_i}^{t_f} \dli{t} \left[ \dot{x}^2 + 2\dot{x} \dot{\eta} + \dot{\eta}^2 - \omega^2 \left(x^2 + 2x\eta + \eta^2\right)\right]\\
+      &= S[x(t)] + \tilde{S}[\eta(t)] + \frac12 m \left[\dot{x}(t) \eta(t)\right]_{t_i}^{t_f} - m \int_{t_i}^{t_f} \dli{t} (\ddot{x} + \omega^2 x) \eta\\
+      &= S[x(t)] + \tilde{S}[\eta(t)] - m \int_{t_i}^{t_f} \dli{t} (\ddot{x} + \omega^2 x) \eta
+   \end{align*}
+   para quaisquer trajetórias \(x\) e \(\eta\) nos domínios de \(S\) e de \(\tilde{S}.\) Tomando \(\eta\) infinitesimal, vemos que \(\diff.d.{S}{x} = -m(\ddot{x} + \omega^2 x),\) portanto a trajetória clássica \(q(t)\) é dada por
+   \begin{align*}
+      \diff.d.{S}{x}[x(t) = q(t)] = 0 &\implies \ddot{q}(t) + \omega^2 q(t) = 0\\
+                                      &\implies q(t) = x_i \cos[\omega (t - t_i)] + \frac{v}{\omega} \sin[\omega (t - t_i)],
+   \end{align*}
+   onde
+   \begin{equation*}
+      \frac{v}{\omega} = \frac{x_f - x_i \cos(\omega \Delta t)}{\sin(\omega \Delta t)} = \csc(\omega \Delta t)\left[ x_f - x_i \cos(\omega \Delta t)\right],
+   \end{equation*}
+   com \(\Delta t = t_f - t_i.\) Com isso, a ação clássica é dada por
+   \begin{align*}
+      S_{\mathrm{cl}} &= S[q(t)] = \frac12 m\int_{t_i}^{t_f} \dli{t} (\dot{q}^2 - \omega^2 q^2)\\
+                      &= \frac12 m\omega^2 \int_{0}^{t_f-t_i} \dli{t} \left[\left(\frac{v}{\omega} \cos(\omega t)- x_i \sin(\omega t)\right)^2 - \left(x_i \cos(\omega t) + \frac{v}{\omega} \sin(\omega t)\right)^2\right]\\
+                      &= \frac12 m \omega^2 \int_{0}^{\Delta t} \dli{t} \left[\left(\frac{v^2}{\omega^2} - x_i^2\right) \cos(2 \omega t ) - \frac{2v x_i}{\omega} \sin(2 \omega t)\right]\\
+                      &= \frac14 m \omega \left[\left(\frac{v^2}{\omega^2} - x_i^2\right) \sin(2 \omega \Delta t) + \frac{2 v x_i}{\omega} \left(\cos(2 \omega \Delta t) - 1\right)\right]\\
+                      &= \frac12 m \omega \left[\frac{x_f^2 - 2x_i x_f \cos(\omega \Delta t) + x_i^2 \cos(2 \omega \Delta t)}{\sin(\omega \Delta t)}\cos(\omega \Delta t) - 2\left(x_i x_f - x_i^2 \cos(\omega \Delta t)\right)\sin(\omega \Delta t)\right]\\
+                      &= \frac12 m \omega \frac{x_f^2 \cos(\omega \Delta t) - 2x_i x_f \left[\cos^2(\omega \Delta t) + \sin^2(\omega \Delta t)\right] + x_i^2 \cos(\omega \Delta t) \left[\cos(2 \omega \Delta t) +2\sin^2(\omega \Delta t)\right]}{\sin(\omega \Delta t)}\\
+                      &= \frac12 m \omega \frac{(x_f^2 + x_i^2) \cos[\omega (t_f - t_i)] - 2x_i x_f}{\sin[\omega (t_f - t_i)]}
+   \end{align*}
+   e vale
+   \begin{equation*}
+      S[q(t) + \eta(t)] = S_{\mathrm{cl}} + \tilde{S}[\eta(t)]
+   \end{equation*}
+   para toda trajetória \(\eta\) no domínio de \(\tilde{S},\) já que a derivada funcional de \(S\) se anula para a trajetória clássica.
+
+   Assim, o propagador é dado por
+   \begin{align*}
+      K(x_ft_f; x_it_i) &= \int_{(x_i,t_i)}^{(x_f, t_f)} \dlp{x(t)} \exp\left(\frac{i}{\hbar}S[x(t)]\right)\\
+                        &= \exp\left(\frac{i}{\hbar} S_{\mathrm{cl}}\right)\int_{(0, t_i)}^{(0, t_f)} \dlp{\eta(t)} \exp\left(\frac{i}{\hbar} \tilde{S}[\eta(t)]\right)\\
+                        &=\exp\left(\frac{i}{\hbar} S_{\mathrm{cl}}\right) F(t_f - t_i),
+   \end{align*}
+   onde \(F(t)\) é o propagador de \((0,0)\) até \((0,t),\)
+   \begin{equation*}
+      F(t) = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{y_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{y_1} \exp\left\{\frac{i m}{ 2 \hbar \tau} \sum_{j = 0}^{\kappa - 1} \left[\left(y_{j+1} - y_j\right)^2 - 2\omega^2\tau^2 y_j^2\right]\right\}}.
+   \end{equation*}
+
+   Aproveitamos os resultados mostrados no \cref{ex:ex1} e consideramos a matriz real simétrica cujos elementos são dados por
+   \begin{equation*}
+      {\Lambda_{\kappa}}_{ij} = -\delta^{i+1}_j + (2 - 2 \omega^2 \tau^2) \delta^{i}_j - \delta^{i -1}_j,
+   \end{equation*}
+   de forma que
+   \begin{equation*}
+      \sum_{j = 0}^{\kappa - 1} \left[\left(y_{j+1} - y_j\right)^2 - \omega^2\tau^2 y_j^2\right] = \inner{y}{\Lambda_{\kappa} y}
+      \quad\text{e}\quad
+      \det{\Lambda_{\kappa + 1}} = (2 - \omega^2 \tau^2) \det{\Lambda_{\kappa}} - \det{\Lambda_{\kappa - 1}}.
+   \end{equation*}
+   Como naquele exercício, com uma mudança de variáveis, obtemos
+   \begin{equation*}
+      F(t) = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\sqrt{\frac{m}{2\pi i \hbar \tau \det \Lambda_{\kappa}}}},
+   \end{equation*}
+   portanto nos resta determinar o determinante desta forma quadrática. Notemos que podemos escrever a relação de recorrência como
+   \begin{equation*}
+      \frac{\det{\Lambda_{\kappa+1}} + \det{\Lambda_{\kappa - 1}}}{\det{\Lambda_{\kappa}}} = 2 - \omega^2 \tau^2,
+   \end{equation*}
+   portanto o lado esquerdo desta igualdade não depende de \(\kappa.\) Notemos que se \(\cos\theta = 1 - \frac12 \omega^2 \tau^2\), o ansatz \(\det{\Lambda_{\kappa}} = \alpha \cos(\kappa \theta) + \beta \sin(\kappa \theta)\) satisfaz essa restrição, pois temos
+   \begin{equation*}
+      \frac{\det{\Lambda_{\kappa+1}} + \det{\Lambda_{\kappa - 1}}}{\det{\Lambda_{\kappa}}} = \frac{2\left[\alpha \cos(\kappa \theta) \cos\theta + \beta \sin(\kappa \theta) \cos \theta\right]}{\alpha \cos(\kappa \theta) + \beta \sin (\kappa \theta)} = 2 \cos\theta = 2 - \omega^2 \tau^2.
+   \end{equation*}
+   Mostraremos que vale \(\det\Lambda_{\kappa} = \frac{\sin(\kappa \theta)}{\sin\theta}\) para todo \(\kappa \geq 2.\) Primeiro, notemos que
+   \begin{equation*}
+      \frac{\sin(2 \theta)}{\sin\theta} = 2\cos\theta = 2 - \omega^2 \tau^2 = \det[2 - \omega^2 \tau^2] = \det{\Lambda_{2}}
+   \end{equation*}
+   e
+   \begin{equation*}
+      \frac{\sin(3 \theta)}{\sin\theta} = \frac{\sin(2\theta) \cos\theta}{\sin\theta} + \frac{\cos(2\theta)\sin\theta}{\sin\theta} = 4\cos^2\theta - 1 = (2 - \omega^2 \tau^2)^2 - 1 = \det\left(\begin{smallmatrix}
+         2 - \omega^2 \tau^2 && -1\\
+         -1 && 2 - \omega^2\tau^2
+   \end{smallmatrix}\right) = \det{\Lambda_{3}},
+   \end{equation*}
+   portanto a expressão segue para \(\kappa = 2\) e \(\kappa = 3\). Supondo que a expressão é valida para todos \(3 < m < \kappa,\) temos pela relação de recorrência que
+   \begin{align*}
+      \det{\Lambda_{\kappa}} &= (2\cos\theta) \det{\Lambda_{\kappa - 1}} - \det{\Lambda}_{\kappa -2}\\
+                            &= \frac{2 \cos\theta \sin[(\kappa - 1)\theta] - \sin[(\kappa - 2)\theta]}{\sin\theta}\\
+                            &= \frac{2 \cos^2\theta \sin(\kappa \theta) - \sin(\kappa \theta) \cos(2\theta)}{\sin\theta}\\
+                            &= \frac{\sin(\kappa \theta)}{\sin\theta},
+   \end{align*}
+   isto é, também segue para \(\kappa\). Pelo princípio de indução completa, concluímos que
+   \begin{equation*}
+      \det{\Lambda_{\kappa}} = \frac{\sin(\kappa \theta)}{\sin\theta},\quad\text{com}\quad\cos\theta = 1 - \frac12 \omega^2 \tau^2
+   \end{equation*}
+   para todo \(\kappa\).
+
+   Para calcular o limite, como \(\tau \to 0\) podemos tomar
+   \begin{equation*}
+       \cos\theta = 1 - \frac12 \omega^2 \tau^2 \simeq \cos(\omega \tau),
+   \end{equation*}
+   portanto usaremos \(\theta = \omega \tau\). Assim, \(\det{\Lambda_\kappa} = \frac{\sin(\kappa \omega \tau)}{\sin(\omega \tau)}\) e então
+   \begin{equation*}
+      F(t) 
+      % = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\sqrt{\frac{m}{2\pi i \hbar \tau \det \Lambda_{\kappa}}}} 
+      = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\sqrt{\frac{m \sin(\omega \tau)}{2\pi i \hbar \tau \sin(\kappa \omega \tau)}}} = \sqrt{\frac{m \omega}{2\pi i \hbar} \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\frac{\sin(\omega \tau)}{\omega \tau} \frac{1}{\sin(\kappa \omega \tau)}}} = \sqrt{\frac{m \omega}{2 \pi i \hbar \sin(\omega t)}}.
+   \end{equation*}
+   Desse modo,
+   \begin{equation*}
+      K(x_ft_f; x_it_i) =\sqrt{\frac{m \omega}{2 \pi i \hbar \sin[\omega (t_f - t_i)]}}\exp\left[\frac{i m \omega}{2 \hbar}\left(\frac{(x_f^2 + x_i^2) \cos[\omega (t_f - t_i)] - 2x_i x_f}{\sin[\omega (t_f - t_i)]}\right)\right]
+   \end{equation*}
+   é a expressão para o propagador de \((x_i,t_i)\) até \((x_f, t_f)\).
 \end{proof}
