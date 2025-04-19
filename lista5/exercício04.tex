@@ -38,6 +38,21 @@
         \mean{\vetor{J}}_\rho &= \Tr( \rho \vetor{J})\\
                               &= \frac13 \Tr(\vetor{J} + P_i J^i \vetor{J} + w_{ij} T^{ij} \vetor{J}) = \frac13 P_i \Tr(J^i J^k) \vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k) \vetor{e}_k\\
                               &= \frac13 P_i \Tr\left(\frac12 \epsilon\indices{^{ik}_\ell}J^\ell + T^{ik} + \frac23 \delta^{ik}\right)\vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k)\vetor{e}_k\\
-                              &= \frac23 P_i \delta^{ik} \vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j} J^k) \vetor{e}_k
+                              &= \frac23 P_i \delta^{ik} \vetor{e}_k + \frac16 w_{ij} \left[\Tr(J^i J^j J^k) + \Tr(J^j J^i J^k)\right] \vetor{e}_k.
+    \end{align*}
+    Notemos que \(\Tr(J^i J^j J^k)\) é linear em relação a cada operador e que é invariante por rotações,
+    \begin{equation*}
+        \Tr(J^i J^j J^k) \to \Tr(D J^i J^j J^k \herm{D}) = \Tr(J^i J^j J^k),
+    \end{equation*}
+    portanto \(\Tr(J^i J^j J^k)\) deve ser proporcional ao tensor totalmente antissimétrico \(\epsilon^{ijk}.\) Com isso, temos
+    \begin{equation*}
+        \mean{\vetor{J}}_{\rho} = \frac23 \vetor{P} \implies P_i = \frac32 \mean{J^i}_\rho,
+    \end{equation*}
+    pois \(w_{ij} \epsilon^{ijk} \vetor{e}_k = - w_{ij} \epsilon^{jik} = 0.\) 
+
+    Temos
+    \begin{align*}
+        \mean{J^i J^j}_{\rho} &= \Tr(\rho J^i J^j)\\
+                              &= \frac13 \Tr(J^i J^j) + \frac13 P_k \Tr(J^k J^i J^j) + \frac13 w_{\ell k} \Tr(T^{\ell k} J^i J^J)
     \end{align*}
 \end{proof}
