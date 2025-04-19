@@ -10,5 +10,30 @@
     \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Como \(e^{-i \frac\theta2 \vetor{\sigma}\cdot \vetor{n}} = \cos\frac\theta2 \unity - i \sin\frac\theta2 \vetor{\sigma} \cdot \vetor{n}\) e como \(\sigma^a \sigma^b = \frac12 \anticommutator{\sigma^a}{\sigma^b} + \frac12 \commutator{\sigma^a}{\sigma^b} = \delta^{ab} \unity + i \epsilon\indices{^{ab}_c} \sigma^c,\) temos
+    \begin{align*}
+        e^{i\frac{\theta}{2} \vetor{\sigma} \cdot \vetor{n}} \vetor{\sigma} e^{-i\frac{\theta}{2} \vetor{\sigma} \cdot \vetor{n}} 
+        &= \left(\cos\frac\theta2 \unity  + i \sin\frac\theta2 \vetor{n} \cdot \vetor{\sigma}\right) \vetor{\sigma}\left(\cos\frac\theta2 \unity - i \sin\frac\theta2 \vetor{n}\cdot \vetor{\sigma}\right)\\
+        &= \left(\cos\frac\theta2 \unity + i \sin\frac\theta2 \vetor{n}\cdot\vetor{\sigma}\right)\left[\cos\frac\theta2 \vetor{\sigma} - i \sin\frac\theta2 \vetor{\sigma} (\vetor{n}\cdot\vetor{\sigma})\right]\\
+        &= \cos^2\frac\theta2 \vetor{\sigma} + \frac12 i \sin\theta \commutator{\vetor{n}\cdot\vetor{\sigma}}{\sigma^k} \vetor{e}_k + \sin^2\frac\theta2 (\vetor{n}\cdot \vetor{\sigma}) \vetor{\sigma} (\vetor{n}\cdot\vetor{\sigma})\\
+        &= \cos^2 \frac\theta2 \vetor{\sigma} - \sin\theta n_j \epsilon\indices{^{jk}_\ell} \sigma^\ell \vetor{e}_k + \sin^2\frac\theta2 n_j n_i\sigma^j \sigma^k \sigma^i \vetor{e}_k\\
+        &= \cos^2\frac\theta2 \vetor{\sigma} + \sin\theta \vetor{n}\times\vetor{\sigma} + \sin^2\frac\theta2 n_j n_i \sigma^j \left(\delta^{ki} \unity + i \epsilon\indices{^{ki}_\ell} \sigma^\ell\right)\vetor{e}_k\\
+        &= \cos^2\frac\theta2 \vetor{\sigma} + \sin\theta \vetor{n}\times\vetor{\sigma} + \sin^2\frac\theta2 n_j n_i \left[\delta^{ki} \sigma^j+ i \epsilon\indices{^{ki}_\ell} \left(\delta^{j \ell} \unity + i \epsilon\indices{^{j\ell}_m} \sigma^m\right)\right]\vetor{e}_k\\
+        &= \cos^2\frac\theta2 \vetor{\sigma} + \sin\theta \vetor{n}\times\vetor{\sigma} + \sin^2\frac\theta2 \left[\vetor{n}\cdot \vetor{\sigma} n_i \delta^{ik} + i n_j n_i \epsilon^{kij} \unity  + n_i n_j\epsilon\indices{^{ki}_\ell}\epsilon\indices{^{\ell j}_m} \sigma^m \right]\vetor{e}_k\\
+        &= \cos^2\frac\theta2 \vetor{\sigma} + \sin\theta \vetor{n} \times \vetor{\sigma} + \sin^2\frac\theta2 \left[(\vetor{n} \cdot \vetor{\sigma}) \vetor{n} + n_i n_j (\delta^{jk} \delta\indices{^i_m} - \delta\indices{^k_m} \delta^{ij})\sigma^m\vetor{e}_k\right]\\
+        &= \cos^2\frac\theta2 \vetor{\sigma} + \sin\theta \vetor{n} \times \vetor{\sigma} + \sin^2\frac\theta2 (2\vetor{n} \cdot \vetor{\sigma} \vetor{n} - \vetor{\sigma})\\
+        &= \cos\theta \vetor{\sigma} + \sin\theta \vetor{n} \times \vetor{\sigma} + (1 - \cos\theta) (\vetor{\sigma} \cdot \vetor{n})\vetor{n},
+    \end{align*}
+    como desejado.
+
+    Apesar de termos utilizado as identidades específicas de spin \(\frac12\), a expressão acima reflete a transformação de um vetor ordinário \(\vetor{\alpha} \in \mathbb{R}^3\) em três dimensões por uma rotação por um ângulo \(\theta\) em torno do eixo \(\vetor{n},\) a saber\footnote{Ver \href{https://github.com/louisradial/4300429-grupos-e-tensores/releases/tag/lista2}{Exercício 5}}
+    \begin{equation*}
+        R(\theta, \vetor{n})\vetor{\alpha} = \cos \theta \vetor{\alpha} + \sin\theta \vetor{n}\times \vetor{\alpha} + (1 - \cos\theta) (\vetor{\alpha} \cdot \vetor{n}) \vetor{n}.
+    \end{equation*}
+    Desse modo, para um operador vetorial \(\vetor{V}\), devemos ter
+    \begin{equation*}
+        e^{i \theta \vetor{J}\cdot \vetor{n}}\vetor{V} e^{-i \theta \vetor{J}\cdot \vetor{n}} = D(\theta, \vetor{n})\vetor{V}\herm{D}(\theta, \vetor{n}) = 
+        \cos\theta \vetor{V} + \sin\theta \vetor{n} \times \vetor{V} + (1 - \cos\theta) (\vetor{V} \cdot \vetor{n})\vetor{n},
+    \end{equation*}
+    em que \(\vetor{J}\) é o momento angular tal que \(\vetor{V} = \lambda \vetor{J}\), para uma constante \(\lambda.\)
 \end{proof}
