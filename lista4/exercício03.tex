@@ -1,12 +1,12 @@
 % vim: spl=pt
-\begin{exercício}{Função de green para um poço de potencial infinito unidimensional}{ex3}
+\begin{exercício}{Função de Green para um poço de potencial infinito unidimensional}{ex3}
    Considere uma partícula em uma dimensão confinada a \(x \in [a,b].\)
    \begin{enumerate}[label=(\alph*)]
        \item Construa a função de Green \(G(x,y)\).
        \item Determine o espectro de \(H\).
        \item Note que, usando
           \begin{equation*}
-             G(x,y) = \sum_{k = 1}^\infty \frac{\phi_k(x) \conj{\phi}(y)}{\omega_k - z},
+             G(x,y) = \sum_{k = 1}^\infty \frac{\phi_k(x) \conj{\phi}_k(y)}{z - \omega_k},
           \end{equation*}
           o autoestado \(\phi_k(x)\) normalizado pode ser obtido avaliando o resíduo de \(G\) no polo \(z = \omega_k\). Faça esse cálculo e verifique que seu resultado está corretamente normalizado.
        \item Mostre que
@@ -17,6 +17,94 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
-\end{proof}
+   A função de Green satisfaz a equação \((E - H)G_E(x,y) = \delta(x - y),\) isto é,
+   \begin{equation*}
+      \diffp[2]{G_E(x,y)}{x} + \frac{2m E}{\hbar^2} G_E(x,y) = \frac{2m}{\hbar^2} \delta(x - y),
+   \end{equation*}
+   com \(G_E(a,y) = G_E(b,y) = 0\). Como para \(x < y\) e para \(x > y\) o lado direito se anula, segue que
+   \begin{equation*}
+      G_{E}(x,y) = \begin{cases}
+         A(y) \cos\left(\sqrt{\frac{2mE}{\hbar^2}} (x-a)\right) + B(y)\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (x-a)\right),&\text{se }a \leq x < y \leq b\\
+         C(y) \cos\left(\sqrt{\frac{2mE}{\hbar^2}} (b-x)\right) + D(y)\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (b-x)\right),&\text{se } a \leq y < x \leq b,
+      \end{cases}
+   \end{equation*}
+   portanto das condições de contorno temos \(A(y) = 0 = C(y).\) Como \(G_E(x,y) = G_E(y,x),\) temos
+   \begin{equation*}
+      G_{E}(x,y) = \begin{cases}
+         \lambda \sin\left(\sqrt{\frac{2mE}{\hbar^2}} (b-y)\right)\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (x-a)\right),&\text{se }a \leq x < y \leq b\\
+         \lambda \sin\left(\sqrt{\frac{2mE}{\hbar^2}} (b-x)\right)\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (y-a)\right),&\text{se } a \leq y < x \leq b,
+      \end{cases}
+   \end{equation*}
+   com
+   \begin{equation*}
+      \diffp{G_{E}(x,y)}{x} = \begin{cases}
+         \lambda \sqrt{\frac{2mE}{\hbar^2}} \sin\left(\sqrt{\frac{2mE}{\hbar^2}} (b-y)\right)\cos\left(\sqrt{\frac{2mE}{\hbar^2}} (x-a)\right),&\text{se }a \leq x < y \leq b\\
+         -\lambda \sqrt{\frac{2mE}{\hbar^2}}\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (y-a)\right)\cos\left(\sqrt{\frac{2mE}{\hbar^2}} (b-x)\right),&\text{se } a \leq y < x \leq b.
+      \end{cases}
+   \end{equation*}
+   Para determinar \(\lambda,\) integramos em \(x\) a equação diferencial para \(G_E\) no intervalo \([y - \epsilon, y + \epsilon]\) e tomamos o limite \(\epsilon \to 0,\) obtendo
+   \begin{equation*}
+      \diffp{G_E(y + \epsilon, y)}{x} - \diffp{G_E(y - \epsilon, y)}{x} = \frac{2m}{\hbar^2},
+   \end{equation*}
+   isto é,
+   \begin{equation*}
+      -\lambda  \sin\left[\sqrt{\frac{2mE}{\hbar^2}} (b - a)\right] = \frac{2m}{\hbar^2} \sqrt{\frac{\hbar^2}{2m E}} \implies \lambda = -\sqrt{\frac{2m}{\hbar^2 E}} \csc\left[\sqrt{\frac{2mE}{\hbar^2}} (b - a)\right].
+   \end{equation*}
+   Com isso, a função de Green é dada por
+   \begin{equation*}
+      G_{E}(x,y) = \begin{cases}
+         - \sqrt{\frac{2m}{\hbar^2 E}}\csc\left[\sqrt{\frac{2mE}{\hbar^2}} (b - a)\right]\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (b-y)\right)\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (x-a)\right),&\text{se }a \leq x \leq y \leq b\\
+         - \sqrt{\frac{2m}{\hbar^2 E}}\csc\left[\sqrt{\frac{2mE}{\hbar^2}} (b - a)\right]\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (b-x)\right)\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (y-a)\right),&\text{se } a \leq y < x \leq b.
+      \end{cases}
+   \end{equation*}
+   O espectro do hamiltoniano é dado pelo conjunto dos polos simples da função de Green, portanto como \(\csc z\) tem polos simples em \(m \pi\) para todo \(m \in \mathbb{Z},\) temos
+   \begin{equation*}
+      \left[\sqrt{\frac{2mE_n}{\hbar^2}} (b - a)\right] = n\pi \implies E_n = \frac{n^2 \pi^2 \hbar^2}{2m(b - a)^2}
+   \end{equation*}
+   com \(n \in \mathbb{N}\). Observamos que \(E = 0\) não é um polo simples e, portanto, não pertence ao espectro do Hamiltoniano.
 
+   Considerando a expansão
+   \begin{equation*}
+      G_E(x,y) = \sum_{k = 1}^\infty \frac{\phi_k(x) \conj{\phi}_k(y)}{E - E_k},
+   \end{equation*}
+   temos
+   \begin{equation*}
+      \lim_{E \to E_n} (E - E_n) G_E(x,y) = \phi_n(x) \conj{\phi}_n(y),
+   \end{equation*}
+   portanto podemos obter as autofunções do Hamiltoniano a partir do resíduo da função de Green em seus polos simples. Notemos que 
+   \begin{align*}
+      \lim_{E \to E_n}{\frac{\sin\left[\sqrt{\frac{2mE}{\hbar^2}} (b - a)\right]}{E - E_n}} 
+      &= \lim_{E \to E_n}{\diff*{\sin\left[\sqrt{\frac{2m\xi}{\hbar^2}} (b - a)\right]}{\xi}[\xi = E]}\\
+      &= \frac{b - a}{2}\lim_{E \to E_n}{\cos\left[\sqrt{\frac{2mE}{\hbar^2}} (b - a)\right] \sqrt{\frac{2m}{\hbar^2 E}}}\\
+      &= \frac{b - a}{2}\cos\left[\sqrt{\frac{2mE_n}{\hbar^2}} (b - a)\right] \sqrt{\frac{2m}{\hbar^2 E_n}}\\
+      &= (-1)^n\frac{b - a}{2} \sqrt{\frac{2m}{\hbar^2 E_n}}
+   \end{align*}
+   para todo \(n \in \mathbb{N}.\) Para o caso \(x < y,\) temos
+   \begin{align*}
+      \lim_{E \to E_n} (E - E_n) G_E(x,y) &= -\lim_{E \to E_n}\sqrt{\frac{2m}{\hbar^2 E}}\frac{E - E_n}{\sin\left[\sqrt{\frac{2mE}{\hbar^2}} (b - a)\right]} \sin\left(\sqrt{\frac{2mE}{\hbar^2}} (b-y)\right)\sin\left(\sqrt{\frac{2mE}{\hbar^2}} (x-a)\right)\\
+                                          &= (-1)^{n+1}\frac{2}{b - a} \sin\left(\sqrt{\frac{2mE_n}{\hbar^2}} (b-y)\right)\sin\left(\sqrt{\frac{2mE_n}{\hbar^2}} (x-a)\right)\\
+                                          &= (-1)^{n+1}\frac{2}{b-a} \sin\left(\frac{n \pi (b - y)}{b - a}\right) \sin\left(\frac{n \pi (x - a)}{b - a}\right)
+   \end{align*}
+   e para o caso \(x > y,\)
+   \begin{equation*}
+      \lim_{E \to E_n} (E - E_n) G_E(x,y) = (-1)^{n+1}\frac{2}{b-a} \sin\left(\frac{n \pi (b - x)}{b - a}\right) \sin\left(\frac{n \pi (y - a)}{b - a}\right).
+   \end{equation*}
+   Com isso, temos
+   \begin{equation*}
+      \phi_n(x)\conj{\phi}_n(y) = (-1)^{n+1}\frac{2}{b - a}\begin{cases}
+         \displaystyle \sin\left(n\pi \frac{x - a}{b-a}\right)\sin\left(n\pi \frac{b - y}{b-a}\right),&\text{se }x \leq y\\
+         \displaystyle \sin\left(n\pi \frac{y - a}{b-a}\right)\sin\left(n\pi \frac{b - x}{b-a}\right),&\text{se }x > y,
+      \end{cases}
+   \end{equation*}
+   portanto para \(x = y\), obtemos
+   \begin{align*}
+      \abs*{\phi_n(x)}^2 &= (-1)^{n+1} \frac{2}{b - a} \sin\left(n\pi \frac{x - a}{b-a}\right) \sin\left(n\pi \frac{b - x}{b-a}\right)\\
+                         &= (-1)^{n+1} \frac{1}{b-a} \left[\cos\left(n\pi\frac{(b - x) - (x - a)}{b-a}\right) - \cos\left(n\pi\frac{(b - x) + (x - a)}{b - a}\right)\right]\\
+                         &= (-1)^{n+1} \frac{1}{b - a}\left[\cos\left(2n\pi \frac{x - \frac{a + b}{2}}{b-a}\right)- (-1)^{n}\right]\\
+                         &= \frac{1}{b - a} \left[(-1)^{n+1}\cos\left(2 n \pi \frac{x - \frac{a + b}{2}}{b - a}\right) + 1\right]
+   \end{align*}
+   que satisfaz a condição de normalização, já que temos
+   \begin{equation*}
+      \int_a^b \dli{x} \abs*{\phi_n(x)}^2 = 1 + \frac{(-1)^{n+1}}{b - a}\int_a^b\dli{x} \cos\left(2 n \pi \frac{x - \frac{a + b}{2}}{b - a}\right) = 1 + \frac{(-1)^{n+1}}{2 n \pi} \left[\sin(n \pi) - \sin(n \pi)\right] = 1.
+   \end{equation*}
+\end{proof}
