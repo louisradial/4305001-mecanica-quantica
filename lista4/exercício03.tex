@@ -11,7 +11,7 @@
           o autoestado \(\phi_k(x)\) normalizado pode ser obtido avaliando o resíduo de \(G\) no polo \(z = \omega_k\). Faça esse cálculo e verifique que seu resultado está corretamente normalizado.
        \item Mostre que
           \begin{equation*}
-             G(x,y) = i \sqrt{\frac{m}{2z}} e^{i \rho \abs{x - y}}
+             G(x,y) = -i \sqrt{\frac{m}{2 z}} e^{i \rho \abs{x - y}}
           \end{equation*}
           no limite \(a \to -\infty\) e \(b \to \infty\).
    \end{enumerate}
@@ -107,4 +107,28 @@
    \begin{equation*}
       \int_a^b \dli{x} \abs*{\phi_n(x)}^2 = 1 + \frac{(-1)^{n+1}}{b - a}\int_a^b\dli{x} \cos\left(2 n \pi \frac{x - \frac{a + b}{2}}{b - a}\right) = 1 + \frac{(-1)^{n+1}}{2 n \pi} \left[\sin(n \pi) - \sin(n \pi)\right] = 1.
    \end{equation*}
+
+   No limite em que \(a \to -\infty\) e \(b \to \infty\), devemos ter \(E < 0\) e então
+   \begin{equation*}
+       G_E(x, y) = \begin{cases}
+          A(y) e^{-k_E x} + B(y) e^{k_E x}, \quad\text{se }x < y\\
+          C(y) e^{-k_E x} + D(y) e^{k_E x}, \quad\text{se }x > y,
+       \end{cases}
+   \end{equation*}
+   onde \(k_E = \sqrt{\frac{2m \abs{E}}{\hbar^2}}.\) Como \(\lim_{x \to \pm\infty} G(x,y) = 0\) para todo \(y,\) temos \(A(y) = 0 = D(y).\) Como \(G_E(x,y) = G_E(y,x)\) obtemos
+   \begin{equation*}
+       G_E(x,y) = \mu\begin{cases}
+          e^{k_E(x - y)}, \quad\text{se }x < y\\
+          e^{k_E(y - x)}, \quad\text{se }x > y
+       \end{cases} \implies G_E(x,y) = \mu e^{-k_E \abs{x - y}}.
+   \end{equation*}
+   Da descontinuidade da derivada em \(x = y,\) obtemos
+   \begin{equation*}
+      \diffp{G_E(y + \epsilon, y)}{x} - \diffp{G_E(y-\epsilon, y)}{x} = \frac{2m}{\hbar^2} \implies \mu = -\frac{m}{\hbar^2k_E} = -\frac{m}{\hbar^2} \sqrt{\frac{\hbar^2}{2m \abs{E}}} = - \sqrt{\frac{m}{2\hbar^2 \abs{E}}},
+   \end{equation*}
+   isto é,
+   \begin{equation*}
+      G_E(x,y) = - i\sqrt{\frac{m}{2\hbar^2 E}} \exp\left(-i\sqrt{\frac{2m E}{\hbar^2}} \abs{x - y}\right)
+   \end{equation*}
+   é a função de Green.
 \end{proof}
