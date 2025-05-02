@@ -4,8 +4,40 @@
     \begin{equation*}
         \rho = \frac13 \left(1 + P_iJ^i  + w_{ij} T^{ij}\right),
     \end{equation*}
-    onde \(J^i\) são os operadores de momento angular e \(T^{ij} = \frac12\anticommutator{J^i}{J^j} - \frac23 \delta^{ij}\), com \(P_i\) e \(w_{ij}\) constantes reais. Encontre expressões explícitas para \(\vetor{P}\) e \(w_{ij}\). (análogas a \(\vetor{P} = \mean{\sigma}\) para \(j = \frac12\))
+    onde \(J^i\) são os operadores de momento angular e \(T^{ij} = \frac12\anticommutator{J^i}{J^j} - \frac23 \delta^{ij}\), com \(P_i\) e \(w_{ij}\) constantes reais. Encontre expressões explícitas para \(\vetor{P}\) e \(w_{ij}\). (análogas a \(\vetor{P} = \mean{\vetor{\sigma}}\) para \(j = \frac12\))
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Seja \(\mathscr{H}_1\) o espaço de Hilbert associado ao sistema de spin 1. O espaço de operadores sobre esse espaço pode ser isomorficamente identificado como \(\mathscr{H}_1 \otimes \mathscr{H}_1,\) pois um operador arbitrário neste espaço pode ser escrito como uma combinação linear de operadores dados por \(\ket{1m}\bra{1m'} \in \mathscr{H}_1 \otimes \mathscr{H}_1^\dag \cong \mathscr{H}_1 \otimes \mathscr{H}_1.\) Assim, pela decomposição \(\mathscr{H}_1 \otimes \mathscr{H}_1 = \mathscr{H}_0 \oplus \mathscr{H}_1 \oplus \mathscr{H}_2,\) concluímos que \(\set{\unity, J^i, T^{ij}}\) é uma base para \(\mathscr{H}_1 \otimes \mathscr{H}_1.\)
+
+    Um operador estatístico \(\rho\) que descreve um estado de mistura neste sistema é dado pela combinação linear
+    \begin{equation*}
+        \rho = \alpha\unity + \beta_i J^i + \gamma_{ij} T^{ij}.
+    \end{equation*}
+    Como \(T^{ij}\) tem traço nulo por construção e \(J^i\) tem traço nulo, devemos tomar \(\alpha = \frac13\) para que \(\Tr\rho = 1.\) Assim, definindo \(\beta_i = \frac13 P_i\) e \(\gamma_{ij} = \frac13 w_{ij},\) obtemos
+    \begin{equation*}
+        \rho = \frac13 \left(\unity + P_i J^i + w_{ij} T^{ij}\right).
+    \end{equation*}
+    Como \(T^{ij}\) é simétrico, podemos tomar \(w_{ij}\) como simétrico.
+    Notemos que
+    \begin{equation*}
+        J^{i} J^{j} = \frac12 \left(\anticommutator{J^i}{J^j} + \commutator{J^i}{J^j}\right) = \frac12i\epsilon\indices{^{ij}_k} J^k + T^{ij} + \frac{2}{3} \delta^{ij},
+    \end{equation*}
+    e
+    \begin{align*}
+        J^i J^j J^k &= \frac12i\epsilon\indices{^{ij}_\ell} J^\ell J^k  + T^{ij}J^k + \frac23 \delta^{ij} J^k\\
+                    &= \frac12 \epsilon\indices{^{ij}_\ell}\left(\frac12 \epsilon\indices{^{\ell k}_n} J^n + T^{\ell k} + \frac23 \delta^{\ell k}\right) + T^{ij} J^k + \frac23 \delta^{ij} J^k\\
+                    &= \frac14 \underbrace{\epsilon\indices{^{ij}_{\ell}} \epsilon\indices{^{\ell k}_n}}_{\delta^{ik} \delta\indices{^j_n} - \delta^{jk}\delta\indices{^i_n}} J^n + \frac12 \epsilon\indices{^{ij}_{\ell}} T^{\ell k} + \frac13 \epsilon\indices{^{ij}_{\ell}} \delta^{\ell k} + T^{ij} J^k + \frac23 \delta^{ij} J^k\\
+                    &= \frac14 \delta^{ik} J^j - \frac14 \delta^{jk} J^i + \frac12 \epsilon\indices{^{ij}_\ell} T^{\ell k} + \frac13 \epsilon^{ijk} + T^{ij}J^k + \frac23 \delta^{ij} J^k
+    \end{align*}
+    portanto trocando \(i \leftrightarrow j\) e somando, obtemos
+    % \begin{align*}
+    %     \anticommutator{J^i}{J^j}J^k &= \frac14 \delta^{ik} J^j + \frac14 \delta^{jk} J^i - \frac14 \delta^{jk} J^i - \frac14 \delta^{ik}J^j + \frac12 (\epsilon\indices{^{ij}_\ell} + \epsilon\indices{^{ji}_\ell}) T^{\ell k} + \frac13 \epsilon^{ijk} + \frac13 \epsilon^{jik} + (T^{ij} + T^{ji})J^k + \frac23 (\delta^{ij} + \delta^{ji}) J^k\\
+    %                                  &= 2 T^{ij} J^k + \frac43 \delta^{ij} J^k
+    % \end{align*}
+    \begin{align*}
+        \mean{\vetor{J}}_\rho &= \Tr( \rho \vetor{J})\\
+                              &= \frac13 \Tr(\vetor{J} + P_i J^i \vetor{J} + w_{ij} T^{ij} \vetor{J}) = \frac13 P_i \Tr(J^i J^k) \vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k) \vetor{e}_k\\
+                              &= \frac13 P_i \Tr\left(\frac12 \epsilon\indices{^{ik}_\ell}J^\ell + T^{ik} + \frac23 \delta^{ik}\right)\vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k)\vetor{e}_k\\
+                              &= \frac23 P_i \delta^{ik} \vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j} J^k) \vetor{e}_k
+    \end{align*}
 \end{proof}

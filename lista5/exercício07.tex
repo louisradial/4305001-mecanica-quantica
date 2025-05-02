@@ -3,5 +3,18 @@
     Considere o estado de momento angular orbital \(\ket{2 0}\). Imagine que esse estado é rodado de um ângulo \(\theta\) em torno do eixo \(y\). Encontre a probabilidade do novo estado ser encontrado com um dado valor de \(m\).
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Escrevamos \(D^2(\theta, \vetor{e}_y) \ket{20} = \exp(-i \theta J_y) \ket{20}.\) Como no \cref{ex:ex3}, temos
+    \begin{equation*}
+        \bra{m'}J_y\ket{m} = \frac{\sqrt{6 - m(m + 1)} \delta_{m', m+1} - \sqrt{6 - m(m-1)}\delta_{m', m-1}}{2i},
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        J_y \doteq \frac{1}{2i}\begin{pmatrix}
+             && 2 &&  &&  && \\
+            -2 &&  && \sqrt{6} && &&\\
+               && -\sqrt{6} &&  && \sqrt{6} &&\\
+               &&  && -\sqrt{6} && && 2\\
+               && && && -2 &&
+        \end{pmatrix}
+    \end{equation*}
 \end{proof}
