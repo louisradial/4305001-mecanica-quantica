@@ -11,11 +11,65 @@
     Mostre que
     \begin{enumerate}[label=(\alph*)]
         \item \(\commutator{J_z}{V_\mu} = \mu V_\mu\),
-        \item \(\commutator{J_z}{V_\mu} = a_{\pm}(1\mu) V_{\mu \pm 1}\), e
+        \item \(\commutator{J_\pm}{V_\mu} = a_{\pm}(1\mu) V_{\mu \pm 1}\), e
         \item \(a_{\pm}(1\mu) \bra{j' m'} V_{\mu \pm 1} \ket{j m} = a_{\mp}(j'm') \bra{j'm' \mp 1} V_\mu \ket{j m} - a_{\pm}(jm) \bra{j'm'} V_\mu \ket{j m \pm 1}\),
     \end{enumerate}
     onde \(a_{\pm}(jm)\) são os coeficientes dados por \(J_{\pm} \ket{jm} = a_{\pm}(jm) \ket{j m\pm1}.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Como \(\vetor{V}\) é um operador vetorial, temos \(\commutator{V_i}{J_j} = i \epsilon_{ijk} V_k\) na base cartesiana. Em particular, temos
+    \begin{equation*}
+        \commutator{V_x}{J_z} = -i V_y,\quad
+        \commutator{V_y}{J_z} = i V_x,\quad\text{e}\quad
+        \commutator{V_z}{J_z} = 0.
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \commutator{V_{\pm1}}{J_z} = \frac{\mp 1}{\sqrt{2}} \commutator{V_x \pm i V_y}{J_z} = \frac{\mp 1}{\sqrt{2}} \left(-iV_y \mp V_x\right) = \frac{1}{\sqrt{2}} \left(V_x \pm i V_y\right) = \mp V_{\pm 1},
+    \end{equation*}
+    concluindo que \(\commutator{J_z}{V_\mu} = \mu V_\mu.\) 
+
+    As outras relações de comutação na base cartesiana são
+    \begin{equation*}
+        \commutator{V_x}{J_x} = 0,\;\;
+        \commutator{V_x}{J_y} = i V_z,\;\;
+        \commutator{V_y}{J_x} = -i V_z,\;\;
+        \commutator{V_y}{J_y} = 0,\;\;
+        \commutator{V_z}{J_x} = i V_y,\;\;\text{e}\;\;
+        \commutator{V_z}{J_y} = -i V_x,
+    \end{equation*}
+    portanto
+    \begin{align*}
+        \commutator{J_{\pm}}{V_{-1}} &= \commutator*{J_x \pm i J_y}{\frac{V_x - i V_y}{\sqrt{2}}}&
+        \commutator{J_{\pm}}{V_0} &= -\commutator{V_z}{J_x \pm i J_y}&
+        \commutator{J_{\pm}}{V_{+1}} &= \commutator*{\frac{V_x + i V_y}{\sqrt{2}}}{J_x \pm i J_y}\\
+                                     &= -\frac{1}{\sqrt{2}} \left(\mp V_z - V_z\right)&
+                                     &= - i V_y \mp V_x&
+                                     &= \frac{1}{\sqrt{2}} \left(\mp V_z + V_z\right)\\
+                                     &= \frac{1 \pm 1}{\sqrt{2}} V_z&
+                                     &= \mp (V_x \pm i V_y)&
+                                     &= \frac{1 \mp 1}{\sqrt{2}} V_z\\
+                                     &= \frac{1 \pm 1}{2} \sqrt{2} V_0&
+                                     &= \sqrt{2} V_{\pm1}&
+                                     &= \frac{1 \mp 1}{2} \sqrt{2} V_0\\
+                                     &= a_{\pm}(1{-1}) V_{0}&
+                                     &= a_{\pm}(10) V_{\pm 1}&
+                                     &= a_{\pm}(1{+1}) V_{0}
+    \end{align*}
+    já que \(a_{\pm}(1{-1}) = \sqrt{2 + (-1\pm 1)} = \frac{1 \pm 1}{2}\sqrt{2},\) \(a_{\pm}(10) = \sqrt{2},\) e \(a_{\pm}(1{+1}) = \sqrt{2 - (1 \pm 1)} = \frac{1\mp1}{2}\sqrt{2}\). Reunimos estes resultados com a expressão \(\commutator{J_{\pm}}{V_\mu} = a_{\pm}(1\mu) V_{\mu \pm 1}.\)
+
+    Consideramos agora o elemento de matriz \(\bra{j'm'}V_\mu\ket{jm}\). Notemos que
+    \begin{equation*}
+        J_z V_\mu \ket{jm} = m V_\mu \ket{jm} + \commutator{J_z}{V_\mu} \ket{jm} = (m + \mu) V_{\mu} \ket{jm},
+    \end{equation*}
+    portanto \(V_\mu\ket{jm}\) é autovetor de \(J_z\) associado ao autovalor \(m + \mu,\) portanto os elementos de matriz \(\bra{j'm'}V_\mu\ket{jm}\) para \(m' \neq m + \mu\) são todos nulos. Ainda, temos
+    \begin{equation*}
+        J_{\pm} V_{\mu} \ket{jm} = a_{\pm}(jm) V_{\mu} \ket{j {m\pm1}} + \commutator{J_{\pm}}{V_\mu} \ket{jm} = a_{\pm}(jm) V_{\mu} \ket{j {m\pm1}} + a_{\pm}(1\mu) V_{\mu \pm 1} \ket{jm},
+    \end{equation*}
+    isto é,
+    \begin{align*}
+        a_{\pm}(1\mu) \bra{j'm'}V_{\mu \pm 1} \ket{jm} &= \bra{j'm'} \herm{J}_{\mp} V_\mu \ket{jm} - a_{\pm}(jm) \bra{j'm'}V_\mu\ket{j{m \pm 1}}\\
+                                                       &= a_{\mp}(j'm') \bra{j' {m' \mp 1}} V_{\mu} \ket{jm} - \bra{j'm'} V_{\mu} \ket{j {m\pm 1}} a_{\pm}(jm),
+    \end{align*}
+    como desejado.
 \end{proof}
