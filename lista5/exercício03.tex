@@ -7,5 +7,38 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Para spin 1, escrevemos \(\ket{+} = \ket{11},\) \(\ket{0} = \ket{10}\) e \(\ket{-} = \ket{1{-1}}\) para limpar a notação. Usando os operadores de levantamento e abaixamento \(J_{\pm} = J_x \pm i J_y\), com elemento de matriz
+    \begin{equation*}
+        \bra{m'} J_{\pm} \ket{m} = \sqrt{2 - m(m \pm 1)} \braket{m'}{m \pm 1} = \sqrt{2 - m(m\pm1)} \delta_{m', m\pm1},
+    \end{equation*}
+    temos
+    \begin{equation*}
+        \bra{m'} J_y \ket{m} =\frac{1}{2i}  \bra{m'} J_+ - J_- \ket{m'} = \frac{\sqrt{2 - m(m+1)} \delta_{m', m+1} - \sqrt{2 - m(m-1)} \delta_{m', m - 1}}{2i}.
+    \end{equation*}
+    Com isso, temos
+    \begin{equation*}
+        J_y \ket{+} = \frac{i}{\sqrt{2}}\ket{0},\quad
+        J_y\ket{0} = -\frac{i}{\sqrt{2}} \ket{+} + \frac{i}{\sqrt{2}} \ket{-},\quad
+        J_y \ket{-} = -\frac{i}{\sqrt{2}}\ket{0},
+    \end{equation*}
+    portanto a representação de \(J_y\) na base \(\set{\ket{+}, \ket{0}, \ket{-}}\) é
+    \begin{equation*}
+        J_y \doteq \frac{i}{\sqrt{2}} \begin{pmatrix}
+            0 && -1 && 0\\
+            1 && 0 && -1\\
+            0 && 1 && 0
+        \end{pmatrix}.
+    \end{equation*}
+    Pelo teorema de Cayley-Hamilton, temos \((J_y - 1)J_y(J_y + 1) = 0,\) portanto \(J_y^3 = J_y.\) Disso, segue que
+    \begin{align*}
+        \exp(-i J_y \beta) = \unity + \sum_{k = 1}^\infty \frac{(-i J_y \beta)^k}{k!} 
+        &= \unity + \sum_{k = 1}^{\infty} \frac{(-i \beta)^{2k - 1}}{(2k - 1)!}J_y + \sum_{k = 1}^{\infty} \frac{(-i \beta)^{2k}}{(2k)!} J_y^2\\
+        &= \unity - i J_y \sum_{k = 1}^\infty \frac{(-1)^{k+1} \beta^{2k - 1}}{(2k -1)!} - J_y^2\sum_{k = 1}^\infty \frac{(-1)^{k+1} \beta^{2k}}{(2k)!}\\
+        &= \unity - i J_y \sin \beta - J_y^2 (1 - \cos\beta).
+    \end{align*}
+    Notemos que para \(j > 1,\) pelo teorema de Cayley-Hamilton sabemos que \(J_y^{2j+1}\) é combinação linear de \(\set{\unity, J_y, \dots, J_y^{2j}},\) portanto a rotação em relação ao eixo \(y\) terá um termo com, pelo menos, \(J_y^3\), que não pode ser escrito como combinação linear apenas de \(\unity, J_y,\) e \(J_y^2,\) portanto a expressão acima não pode valer. Para \(j = \frac12,\) temos \(J_y^2 = \frac14 \unity,\) e o lado direito da expressão acima se torna
+    \begin{equation*}
+        \left(\frac{3}{4} + \frac14 \cos\beta\right)\unity - i J_y \sin\beta \neq \exp(-i \beta J_y) = \cos \beta \unity - i J_y \sin\beta.
+    \end{equation*}
+    Assim, o único valor não trivial de \(j\) para o qual vale a expressão dada acima é \(j = 1.\)
 \end{proof}
