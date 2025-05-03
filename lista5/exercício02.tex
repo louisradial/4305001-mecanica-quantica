@@ -9,7 +9,7 @@
 \begin{proof}[Resolução]
     A representação de uma rotação em torno de um eixo \(\vetor{n}\) por um ângulo \(\theta\) é
     \begin{equation*}
-        D(\theta, \vetor{n}) = \cos\frac\theta2 \unity - i\sin\frac\theta2 \vetor{n}\cdot \vetor{\sigma},
+        D(\theta, \vetor{n}) = \cos\left(\frac\theta2\right) \unity - i\sin\left(\frac\theta2\right) \vetor{n}\cdot \vetor{\sigma},
     \end{equation*}
     portanto \(\Tr\left[D(\theta, \vetor{n})\right] = 2 \cos\frac\theta2.\) Utilizando a rotação em termos dos ângulos de Euler, temos
     \begin{align*}
@@ -19,9 +19,9 @@
     \end{align*}
     onde usamos que as rotações em relação a um mesmo eixo formam um subgrupo abeliano e que a representação é um homomorfismo. Juntando esses resultados, temos
     \begin{align*}
-        2\cos\frac\theta2 &= \Tr\left\{\left[\cos\frac{\alpha + \gamma}{2}\unity - i \sin\frac{\alpha + \gamma}2 \sigma_z\right]\left[\cos\frac\beta2 \unity - i \sin\frac\beta2 \sigma_y\right]\right\}\\
-                          &= \Tr\left[\cos\frac{\alpha + \gamma}{2} \cos\frac\beta2 \unity\right]\\
-                          &= 2 \cos\frac{\alpha + \gamma}2 \cos\frac{\beta}{2},
+        2\cos\left(\frac\theta2\right) &= \Tr\left\{\left[\cos\left(\frac{\alpha + \gamma}{2}\right)\unity - i \sin\left(\frac{\alpha + \gamma}2\right) \sigma_z\right]\left[\cos\left(\frac\beta2\right) \unity - i \sin\left(\frac\beta2\right) \sigma_y\right]\right\}\\
+                          &= \Tr\left[\cos\left(\frac{\alpha + \gamma}{2}\right) \cos\left(\frac\beta2\right) \unity\right]\\
+                          &= 2 \cos\left(\frac{\alpha + \gamma}2\right) \cos\left(\frac{\beta}{2}\right),
     \end{align*}
-    isto é, \(\theta = 2\arccos\left[\cos\frac{\alpha + \gamma}2 \cos\frac{\beta}{2}\right]\)
+    isto é, \(\theta = 2\arccos\left[\cos\left(\frac{\alpha + \gamma}2\right)\cos\left(\frac{\beta}{2}\right)\right]\)
 \end{proof}
