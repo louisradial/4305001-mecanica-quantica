@@ -1,10 +1,39 @@
 % vim: spl=pt
-\begin{exercício}{Elemento de matriz do momento angular orbital}{ex1}
+\begin{exercício}{Elemento de matriz da componente do momento angular orbital}{ex1}
     Demonstre que
     \begin{equation*}
         \bra{\theta \phi} L_z \ket{\ell m} = \frac{\hbar}{i} \diffp*{\braket{\theta \phi}{\ell m}}{\phi}
     \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Escrevamos \(L_z = xp_y - y p_x,\) então
+    \begin{equation*}
+        \bra{\vetor{r}}L_z\ket{\psi} = \bra{\vetor{r}} x p_y - y p_x \ket{\psi} = \frac{\hbar}{i}\left(x\diffp{}{y} - y \diffp{}{x}\right) \braket{\vetor{r}}{\psi},
+    \end{equation*}
+    onde \(\vetor{r} = x \vetor{e}_x + y \vetor{e}_y + z\vetor{e}_z.\) Em coordenadas esféricas, \(r = \sqrt{x^2 + y^2 + z^2},\) \(\cos\theta = \frac{z}{r}\) e \(\tan\phi = \frac{y}{x}\), temos
+    \begin{align*}
+        \diffp{}{x} &= \diffp{r}{x}\diffp{}{r} + \diffp{\theta}{x}\diffp{}{\theta} + \diffp{\phi}{x}\diffp{}{\phi}&
+        \diffp{}{y} &= \diffp{r}{y}\diffp{}{r} + \diffp{\theta}{y}\diffp{}{\theta} + \diffp{\phi}{y}\diffp{}{\phi}\\
+                    &= \frac{x}{r} \diffp{}{r} + \frac{zx}{r^3}\frac{1}{\sin\theta}\diffp{}{\theta} - \frac{y}{x^2}\cos^2\phi\diffp{}{\phi}&
+                    &= \frac{y}{r} \diffp{}{r} + \frac{zy}{r^3}\frac{1}{\sin\theta}\diffp{}{\theta} + \frac{1}{x} \cos^2\phi \diffp{}{\phi}
+    \end{align*}
+    logo
+    \begin{align*}
+        x \diffp{}{y} - y \diffp{}{x} &= \left(\frac{xy}{r} - \frac{yx}{r}\right)\diffp{}{r} + \left(\frac{xzy}{r^3} - \frac{yzx}{r^3}\right)\frac{1}{\sin\theta}\diffp{}{\theta} + \left(1 + \frac{y^2}{x^2}\right)\cos^2\phi\diffp{}{\phi}\\
+                                      &= \left(1 + \tan^2\phi\right)\cos^2\phi \diffp{}{\phi}\\
+                                      &= \diffp{}{\phi}.
+    \end{align*}
+    Com isso, temos
+    \begin{equation*}
+        \bra{\vetor{r}}L_z\ket{\psi} = \frac{\hbar}{i}\diffp{}{\phi}\braket{\vetor{r}}{\psi},
+    \end{equation*}
+    portanto podemos omitir a parte radial,
+    \begin{equation*}
+        \bra{\theta\phi}L_z \ket{\psi} = \frac{\hbar}{i} \diffp{}{\phi} \braket{\theta \phi}{\psi}.
+    \end{equation*}
+    Em particular, temos
+    \begin{equation*}
+        \bra{\theta\phi}L_z \ket{\ell m} = \frac{\hbar}{i} \diffp{}{\phi} \braket{\theta\phi}{\ell m}
+    \end{equation*}
+    para os autovetores do momento angular orbital.
 \end{proof}
