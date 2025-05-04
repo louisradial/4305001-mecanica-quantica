@@ -29,7 +29,13 @@
     \begin{equation*}
         \rho = \frac13 \left(\unity + P_i J^i + w_{ij} T^{ij}\right).
     \end{equation*}
-    Como \(T^{ij}\) é simétrico, podemos tomar \(w_{ij}\) como simétrico. Notemos que
+    Como \(T^{ij}\) é simétrico e de traço nulo, podemos tomar \(w_{ij}\) como simétrico e de traço nulo. De fato, expandimos \(w_{ij}\) em sua parte de traço, \(\frac13 w\indices{^\ell_{\ell}}\delta_{ij},\) sua parte antissimétrica, \(w_{[ij]},\) e sua parte simétrica, \(w_{(ij)}\), então
+    \begin{equation*}
+        w_{ij} T^{ij} = \left(\frac13 w\indices{^\ell_{\ell}} \delta_{ij} + w_{[ij]}+ w_{(ij)}\right)T^{ij} = \frac13 w\indices{^\ell_\ell} T^i_i w_{[ij]} T^{(ij)} + w_{(ij)}T^{(ij)} = w_{(ij)} T^{ij},
+    \end{equation*}
+    isto é, apenas a parte simétrica de \(w_{ij}\) contribui para o operador estatístico.
+
+    Notemos que
     \begin{align*}
         \mean{\vetor{J}}_\rho &= \Tr( \rho \vetor{J})\\
                               &= \frac13 \Tr(\vetor{J} + P_i J^i \vetor{J} + w_{ij} T^{ij} \vetor{J}) = \frac13 P_i \Tr(J^i J^k) \vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k) \vetor{e}_k\\
@@ -73,6 +79,7 @@
         \mean{T^{ij}}_{\rho} &= \frac{i}{3} P_k \left[\epsilon^{kij} + \epsilon^{kji}\right] + \frac1{12} w_{\ell k} \left[\Tr(J^\ell J^k J^i J^j) + \Tr(J^\ell J^k J^j J^i) + \Tr(J^k J^\ell J^i J^j) + \Tr(J^k J^\ell J^j J^i)\right]\\
                              &= \frac{1}{12} w_{\ell k} \left[4\delta^{\ell k} \delta^{ij} + 2\delta^{\ell i} \delta^{kj} + 2\delta^{\ell j} \delta^{ki}\right]\\
                              &= \frac13 w\indices{^\ell_\ell}\delta^{ij} + \frac16 w^{ij} + \frac16 w^{ji}\\
-                             &= \frac13 w\indices{^\ell_\ell}\delta^{ij} + \frac13 w^{ij}
+                             &= \frac13 w^{ij},
     \end{align*}
+    isto é, \(w^{ij} = 3\mean{T^{ij}}_{\rho},\) já que \(w\indices{^\ell_\ell} = 0,\) como discutido.
 \end{proof}
