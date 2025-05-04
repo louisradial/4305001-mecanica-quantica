@@ -9,6 +9,18 @@
 \begin{proof}[Resolução]
     Seja \(\mathscr{H}_1\) o espaço de Hilbert associado ao sistema de spin 1. O espaço de operadores sobre esse espaço pode ser isomorficamente identificado como \(\mathscr{H}_1 \otimes \mathscr{H}_1,\) pois um operador arbitrário neste espaço pode ser escrito como uma combinação linear de operadores dados por \(\ket{1m}\bra{1m'} \in \mathscr{H}_1 \otimes \mathscr{H}_1^\dag \cong \mathscr{H}_1 \otimes \mathscr{H}_1.\) Assim, pela decomposição \(\mathscr{H}_1 \otimes \mathscr{H}_1 = \mathscr{H}_0 \oplus \mathscr{H}_1 \oplus \mathscr{H}_2,\) concluímos que \(\set{\unity, J^i, T^{ij}}\) é uma base para \(\mathscr{H}_1 \otimes \mathscr{H}_1.\)
 
+    % Notemos que
+    % \begin{equation*}
+    %     J^{i} J^{j} = \frac12 \left(\anticommutator{J^i}{J^j} + \commutator{J^i}{J^j}\right) = \frac12i\epsilon\indices{^{ij}_k} J^k + T^{ij} + \frac{2}{3} \delta^{ij},
+    % \end{equation*}
+    % e
+    % \begin{align*}
+    %     J^i J^j J^k &= \frac12i\epsilon\indices{^{ij}_\ell} J^\ell J^k  + T^{ij}J^k + \frac23 \delta^{ij} J^k\\
+    %                 &= \frac12 \epsilon\indices{^{ij}_\ell}\left(\frac12 \epsilon\indices{^{\ell k}_n} J^n + T^{\ell k} + \frac23 \delta^{\ell k}\right) + T^{ij} J^k + \frac23 \delta^{ij} J^k\\
+    %                 &= \frac14 \underbrace{\epsilon\indices{^{ij}_{\ell}} \epsilon\indices{^{\ell k}_n}}_{\delta^{ik} \delta\indices{^j_n} - \delta^{jk}\delta\indices{^i_n}} J^n + \frac12 \epsilon\indices{^{ij}_{\ell}} T^{\ell k} + \frac13 \epsilon\indices{^{ij}_{\ell}} \delta^{\ell k} + T^{ij} J^k + \frac23 \delta^{ij} J^k\\
+    %                 &= \frac14 \delta^{ik} J^j - \frac14 \delta^{jk} J^i + \frac12 \epsilon\indices{^{ij}_\ell} T^{\ell k} + \frac13 \epsilon^{ijk} + T^{ij}J^k + \frac23 \delta^{ij} J^k.
+    % \end{align*}
+
     Um operador estatístico \(\rho\) que descreve um estado de mistura neste sistema é dado pela combinação linear
     \begin{equation*}
         \rho = \alpha\unity + \beta_i J^i + \gamma_{ij} T^{ij}.
@@ -17,42 +29,50 @@
     \begin{equation*}
         \rho = \frac13 \left(\unity + P_i J^i + w_{ij} T^{ij}\right).
     \end{equation*}
-    Como \(T^{ij}\) é simétrico, podemos tomar \(w_{ij}\) como simétrico.
-    Notemos que
-    \begin{equation*}
-        J^{i} J^{j} = \frac12 \left(\anticommutator{J^i}{J^j} + \commutator{J^i}{J^j}\right) = \frac12i\epsilon\indices{^{ij}_k} J^k + T^{ij} + \frac{2}{3} \delta^{ij},
-    \end{equation*}
-    e
-    \begin{align*}
-        J^i J^j J^k &= \frac12i\epsilon\indices{^{ij}_\ell} J^\ell J^k  + T^{ij}J^k + \frac23 \delta^{ij} J^k\\
-                    &= \frac12 \epsilon\indices{^{ij}_\ell}\left(\frac12 \epsilon\indices{^{\ell k}_n} J^n + T^{\ell k} + \frac23 \delta^{\ell k}\right) + T^{ij} J^k + \frac23 \delta^{ij} J^k\\
-                    &= \frac14 \underbrace{\epsilon\indices{^{ij}_{\ell}} \epsilon\indices{^{\ell k}_n}}_{\delta^{ik} \delta\indices{^j_n} - \delta^{jk}\delta\indices{^i_n}} J^n + \frac12 \epsilon\indices{^{ij}_{\ell}} T^{\ell k} + \frac13 \epsilon\indices{^{ij}_{\ell}} \delta^{\ell k} + T^{ij} J^k + \frac23 \delta^{ij} J^k\\
-                    &= \frac14 \delta^{ik} J^j - \frac14 \delta^{jk} J^i + \frac12 \epsilon\indices{^{ij}_\ell} T^{\ell k} + \frac13 \epsilon^{ijk} + T^{ij}J^k + \frac23 \delta^{ij} J^k
-    \end{align*}
-    portanto trocando \(i \leftrightarrow j\) e somando, obtemos
-    % \begin{align*}
-    %     \anticommutator{J^i}{J^j}J^k &= \frac14 \delta^{ik} J^j + \frac14 \delta^{jk} J^i - \frac14 \delta^{jk} J^i - \frac14 \delta^{ik}J^j + \frac12 (\epsilon\indices{^{ij}_\ell} + \epsilon\indices{^{ji}_\ell}) T^{\ell k} + \frac13 \epsilon^{ijk} + \frac13 \epsilon^{jik} + (T^{ij} + T^{ji})J^k + \frac23 (\delta^{ij} + \delta^{ji}) J^k\\
-    %                                  &= 2 T^{ij} J^k + \frac43 \delta^{ij} J^k
-    % \end{align*}
+    Como \(T^{ij}\) é simétrico, podemos tomar \(w_{ij}\) como simétrico. Notemos que
     \begin{align*}
         \mean{\vetor{J}}_\rho &= \Tr( \rho \vetor{J})\\
                               &= \frac13 \Tr(\vetor{J} + P_i J^i \vetor{J} + w_{ij} T^{ij} \vetor{J}) = \frac13 P_i \Tr(J^i J^k) \vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k) \vetor{e}_k\\
-                              &= \frac13 P_i \Tr\left(\frac12 \epsilon\indices{^{ik}_\ell}J^\ell + T^{ik} + \frac23 \delta^{ik}\right)\vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k)\vetor{e}_k\\
-                              &= \frac23 P_i \delta^{ik} \vetor{e}_k + \frac16 w_{ij} \left[\Tr(J^i J^j J^k) + \Tr(J^j J^i J^k)\right] \vetor{e}_k.
+                              &= \frac13 P_i \Tr\left(\frac12i\epsilon\indices{^{ik}_\ell}J^\ell + T^{ik} + \frac23 \delta^{ik}\right)\vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k)\vetor{e}_k\\
+                              &= \frac23 P_i \delta^{ik} \vetor{e}_k + \frac16 w_{ij} \left[\Tr(J^i J^j J^k) + \Tr(J^j J^i J^k)\right] \vetor{e}_k
     \end{align*}
-    Notemos que \(\Tr(J^i J^j J^k)\) é linear em relação a cada operador e que é invariante por rotações,
+    e que
+    \begin{align*}
+        \mean{T^{ij}}_{\rho} &= \Tr(\rho T^{ij})\\
+                             &= \frac13 \Tr(T^{ij}) + \frac13 P_k \Tr(J^k T^{ij}) + \frac13 w_{\ell k} \Tr(T^{\ell k} T^{ij})\\
+                             &= \frac13 P_k \left[\frac12 \Tr(J^k \anticommutator{J^i}{J^j}) - \frac23 \delta^{ij} \Tr(J^k)\right] + \frac13 w_{\ell k} \left[\frac12\Tr(T^{\ell k} \anticommutator{J^i}{J^j}) - \frac23 \delta^{ij} \Tr(T^{\ell k})\right]\\
+                             &= \frac16 P_k \left[\Tr(J^k J^i J^j) + \Tr(J^k J^j J^i)\right] + \frac1{12} w_{\ell k} \Tr(\anticommutator{J^\ell}{J^k} \anticommutator{J^i}{J^j})
+    \end{align*}
+    Notemos que \(\Tr(J^i J^j J^k)\) e \(\Tr(J^i J^j J^k J^\ell)\) são lineares em relação a cada operador e que são invariantes por rotações,
     \begin{equation*}
-        \Tr(J^i J^j J^k) \to \Tr(D J^i J^j J^k \herm{D}) = \Tr(J^i J^j J^k),
+        \Tr(J^i J^j J^k) \to \Tr(\herm{D} J^i J^j J^k D) = \Tr(J^i J^j J^k)\quad\text{e}\quad
+        \Tr(J^i J^j J^k J^\ell) \to \Tr(\herm{D} J^i J^j J^k J^\ell D) = \Tr(J^i J^j J^k J^\ell)
     \end{equation*}
-    portanto \(\Tr(J^i J^j J^k)\) deve ser proporcional ao tensor totalmente antissimétrico \(\epsilon^{ijk}.\) Com isso, temos
+    portanto \(\Tr(J^i J^j J^k)\) deve ser proporcional ao tensor totalmente antissimétrico \(\epsilon^{ijk}\) e \(\Tr(J^i J^j J^k J^\ell)\) deve ser uma combinação linear dos produtos \(\delta^{ij} \delta^{k \ell},\) \(\delta^{i k} \delta^{\ell j}\) e \(\delta^{i \ell} \delta^{jk}\), isto é,
+    \begin{equation*}
+        \Tr(J^i J^j J^k) = \kappa \epsilon^{ijk}
+        \quad\text{e}\quad
+        \Tr(J^i J^j J^k J^\ell) = \lambda \delta^{ij} \delta^{k\ell} + \mu \delta^{i k} \delta^{j \ell} + \nu \delta^{i \ell} \delta^{jk},
+    \end{equation*}
+    com \(\kappa, \lambda, \mu \nu \in \mathbb{C}\). Com um cálculo explícito, vemos que 
+    \begin{equation*}
+        \Tr(J^1 J^2 J^3) = i,\quad\Tr(J^1 J^2 J^1 J^2) = 0,\quad \Tr(J^1 J^1 J^2 J^2) = 1\quad\text{e}\quad\Tr(J^1 J^2 J^2 J^1) = 1, 
+    \end{equation*}
+    portanto 
+    \begin{equation*}
+        \Tr(J^i J^j J^k) = i \epsilon^{ijk}
+        \quad\text{e}\quad
+        \Tr(J^i J^j J^k J^\ell) = \delta^{ij} \delta^{k \ell} + \delta^{ik} \delta^{j \ell}.
+    \end{equation*}
+    Com esses resultados, obtemos
     \begin{equation*}
         \mean{\vetor{J}}_{\rho} = \frac23 \vetor{P} \implies P_i = \frac32 \mean{J^i}_\rho,
     \end{equation*}
-    pois \(w_{ij} \epsilon^{ijk} \vetor{e}_k = - w_{ij} \epsilon^{jik} = 0.\) 
-
-    Temos
+    pois \(w_{ij} \epsilon^{ijk} \vetor{e}_k = - w_{ij} \epsilon^{jik} = 0\) e
     \begin{align*}
-        \mean{J^i J^j}_{\rho} &= \Tr(\rho J^i J^j)\\
-                              &= \frac13 \Tr(J^i J^j) + \frac13 P_k \Tr(J^k J^i J^j) + \frac13 w_{\ell k} \Tr(T^{\ell k} J^i J^J)
+        \mean{T^{ij}}_{\rho} &= \frac{i}{3} P_k \left[\epsilon^{kij} + \epsilon^{kji}\right] + \frac1{12} w_{\ell k} \left[\Tr(J^\ell J^k J^i J^j) + \Tr(J^\ell J^k J^j J^i) + \Tr(J^k J^\ell J^i J^j) + \Tr(J^k J^\ell J^j J^i)\right]\\
+                             &= \frac{1}{12} w_{\ell k} \left[4\delta^{\ell k} \delta^{ij} + 2\delta^{\ell i} \delta^{kj} + 2\delta^{\ell j} \delta^{ki}\right]\\
+                             &= \frac13 w\indices{^\ell_\ell}\delta^{ij} + \frac16 w^{ij} + \frac16 w^{ji}\\
+                             &= \frac13 w\indices{^\ell_\ell}\delta^{ij} + \frac13 w^{ij}
     \end{align*}
 \end{proof}
