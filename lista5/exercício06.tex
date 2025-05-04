@@ -7,5 +7,92 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Podemos construir o momento angular total \(\vetor{J}\) como a adição dos momentos angulares \(\vetor{J}_{12} = \vetor{J}_1 + \vetor{J}_2\) e \(\vetor{J}_3.\) Com isso, podemos utilizar a adição de dois momentos angulares, obtendo
+    \begin{align*}
+        \vetor{1} \otimes \vetor{1} \otimes \vetor{1} &= (\vetor{0} \oplus \vetor{1} \oplus \vetor{2}) \otimes \vetor{1}\\
+                                                      &= (\vetor{0} \otimes \vetor{1}) \oplus (\vetor{1} \otimes \vetor{1}) \oplus (\vetor{2} \otimes \vetor{1})\\
+                                                      &= \vetor{1} \oplus (\vetor{0} \oplus \vetor{1} \oplus \vetor{2}) \oplus (\vetor{1} \oplus \vetor{2} \oplus \vetor{3}),
+    \end{align*}
+    portanto \(j \in \set{0,1,2,3}.\) Há apenas um estado com \(j = 0,\) enquanto que para \(j = 1\) há nove, já que há três resultados de adição com \(j = 1,\) cada um com três estados linearmente independentes. De forma análoga, há dez estados com \(j = 2\) e sete com \(j = 3.\)
+
+    Ainda, vemos que o estado \(j = 0\) é o resultado de spin 0 da adição de momento angular \(j_{12} = 1\) com \(\vetor{J}_3,\) portanto escrevemos
+    \begin{equation*}
+        \ket{00} = \alpha \ket{10}_{12} \ket{10}_{3} + \beta \ket{11}_{12} \ket{1{-1}}_3 + \gamma \ket{1{-1}}_{12} \ket{11}_3
+    \end{equation*}
+    para constantes \(\alpha, \beta, \gamma \in \mathbb{C}\) a serem determinadas. Devemos ter \(J_- \ket{00} = 0 = J_+ \ket{00},\) com os operadores de levantamento e abaixamento dados por \(J_\pm = {J_{12}}_{\pm} + {J_3}_{\pm},\) logo de
+    \begin{align*}
+        J_- \ket{00} &= a_-(10)\alpha \left[\ket{1{-1}}_{12} \ket{10}_3 + \ket{10}_{12} \ket{1{-1}}_3\right] + a_-(11)\beta \ket{10}_{12} \ket{1{-1}}_3 + \gamma a_-(11)\ket{1{-1}}_{12} \ket{10}_3\\
+                     &= \sqrt{2}\alpha \left[\ket{1{-1}}_{12} \ket{10}_3 + \ket{10}_{12} \ket{1{-1}}_3\right] + \sqrt{2}\beta \ket{10}_{12} \ket{1{-1}}_3 + \gamma \sqrt{2}\ket{1{-1}}_{12} \ket{10}_3\\
+                     &= \sqrt{2}(\alpha + \gamma) \ket{1{-1}}_{12}\ket{10}_3 + \sqrt{2} (\alpha + \beta) \ket{10}_{12} \ket{1{-1}}_3
+    \end{align*}
+    sabemos que \(\beta = \gamma = -\alpha.\) Impondo a condição de normalização, obtemos
+    \begin{equation*}
+        \ket{00} = \frac{1}{\sqrt{3}} \left(\ket{1{-1}}_{12} \ket{11}_3 - \ket{10}_{12} \ket{10}_3 + \ket{11}_{12} \ket{1{-1}}_3\right)
+    \end{equation*}
+    a menos de uma fase global. Nos resta determinar os estados com \(j_{12} = 1\) em termos dos autoestados de \(\vetor{J}_1\) e \(\vetor{J}_2.\) Notemos que \(\ket{22}_{12} = \ket{11}_1 \ket{11}_2,\) portanto 
+    \begin{equation*}
+        \ket{21}_{12} = \frac1{a_-(22)} {J_{12}}_-\ket{22}_{12} = \frac12 \left({J_1}_-\ket{11}_1 \ket{11}_2 + \ket{11}_1 {J_2}_-\ket{11}_2\right) = \frac{1}{\sqrt{2}} \left[\ket{10}_1\ket{11}_2 + \ket{11}_1 \ket{10}_2\right].
+    \end{equation*}
+    Como \(\ket{11}_{12}\) deve ser ortogonal a \(\ket{21}_{12},\) temos
+    \begin{equation*}
+        \ket{11}_{12} = \frac1{\sqrt{2}}\left[\ket{10}_1\ket{11}_2 - \ket{11}_1 \ket{10}_2\right].
+    \end{equation*}
+    Aplicando os operadores de abaixamento, temos
+    \begin{align*}
+        \ket{10}_{12} &= \frac{1}{a_{-}(11)}{J_{12}}_-\ket{11}_{12}\\
+                      &= \frac{1}{2} \left[{J_1}_- \ket{10}_1 \ket{11}_2 + \ket{10}_1 {J_2}_- \ket{11}_2 - {J_1}_-\ket{11}_1 \ket{10}_2 - \ket{11}_1 {J_2}_-\ket{10}_2\right]\\
+                      &= \frac{1}{\sqrt{2}}\left[\ket{1{-1}}_1 \ket{11}_2 - \ket{11}_1 \ket{1{-1}}_2\right]
+    \end{align*}
+    e
+    \begin{align*}
+        \ket{1{-1}}_{12}&= \frac{1}{a_-(10)}{J_{12}}_- \ket{10}_{12}\\
+                        &= \frac{1}{\sqrt{2}} \left[\ket{1{-1}}_1 \ket{10}_2 - \ket{10}_2 \ket{1{-1}}_2\right].
+    \end{align*}
+    Com isso, o estado de \(j = 0\) é dado por
+    \begin{equation*}
+        \ket{00} = \frac{1}{\sqrt{6}}\left[\ket{-}_1\ket{0}_2\ket{+}_3 - \ket{0}_1 \ket{-}_2 \ket{+}_3 - \ket{-}_1\ket{+}_2\ket{0}_3 + \ket{+}_1\ket{-}_2\ket{0}_3 + \ket{0}_1\ket{+}_2\ket{-}_3 - \ket{+}_1\ket{0}_2\ket{-}_3\right],
+    \end{equation*}
+    onde omitimos \(j_i = 1\) da notação. Notemos que todo escalar formado por três vetores deve ser proporcional ao símbolo de Levi-Civita \(\epsilon_{ijk}\) e que podemos redefinir este objeto de tal sorte que
+    \begin{equation*}
+        \tilde{\epsilon}_{ijk} = \begin{cases}
+            +1,&\text{se }(ijk) \text{ é permutação cíclica de (-1,0,1)}\\
+            -1,&\text{se }(ikj) \text{ é permutação cíclica de (-1,0,1)}\\
+            0,&\text{caso contrário}
+        \end{cases}
+    \end{equation*}
+    para \(i,j,k \in \set{-1,0,1},\) obtendo
+    \begin{equation*}
+        \ket{00} = \frac1{\sqrt{6}} \sum_{i = -1}^{1}\sum_{j = -1}^{1}\sum_{k = -1}^{1}\tilde{\epsilon}_{ijk} \ket{i}_{1}\ket{j}_2\ket{k}_3
+    \end{equation*}
+    para o estado de \(j = 0.\)
 \end{proof}
+% Notemos que \(\vetor{J}\) é momento angular pois\footnote{Por simplicidade, suprimimos a notação com produto tensorial com a identidade, isto é, em vez de denotar o momento angular \(\vetor{J} = ({J_1}^i \otimes \unity \otimes \unity + \unity \otimes {J_2}^i \otimes \unity + \unity \otimes \unity \otimes {J_3}^i) \vetor{e}_i,\) escreveremos \(\vetor{J} = ({J_1}^i + {J_2}^i + {J_3}^i) \vetor{e}_i,\) e trabalharemos com \(\vetor{J}_1,\) \(\vetor{J}_2,\) e \(\vetor{J}_3\) como se fossem operadores compatíveis no lugar de relações de comutação como \(\commutator{A \otimes \unity}{\unity \otimes B} = 0\). Ainda, denotamos \(\vetor{J}_1 \cdot \vetor{J}_2 = \delta_{ij} {J_1}^i \otimes {J_2}^j \otimes \unity\) e analogamente para os demais produtos.}
+% \begin{equation*}
+%     \commutator*{J^i}{J^j} = \commutator*{{J_1}^i + {J_2}^i + {J_3}^i}{J^j} = \commutator*{{J_1}^i}{{J_1}^j} + \commutator*{{J_2}^i}{{J_2}^j} + \commutator*{{J_3}^i}{{J_3}^j} = i \epsilon\indices{^{ij}_k} \left({J_1}^k + {J_2}^k + {J_3}^k\right) = i \epsilon\indices{^{ij}_k} J^k.
+% \end{equation*}
+% Notemos que \(J^n\) é compatível com \(\vetor{J}^2,\) já que
+% \begin{align*}
+%     \commutator*{J^n}{\vetor{J}^2} &= \commutator*{J^n}{{\vetor{J}_1}^2 + {\vetor{J}_2}^2 + {\vetor{J}_3}^2 + 2 \vetor{J}_1 \cdot \vetor{J}_2 + 2 \vetor{J}_2 \cdot \vetor{J}_3 + 2 \vetor{J}_1 \cdot \vetor{J}_3}\\
+%                                   &= 2 \commutator*{J^n}{\vetor{J}_1 \cdot \vetor{J}_2} + 2 \commutator*{J^n}{\vetor{J}_2 \cdot \vetor{J}_3} + 2 \commutator*{J^n}{\vetor{J}_1 \cdot \vetor{J}_3}\\
+%                                   &= 2 \delta_{ij} \left(
+%                                       \commutator*{{J_1}^n}{{J_1}^i}  {J_2}^j + {J_1}^i  \commutator{{J_2}^n}{{J_2}^j} + 
+%                                       \commutator*{{J_2}^n}{{J_2}^i}  {J_3}^j + {J_2}^i  \commutator{{J_3}^n}{{J_3}^j} + 
+%                                       \commutator*{{J_1}^n}{{J_1}^i}  {J_3}^j + {J_1}^i  \commutator{{J_3}^n}{{J_3}^j} 
+%                                   \right)\\
+%                                   &= 2i \delta_{ij} \left(
+%                                       \epsilon\indices{^{ni}_k}{J_1}^k {J_2}^j + \epsilon\indices{^{nj}_k}{J_1}^i{J_2}^k +
+%                                       \epsilon\indices{^{ni}_k} {J_2}^k {J_3}^j + \epsilon\indices{^{nj}_k} {J_2}^i {J_3}^k + 
+%                                       \epsilon\indices{^{ni}_k} {J_1}^k {J_3}^j + \epsilon\indices{^{nj}_k} {J_1}^i {J_3}^k
+%                                       \right)\\
+%                                   &= 2i \left(
+%                                       \epsilon\indices{^n_{jk}} {J_1}^k {J_2}^j + \epsilon\indices{^n_{ik}} {J_1}^i {J_2}^k+
+%                                       \epsilon\indices{^n_{jk}} {J_2}^k {J_3}^j + \epsilon\indices{^n_{ik}} {J_2}^i {J_3}^k+
+%                                       \epsilon\indices{^n_{jk}} {J_1}^k {J_3}^j + \epsilon\indices{^n_{ik}} {J_1}^i {J_3}^k
+%                                   \right)\\
+%                                   &= 2i \left(
+%                                       \epsilon\indices{^n_{jk}} {J_1}^k {J_2}^j + \epsilon\indices{^n_{kj}} {J_1}^k {J_2}^j+
+%                                       \epsilon\indices{^n_{jk}} {J_2}^k {J_3}^j + \epsilon\indices{^n_{kj}} {J_2}^k {J_3}^j+
+%                                       \epsilon\indices{^n_{jk}} {J_1}^k {J_3}^j + \epsilon\indices{^n_{kj}} {J_1}^k {J_3}^j
+%                                   \right)\\
+%                                   &= 0
+% \end{align*}
