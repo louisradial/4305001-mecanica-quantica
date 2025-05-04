@@ -1,20 +1,65 @@
 % vim: spl=pt
-\begin{exercício}{}{ex7}
+\begin{exercício}{Probabilidade de medir componentes de momento angular após rotação}{ex7}
     Considere o estado de momento angular orbital \(\ket{2 0}\). Imagine que esse estado é rodado de um ângulo \(\theta\) em torno do eixo \(y\). Encontre a probabilidade do novo estado ser encontrado com um dado valor de \(m\).
 \end{exercício}
 \begin{proof}[Resolução]
-    Escrevamos \(D^2(\theta, \vetor{e}_y) \ket{20} = \exp(-i \theta J_y) \ket{20}.\) Como no \cref{ex:ex3}, temos
+    Escrevamos \(D^2(\theta, \vetor{e}_y) \ket{20} = \exp(-i \theta J_y) \ket{20}.\) Utilizando o resultado do \cref{ex:ex3}, temos
+    % \begin{equation*}
+    %     \bra{m'}J_y\ket{m} = \frac{\sqrt{6 - m(m + 1)} \delta_{m', m+1} - \sqrt{6 - m(m-1)}\delta_{m', m-1}}{2i},
+    % \end{equation*}
+    % e em particular temos
     \begin{equation*}
-        \bra{m'}J_y\ket{m} = \frac{\sqrt{6 - m(m + 1)} \delta_{m', m+1} - \sqrt{6 - m(m-1)}\delta_{m', m-1}}{2i},
+        J_y \ket{22} = i \ket{21},\quad
+        J_y \ket{20} = -i\frac{\sqrt{6}}{2} \ket{21} + i \frac{\sqrt{6}}{2} \ket{2{-1}},\quad\text{e}\quad
+        J_y \ket{2{-2}} = -i \ket{2{-1}},
     \end{equation*}
-    portanto
+    logo
     \begin{equation*}
-        J_y \doteq \frac{1}{2i}\begin{pmatrix}
-             && 2 &&  &&  && \\
-            -2 &&  && \sqrt{6} && &&\\
-               && -\sqrt{6} &&  && \sqrt{6} &&\\
-               &&  && -\sqrt{6} && && 2\\
-               && && && -2 &&
-        \end{pmatrix}
+        J_y \left(\frac{\sqrt{6}}{4}\ket{22} + \frac12 \ket{20} + \frac{\sqrt{6}}{4} \ket{2{-2}}\right) 
+        = i\frac{\sqrt{6}}{4} \ket{21} + \frac12 \left(-i \frac{\sqrt{6}}{2} \ket{21} + i \frac{\sqrt{6}}{2} \ket{2 {-1}}\right) - i\frac{\sqrt{6}}{4}\ket{2{-1}}
+        = 0,
     \end{equation*}
+    isto é, o vetor unitário \(\ket{20_y} = \frac{\sqrt{6}}{4}\ket{22_z} + \frac12 \ket{20_z} + \frac{\sqrt{6}}{4} \ket{2{-2}_z},\) satisfaz \(J_y \ket{20_y} = 0.\) Para os autovetores de \(J_y,\) os operadores de levantamento e abaixamento são 
+    \begin{equation*}
+        J^{(y)}_{\pm} = J_z \pm i J_x = J_z \pm \frac{i}{2} \left(J_+ + J_-\right),
+    \end{equation*}
+    portanto os demais autoestados de \(J_y\) são
+    \begin{align*}
+        \ket{21_y} &= \frac{1}{a_+(20)}\left[J_z + \frac{i}{2} \left(J_+ + J_-\right)\right]\ket{20_y}\\
+                   &= \frac{1}{\sqrt{6}}\left[J_z + \frac{i}{2} \left(J_+ + J_-\right)\right]\left[\frac{\sqrt{6}}{4}\ket{22_z} + \frac12 \ket{20_z} + \frac{\sqrt{6}}{4} \ket{2{-2}_z}\right]\\
+                   &= \frac{1}{2}\ket{22_z} + \frac{i}{2}\left(\frac{1}{4} a_-(22) + \frac12 \right)\ket{21_z} + \frac{i}{2}\left(\frac12 + \frac{1}{4} a_+(22)\right)\ket{2{-1}_z} - \frac{1}{2}\ket{2{-2}_z}\\
+                   &= \frac12 \ket{22_z} + \frac{i}2\ket{21_z} + \frac{i}{2} \ket{2 {-1}_z} - \frac12 \ket{2 {-2}_z}\\
+        \ket{22_y} &= \frac{1}{a_+(21)}\left[J_z + \frac{i}{2} \left(J_+ + J_-\right)\right]\ket{21_y}\\
+                   &= \frac{1}{2}\left[J_z + \frac{i}{2} \left(J_+ + J_-\right)\right]\left(\frac12 \ket{22_z} + \frac{i}2\ket{21_z} + \frac{i}{2} \ket{2 {-1}_z} - \frac12 \ket{2 {-2}_z}\right)\\
+                   &= \frac14 \ket{22_z} + \frac{i}2 \ket{21_z} - \frac{\sqrt{6}}4\ket{20_z} -\frac{i}{2}\ket{2{-1}_z} + \frac14\ket{2{-2}_z}\\
+        \ket{2{-1}_y}&= \frac{1}{a_-(20)}\left[J_z - \frac{i}{2} \left(J_+ + J_-\right)\right]\ket{20_y}\\
+                   &= \frac{1}{\sqrt{6}}\left[J_z - \frac{i}{2} \left(J_+ + J_-\right)\right]\left[\frac{\sqrt{6}}{4}\ket{22_z} + \frac12 \ket{20_z} + \frac{\sqrt{6}}{4} \ket{2{-2}_z}\right]\\
+                   % &= \frac{1}{2}\ket{22_z} - \frac{i}{2}\left(\frac{1}{4} a_-(22) + \frac12 \right)\ket{21_z} - \frac{i}{2}\left(\frac12 + \frac{1}{4} a_+(22)\right)\ket{2{-1}_z} - \frac{1}{2}\ket{2{-2}_z}\\
+                   &= \frac12\ket{22_z} - \frac{i}{2} \ket{21_z} - \frac{i}{2}\ket{2{-1}_z} - \frac12 \ket{2{-2}_z}\\
+                   \ket{2{-2}_y} &= \frac{1}{a_-(2{-1})}\left[J_z - \frac{i}{2} \left(J_+ + J_-\right)\right]\ket{21_y}\\
+                   &= \frac{1}{2}\left[J_z - \frac{i}{2} \left(J_+ + J_-\right)\right]\left(\frac12\ket{22_z} - \frac{i}{2} \ket{21_z} - \frac{i}{2}\ket{2{-1}_z} - \frac12 \ket{2{-2}_z}\right)\\
+                   &= \frac14 \ket{22_z} - \frac{i}2 \ket{21_z} - \frac{\sqrt{6}}4\ket{20_z} +\frac{i}{2}\ket{2{-1}_z} + \frac14\ket{2{-2}_z}.
+    \end{align*}
+    Com isso, podemos obter os elementos de matriz \(\bra{2m_z}D(\theta,\vetor{e}_y)\ket{20_z}\) com
+    \begin{align*}
+        \bra{2m_z}D(\theta,\vetor{e}_y) \ket{20_z} &= \sum_{m_y = -2}^{2} \bra{2m_z} e^{-i\theta J_y}\ket{2m_y} \braket{2m_y}{20_z}\\
+                                                   &= \sum_{m_y = -2}^{2}  \braket{2m_z}{2m_y}e^{-i \theta m_y}\braket{2m_y}{20_z}\\
+                                                   &= \sum_{m_y = -2}^{2} \braket{2m_z}{2m_y} e^{-i\theta m_y} \left(-\frac{\sqrt{6}}{4} \delta_{m_y, -2} + \frac12 \delta_{m_y,0}- \frac{\sqrt{6}}{4} \delta_{m_y, 2}\right)\\
+                                                   &=- \frac{\sqrt{6}}{4}\braket{2m_z}{2{-2}_y} e^{2i\theta} + \frac12 \braket{2m_z}{20_y} - \frac{\sqrt{6}}{4} \braket{2m_z}{22_y} e^{-2i\theta},
+    \end{align*}
+    isto é,
+    \begin{align*}
+        \bra{22_z}D(\theta,\vetor{e}_y) \ket{20_z} &= -\frac{\sqrt{6}}{16} e^{2i \theta} + \frac{\sqrt{6}}{8} - \frac{\sqrt{6}}{16} e^{-2i\theta} = \frac{\sqrt{6}}{8} (1 - \cos2\theta)\\
+        \bra{21_z}D(\theta,\vetor{e}_y) \ket{20_z} &= -\frac{\sqrt{6}}{8i} e^{2i\theta} + \frac{\sqrt{6}}{8i} e^{-2i\theta} = -\frac{\sqrt{6}}{4}\sin2\theta\\
+        \bra{20_z}D(\theta,\vetor{e}_y) \ket{20_z} &= \frac{6}{16}e^{2i\theta} + \frac14 + \frac{6}{16} e^{-2i\theta} = \frac14 + \frac{3}{4}\cos2\theta\\
+        \bra{2{-1}_z}D(\theta,\vetor{e}_y) \ket{20_z} &= \frac{\sqrt{6}}{8i}e^{2i\theta} - \frac{\sqrt{6}}{8i} e^{-2i\theta} = \frac{\sqrt{6}}{4} \sin2\theta\\
+        \bra{2{-2}_z}D(\theta,\vetor{e}_y) \ket{20_z} &= - \frac{\sqrt{6}}{16} e^{2i\theta} + \frac{\sqrt{6}}{8} - \frac{\sqrt{6}}{16} e^{-2i\theta} = \frac{\sqrt{6}}{8} (1 - \cos2\theta).
+    \end{align*}
+    Assim, 
+    \begin{equation*}
+        P_2 = P_{-2} = \frac{3}{32} (1 - \cos 2\theta)^2,\quad
+        P_1 = P_{-1} = \frac{3}{8} \sin^22\theta,\quad\text{e}\quad
+        P_0 = \left(\frac14 + \frac34 \cos2\theta\right)^2
+    \end{equation*}
+    são as probabilidades \(P_m = \abs{\bra{2m_z} D(\theta, \vetor{e}_y) \ket{20_z}}^2\) do novo estado ser encontrado com um dado valor de \(m_z.\)
 \end{proof}
