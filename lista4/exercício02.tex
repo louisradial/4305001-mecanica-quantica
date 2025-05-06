@@ -47,12 +47,12 @@
    \end{align*}
    onde \(F(t)\) é o propagador de \((0,0)\) até \((0,t),\)
    \begin{equation*}
-      F(t) = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{y_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{y_1} \exp\left\{\frac{i m}{ 2 \hbar \tau} \sum_{j = 0}^{\kappa - 1} \left[\left(y_{j+1} - y_j\right)^2 - 2\omega^2\tau^2 y_j^2\right]\right\}}.
+      F(t) = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{y_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{y_1} \exp\left\{\frac{i m}{ 2 \hbar \tau} \sum_{j = 0}^{\kappa - 1} \left[\left(y_{j+1} - y_j\right)^2 - \omega^2\tau^2 y_j^2\right]\right\}}.
    \end{equation*}
 
    Aproveitamos os resultados mostrados no \cref{ex:ex1} e consideramos a matriz real simétrica cujos elementos são dados por
    \begin{equation*}
-      {\Lambda_{\kappa}}_{ij} = -\delta^{i+1}_j + (2 - 2 \omega^2 \tau^2) \delta^{i}_j - \delta^{i -1}_j,
+      {\Lambda_{\kappa}}_{ij} = -\delta^{i+1}_j + (2 - \omega^2 \tau^2) \delta^{i}_j - \delta^{i -1}_j,
    \end{equation*}
    de forma que
    \begin{equation*}
@@ -108,7 +108,7 @@
    \end{equation*}
    Desse modo,
    \begin{equation*}
-      K(x_ft_f; x_it_i) =\sqrt{\frac{m \omega}{2 \pi i \hbar \sin[\omega (t_f - t_i)]}}\exp\left[\frac{i m \omega}{2 \hbar}\left(\frac{(x_f^2 + x_i^2) \cos[\omega (t_f - t_i)] - 2x_i x_f}{\sin[\omega (t_f - t_i)]}\right)\right]
+      K(x_ft_f; x_it_i) =\sqrt{\frac{m \omega}{2 \pi i \hbar \sin[\omega (t_f - t_i)]}}\exp\left[\frac{i m \omega}{2 \hbar}\left(\frac{(x_f^2 + x_i^2) \cos[\omega (t_f - t_i)] - 2x_i x_f}{\sin[\omega (t_f - t_i)]}\right)\right]\theta(t_f - t_i)
    \end{equation*}
    é a expressão para o propagador de \((x_i,t_i)\) até \((x_f, t_f)\).
 \end{proof}
