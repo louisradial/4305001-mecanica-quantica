@@ -107,6 +107,25 @@
    \begin{equation*}
       \int_a^b \dli{x} \abs*{\phi_n(x)}^2 = 1 + \frac{(-1)^{n+1}}{b - a}\int_a^b\dli{x} \cos\left(2 n \pi \frac{x - \frac{a + b}{2}}{b - a}\right) = 1 + \frac{(-1)^{n+1}}{2 n \pi} \left[\sin(n \pi) - \sin(n \pi)\right] = 1.
    \end{equation*}
+   Obtemos a função de onda em si tomando \(y = a + \frac{b - a}{2n},\) de forma que
+   \begin{align*}
+      \phi_n(x) &= (-1)^{n + 1} \frac{2}{(b-a) \phi_n^*\left(a + \frac{b-a}{2n}\right)} \begin{cases}
+         \displaystyle \sin\left(n\pi \frac{x - a}{b-a}\right)\sin\frac\pi2,&\text{se }x \leq a+\frac{b-a}{2n}\\
+         \displaystyle -\cos(n\pi)\sin\left(n\pi \frac{b - x}{b-a}\right),&\text{se }x > a+\frac{b-a}{2n}
+      \end{cases}\\
+      &=  \frac{2}{(b-a) \phi_n^*\left(a + \frac{b-a}{2n}\right)} \begin{cases}
+         \displaystyle (-1)^{n + 1}\sin\left(n\pi \frac{x - a}{b-a}\right),&\text{se }x \leq a+\frac{b-a}{2n}\\
+         \displaystyle \sin\left(n\pi \frac{b - x}{b-a}\right),&\text{se }x > a+\frac{b-a}{2n}.
+      \end{cases}
+   \end{align*}
+   Assim, tomando \(x = a + \frac{b-a}{2n},\) vemos que \(\abs*{\phi_n\left(a + \frac{b-a}{2n}\right)}^2 = \frac{2}{b-a}\), portanto
+   \begin{equation*}
+       \phi_n(x) = \sqrt{\frac{2}{(b-a)}} \begin{cases}
+         \displaystyle (-1)^{n + 1}\sin\left(n\pi \frac{x - a}{b-a}\right),&\text{se }x \leq a+\frac{b-a}{2n}\\
+         \displaystyle \sin\left(n\pi \frac{b - x}{b-a}\right),&\text{se }x > a+\frac{b-a}{2n}.
+      \end{cases}
+   \end{equation*}
+   é a função de onda, escolhendo a fase de forma que \(\phi_n(x)\) seja uma função real.
 
    No limite em que \(a \to -\infty\) e \(b \to \infty\), devemos ter \(E < 0\) e então
    \begin{equation*}
