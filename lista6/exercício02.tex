@@ -6,5 +6,16 @@
     \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Notemos que
+    \begin{equation*}
+       \commutator{z_1 \herm{a} - z_1^* a}{z_2 \herm{a} - z_2^* a} = z_1 z_2^* -  z_1^* z_2 = 2i \Im\left(z_1 z_2^*\right),
+    \end{equation*}
+    portanto
+    \begin{align*}
+       D(z_1)D(z_2) &= \exp\left[z_1 \herm{a} - z_1^* a\right]\exp\left[z_2 \herm{a} - z_2^* a\right]\\
+                    &= \exp\left[\left(z_1 \herm{a} - z_1^* a\right) + \left(z_2 \herm{a} - z_2^* a\right) + \frac12\commutator{z_1 \herm{a} - z_1^* a}{z_2 \herm{a} - z_2^* a} \right]\\
+                    &= \exp\left[(z_1 + z_2) \herm{a} - (z_1 + z_2)^* a + i \Im\left(z_1 z_2^*\right)\right]\\
+                    &= D(z_1 + z_2) \exp\left[i \Im\left(z_1 z_2^*\right)\right]
+    \end{align*}
+    pela fórmula de Baker-Campbell-Hausdorff.
 \end{proof}
