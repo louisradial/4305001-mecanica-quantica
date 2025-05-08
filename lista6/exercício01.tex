@@ -10,5 +10,25 @@
    \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Para o Hamiltoniano adimensional \(H = H_0 + H_{\mathrm{int}},\) onde \(H_0 = \herm{a}a + \frac12\) e \(H_{\mathrm{int}} = f(t)\tilde{q},\) com \(\tilde{q} = \frac1{\sqrt{2}} (a + \herm{a})\) e \(\commutator{a(t)}{\herm{a}(t)} = 1\), temos
+   \begin{align*}
+      i\diff*{\left(z \herm{a}(t) - z^* a(t)\right)}{t} &= \commutator{z \herm{a}(t) - z^* a(t)}{H_0 + H_\mathrm{int}}\\
+                                                                   &= z \commutator{\herm{a}(t)}{H_0} - z^*\commutator{a(t)}{H_0} + f(t) \commutator{z\herm{a}(t) - z^*a(t)}{\tilde{q}(t)}\\
+                                                                   &= -\left(z \herm{a}(t) + z^* a(t)\right) -\frac{f(t)}{\sqrt{2}}\left(z +z^*\right)\\
+                                                                   &= - \left[z \herm{a}(t) + z^* a(t) + \sqrt{2} f(t) \Re\left(z\right)\right]
+   \end{align*}
+   portanto para \(s(t) = -i e^{-it} \int_0^t \dli\tau f(\tau) e^{i \tau},\) segue de
+   \begin{equation*}
+      i\diff{s(t)}{t} = s(t) + f(t)\quad\text{e}\quad -i\diff{s^*(t)}{t} = s^*(t) + f(t)
+   \end{equation*}
+   que
+   \begin{align*}
+      i \diff*{\left(s(t) \herm{a}(t) - s^*(t) a(t)\right)}{t} 
+      &= - \left[s(t) \herm{a}(t) + s^*(t) a(t) + \sqrt{2} f(t) \Re\left[s(t)\right]\right]+ i \diff{s(t)}{t} \herm{a}(t) - i \diff{s^*(t)}{t} a(t)\\
+      &= f(t) \left[\herm{a}(t) + a(t) - \sqrt{2} \Re\left[s(t)\right]\right]
+   \end{align*}
+   Consideramos o operador evolução temporal dado por \(U(t) = e^{i \alpha (t)} D(z) e^{-i H_0 t},\) com \(z = s(t).\) Então
+   \begin{equation*}
+      i \hbar \diffp{U(t)}{t} = - \hbar \diff{\alpha}{t} U(t) + e^{i \alpha(t)}
+   \end{equation*}
 \end{proof}
