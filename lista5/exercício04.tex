@@ -21,7 +21,7 @@
     %                 &= \frac14 \delta^{ik} J^j - \frac14 \delta^{jk} J^i + \frac12 \epsilon\indices{^{ij}_\ell} T^{\ell k} + \frac13 \epsilon^{ijk} + T^{ij}J^k + \frac23 \delta^{ij} J^k.
     % \end{align*}
 
-    Um operador estatístico \(\rho\) que descreve um estado de mistura neste sistema é dado pela combinação linear
+    Um operador estatístico \(\rho\) que descreve um estado neste sistema é dado pela combinação linear
     \begin{equation*}
         \rho = \alpha\unity + \beta_i J^i + \gamma_{ij} T^{ij}.
     \end{equation*}
@@ -29,29 +29,29 @@
     \begin{equation*}
         \rho = \frac13 \left(\unity + P_i J^i + w_{ij} T^{ij}\right).
     \end{equation*}
-    Como \(T^{ij}\) é simétrico e de traço nulo, podemos tomar \(w_{ij}\) como simétrico e de traço nulo. De fato, expandimos \(w_{ij}\) em sua parte de traço, \(\frac13 w\indices{^\ell_{\ell}}\delta_{ij},\) sua parte antissimétrica, \(w_{[ij]},\) e sua parte simétrica, \(w_{(ij)}\), então
-    \begin{equation*}
-        w_{ij} T^{ij} = \left(\frac13 w\indices{^\ell_{\ell}} \delta_{ij} + w_{[ij]}+ w_{(ij)}\right)T^{ij} = \frac13 w\indices{^\ell_\ell} T\indices{^k_k} + w_{[ij]} T^{(ij)} + w_{(ij)}T^{(ij)} = \frac13 w\indices{^\ell_\ell} T\indices{^k_k} + w_{(ij)} T^{ij},
-    \end{equation*}
-    isto é, a parte antissimétrica não contribui para o operador estatístico. Ainda, notemos que
+    Como \(T^{ij}\) é simétrico e de traço nulo, podemos tomar \(w_{ij}\) como simétrico e de traço nulo. De fato, é claro que \(w_{[ij]}\) não contribui para o operador estatístico, portanto podemos tomar \(w_{ij}\) simétrico. Para justificar que \(w_{ij}\) tem traço nulo, notemos que 
     \begin{equation*}
         T\indices{^k_k} = \delta_{ij} T^{ij} = \frac12 \delta_{ij} \anticommutator{J^i}{J^j} - \frac23 \delta_{ij} \delta^{ij} = (J^1)^2 + (J^2)^2 + (J^3)^2 - 2 = \vetor{J}^2 - 2 = 0,
     \end{equation*}
-    portanto a parte de traço \(w\indices{^\ell_\ell}\) não contribui para o operador estatístico.
+    portanto a parte de traço \(w\indices{^\ell_\ell}\) não contribui para o operador estatístico, pois temos
+    \begin{equation*}
+        \left(w_{ij} - \frac13 w\indices{^{\ell}_\ell}\delta_{ij}\right) T^{ij} = w_{ij} T^{ij} - \frac13 w\indices{^{\ell}_\ell} T\indices{^k_k} = w_{ij} T^{ij},
+    \end{equation*}
+    logo tomamos \(w\indices{^\ell_\ell} = 0\).
 
     Notemos que
     \begin{align*}
         \mean{\vetor{J}}_\rho &= \Tr( \rho \vetor{J})\\
                               &= \frac13 \Tr(\vetor{J} + P_i J^i \vetor{J} + w_{ij} T^{ij} \vetor{J}) = \frac13 P_i \Tr(J^i J^k) \vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k) \vetor{e}_k\\
                               &= \frac13 P_i \Tr\left(\frac12i\epsilon\indices{^{ik}_\ell}J^\ell + T^{ik} + \frac23 \delta^{ik}\right)\vetor{e}_k + \frac16 w_{ij} \Tr(\anticommutator{J^i}{J^j}J^k)\vetor{e}_k\\
-                              &= \frac23 P_i \delta^{ik} \vetor{e}_k + \frac16 w_{ij} \left[\Tr(J^i J^j J^k) + \Tr(J^j J^i J^k)\right] \vetor{e}_k
+                              &= \frac23 P_i \delta^{ik} \vetor{e}_k + \frac16 w_{ij} \left[\Tr(J^i J^j J^k) + \Tr(J^j J^i J^k)\right] \vetor{e}_k,
     \end{align*}
     e que
     \begin{align*}
         \mean{T^{ij}}_{\rho} &= \Tr(\rho T^{ij})\\
                              &= \frac13 \Tr(T^{ij}) + \frac13 P_k \Tr(J^k T^{ij}) + \frac13 w_{\ell k} \Tr(T^{\ell k} T^{ij})\\
                              &= \frac13 P_k \left[\frac12 \Tr(J^k \anticommutator{J^i}{J^j}) - \frac23 \delta^{ij} \Tr(J^k)\right] + \frac13 w_{\ell k} \left[\frac12\Tr(T^{\ell k} \anticommutator{J^i}{J^j}) - \frac23 \delta^{ij} \Tr(T^{\ell k})\right]\\
-                             &= \frac16 P_k \left[\Tr(J^k J^i J^j) + \Tr(J^k J^j J^i)\right] + \frac1{12} w_{\ell k} \Tr(\anticommutator{J^\ell}{J^k} \anticommutator{J^i}{J^j})
+                             &= \frac16 P_k \left[\Tr(J^k J^i J^j) + \Tr(J^k J^j J^i)\right] + \frac1{12} w_{\ell k} \Tr(\anticommutator{J^\ell}{J^k} \anticommutator{J^i}{J^j}) - \frac19 w_{\ell k}\delta^{ij} \Tr(\anticommutator{J^\ell}{J^k})
     \end{align*}
     Notemos que \(\Tr(J^i J^j J^k)\) e \(\Tr(J^i J^j J^k J^\ell)\) são lineares em relação a cada operador e que são invariantes por rotações,
     \begin{equation*}
@@ -64,9 +64,14 @@
         \quad\text{e}\quad
         \Tr(J^i J^j J^k J^\ell) = \lambda \delta^{ij} \delta^{k\ell} + \mu \delta^{i k} \delta^{j \ell} + \nu \delta^{i \ell} \delta^{jk},
     \end{equation*}
-    com \(\kappa, \lambda, \mu \nu \in \mathbb{C}\). Com um cálculo explícito, vemos que 
+    com \(\kappa, \lambda, \mu \nu \in \mathbb{C}\). Da propriedade cíclica do traço, obtemos
     \begin{equation*}
-        \Tr(J^1 J^2 J^3) = i,\quad\Tr(J^1 J^2 J^1 J^2) = 0,\quad \Tr(J^1 J^1 J^2 J^2) = 1\quad\text{e}\quad\Tr(J^1 J^2 J^2 J^1) = 1, 
+        \lambda \delta^{i j} \delta^{k \ell} + \mu \delta^{i k} \delta^{j \ell} + \nu \delta^{i \ell} \delta^{j k} = \Tr(J^i J^j J^k J^\ell) = \Tr(J^\ell J^i J^j J^k) = 
+        \lambda \delta^{\ell i} \delta^{j k} + \mu \delta^{\ell j} \delta^{i k} + \nu \delta^{\ell k} \delta^{i j},
+    \end{equation*}
+    portanto vemos que \(\lambda = \nu.\) Com um cálculo explícito, vemos que 
+    \begin{equation*}
+        \Tr(J^1 J^2 J^3) = i,\quad\Tr(J^1 J^2 J^1 J^2) = 0,\quad\text{e}\quad\Tr(J^1 J^2 J^2 J^1) = 1, 
     \end{equation*}
     portanto 
     \begin{equation*}
@@ -74,16 +79,16 @@
         \quad\text{e}\quad
         \Tr(J^i J^j J^k J^\ell) = \delta^{ij} \delta^{k \ell} + \delta^{ik} \delta^{j \ell}.
     \end{equation*}
-    Com esses resultados, obtemos
+    Observamos também que determinamos que \(\Tr(J^i J^j) = 2 \delta^{ij}\) no desenvolvimento do valor esperado \(\mean{\vetor{J}}_\rho,\) portanto \(\Tr(\anticommutator{J^\ell}{J^k}) = 4 \delta^{\ell k}.\) Com esses resultados, obtemos
     \begin{equation*}
-        \mean{\vetor{J}}_{\rho} = \frac23 \vetor{P} \implies P_i = \frac32 \mean{J^i}_\rho,
+        \mean{\vetor{J}}_{\rho} = \frac23 \vetor{P} \implies P^i = \frac32 \mean{J^i}_\rho,
     \end{equation*}
     pois \(w_{ij} \epsilon^{ijk} \vetor{e}_k = - w_{ij} \epsilon^{jik} = 0\) e
     \begin{align*}
-        \mean{T^{ij}}_{\rho} &= \frac{i}{3} P_k \left[\epsilon^{kij} + \epsilon^{kji}\right] + \frac1{12} w_{\ell k} \left[\Tr(J^\ell J^k J^i J^j) + \Tr(J^\ell J^k J^j J^i) + \Tr(J^k J^\ell J^i J^j) + \Tr(J^k J^\ell J^j J^i)\right]\\
-                             &= \frac{1}{12} w_{\ell k} \left[4\delta^{\ell k} \delta^{ij} + 2\delta^{\ell i} \delta^{kj} + 2\delta^{\ell j} \delta^{ki}\right]\\
-                             &= \frac13 w\indices{^\ell_\ell}\delta^{ij} + \frac16 w^{ij} + \frac16 w^{ji}\\
-                             &= \frac13 w^{ij},
+        \mean{T^{ij}}_{\rho} &= \frac{i}{3} P_k \left[\epsilon^{kij} + \epsilon^{kji}\right] + \frac1{12} w_{\ell k} \left[\Tr(J^\ell J^k J^i J^j) + \Tr(J^\ell J^k J^j J^i) + \Tr(J^k J^\ell J^i J^j) + \Tr(J^k J^\ell J^j J^i)\right] - \frac49 w\indices{^k_k} \delta^{ij} \\
+                             &= \frac{1}{12} w_{\ell k} \left[4\delta^{\ell k} \delta^{ij} + 2\delta^{\ell i} \delta^{kj} + 2\delta^{\ell j} \delta^{ki}\right] - \frac49 w\indices{^k_k} \delta^{ij}\\
+                             &= -\frac19w\indices{^\ell_\ell}\delta^{ij} + \frac16 w^{ij} + \frac16 w^{ji}\\
+                             &= \frac13 \left(w^{ij} - \frac13w\indices{^\ell_\ell} \delta^{ij}\right),
     \end{align*}
-    isto é, \(w^{ij} = 3\mean{T^{ij}}_{\rho},\) já que \(w\indices{^\ell_\ell} = 0,\) como discutido.
+    isto é, \(w^{ij} - \frac13 w\indices{^\ell_\ell} \delta^{ij} = 3\mean{T^{ij}}_{\rho}.\) Assim, determinamos a parte sem traço de \(w_{ij},\) e podemos escolher \(w\indices{^\ell_\ell}\) arbitrariamente para se determinar as componentes, já que o traço \(w\indices{^\ell_\ell}\) não tem significado físico. Uma escolha possível é \(w\indices{^\ell_\ell} = 0,\) para o qual temos \(w^{ij} = 3\mean{T^{ij}}_\rho.\)
 \end{proof}
