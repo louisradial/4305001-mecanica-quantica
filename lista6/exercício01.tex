@@ -6,33 +6,45 @@
    \end{equation*}
    mas também para a equação de Schrödinger. A transformação \(U(t) = D(s(t)) e^{-i H_0 t}\) não satisfaz essa última condição. Mostre que o fator de fase que está faltando é \(e^{i \alpha(t)},\) onde
    \begin{equation*}
-      \alpha(t) = - \frac{1}{\sqrt{2}} \int_0^t \dli{t'} f(t') \Re\left[s(t')\right].
+      \alpha(t) = - \frac{1}{\sqrt{2}} \int_0^t \dli{\tau} f(\tau) \Re\left[s(\tau)\right].
    \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-   Para o Hamiltoniano adimensional \(H = H_0 + H_{\mathrm{int}},\) onde \(H_0 = \herm{a}a + \frac12\) e \(H_{\mathrm{int}} = f(t)\tilde{q},\) com \(\tilde{q} = \frac1{\sqrt{2}} (a + \herm{a})\) e \(\commutator{a(t)}{\herm{a}(t)} = 1\), temos
+   Notemos que
    \begin{align*}
-      i\diff*{\left(z \herm{a}(t) - z^* a(t)\right)}{t} &= \commutator{z \herm{a}(t) - z^* a(t)}{H_0 + H_\mathrm{int}}\\
-                                                                   &= z \commutator{\herm{a}(t)}{H_0} - z^*\commutator{a(t)}{H_0} + f(t) \commutator{z\herm{a}(t) - z^*a(t)}{\tilde{q}(t)}\\
-                                                                   &= -\left(z \herm{a}(t) + z^* a(t)\right) -\frac{f(t)}{\sqrt{2}}\left(z +z^*\right)\\
-                                                                   &= - \left[z \herm{a}(t) + z^* a(t) + \sqrt{2} f(t) \Re\left(z\right)\right]
+      \commutator{D(z)}{H_0} &= \commutator{D(z)}{\herm{a}a}\\
+                             &= \commutator{D(z)}{\herm{a}}a + \herm{a}\commutator{D(z)}{a}\\
+                             &= \diffp{D(z)}{a}a - \herm{a} \diffp{D(z)}{\herm{a}}\\
+                             &= -z^*D(z) a - z\herm{a} D(z)\\
+                             &= -(z^* a + z \herm{a}) D(z) - z^* \commutator{D(z)}{a}\\
+                             &= -(z^*a + z \herm{a} + \abs{z}^2) D(z).
    \end{align*}
-   portanto para \(s(t) = -i e^{-it} \int_0^t \dli\tau f(\tau) e^{i \tau},\) segue de
+   Para \(s(t) = - \frac{i}{\sqrt{2}} e^{-it} \int_0^t \dli{\tau} f(\tau) e^{i \tau},\) temos
    \begin{equation*}
-      i\diff{s(t)}{t} = s(t) + f(t)\quad\text{e}\quad -i\diff{s^*(t)}{t} = s^*(t) + f(t)
+      i\diff{s(t)}{t} = s(t) + \frac{f(t)}{\sqrt{2}}\quad\text{e}\quad -i \diff{s^*(t)}{t} = s^*(t) + \frac{f(t)}{\sqrt{2}},
    \end{equation*}
-   que
+   para \(f(t)\) real. Assim,
    \begin{align*}
-      i \diff*{\left(s(t) \herm{a}(t) - s^*(t) a(t)\right)}{t} 
-      &= - \left[s(t) \herm{a}(t) + s^*(t) a(t) + \sqrt{2} f(t) \Re\left[s(t)\right]\right]+ i \diff{s(t)}{t} \herm{a}(t) - i \diff{s^*(t)}{t} a(t)\\
-      &= f(t) \left[\herm{a}(t) + a(t) - \sqrt{2} \Re\left[s(t)\right]\right].
+      i\diffp{U(t)}{t} &= i\diffp{D(s(t))}{t} e^{-i H_0 t} + D(s(t)) H_0e^{-i H_0t}\\
+                    &= i \diffp*{\left(s(t) \herm{a} - s^*(t) a\right)}{t} D(s(t)) e^{-iH_0t} + H_0 D(s(t))e^{-iH_0 t} + \commutator{D(s(t))}{H_0} e^{-iH_0 t}\\
+                    &= \left[s(t) \herm{a} + s^*(t) a + \frac{f(t)}{\sqrt{2}}(\herm{a} + a)\right]U(t) + H_0 U(t) + \commutator{D(s(t))}{H_0} e^{-iH_0t}\\
+                    &= \left[H_\mathrm{int} + H_0 - \abs{s(t)}^2\right] U(t)\\
+                    &= H U(t) - \abs{s(t)}^2 U(t),
    \end{align*}
-   Reunimos estes resultados para concluir que
+   isto é, \(U(t)\) não pode ser o operador evolução temporal. Consideramos uma fase \(e^{i\alpha(t)}\) e o ansatz \(\tilde{U}(t) = e^{i \alpha(t)} U(t),\) que satisfaz
    \begin{equation*}
-      i \diffp{D(s(t))}{t} = 
+      i\diffp{\tilde{U}(t)}{t} = - \left[\diff{\alpha(t)}{t} + \abs{s(t)}^2\right] \tilde{U}(t) + H \tilde{U}(t),
    \end{equation*}
-   Consideramos o operador evolução temporal dado por \(U(t) = e^{i \alpha (t)} D(z) e^{-i H_0 t},\) com \(z = s(t).\) Então
+   portanto \(\tilde{U}(t)\) é o operador evolução temporal se \(\diff{\alpha(t)}{t} = - \abs{s(t)}^2.\) Notemos que
+   \begin{align*}
+      \diff*{\left(\frac1{\sqrt{2}} \int_0^t \dli{\tau} f(\tau) \Re\left[s(\tau)\right]\right)}{t} 
+      &= \frac{1}{\sqrt{2}} f(t) \Re\left[s(t)\right]\\
+      &= \frac{1}{2\sqrt{2}} f(t) \left[s(t) + s^*(t)\right]\\
+      &= \frac{1}{4i} f(t) \left[\int_0^t \dli{\tau} f(\tau) \left(e^{i(\tau-t)} - e^{-i(\tau-t)}\right)\right]\\
+      &= \frac12 \int_0^t \dli{\tau}f(\tau) \sin(\tau - t) f(t)
+   \end{align*}
+   e que
    \begin{equation*}
-      i \hbar \diffp{U(t)}{t} = - \hbar \diff{\alpha}{t} U(t) + e^{i \alpha(t)}
+      \abs{s(t)}^2 = \int_0^t \dln{\tau
    \end{equation*}
 \end{proof}
