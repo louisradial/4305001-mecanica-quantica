@@ -1,5 +1,11 @@
 % vim: spl=pt
-\begin{exercício}{Dependência de gauge no moemnto angular}{ex5}
+\begin{lemma}{Transformação de calibre}{calibre}
+   Para uma partícula em um campo magnético externo com potencial vetor \(\vetor{A},\) o operador unitário que realiza a transformação de calibre \(\vetor{A} \to \vetor{\tilde{A}} = \vetor{A} + \nabla \Lambda\) é \(\mathscr{G} = \exp\left(\frac{i e \Lambda}{\hbar c}\right)\). Ainda, temos \(\herm{\mathscr{G}} \vetor{p} \mathscr{G} = \vetor{p} + \frac{e}{c} \nabla \Lambda\) como a transformação de calibre para o momento linear.
+\end{lemma}
+\begin{proof}
+   O momento canonicamente conjugado é dado por \(\vetor{\Pi} = m \diff{\vetor{x}}{t} = \vetor{p} - \frac{e}{c} \vetor{A}.\) Como 
+\end{proof}
+\begin{exercício}{Dependência de gauge no momento angular}{ex5}
    No movimento de uma partícula carregada em um campo magnético, os operadores \(v_x \pm i v_y\) levantam e abaixam os autovalores de \(L_z,\) mesmo \(v_x\) e \(v_y\) sendo combinações lineares de variáveis canônicas ao longo de direções diferentes. Isso está relacionado ao fato que a definição de momento angular é dependente de calibre.
    \begin{enumerate}[label=(\alph*)]
       \item Mostre que se \(\vetor{A} \to \vetor{A} + \nabla\chi,\) então \(\vetor{L} \to \vetor{L} + \frac{e}{c} \vetor{r} \times \nabla\chi.\)
@@ -16,6 +22,6 @@
 \begin{proof}[Resolução]
    Pelo \cref{lem:calibre}, temos \(\vetor{p} \to \vetor{p}' = \vetor{p} + \frac{e}{c} \nabla \chi,\) portanto
    \begin{equation*}
-      \vetor{L} \to \vetor{L}
+      \vetor{L} \to \vetor{L}' = \vetor{L} + \frac{e}{c} \nabla \chi.
    \end{equation*}
 \end{proof}
