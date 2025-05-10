@@ -17,5 +17,16 @@
                    &= \exp\left[(z_1 + z_2) \herm{a} - (z_1 + z_2)^* a + i \Im\left(z_1 z_2^*\right)\right]\\
                    &= D(z_1 + z_2) \exp\left[i \Im\left(z_1 z_2^*\right)\right]
    \end{align*}
-   pela fórmula de Baker-Campbell-Hausdorff.
+   pela fórmula de Baker-Campbell-Hausdorff. Ainda, vemos que para cada \(\theta \in [0,2\pi)\)  temos
+   \begin{align*}
+      z_1, z_2 \in \Omega_\theta = \setc{z \in \mathbb{C}}{\exists \rho \in \mathbb{R} : z = \rho e^{i\theta}}
+      &\implies z_1 z_2 = \rho_1 \rho_2 \in \mathbb{R}\\
+      &\implies D(z_1)D(z_2) = D(z_1 + z_2).
+   \end{align*}
+   Assim, para cada \(\theta,\) a aplicação
+   \begin{align*}
+      D_\theta : \Omega_\theta &\to \mathcal{L}(\mathscr{H}, \mathscr{H})\\
+                             z &\mapsto D(z)
+   \end{align*}
+   define um subgrupo uniparamétrico, com \(D_\theta(0) = \unity\) e \(D_\theta(z_1)D_\theta(z_2) = D_\theta(z_1 + z_2).\)
 \end{proof}
