@@ -1,5 +1,5 @@
 % vim: spl=pt
-\begin{exercício}{Decomposição polar e estados coerentes}{ex4}
+\begin{exercício}{Decomposição polar e o oscilador harmônico}{ex4}
    Para tentar definir um operador de fase \(\Phi,\) escrevemos o operador de aniquilação como \(a = A e^{i \Phi},\) com \(A = \herm{A}.\) Mostre que
    \begin{equation*}
       A = \sqrt{N + 1} = \sum_{n = 0}^{\infty} \ket{n} \sqrt{n+1} \bra{n},
@@ -17,5 +17,95 @@
    são análogos a \(\cos\phi\) e \(\sin\phi.\) Calcule os comutadores \(\commutator{C}{S},\) \(\commutator{C}{N},\) \(\commutator{S}{N},\) e a soma \(C^2 + S^2.\) Quais as relações de incerteza que podemos deduzir para esses operadores? Calcule os valores médios de \(C\) e \(S\) no estado coerente \(\ket{z},\) onde \(z = \abs{z} e^{i\theta}.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Suponhamos, por absurdo, que podemos escrever o operador de aniquilação com a decomposição \(a = A e^{i \Phi}\) onde \(A\) é hermitiano e \(e^{i\Phi}\) é unitário. Neste caso, \(\Phi\) é um operador hermitiano e temos \(a \herm{a} = A e^{i\Phi} e^{-i \Phi} A = A^2,\) logo tomamos \(A = \sqrt{\herm{a}a + 1},\) isto é,
+   \begin{equation*}
+      A = \sum_{n = 0}^\infty \ket{n} \sqrt{n+1} \bra{n}.
+   \end{equation*}
+   Em particular, \(A\) é injetor, portanto de
+   \begin{equation*}
+      0 = a\ket{0} = A e^{i\Phi} \ket{0},
+   \end{equation*}
+   segue que \(e^{i\Phi} \ket{0} = 0.\) Isto é, \(e^{i\Phi}\) não é injetor, contrariando a hipótese de que é um operador unitário.
+
+   Em vez de considerarmos um operador de fase \(\Phi,\) consideramos apenas a decomposição polar \(a = A E,\) com \(\herm{A} = A.\) Notamos que se exigirmos que \(E \herm{E} = \unity,\) obtemos a mesma conclusão de que \(A = \sqrt{\herm{a}a + 1},\) mas não podemos ter \(\herm{E} E = \unity,\) pelo argumento anterior. Assim sendo, temos para todo \(n \in \mathbb{N}_0\) que
+   \begin{equation*}
+      \sqrt{n+1} \ket{n+1} = \herm{a} \ket{n} = \herm{E} A \ket{n} = \sqrt{n+1} \herm{E} \ket{n} \implies \herm{E}\ket{n} = \ket{n+1},
+   \end{equation*}
+   isto é, \(\herm{E}\) é o operador de levantamento. Tomando o hermitiano desta relação, obtemos
+   \begin{equation*}
+      \bra{n} E = \bra{n+1} \implies \bra{n} E \ket{n'} = \braket{n+1}{n'} = \delta_{n+1, n'} \implies E = \sum_{n = 0}^\infty \ketbra{n}{n+1},
+   \end{equation*}
+   portanto \(E\ket{n+1} = \ket{n}\) para todo \(n \in \mathbb{N}_0\). Como antes, temos \(A\) injetor e, portanto, \(E\ket{0} = 0.\) Concluímos assim que \(E\) é o operador de abaixamento\footnote{Chamaremos \(a\) e \(\herm{a}\) de operadores de aniquilação e criação, respectivamente, enquanto que \(E\) e \(\herm{E}\) de operadores de abaixamento e levantamento, respectivamente.}. É fácil ver que \(E \herm{E} = \unity,\) compatível com a hipótese adicional, mas que
+   \begin{equation*}
+      \herm{E}E = \sum_{n = 0}^\infty \sum_{n' = 0}^\infty \ket{n+1} \braket{n}{n'} \bra{n'+1} = \sum_{n = 0}^\infty \ketbra{n+1}{n+1} = \unity - \ketbra{0}{0},
+   \end{equation*}
+   logo \(\commutator{E}{\herm{E}} = \ketbra{0}{0},\) compatível com o fato de que \(E\) não é unitário. Além disso, temos
+   \begin{align*}
+      \commutator{E}{\herm{a}a} &= \sum_{n = 0}^\infty \sum_{n' = 0}^\infty n'\left(\ket{n}\braket{n+1}{n'}\bra{n'} - \ket{n'}\braket{n'}{n}\bra{n+1}\right)\\
+                                &= \sum_{n=0}^\infty \sum_{n' = 0}^\infty n' \left(\delta_{n+1, n'} \ketbra{n}{n'} - \delta_{n',n} \ketbra{n'}{n+1}\right)\\
+                                &= \sum_{n=0}^\infty (n+1) \ketbra{n}{n+1} - \sum_{n=0}^\infty n \ketbra{n}{n+1}\\
+                                &= E
+   \end{align*}
+   e \(\commutator{\herm{E}}{\herm{a}a} = - \herm{\commutator{E}{\herm{a}a}} = - \herm{E}.\)
+
+   Consideramos os operadores hermitianos
+   \begin{equation*}
+      C = \frac12 \left(E + \herm{E}\right)
+      \quad\text{e}\quad
+      S = \frac1{2i} \left(E - \herm{E}\right).
+   \end{equation*}
+   Notemos que, se \(\Phi\) fosse um operador hermitiano, teríamos as expressões
+   \begin{equation*}
+      C = \frac12 \left(e^{i\Phi} + e^{-i\Phi}\right) = \cos\Phi
+      \quad\text{e}\quad
+      S = \frac1{2i} \left(e^{i\Phi} - e^{-i\Phi}\right) = \sin \Phi,
+   \end{equation*}
+   isto é, com a correção feita, o operador \(C\) corresponde ao cosseno da fase e o operador \(S\) ao seno da fase. Estes operadores satisfazem
+   \begin{align*}
+      C^2 + S^2 &= \frac14 \left(E^2 + {\herm{E}}^2 + \anticommutator{E}{\herm{E}}\right) - \frac14 \left(E^2 + {\herm{E}}^2 - \anticommutator{E}{\herm{E}}\right)\\
+                &= \frac12 \anticommutator{E}{\herm{E}}\\
+                &= E \herm{E} - \frac12 \commutator{E}{\herm{E}}\\
+                &= \unity - \frac12 \ketbra{0}{0}
+   \end{align*}
+   e as relações de comutação
+   \begin{align*}
+      \commutator{C}{\herm{a}a} &= \frac12 \commutator{E+\herm{E}}{\herm{a}a}&
+      \commutator{S}{\herm{a}a} &= \frac1{2i} \commutator{E - \herm{E}}{\herm{a}a}&
+      \commutator{C}{S} &= \frac{1}{4i} \commutator{E + \herm{E}}{E - \herm{E}}\\
+                        &= \frac12 \left(E - \herm{E}\right)&
+                        &= \frac1{2i} \left(E + \herm{E}\right)&
+                        &= -\frac{1}{2i} \commutator{E}{\herm{E}}\\
+                        &= i S&
+                        &=-i C&
+                        &= \frac{i}{2} \ketbra{0}{0}.
+   \end{align*}
+   Assim, temos as relações de incerteza
+   \begin{equation*}
+      \Delta_\psi C \Delta_\psi S \geq \frac14 \abs{\braket{0}{\psi}}^2,
+      \quad
+      \Delta_\psi C \Delta_\psi N \geq \frac12 \abs{\mean{S}_\psi},
+      \quad\text{e}\quad
+      \Delta_\psi S \Delta_\psi N \geq \frac12 \abs{\mean{C}_\psi}
+   \end{equation*}
+   em um dado estado \(\ket{\psi}.\)
+
+   Para o estado coerente \(\ket{z} = e^{-\frac12 \abs{z}^2} \sum_{n \in \mathbb{N}_0} \frac{z^n}{\sqrt{n!}} \ket{n}\) com \(z = \abs{z} e^{i\theta},\) temos
+   \begin{align*}
+      \bra{z}E\ket{z} &= e^{-\abs{z}^2} \sum_{n = 0}^\infty \sum_{n' = 0}^\infty \frac{\abs{z}^{n + n'} e^{i(n - n')\theta}}{\sqrt{n! n'!}} \bra{n'} E \ket{n}\\
+                      &= e^{-\abs{z}^2} \sum_{n = 1}^\infty \sum_{n' = 0}^\infty \frac{\abs{z}^{n + n'} e^{i(n - n')\theta}}{\sqrt{n! n'!}} \delta_{n' + 1,n}\\
+                      & = z e^{-\abs{z}^2} \sum_{n' = 0}^\infty \frac{\abs{z}^{2n'}}{\sqrt{(n' + 1)! n'!}}
+   \end{align*}
+   e
+   \begin{align*}
+      \bra{z}\herm{E}\ket{z} &= e^{-\abs{z}^2} \sum_{n = 0}^\infty \sum_{n' = 0}^\infty \frac{\abs{z}^{n + n'} e^{i(n - n')\theta}}{\sqrt{n! n'!}} \bra{n'} \herm{E} \ket{n}\\
+                      &= e^{-\abs{z}^2} \sum_{n = 0}^\infty \sum_{n' = 0}^\infty \frac{\abs{z}^{n + n'} e^{i(n - n')\theta}}{\sqrt{n! n'!}} \delta_{n',n+1}\\
+                      & = z^* e^{-\abs{z}^2} \sum_{n = 0}^\infty \frac{\abs{z}^{2n}}{\sqrt{n!(n + 1)! }}.
+   \end{align*}
+   Portanto
+   \begin{equation*}
+      \bra{z}C\ket{z} = \cos\theta \sum_{n= 0}^\infty \frac{\abs{z}^{2n+1}}{\sqrt{n! (n+1)!}}
+      \quad\text{e}\quad
+      \bra{z}S\ket{z} = \sin\theta \sum_{n= 0}^\infty \frac{\abs{z}^{2n+1}}{\sqrt{n! (n+1)!}}
+   \end{equation*}
+   são os valores esperados de \(C\) e de \(S\) neste estado coerente.
 \end{proof}
