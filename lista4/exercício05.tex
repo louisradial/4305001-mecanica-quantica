@@ -64,7 +64,15 @@
    \end{align*}
    portanto \((\vetor{T} \cdot \vetor{n})^3 = (\vetor{T} \cdot \vetor{n}).\) 
 
-   Assim, é claro que \((\vetor{T} \cdot \vetor{n})^{2k - 1} = \vetor{T} \cdot \vetor{n}\) e \((\vetor{T} \cdot \vetor{n})^{2k} = (\vetor{T} \cdot \vetor{n})^2\) para todo \(k \in \mathbb{N}.\) Desse modo,
+   Assim, é claro que \((\vetor{T} \cdot \vetor{n})^{2k - 1} = \vetor{T} \cdot \vetor{n}\) e \((\vetor{T} \cdot \vetor{n})^{2k} = (\vetor{T} \cdot \vetor{n})^2\) para todo \(k \in \mathbb{N}.\) De fato, valem para \(k = 1\) e supondo válida para algum \(k \in \mathbb{N},\) temos 
+   \begin{equation*}
+      (\vetor{T} \cdot \vetor{n})^{2k + 1} = (\vetor{T} \cdot \vetor{n})^{2k} (\vetor{t} \cdot \vetor{n}) = (\vetor{T} \cdot \vetor{n})^3 = \vetor{T} \cdot \vetor{n}
+   \end{equation*}
+   e
+   \begin{equation*}
+      (\vetor{T} \cdot \vetor{n})^{2k + 2} = (\vetor{T} \cdot \vetor{n})^{2k+1} (\vetor{t} \cdot \vetor{n}) = (\vetor{T} \cdot \vetor{n})^2,
+   \end{equation*}
+   portanto são válidas para \(k + 1,\) e concluímos pelo princípio da indução finita que são válidas para todo \(k \in \mathbb{N}.\) Desse modo,
    \begin{align*}
       R_{\vetor{n}}(\theta) = \exp( - i\theta \vetor{T} \cdot \vetor{n}) 
       &= \unity + \sum_{m = 1}^\infty \frac{(-1)^m (i \theta \vetor{T} \cdot \vetor{n})^m}{m!}\\
