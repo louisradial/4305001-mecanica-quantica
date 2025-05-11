@@ -1,9 +1,17 @@
 % vim: spl=pt
-\begin{lemma}{Transformação de calibre}{calibre}
-   Para uma partícula em um campo magnético externo com potencial vetor \(\vetor{A},\) o operador unitário que realiza a transformação de calibre \(\vetor{A} \to \vetor{\tilde{A}} = \vetor{A} + \nabla \Lambda\) é \(\mathscr{G} = \exp\left(\frac{i e \Lambda}{\hbar c}\right)\). Ainda, temos \(\herm{\mathscr{G}} \vetor{p} \mathscr{G} = \vetor{p} + \frac{e}{c} \nabla \Lambda\) como a transformação de calibre para o momento linear.
+\begin{lemma}{Transformação de calibre para o momento canônico}{calibre}
+   Para uma partícula de massa \(m\) e carga \(e\) em um campo eletromagnético externo com potencial vetor \(\vetor{A}\) e potencial escalar \(\phi,\) sob a transformação de calibre \(\vetor{A} \to \vetor{\tilde{A}} = \vetor{A} + \nabla \Lambda\) e \(\phi \to \tilde{\phi} = \phi - \diffp{\Lambda}{t}\), temos \(\herm{\mathscr{G}} \vetor{p} \mathscr{G} = \vetor{p} + \frac{e}{c} \nabla \Lambda\) como a transformação de calibre para o momento linear.
 \end{lemma}
 \begin{proof}
-   O momento canonicamente conjugado é dado por \(\vetor{\Pi} = m \diff{\vetor{x}}{t} = \vetor{p} - \frac{e}{c} \vetor{A}.\) Como 
+   O momento cinemático é dado por \(\vetor{\Pi} = m \diff{\vetor{q}}{t}\), que é manifestamente invariante por transformações de calibre. Para o Hamiltoniano \(H = \frac1{2m}\left(\vetor{p} - \frac{e}{c} \vetor{A}\right)^2 + e\phi,\) temos
+   \begin{equation*}
+      \vetor{\Pi} = m \commutator{\vetor{q}}{H} = m \diffp{H}{\vetor{p}} = \vetor{p} - \frac{e}{c} \vetor{A}.
+   \end{equation*}
+   Sob a transformação de calibre, devemos ter \(\herm{\mathscr{G}}\vetor{q}\mathscr{G} = \vetor{q}\) e a \(\herm{\mathscr{G}}\vetor{\Pi}\mathscr{G} = \vetor{\Pi},\) portanto
+   \begin{equation*}
+      \herm{\mathscr{G}} \vetor{p}\mathscr{G} - \frac{e}{c} \left(\vetor{A} + \nabla \Lambda\right)= \vetor{p} - \frac{e}{c} \vetor{A} \implies \herm{\mathscr{G}}\vetor{p}\mathscr{G} = \vetor{p} + \frac{e}{c} \nabla \Lambda,
+   \end{equation*}
+   como desejado.
 \end{proof}
 \begin{exercício}{Dependência de gauge no momento angular}{ex5}
    No movimento de uma partícula carregada em um campo magnético, os operadores \(v_x \pm i v_y\) levantam e abaixam os autovalores de \(L_z,\) mesmo \(v_x\) e \(v_y\) sendo combinações lineares de variáveis canônicas ao longo de direções diferentes. Isso está relacionado ao fato que a definição de momento angular é dependente de calibre.
@@ -22,6 +30,45 @@
 \begin{proof}[Resolução]
    Pelo \cref{lem:calibre}, temos \(\vetor{p} \to \vetor{p}' = \vetor{p} + \frac{e}{c} \nabla \chi,\) portanto
    \begin{equation*}
-      \vetor{L} \to \vetor{L}' = \vetor{L} + \frac{e}{c} \nabla \chi.
+      \vetor{L} \to \vetor{L}' = \vetor{r} \times \vetor{p}' = \vetor{L} + \frac{e}{c} \vetor{r} \times \nabla \chi.
    \end{equation*}
+   Neste gauge, temos \(L_z' = x p_y - y p_x + \frac{e}{c} \left(x \partial_y \chi - y \partial_x \chi\right),\) portanto
+   \begin{align*}
+      m\commutator{v_x}{L_z'} &= \commutator{p_x - \frac{e}{c} A_x}{x p_y - y p_x + \frac{e}{c} \left(x \partial_y \chi - y \partial_x \chi\right)}\\
+                              &= -i \hbar p_y + \frac{e}{c}\commutator{p_x}{x \partial_y \chi -  y \partial_x \chi} - \frac{e}{c} \left(x\commutator{A_x}{p_y} - y \commutator{A_x}{p_x}\right)\\
+                              &= -i \hbar p_y - \frac{i \hbar e}{c} \left(\partial_y \chi + \partial_x \partial_y \chi - y \partial_x^2 \chi\right) - \frac{i \hbar e}{c}\left(x \partial_y A_x - y \partial_x A_x\right)\\
+                              &= -i \hbar\left(p_y + \frac{e}{c} \partial_y \chi\right) + \frac{\hbar e}{ic} \left[x\partial_y \left(A_x  + \partial_x \chi\right) - y \partial_x \left(A_x + \partial_x \chi\right)\right]\\
+                              &= -i \hbar p_y' + \frac{\hbar e}{c} \mathcal{L}_z A_x',
+   \end{align*}
+   isto é,
+   \begin{equation*}
+      \commutator{v_x}{L_z'} = \frac{\hbar}{i m} p_y' + \frac{\hbar e}{m c} \mathcal{L}_z A_x'.
+   \end{equation*}
+   Repetimos os procedimento acima para \(v_y,\) obtendo
+   \begin{align*}
+      \commutator{v_y}{L_z'} &= \commutator{p_y - \frac{e}{c} A_y}{x p_y - y p_x + \frac{e}{c} \left(x \partial_y \chi - y \partial_x \chi\right)}\\
+                              &= i \hbar p_x + \frac{e}{c}\commutator{p_y}{x \partial_y \chi -  y \partial_x \chi} - \frac{e}{c} \left(x\commutator{A_y}{p_y} - y \commutator{A_y}{p_x}\right)\\
+                              &= i \hbar p_x - \frac{i \hbar e}{c} \left(x\partial_y^2 \chi - \partial_x \chi - u \partial_y \partial_x \chi\right) - \frac{i \hbar e}{c}\left(x \partial_y A_y - y \partial_x A_y\right)\\
+                              &= i \hbar\left(p_x + \frac{e}{c} \partial_x \chi\right) + \frac{\hbar e}{ic} \left[x\partial_y \left(A_y  + \partial_y \chi\right) - y \partial_x \left(A_y + \partial_y \chi\right)\right]\\
+                              &= i \hbar p_x' + \frac{\hbar e}{c} \mathcal{L}_z A_y',
+   \end{align*}
+   isto é,
+   \begin{equation*}
+      \commutator{v_y}{L_z'} = -\frac{\hbar}{i m} p_x' + \frac{\hbar e}{m c} \mathcal{L}_z A_y'.
+   \end{equation*}
+
+   Estas relações de comutação são satisfeitas em qualquer gauge. Em particular, no gauge simétrico, em que temos \(\mathcal{L}_z A_x = iA_y\) e \(\mathcal{L}_z A_y = - i A_x,\) obtemos
+   \begin{align*}
+      \commutator{v_x \pm i v_y}{L_z} &= \frac{\hbar}{im} (p_y \mp i p_x) + \frac{\hbar e}{mc} (iA_y  \pm A_x)\\
+                                      &= \mp \frac{\hbar}{m} (p_x \pm i p_y) \pm \frac{\hbar e}{mc} (A_x \pm i A_y)\\
+                                      &= \mp \frac{\hbar}{m} \left[\left(p_x - \frac{e}{c} A_x\right) \pm i\left(p_y - \frac{e}{c}A_y\right)\right]\\
+                                      &= \mp \hbar (v_x \pm i v_y).
+   \end{align*}
+   Neste gauge, portanto, \(v_x \pm i v_y\) é um operador de abaixamento ou levantamento para a componente do momento angular, já que
+   \begin{align*}
+      L_z (v_x \pm i v_y) \ket{n \mu} &= (v_x \pm i v_y) L_z \ket{n\mu} + \commutator{v_x \pm i v_y}{L_z} \ket{n\mu}\\
+                                      &= \hbar \mu (v_x \pm i v_y) \ket{n \mu} \mp \hbar (v_x \pm i v_y) \ket{n \mu}\\
+                                      &= \hbar (\mu \mp 1) (v_x \pm i v_y)\ket{n \mu},
+   \end{align*}
+   portanto \((v_x \pm i v_y)\ket{n \mu}\) é autovetor de \(L_z\) com autovalor \(\hbar (\mu \mp 1).\)
 \end{proof}
