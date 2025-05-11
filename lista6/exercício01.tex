@@ -1,4 +1,48 @@
 % vim: spl=pt
+\begin{lemma}{Derivada da exponencial de um operador dependente de um parâmetro}{derivada}
+    Seja \(A(\lambda)\) um operador dependente de um parâmetro contínuo, então valem as expressões
+    \begin{equation*}
+       \diff*{e^{\mu A(\lambda)}}{\lambda} = e^{\mu A(\lambda)}\left[\int_0^\mu \dli\tau e^{-\tau A(\lambda)} \diff{A(\lambda)}{\lambda} e^{\tau A(\lambda)}\right]
+    \end{equation*}
+    e
+    \begin{equation*}
+       \diff*{e^{\mu A(\lambda)}}{\lambda} = \left[\int_0^\mu \dli\tau e^{\tau A(\lambda)} \diff{A(\lambda)}{\lambda} e^{-\tau A(\lambda)}\right] e^{\mu A(\lambda)}
+    \end{equation*}
+    para todo \(\mu.\)
+\end{lemma}
+\begin{proof}
+   Consideramos as aplicações
+   \begin{equation*}
+      F(\mu, \lambda) = \int_0^\mu \dli\tau e^{-\tau A(\lambda)} \diff{A(\lambda)}{\lambda} e^{\tau A(\lambda)}
+      \quad\text{e}\quad
+      G(\mu, \lambda) =  e^{-\mu A(\lambda)}\diff*{e^{\mu A(\lambda)}}{\lambda}
+   \end{equation*}
+   com \(F(0, \lambda) = 0 = G(0, \lambda)\) trivialmente. Diferenciando as funções em relação a \(\mu,\) obtemos
+   \begin{equation*}
+      \diffp{F(\mu,\lambda)}{\mu} = e^{-\mu A(\lambda)} \diff{A(\lambda)}{\lambda} e^{\mu A(\lambda)}
+   \end{equation*}
+   pelo teorema fundamental do cálculo e
+   \begin{align*}
+      \diffp{G(\mu, \lambda)}{\mu} &= e^{-\mu A(\lambda)} \diff*{\left[A(\lambda) e^{\mu A(\lambda)}\right]}{\lambda}-e^{-\mu A(\lambda)} A(\lambda) \diff*{e^{\mu A(\lambda)}}{\lambda}\\
+                                   &= e^{-\mu A(\lambda)} \diff{A(\lambda)}{\lambda} e^{\mu A(\lambda)} + e^{-\mu A(\lambda)} A(\lambda) \diff*{e^{\mu A(\lambda)}}{\lambda} - e^{-\mu A(\lambda)} A(\lambda) \diff*{e^{\mu A(\lambda)}}{\lambda}\\
+                                   &= e^{-\mu A(\lambda)} \diff{A(\lambda)}{\lambda} e^{\mu A(\lambda)},
+   \end{align*}
+   onde usamos que \(e^{\mu A(\lambda)} A(\lambda) = \diffp{e^{\mu A(\lambda)}}{\mu} = A(\lambda) e^{\mu A(\lambda)}.\) Para todo \(\lambda,\) mostramos que \(F(0,\lambda) = G(0, \lambda)\) e que \(\diffp{F(\mu, \lambda)}{\mu} = \diffp{G(\mu, \lambda)}{\mu},\) portanto concluímos que \(G(\mu, \lambda) = F(\mu, \lambda)\) para todos \(\mu, \lambda\). A partir disso, sabemos que
+   \begin{equation*}
+      \diff*{e^{\mu A(\lambda)}}{\lambda} = e^{\mu A(\lambda)} \int_0^\mu \dli{\tau} e^{-\tau A(\lambda)} \diff{A(\lambda)}{\lambda} e^{\tau A(\lambda)}.
+   \end{equation*}
+   Conjugando a igualdade \(G(\mu \lambda) = F(\mu, \lambda)\) por \(e^{\mu A(\lambda)}\) e multiplicando \(e^{\mu A(\lambda)}\) pela direita, obtemos
+   \begin{align*}
+      \diff*{e^{\mu A(\lambda)}}{\lambda} &= \left[e^{\mu A(\lambda)} F(\mu, \lambda) e^{-\mu A(\lambda)}\right]e^{\mu A(\lambda)}\\
+                                          &= \left[\int_0^\mu \dli{\tau} e^{(\mu - \tau) A(\lambda)} \diff{A(\lambda)}{\lambda} e^{-(\mu - \tau)A(\lambda)}\right] e^{\mu A(\lambda)}.
+   \end{align*}
+   Com a substituição \(\tau \to \mu - \tau,\) temos
+   \begin{equation*}
+      \diff*{e^{\mu A(\lambda)}}{\lambda} = \left[\int_0^\mu \dli{\tau} e^{\tau A(\lambda)} \diff{A(\lambda)}{\lambda} e^{-\tau A(\lambda)}\right] e^{\mu A(\lambda)}.
+   \end{equation*}
+   como desejado.
+\end{proof}
+
 \begin{exercício}{Operador evolução temporal para o oscilador harmônico forçado}{ex1}
    A transformação unitária que resolve o problema do oscilador forçado não precisa apenas produzir solução para a equação de movimento de Heisenberg,
    \begin{equation*}
@@ -10,41 +54,52 @@
    \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-   Notemos que
+   Antes de tomar a derivada temporal do operador \(U(t)\) que realiza a equação de movimento de Heisenberg para o operador de aniquilação, preparamos alguns resultados preliminares. Notemos que
    \begin{align*}
       \commutator{D(z)}{H_0} &= \commutator{D(z)}{\herm{a}a}\\
                              &= \commutator{D(z)}{\herm{a}}a + \herm{a}\commutator{D(z)}{a}\\
                              &= \diffp{D(z)}{a}a - \herm{a} \diffp{D(z)}{\herm{a}}\\
                              &= -z^*D(z) a - z\herm{a} D(z)\\
                              &= -(z^* a + z \herm{a}) D(z) - z^* \commutator{D(z)}{a}\\
-                             &= -(z^*a + z \herm{a} + \abs{z}^2) D(z).
+                             &= -(z^*a + z \herm{a} - \abs{z}^2) D(z).
    \end{align*}
-   Para \(s(t) = - \frac{i}{\sqrt{2}} e^{-it} \int_0^t \dli{\tau} f(\tau) e^{i \tau},\) temos
+   Escrevamos \(A(t) = z \herm{a} - z^* a\), \(\dot{z} = \diff{z}{t}\) e \(\dot{z}^* = \diff{z^*}{t}\). Pelo \cref{lem:derivada} e pelo \cref{ex:ex2}, temos
+   \begin{align*}
+      \diffp{D(z)}{t}%&= \diffp{e^{A(t)}}{t}\\
+      &= \left[\int_0^1 \dli{\tau} e^{\tau A(t)} \diff{A(t)}{t} e^{-\tau A(t)}\right]D(z)\\
+      &= \left[\int_0^1 \dli{\tau} D(\tau z) \left(\dot{z}\herm{a} - \dot{z}^*a\right) \herm{D}(\tau z)\right]D(z)\\
+      &= \left[\int_0^1 \dli{\tau} \left(\dot{z} \herm{a} - \tau \dot{z}z^* - \dot{z}^* a + \tau \dot{z}^* z\right)\right]D(z)\\
+      &= \left[\dot{z} \herm{a} - \dot{z}^* a - \frac12 \left(\dot{z} z^* - \dot{z}^* z\right)\right]D(z),
+   \end{align*}
+   onde usamos que \(D(z) a \herm{D}(z) = a - z\) e \(D(z) \herm{a} \herm{D}(z) = \herm{a} - z^*\). Para \(s(t) = - \frac{i}{\sqrt{2}} e^{-it} \int_0^t \dli{\tau} f(\tau) e^{i \tau},\) temos
    \begin{equation*}
       i\diff{s(t)}{t} = s(t) + \frac{f(t)}{\sqrt{2}}\quad\text{e}\quad -i \diff{s^*(t)}{t} = s^*(t) + \frac{f(t)}{\sqrt{2}},
    \end{equation*}
-   para \(f(t)\) real. Assim,
+   para \(f(t)\) real. Assim, como \(i \dot{s} s^* - i\dot{s}^* s = 2\abs{s} + \frac{f}{\sqrt{2}} (s^* + s),\) 
+   \begin{equation*}
+      i\diffp{D(s(t))}{t} = \left[s(t) \herm{a} + s^*(t)a + H_\mathrm{int} - \left(\abs{s(t)}^2 + \frac{f(t)}{\sqrt{2}} \Re[s(t)]\right)\right]D(s(t))
+   \end{equation*}
+   é a derivada temporal de \(D(s(t)).\) Agora computamos a derivada temporal de \(U(t)\) e verificamos que não equivale a \(H U(t),\)
    \begin{align*}
       i\diffp{U(t)}{t} &= i\diffp{D(s(t))}{t} e^{-i H_0 t} + D(s(t)) H_0e^{-i H_0t}\\
-                    &= i \diffp*{\left(s(t) \herm{a} - s^*(t) a\right)}{t} D(s(t)) e^{-iH_0t} + H_0 D(s(t))e^{-iH_0 t} + \commutator{D(s(t))}{H_0} e^{-iH_0 t}\\
-                    &= \left[s(t) \herm{a} + s^*(t) a + \frac{f(t)}{\sqrt{2}}(\herm{a} + a)\right]U(t) + H_0 U(t) + \commutator{D(s(t))}{H_0} e^{-iH_0t}\\
-                    &= \left[H_\mathrm{int} + H_0 - \abs{s(t)}^2\right] U(t)\\
-                    &= H U(t) - \abs{s(t)}^2 U(t),
+                       &= i \diffp{D(s(t))}{t} e^{-iH_0t} + H_0 D(s(t))e^{-iH_0 t} + \commutator{D(s(t))}{H_0} e^{-iH_0 t}\\
+                       &= \left\{\left[s(t) \herm{a} + s^*(t)a + H_\mathrm{int} - \left(\abs{s(t)}^2 + \frac{f(t)}{\sqrt{2}} \Re[s(t)]\right)\right] + H_0 - \left[s(t) \herm{a} + s^*(t) a - \abs{s(t)}^2\right]\right\}U(t)\\
+                       &= \left[H_\mathrm{int} + H_0 - \frac{f(t)}{\sqrt{2}} \Re\left[s(t)\right]\right] U(t)\\
+                       &= H U(t) - \frac{f(t)}{\sqrt{2}} \Re\left[s(t)\right]U(t),
    \end{align*}
-   isto é, \(U(t)\) não pode ser o operador evolução temporal. Consideramos uma fase \(e^{i\alpha(t)}\) e o ansatz \(\tilde{U}(t) = e^{i \alpha(t)} U(t),\) que satisfaz
-   \begin{equation*}
-      i\diffp{\tilde{U}(t)}{t} = - \left[\diff{\alpha(t)}{t} + \abs{s(t)}^2\right] \tilde{U}(t) + H \tilde{U}(t),
-   \end{equation*}
-   portanto \(\tilde{U}(t)\) é o operador evolução temporal se \(\diff{\alpha(t)}{t} = - \abs{s(t)}^2.\) Notemos que
+   isto é, \(U(t)\) não pode ser o operador evolução temporal, a menos que \(s(t)\) seja puramente imaginária. Consideramos uma fase \(e^{i\alpha(t)}\) e o ansatz \(\tilde{U}(t) = e^{i \alpha(t)} U(t),\) que satisfaz
    \begin{align*}
-      \diff*{\left(\frac1{\sqrt{2}} \int_0^t \dli{\tau} f(\tau) \Re\left[s(\tau)\right]\right)}{t} 
-      &= \frac{1}{\sqrt{2}} f(t) \Re\left[s(t)\right]\\
-      &= \frac{1}{2\sqrt{2}} f(t) \left[s(t) + s^*(t)\right]\\
-      &= \frac{1}{4i} f(t) \left[\int_0^t \dli{\tau} f(\tau) \left(e^{i(\tau-t)} - e^{-i(\tau-t)}\right)\right]\\
-      &= \frac12 \int_0^t \dli{\tau}f(\tau) \sin(\tau - t) f(t)
+      i\diffp{\tilde{U}(t)}{t} &= - \diff{\alpha(t)}{t} e^{i \alpha(t)} U(t) + e^{i \alpha(t)} \left(H - \frac{f(t)}{\sqrt{2}}\Re\left[s(t)\right]\right)U(t)\\
+                               &= H \tilde{U}(t) - \left(\diff{\alpha(t)}{t} + \frac{f(t)}{\sqrt{2}}\Re\left[s(t)\right]\right) \tilde{U}(t)
    \end{align*}
-   e que
+   portanto \(\tilde{U}(t)\) é o operador evolução temporal se \(\diff{\alpha(t)}{t} = - \frac{f(t)}{\sqrt{2}}\Re\left[s(t)\right].\) Notemos que
    \begin{equation*}
-      \abs{s(t)}^2 = \frac12 \int_0^t \dli{\tau} \int_0^t \dli{\eta} f(\tau) f(\eta) e^{i(\tau - \eta)}
+      \diff*{\left(\frac1{\sqrt{2}} \int_0^t \dli{\tau} f(\tau) \Re\left[s(\tau)\right]\right)}{t} 
+      = \frac{1}{\sqrt{2}} f(t) \Re\left[s(t)\right],
    \end{equation*}
+   isto é, podemos tomar 
+   \begin{equation*}
+      \alpha(t) = - \frac{1}{\sqrt{2}} \int_0^t \dli{\tau} f(\tau) \Re\left[s(\tau)\right]
+   \end{equation*}
+   de tal sorte que \(i \diffp{\tilde{U}(t)}{t} = H \tilde{U}(t).\)
 \end{proof}
