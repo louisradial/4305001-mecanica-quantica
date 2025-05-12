@@ -1,11 +1,142 @@
 % vim: spl=pt
 \begin{exercício}{Autofunções de momento angular para o movimento em campo magnético}{ex6}
-    Mostre que as autofunções dos estados estacionários de momento angular \(\mu\) para o movimento em campo magnético são
-    \begin{equation*}
-       \Psi_{0\mu}(\xi, \eta) = \frac1{\sqrt{2\pi \mu!}}\left(\frac{\xi + i \eta}{\sqrt{2}}\right)^n \exp\left(-\frac{\rho^2}{4}\right),
-    \end{equation*}
-    onde \(\xi = \frac{x}{\ell_B},\) \(\eta = \frac{y}{\ell_B},\) e \(\rho^2 = \xi^2 + \eta^2.\)
+   Mostre que as autofunções dos estados estacionários de momento angular \(\mu\) para o movimento em campo magnético são
+   \begin{equation*}
+      \Psi_{0\mu}(\xi, \eta) = \frac1{\sqrt{2\pi \mu!}}\left(\frac{\xi + i \eta}{\sqrt{2}}\right)^\mu \exp\left(-\frac{\rho^2}{4}\right),
+   \end{equation*}
+   onde \(\xi = \frac{x}{\ell_B},\) \(\eta = \frac{y}{\ell_B},\) e \(\rho^2 = \xi^2 + \eta^2.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   % No gauge simétrico, temos \(A_x = -\frac12 y B\) e \(A_y = \frac12 xB,\) portanto
+   % \begin{equation*}
+   %    v_x = \frac{1}{m}p_x + \frac12 \omega_c y
+   %    \quad\text{e}\quad
+   %    v_y = \frac{1}{m}p_y - \frac12 \omega_c x,
+   % \end{equation*}
+   % onde \(\omega_c = \frac{e B}{m c}.\) Assim,
+   % \begin{align*}
+   %    \frac12m(v_x^2 + v_y^2) &= \frac{1}{2m}p_x^2 + \frac12 \omega_c y p_x + \frac12m\left(\frac12\omega_c\right)^2 y^2  + \frac{1}{2m}p_y^2 - \frac12 \omega_c x p_y + \frac12m\left(\frac12\omega_c\right)^2 x^2\\
+   %                            &= \underbrace{\left[\frac1{2m} p_x^2 + \frac12m\left(\frac12\omega_c\right)^2 x^2\right]}_{H_x} + \underbrace{\left[\frac1{2m} p_y^2 + \frac12m\left(\frac12 \omega_c\right)^2 y^2\right]}_{H_y} - \frac12 \omega_c (x p_y - y p_x)\\
+   %                            &= H_x + H_y - \frac12 \omega_c L_z,
+   % \end{align*}
+   % portanto nesse gauge temos \(H = H_x + H_y + \frac1{2m} p_z^2 - \frac12 \omega_c L_z,\) onde \(H_x\) e \(H_y\) são termos de osciladores harmônicos unidimensionais de frequências \(\omega = \frac12 \omega_c\) em suas respectivas direções. É claro que o termo \(\frac1{2m} p_z^2\) comuta com os demais, portanto restringimos a discussão ao hamiltoniano da dinâmica no plano transversal ao eixo \(z\), \(H_\perp = H_x + H_y - \frac12 \omega_c L_z.\) Notemos que 
+   % \begin{align*}
+   %    \commutator{L_z}{H_x} &= \commutator{xp_y - y p_x}{\frac1{2m} p_x^2 + \frac12m \omega^2x^2}&
+   %    \commutator{L_z}{H_y} &= \frac{1}{i \hbar}\commutator{xp_y - y p_x}{\frac1{2m} p_y^2 + \frac12m \omega^2y^2}\\
+   %                          &= \frac{i \hbar}m p_y p_x + i \hbar m \omega^2 yx&
+   %                          &= - \frac{i \hbar}m p_y p_x - i \hbar m \omega^2 yx,
+   % \end{align*}
+   % portanto podemos diagonalizar \(H\) e \(L_z\) simultaneamente. Sabemos que o espectro de \(H\) é dado pelos níveis de Landau \(E_n = \hbar \omega_c (n + \frac12)\), portanto consideramos a base \(\ket{n,\mu}\) com 
+   % \begin{equation*}
+   %    H \ket{n,\mu} = E_n \ket{n,\mu}
+   %    \quad\text{e}\quad
+   %    L_z \ket{n,\mu} = \hbar \mu \ket{n,\mu}.
+   % \end{equation*}
+
+   Já sabemos que em qualquer calibre os operadores
+   \begin{equation*}
+      a = \sqrt{\frac{m}{2 \hbar \omega_c}} (v_x + i v_y)
+      \quad\text{e}\quad
+      \herm{a} = \sqrt{\frac{m}{2 \hbar \omega_c}} (v_x - i v_y)
+   \end{equation*}
+   abaixam e levantam o autovalor de energia, então pelo \cref{ex:ex5}, temos
+   \begin{equation*}
+      a \ket{n,\mu} = \sqrt{n} \ket{n-1, \mu + 1}\quad\text{e}\quad \herm{a}\ket{n,\mu} = \sqrt{n+1} \ket{n+1, \mu - 1},
+   \end{equation*}
+   logo
+   \begin{equation*}
+      \ket{n, -n} = \frac{1}{\sqrt{n!}} (\herm{a})^n \ket{0,0}
+   \end{equation*}
+   para todo \(n \in \mathbb{N}_0\). No calibre considerado, temos
+   \begin{equation*}
+      a = \frac{1}{\sqrt{\hbar \omega_c m}} \left(\frac{p_x + i p_y}{\sqrt{2}}\right) - i\sqrt{\frac{m \omega_c}{\hbar}} \left(\frac{x + iy}{2\sqrt{2}}\right) = \frac{\ell_B}{\hbar} \left(\frac{p_x + i p_y}{\sqrt{2}}\right) - \frac{i}{\ell_B}\left(\frac{x + i y}{2\sqrt{2}}\right) 
+   \end{equation*}
+   onde definimos o comprimento magnético \(\ell_B = \sqrt{\frac{\hbar}{m \omega_c}},\) portanto em termos dos operadores adimensionais
+   \begin{equation*}
+      \xi = \frac{1}{\ell_B}x,\quad
+      \eta = \frac{1}{\ell_B}y,\quad
+      p_\xi = \frac{\ell_B}{\hbar}p_x\quad\text{e}\quad
+      p_\eta = \frac{\ell_B}{\hbar}p_y,
+   \end{equation*}
+   temos \(\commutator{\xi}{p_\xi} = i = \commutator{\eta}{p_\eta}\) e 
+   \begin{equation*}
+      a = \frac{p_\xi + i p_\eta}{\sqrt{2}} - i\frac{\xi + i \eta}{2\sqrt{2}}.
+   \end{equation*}
+   Assim, temos
+   \begin{equation*}
+      a\ket{0,0} = 0 \implies \bra{\xi',\eta'}a\ket{0,0} = 0 \implies \frac{1}{\sqrt{2}}\left(-i\diffp*{}{\xi'} + \diffp*{}{\eta'} -i \frac{\xi' + i \eta'}{2}\right)\braket{\xi'\eta'}{0,0} = 0,
+   \end{equation*}
+   isto é, \(\psi(\xi', \eta') = \braket{\xi'\eta'}{0,0}\) satisfaz a equação diferencial
+   \begin{equation*}
+      \left(\diffp*{}{\xi'} + i \diffp*{}{\eta'}\right)\psi(\xi', \eta') = -\frac{\xi' + i \eta'}{2} \psi(\xi', \eta').
+   \end{equation*}
+   Assim sendo, consideramos o ansatz
+   \begin{equation*}
+      \psi(\xi',\eta') = f(\xi' + i \eta') \exp\left(-\frac14 \rho^2\right),
+   \end{equation*}
+   onde \(\rho^2 = \xi^2 + \eta^2\) e \(f : \mathbb{C} \to \mathbb{C}\) é uma função analítica com \(f'(w) = \diff{f(w)}{w}\). Como
+   \begin{equation*}
+      \diffp{\psi}{\xi'} = f'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\xi'}{2} \psi(\xi', \eta')
+      \quad\text{e}\quad
+      \diffp{\psi}{\eta'} = if'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\eta'}{2} \psi(\xi', \eta'),
+   \end{equation*}
+   obtemos
+   \begin{align*}
+      \left(\diffp*{}{\xi'} + i \diffp*{}{\eta'}\right)\psi(\xi', \eta') &= \left[f'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\xi'}{2} \psi(\xi', \eta')\right] + i\left[if'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\eta'}{2} \psi(\xi', \eta')\right]\\
+      &= -\frac{\xi' + i \eta'}{2} \psi(\xi', \eta'),
+   \end{align*}
+   isto é, o ansatz resolve a equação diferencial. Para determinar \(f(w),\) utilizamos que \(L_z \ket{0,0} = 0,\) e concluímos que \(f(w)\) deve ser constante, pois
+   \begin{align*}
+      \bra{\xi'\eta'} L_z \ket{0,0} = 0 &\implies \bra{\xi'\eta'}\hbar (\xi p_\eta - \eta p_\xi)\ket{0,0} = 0\\
+                                        &\implies \left(-i\xi' \diffp{}{\eta'} + i\eta' \diffp{}{\xi'}\right)\braket{\xi'\eta'}{0,0} = 0\\
+                                        &\implies \eta' \diffp{\psi}{\xi'} = \xi' \diffp{\psi}{\eta'}\\
+                                        &\implies \eta'\left[f'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\xi'}{2} \psi(\xi', \eta')\right] = \xi' \left[if'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\eta'}{2} \psi(\xi', \eta')\right]\\
+                                        &\implies (\eta' - i \xi') f'(\xi' + i \eta') = 0\\
+                                        &\implies f(w) = f.
+   \end{align*}
+   Obtemos essa constante normalizando a função de onda,
+   \begin{equation*}
+      1 = \abs{f}^2\int_{\mathbb{R}} \dli{\xi'} \int_{\mathbb{R}} \dli{\eta'} e^{-\frac12 \rho^2} = 2\pi\abs{f}^2 \int_0^\infty \dli{\rho} \rho e^{-\frac12 \rho^2} = 2\pi \abs{f}^2,
+   \end{equation*}
+   logo
+   \begin{equation*}
+      \braket{\xi'\eta'}{0,0} = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{{\xi'}^2 + {\eta'}^2}{4}\right)
+   \end{equation*}
+   ao exigir que esta função de onda seja real.
+
+   Para obter a função de onda do estado \(\ket{0,\mu}\) temos
+   \begin{equation*}
+      \left(-i\xi' \diffp{}{\eta'} + i\eta' \diffp{}{\xi'}\right)\braket{\xi'\eta'}{0,\mu} = \mu \braket{\xi' \eta'}{0,\mu}
+   \end{equation*}
+   e como podemos usar que \(\braket{\xi',\eta'}{0,\mu} = \frac1{\sqrt{2\pi}}g(\xi' + i \eta') e^{-\frac14 \rho^2}\), isso se traduz na equação diferencial para \(g\)
+   \begin{equation*}
+      (\xi' + i \eta') g'(\xi' + i \eta') = \mu g(\xi' + i \eta').
+   \end{equation*}
+   Escrevendo isso com \(w = \xi' + i \eta',\) temos simplesmente
+   \begin{equation*}
+      w \diff{g(w)}{w} = \mu g(w) \implies \diff*{\ln(g(w))}{w} = \mu \diff{\ln{w}}{w} \implies g(w) = \alpha w^\mu,
+   \end{equation*}
+   isto é, \(g(\xi' + i \eta') = \alpha (\xi' + i \eta')^\mu,\) com \(\alpha \in \mathbb{C}\) constante. Esta constante é obtida novamente com a normalização,
+   \begin{equation*}
+      1 = \frac{\abs{\alpha}^2}{2\pi}\int_{\mathbb{R}} \dli{\xi'} \int_{\mathbb{R}} \dli{\eta'} \rho^{2\mu} e^{-\frac12 \rho^2} = \abs{\alpha}^2 \int_0^\infty \dli{\rho} \rho^{2\mu+ 1} e^{-\frac12\rho^2} = 2^\mu\abs{\alpha}^2 \int_0^{\infty}\dli{s} s^{\mu} e^{-s} = 2^\mu \mu! \abs{\alpha}^2,
+   \end{equation*}
+   então tomando \(\alpha \in \mathbb{R}\) como a escolha de fase temos \(\alpha = \frac{1}{\sqrt{2^\mu \mu!}}.\)Concluímos que
+   \begin{equation*}
+      \braket{\xi'\eta'}{0,\mu} = \frac{1}{\sqrt{2\pi \mu!}} \left(\frac{\xi' + i \eta'}{\sqrt{2}}\right)^\mu \exp\left(-\frac{{\xi'}^2 + {\eta'}^2}{4}\right)
+   \end{equation*}
+   é a função de onda do estado \(\ket{0,\mu}.\)
 \end{proof}
+
+
+   % Para obter o estado \(\ket{n, \mu},\) utilizamos os operadores
+   % \begin{equation*}
+   %    Q_\pm = \frac{1}{\ell_B\sqrt{2}} \left(\frac{x \pm iy}{2}\mp i\frac{p_x \pm i p_y}{m \omega_c}\right) = \frac{\xi \pm i \eta}{2\sqrt{2}} \mp i\frac{p_\xi \pm i p_\eta}{\sqrt{2}}
+   % \end{equation*}
+   % que satisfazem
+   % \begin{equation*}
+   %    Q_{+} \ket{n,\mu} = \sqrt{n + \mu + 1} \ket{n, \mu + 1}\quad\text{e}\quad Q_-\ket{n,\mu} = \sqrt{n + \mu} \ket{n, \mu - 1},
+   % \end{equation*}
+   % portanto
+   % \begin{equation*}
+   %    \ket{n, \mu} = \frac{1}{\sqrt{(n + \mu)!}} (Q_+)^{n + \mu} \ket{n, -n} = \frac{1}{\sqrt{n!(n+\mu)!}} (Q_+)^{n + \mu} (\herm{a})^{n} \ket{0,0}.
+   % \end{equation*}
