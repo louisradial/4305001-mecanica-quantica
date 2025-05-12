@@ -1,31 +1,114 @@
 % vim: spl=pt
 \begin{exercício}{Calibre de Landau}{ex7}
-    O movimento em um campo magnético pode também ser tratado usando o calibre \(A_x = - By\) e \(A_y = A_z = 0,\) chamado de calibre de Landau. 
-    \begin{enumerate}[label=(\alph*)]
-        \item Mostre que no calibre de Landau o par conveniente de constantes de movimento são \(p_x\) e o hamiltoniano para o movimento no plano \(xy\),
-           \begin{equation*}
-              H_L = \frac{p_y^2}{2m} + \frac12 m \omega_c^2 (y - y_0)^2,
-           \end{equation*}
-           onde \(y_0 = - \frac{cp_x}{eB}.\)
-        \item Mostre que o espectro desse hamiltoniano é
-           \begin{equation*}
-              E_n = \hbar \omega_c \left(n + \frac12\right),\quad\text{com}\quad n \in \mathbb{N}_0,
-           \end{equation*}
-           onde \(\hbar k\) é o autovalor de \(p_x,\) que varia continuamente em \(\mathbb{R},\) mas que não afeta a energia. Mostre que as autofunções são
-           \begin{equation*}
-              \Phi_{n \kappa}(x,y) = \sqrt{2\pi} e^{i \kappa \xi} \phi_n(\eta + \kappa),
-           \end{equation*}
-           onde \(\kappa = k \ell_B\) e \(\phi_n\) é a \(n\)-ésima autofunção do oscilador harmônico unidimensional.
-        \item Seja \(\tilde{\Psi}_{n \mu}\) a autofunção de energia e momento angular bem definidos após a transformação para o calibre de Landau. Mostre que os coeficientes da expansão
-           \begin{equation*}
-              \Phi_{0 \kappa} = \sum_{\mu} c_\mu(\kappa) \tilde{\Psi}_{0 \mu}
-           \end{equation*}
-           são dados por
-           \begin{equation*}
-              \exp\left(\frac14 z^2 + i \kappa z\right) = \pi^{\frac14} \exp\left(\frac{\kappa^2}{4}\right) \sum_{\mu} c_{\mu}(\kappa) \frac{z^\mu}{\sqrt{\mu!}}.
-           \end{equation*}
-    \end{enumerate}
+   O movimento em um campo magnético pode também ser tratado usando o calibre \(A_x = - By\) e \(A_y = A_z = 0,\) chamado de calibre de Landau. 
+   \begin{enumerate}[label=(\alph*)]
+      \item Mostre que no calibre de Landau o par conveniente de constantes de movimento são \(p_x\) e o hamiltoniano para o movimento no plano \(xy\),
+         \begin{equation*}
+            H_L = \frac{p_y^2}{2m} + \frac12 m \omega_c^2 (y - y_0)^2,
+         \end{equation*}
+         onde \(y_0 = - \frac{cp_x}{eB}.\)
+      \item Mostre que o espectro desse hamiltoniano é
+         \begin{equation*}
+            E_n = \hbar \omega_c \left(n + \frac12\right),\quad\text{com}\quad n \in \mathbb{N}_0,
+         \end{equation*}
+         onde \(\hbar k\) é o autovalor de \(p_x,\) que varia continuamente em \(\mathbb{R},\) mas que não afeta a energia. Mostre que as autofunções são
+         \begin{equation*}
+            \Phi_{n, \kappa}(x,y) = \frac{1}{\sqrt{2\pi}} e^{i \kappa \xi} \phi_n(\eta + \kappa),
+         \end{equation*}
+         onde \(\kappa = k \ell_B\) e \(\phi_n\) é a \(n\)-ésima autofunção do oscilador harmônico unidimensional.
+      \item Seja \(\tilde{\Psi}_{n,\mu}\) a autofunção de energia e momento angular bem definidos após a transformação para o calibre de Landau. Mostre que os coeficientes da expansão
+         \begin{equation*}
+            \Phi_{0, \kappa} = \sum_{\mu} c_\mu(\kappa) \tilde{\Psi}_{0,\mu}
+         \end{equation*}
+         são dados por
+         \begin{equation*}
+            \exp\left(\frac14 z^2 + i \kappa z\right) = \pi^{\frac14} \exp\left(\frac{\kappa^2}{4}\right) \sum_{\mu} c_{\mu}(\kappa) \frac{z^\mu}{\sqrt{\mu!}}.
+         \end{equation*}
+   \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   No gauge de Landau, temos
+   \begin{equation*}
+      \vetor{v} = \frac1m \left(\vetor{p} - \frac{e}{c} \vetor{A}\right) = \frac1m\vetor{p} + \omega_c y \vetor{e}_x,
+   \end{equation*}
+   então
+   \begin{align*}
+      H = \frac12 m \vetor{v}^2 &= \frac{p_y^2}{2m} + \frac{p_z^2}{2m} + \frac12 m\left(\frac{p_x}{m} + \omega_c y\right)^2\\
+                                &= \frac{p_y^2}{2m} + \frac{p_z^2}{2m} + \frac12 m \omega_c^2 \left(y + \frac{p_x}{m\omega_c}\right)^2\\
+                                &= \frac{p_z^2}{2m} + \frac{p_y^2}{2m} + \frac12m \omega_c^2 \left(y - y_0\right)^2,
+   \end{align*}
+   onde definimos \(y_0 = - \frac{p_x}{m \omega_c} = -\frac{c}{e B} p_x.\) Como não há \(x\) nem \(z\) na expressão do hamiltoniano, é claro que \(\commutator{p_x}{H} = \commutator{p_z}{H} = 0,\) portanto esses operadores são constantes de movimento. Assim, \(\commutator{H - \frac{p_z^2}{2m}}{H} = 0,\) isto é, o hamiltoniano da dinâmica no plano \(xy\),
+   \begin{equation*}
+      H_L = \frac{p_y^2}{2m} + \frac12 m \omega_c^2 (y - y_0)^2,
+   \end{equation*}
+   é uma constante de movimento. Como \(\commutator{p_x}{H_L} = 0,\) podemos diagonalizar \(p_x\) e \(H_L\) simultaneamente.
+
+   Notemos que para \(H_L,\) \(p_x\) atua como um deslocamento constante, portanto adaptamos\footnote{Na notação daquele exercício, temos \(\lambda = - m \omega_c^2 y_0.\)} o desenvolvimento do \href{https://github.com/louisradial/4305001-mecanica-quantica/releases/tag/lista2}{Exercício 5 da Lista 2} e definimos os operadores de aniquilação e criação para \(H_L - \frac12 m \omega_c^2 y_0^2\)
+   \begin{equation*}
+      b = \frac{1}{\sqrt{2}} \left[\sqrt{\frac{m \omega_c}{\hbar}}\left(y - y_0\right) + \frac{i}{\sqrt{\hbar \omega_c m}} p_y\right]
+      \quad\text{e}\quad
+      \herm{b} = \frac{1}{\sqrt{2}} \left[\sqrt{\frac{m \omega_c}{\hbar}}\left(y - y_0\right) - \frac{i}{\sqrt{\hbar \omega_c m}} p_y\right]
+   \end{equation*}
+   de modo que
+   \begin{equation*}
+      H_L - \frac12 m \omega_c^2 y_0^2 = \hbar\omega_c \herm{b}b + \frac12\left(\hbar\omega - m\omega_c^2 y_0^2\right) = \hbar\omega_c \left(\herm{b}b + \frac12\right) - \frac12 m \omega_c^2 y_0^2,
+   \end{equation*}
+   isto é,
+   \begin{equation*}
+      H_L = \hbar \omega_c \left(\herm{b} b + \frac12\right).
+   \end{equation*}
+   Assim, o espectro de \(H_L\) é simplesmente o de um oscilador harmônico unidimensional de frequência \(\omega_c,\) sem a influência do autovalor do operador \(p_x.\) 
+
+   Consideramos a base \(\ket{n, \kappa}\) em que \(H_L \ket{n, \kappa} = \hbar \omega_c (n + \frac12) \ket{n,\kappa}\) e \(p_x \ket{n,\kappa} = \hbar \ell_B^{-1} \kappa \ket{n, \kappa}\) e em particular as autofunções \(\Phi_{n, \kappa}(\xi', \eta') = \braket{\xi'\eta'}{n,\kappa}.\) Como no \cref{ex:ex6}, consideramos os operadores adimensionais, então
+   \begin{equation*}
+      b = \frac{1}{\sqrt{2}} \left[\eta + p_\xi + ip_\eta\right]
+      \quad\text{e}\quad
+      \herm{b} = \frac{1}{\sqrt{2}} \left[\eta + p_\xi - ip_\eta\right]
+   \end{equation*}
+   Vamos obter a autofunção do estado \(\ket{0,\kappa}\) e utilizar o operador de criação para obter a autofunção do estado \(\ket{n, \kappa}.\) Este estado satisfaz \(p_\xi \ket{0,\kappa} = \kappa\ket{0,\kappa}\) e \(b\ket{0,\kappa} = 0,\) portanto 
+   \begin{equation*}
+      \kappa \Phi_{0, \kappa}(\xi', \eta') = \bra{\xi'\eta'} p_\xi \ket{0,\kappa} = -i \diffp{\Phi_{0, \kappa}(\xi', \eta')}{\xi'} \implies \diffp{\Phi_{0, \kappa}(\xi', \eta')}{\xi'} = i \kappa \Phi_{0, \kappa}(\xi', \eta')
+   \end{equation*}
+   e
+   \begin{equation*}
+      0 = \bra{\xi'\eta'} b \ket{0,\kappa}  = \frac{1}{\sqrt{2}}\left(\eta' - i \diffp*{}{\xi'} + \diffp*{}{\eta'}\right)\braket{\xi'\eta'}{0,\kappa} \implies \left(\eta' - i \diffp*{}{\xi'} + \diffp*{}{\eta'}\right)\Phi_{0, \kappa}(\xi', \eta') = 0.
+   \end{equation*}
+   Substituindo a primeira equação na segunda, obtemos
+   \begin{equation*}
+      \left(\diffp{}{\eta'} + \eta' +  \kappa\right)\Phi_{0, \kappa}(\xi', \eta') = 0,
+   \end{equation*}
+   e vemos que podemos separar as variáveis de acordo com \(\Phi_{0, \kappa}(\xi', \eta') = \alpha e^{i\kappa \xi} \tilde{\phi}_0(\eta'),\) onde \(\alpha \in \mathbb{C}\) é uma constante. Escrevemos \(\zeta = \eta' + \kappa\) e \(\phi_0(\zeta) = \tilde{\phi}_0(\eta'),\) então a equação diferencial pode ser escrita como a equação diferencial satisfeita pela função de onda do estado fundamental de um oscilador harmônico unidimensional,
+   \begin{equation*}
+      \diff{\phi_0(\zeta)}{\zeta} + \zeta \phi_0(\zeta) = 0,
+   \end{equation*}
+   portanto \(\phi_0(\zeta) = \pi^{-\frac14} e^{-\frac12 \zeta^2}\) e temos
+   \begin{equation*}
+      \Phi_{0, \kappa}(\xi', \eta') = \frac{1}{\sqrt{2\pi}}e^{i\kappa \xi'} \phi_0(\eta' + \kappa)
+   \end{equation*}
+   como a função de onda do estado \(\ket{0,\kappa},\) onde escolhemos \(\alpha = \frac{1}{\sqrt{2\pi}},\) já que esta função de onda não é normalizável.\footnote{Neste gauge, deveríamos considerar estados dado por pacotes de onda formado por estados como \(\ket{n, \kappa}\).} 
+
+   Consideramos o conjunto
+   \begin{equation*}
+      S = \setc*{n \in \mathbb{N}_0}{\Phi_{n, \kappa}(\xi', \eta') = \frac1{\sqrt{2\pi}} e^{i \kappa \xi'} \phi_n(\eta' + \kappa)},
+   \end{equation*}
+   onde \(\phi_n\) é a \(n\)-ésima autofunção do oscilador harmônico unidimensional. Já mostramos que \(0 \in S,\) portanto \(S\) é não vazio. Assim, consideramos \(n \in S\) e obtemos a função de onda \(\Phi_{n+1,\kappa}(\xi', \eta')\) notando que
+   \begin{equation*}
+      \Phi_{n+1,\kappa}(\xi', \eta') = \braket{\xi'\eta'}{n+1,\kappa} = \frac{1}{\sqrt{n+1}} \bra{\xi'\eta'} \herm{b}\ket{n,\kappa} = \frac{1}{\sqrt{2(n+1)}} \left(\eta' - i \diffp{}{\xi'} - \diffp{}{\eta'}\right)\Phi_{n,\kappa}(\xi'\eta'),
+   \end{equation*}
+   isto é,
+   \begin{equation*}
+      \Phi_{n+1,\kappa}(\xi', \eta') = \frac{e^{i\kappa \xi'}}{\sqrt{4\pi(n+1)}} \left(\eta' + \kappa - \diffp{}{\eta'}\right)\phi_n(\eta' + \kappa).
+   \end{equation*}
+   Repetindo a mesma mudança de variáveis, \(\zeta = \eta' + \kappa,\) vemos que
+   \begin{equation*}
+      \frac{1}{\sqrt{2(n+1)}} \left(\zeta - \diff*{}{\zeta}\right)\phi_n(\zeta) = \phi_{n+1}(\zeta),
+   \end{equation*}
+   logo,
+   \begin{equation*}
+      \Phi_{n+1,\kappa}(\xi', \eta') = \frac{1}{\sqrt{2\pi}} e^{i \kappa \xi} \phi_{n+1}(\eta' + \kappa),
+   \end{equation*}
+   isto é, \(n + 1 \in S.\) Pelo princípio de indução finita, concluímos que \(S = \mathbb{N}_0,\) e encontramos assim as autofunções dos estados \(\ket{n,\kappa}.\)
+
+
+   Para o item (c). \(\chi = - \frac{B}2 xy.\)
 \end{proof}
