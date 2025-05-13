@@ -41,13 +41,9 @@
    \end{equation*}
    abaixam e levantam o autovalor de energia, então pelo \cref{ex:ex5}, temos
    \begin{equation*}
-      a \ket{n,\mu} = \sqrt{n} \ket{n-1, \mu + 1}\quad\text{e}\quad \herm{a}\ket{n,\mu} = \sqrt{n+1} \ket{n+1, \mu - 1},
+      a \ket{n,\mu} = \sqrt{n} \ket{n-1, \mu + 1}\quad\text{e}\quad \herm{a}\ket{n,\mu} = \sqrt{n+1} \ket{n+1, \mu - 1}.
    \end{equation*}
-   logo
-   \begin{equation*}
-      \ket{n, -n} = \frac{1}{\sqrt{n!}} (\herm{a})^n \ket{0,0}
-   \end{equation*}
-   para todo \(n \in \mathbb{N}_0\). No calibre considerado, temos
+   No calibre considerado, temos
    \begin{equation*}
       a = \frac{1}{\sqrt{\hbar \omega_c m}} \left(\frac{p_x + i p_y}{\sqrt{2}}\right) - i\sqrt{\frac{m \omega_c}{\hbar}} \left(\frac{x + iy}{2\sqrt{2}}\right) = \frac{\ell_B}{\hbar} \left(\frac{p_x + i p_y}{\sqrt{2}}\right) - \frac{i}{\ell_B}\left(\frac{x + i y}{2\sqrt{2}}\right) 
    \end{equation*}
@@ -64,79 +60,52 @@
    \end{equation*}
    Assim, temos
    \begin{equation*}
-      a\ket{0,0} = 0 \implies \bra{\xi',\eta'}a\ket{0,0} = 0 \implies \frac{1}{\sqrt{2}}\left(-i\diffp*{}{\xi'} + \diffp*{}{\eta'} -i \frac{\xi' + i \eta'}{2}\right)\braket{\xi'\eta'}{0,0} = 0,
+      a\ket{0,\mu} = 0 \implies \bra{\xi'\eta'}a\ket{0,\mu} = 0 \implies \frac{1}{\sqrt{2}}\left(-i\diffp*{}{\xi'} + \diffp*{}{\eta'} -i \frac{\xi' + i \eta'}{2}\right)\braket{\xi'\eta'}{0,\mu} = 0,
    \end{equation*}
-   isto é, \(\psi(\xi', \eta') = \braket{\xi'\eta'}{0,0}\) satisfaz a equação diferencial
+   isto é, \(\Psi_{0,\mu}(\xi', \eta') = \braket{\xi'\eta'}{0,\mu}\) satisfaz a equação diferencial
    \begin{equation*}
-      \left(\diffp*{}{\xi'} + i \diffp*{}{\eta'}\right)\psi(\xi', \eta') = -\frac{\xi' + i \eta'}{2} \psi(\xi', \eta').
+      \left(\diffp*{}{\xi'} + i \diffp*{}{\eta'}\right)\Psi_{0,\mu}(\xi', \eta') = -\frac{\xi' + i \eta'}{2} \Psi_{0,\mu}(\xi', \eta').
    \end{equation*}
-   Assim sendo, consideramos o ansatz
+   Consideramos \(\zeta = \xi' + i \eta',\) então
    \begin{equation*}
-      \psi(\xi',\eta') = f(\xi' + i \eta') \exp\left(-\frac14 \rho^2\right),
-   \end{equation*}
-   onde \(\rho^2 = \xi^2 + \eta^2\) e \(f : \mathbb{C} \to \mathbb{C}\) é uma função analítica com \(f'(w) = \diff{f(w)}{w}\). Como
-   \begin{equation*}
-      \diffp{\psi}{\xi'} = f'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\xi'}{2} \psi(\xi', \eta')
+      \diffp{}{\xi'} = \diffp{\zeta}{\xi'} \diffp{}{\zeta} + \diffp{\zeta^*}{\xi'} \diffp{}{\zeta^*} = \diffp{}{\zeta} + \diffp{}{\zeta^*}
       \quad\text{e}\quad
-      \diffp{\psi}{\eta'} = if'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\eta'}{2} \psi(\xi', \eta'),
+      \diffp{}{\eta'} = \diffp{\zeta}{\eta'} \diffp{}{\zeta} + \diffp{\zeta^*}{\eta'} \diffp{}{\zeta^*} = i\diffp{}{\zeta} - i\diffp{}{\zeta^*},
    \end{equation*}
-   obtemos
+   logo \(\partial_{\xi'} + i \partial_{\eta'} = 2 \partial_{\zeta^*}\) e obtemos a equação diferencial
+   \begin{equation*}
+      \diffp{\psi(\zeta, \zeta^*)}{\zeta^*} = -\frac14 \zeta \psi(\zeta, \zeta^*)
+   \end{equation*}
+   onde escrevemos \(\psi(\zeta,\zeta^*) = \Psi_{0,\mu}(\xi', \eta').\) Como \(\zeta\) e \(\zeta^*\) são variáveis independentes, podemos integrar esta equação diferencial em \(\zeta^*\) com
+   \begin{equation*}
+      \psi(\zeta, \zeta^*) = f(\zeta)\exp\left(-\frac{\zeta \zeta^*}{4}\right)
+   \end{equation*}
+   para alguma função \(f(\zeta)\) que não depende de \(\zeta^*\). Para determiná-la, partimos de \(L_z \ket{0,\mu} = \hbar \mu\ket{0,\mu},\) e obtemos a equação diferencial
    \begin{align*}
-      \left(\diffp*{}{\xi'} + i \diffp*{}{\eta'}\right)\psi(\xi', \eta') &= \left[f'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\xi'}{2} \psi(\xi', \eta')\right] + i\left[if'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\eta'}{2} \psi(\xi', \eta')\right]\\
-      &= -\frac{\xi' + i \eta'}{2} \psi(\xi', \eta'),
-   \end{align*}
-   isto é, o ansatz resolve a equação diferencial. Para determinar \(f(w),\) utilizamos que \(L_z \ket{0,0} = 0,\) e concluímos que \(f(w)\) deve ser constante, pois
-   \begin{align*}
-      \bra{\xi'\eta'} L_z \ket{0,0} = 0 &\implies \bra{\xi'\eta'}\hbar (\xi p_\eta - \eta p_\xi)\ket{0,0} = 0\\
-                                        &\implies \left(-i\xi' \diffp{}{\eta'} + i\eta' \diffp{}{\xi'}\right)\braket{\xi'\eta'}{0,0} = 0\\
+      \bra{\xi'\eta'} L_z \ket{0,\mu} = \hbar \mu\braket{\xi'\eta'}{0,\mu} 
+      &\implies \bra{\xi'\eta'}\hbar (\xi p_\eta - \eta p_\xi)\ket{0,\mu} = \braket{\xi'\eta'}{0,\mu}\\
+      &\implies \left(-i\xi' \diffp{}{\eta'} + i\eta' \diffp{}{\xi'}\right)\Psi_{0,\mu}(\xi', \eta') = \mu \Psi_{0,\mu}(\xi', \eta')\\
                                         &\implies \eta' \diffp{\psi}{\xi'} = \xi' \diffp{\psi}{\eta'}\\
-                                        &\implies \eta'\left[f'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\xi'}{2} \psi(\xi', \eta')\right] = \xi' \left[if'(\xi' + i \eta') e^{-\frac14\rho^2} - \frac{\eta'}{2} \psi(\xi', \eta')\right]\\
-                                        &\implies (\eta' - i \xi') f'(\xi' + i \eta') = 0\\
-                                        &\implies f(w) = f.
+                                        &\implies \frac{\zeta + \zeta^*}{2}\left(\diffp{\psi}{\zeta} - \diffp{\psi}{\zeta^*}\right) + \frac{\zeta - \zeta^*}{2}\left(\diffp{\psi}{\zeta} + \diffp{\psi}{\zeta^*}\right) = \mu \psi(\zeta, \zeta^*)\\
+                                        &\implies \zeta \diffp{\psi}{\zeta} - \zeta^* \diffp{\psi}{\zeta^*} = \mu \psi(\zeta, \zeta^*)\\
+                                        &\implies \zeta \diff{f}{\zeta} - \frac14\abs{\zeta}^2 f(\zeta) + \frac14 \abs{\zeta}^2 f(\zeta) = \mu f(\zeta)\\
+                                        &\implies \frac{1}{f(\zeta)} \diff{f}{\zeta} = \frac{\mu}{\zeta}.
    \end{align*}
-   Obtemos essa constante normalizando a função de onda,
+   Notando que ambos os lados podem ser escritos como derivadas de logaritmos, obtemos
    \begin{equation*}
-      1 = \abs{f}^2\int_{\mathbb{R}} \dli{\xi'} \int_{\mathbb{R}} \dli{\eta'} e^{-\frac12 \rho^2} = 2\pi\abs{f}^2 \int_0^\infty \dli{\rho} \rho e^{-\frac12 \rho^2} = 2\pi \abs{f}^2,
+       f(\zeta) = \alpha \zeta^\mu,
    \end{equation*}
-   logo
+   com \(\alpha \in \mathbb{C}.\) Assim, 
    \begin{equation*}
-      \braket{\xi'\eta'}{0,0} = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{{\xi'}^2 + {\eta'}^2}{4}\right)
+      \psi(\zeta, \zeta^*) = \alpha \zeta^\mu \exp\left(-\frac14 \abs{\zeta}^2\right)
    \end{equation*}
-   ao exigir que esta função de onda seja real.
-
-   Para obter a função de onda do estado \(\ket{0,\mu}\) temos
+   e como
    \begin{equation*}
-      \left(-i\xi' \diffp{}{\eta'} + i\eta' \diffp{}{\xi'}\right)\braket{\xi'\eta'}{0,\mu} = \mu \braket{\xi' \eta'}{0,\mu}
+      \int_{\mathbb{R}^2} \dln2{\zeta} \abs{\psi(\zeta, \zeta^*)}^2 = 2\pi\abs{\alpha}^2\int_{0}^\infty \dli{\rho} \rho^{2\mu+1} e^{-\frac12\rho^2} = (2\pi) 2^\mu \abs{\alpha}^2\int_0^{\infty} \dli{s} s^{\mu} e^{-s} = (2\pi) 2^\mu \mu! \abs{\alpha}^2,
    \end{equation*}
-   e como podemos usar que \(\braket{\xi',\eta'}{0,\mu} = \frac1{\sqrt{2\pi}}g(\xi' + i \eta') e^{-\frac14 \rho^2}\), isso se traduz na equação diferencial para \(g\)
+   concluímos que
    \begin{equation*}
-      (\xi' + i \eta') g'(\xi' + i \eta') = \mu g(\xi' + i \eta').
-   \end{equation*}
-   Escrevendo isso com \(w = \xi' + i \eta',\) temos simplesmente
-   \begin{equation*}
-      w \diff{g(w)}{w} = \mu g(w) \implies \diff*{\ln(g(w))}{w} = \mu \diff{\ln{w}}{w} \implies g(w) = \alpha w^\mu,
-   \end{equation*}
-   isto é, \(g(\xi' + i \eta') = \alpha (\xi' + i \eta')^\mu,\) com \(\alpha \in \mathbb{C}\) constante. Esta constante é obtida novamente com a normalização,
-   \begin{equation*}
-      1 = \frac{\abs{\alpha}^2}{2\pi}\int_{\mathbb{R}} \dli{\xi'} \int_{\mathbb{R}} \dli{\eta'} \rho^{2\mu} e^{-\frac12 \rho^2} = \abs{\alpha}^2 \int_0^\infty \dli{\rho} \rho^{2\mu+ 1} e^{-\frac12\rho^2} = 2^\mu\abs{\alpha}^2 \int_0^{\infty}\dli{s} s^{\mu} e^{-s} = 2^\mu \mu! \abs{\alpha}^2,
-   \end{equation*}
-   então tomando \(\alpha \in \mathbb{R}\) como a escolha de fase temos \(\alpha = \frac{1}{\sqrt{2^\mu \mu!}}.\)Concluímos que
-   \begin{equation*}
-      \braket{\xi'\eta'}{0,\mu} = \frac{1}{\sqrt{2\pi \mu!}} \left(\frac{\xi' + i \eta'}{\sqrt{2}}\right)^\mu \exp\left(-\frac{{\xi'}^2 + {\eta'}^2}{4}\right)
+      \Psi_{0,\mu}(\xi', \eta') = \frac{1}{\sqrt{2\pi \mu!}} \left(\frac{\xi' + i \eta'}{\sqrt{2}}\right)^\mu \exp\left(-\frac{{\xi'}^2 + {\eta'}^2}{4}\right)
    \end{equation*}
    é a função de onda do estado \(\ket{0,\mu}.\)
 \end{proof}
-
-
-   % Para obter o estado \(\ket{n, \mu},\) utilizamos os operadores
-   % \begin{equation*}
-   %    Q_\pm = \frac{1}{\ell_B\sqrt{2}} \left(\frac{x \pm iy}{2}\mp i\frac{p_x \pm i p_y}{m \omega_c}\right) = \frac{\xi \pm i \eta}{2\sqrt{2}} \mp i\frac{p_\xi \pm i p_\eta}{\sqrt{2}}
-   % \end{equation*}
-   % que satisfazem
-   % \begin{equation*}
-   %    Q_{+} \ket{n,\mu} = \sqrt{n + \mu + 1} \ket{n, \mu + 1}\quad\text{e}\quad Q_-\ket{n,\mu} = \sqrt{n + \mu} \ket{n, \mu - 1},
-   % \end{equation*}
-   % portanto
-   % \begin{equation*}
-   %    \ket{n, \mu} = \frac{1}{\sqrt{(n + \mu)!}} (Q_+)^{n + \mu} \ket{n, -n} = \frac{1}{\sqrt{n!(n+\mu)!}} (Q_+)^{n + \mu} (\herm{a})^{n} \ket{0,0}.
-   % \end{equation*}
