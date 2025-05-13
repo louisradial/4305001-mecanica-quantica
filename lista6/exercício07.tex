@@ -109,6 +109,25 @@
    \end{equation*}
    isto é, \(n + 1 \in S.\) Pelo princípio de indução finita, concluímos que \(S = \mathbb{N}_0,\) e encontramos assim as autofunções dos estados \(\ket{n,\kappa}.\)
 
-
-   Para o item (c). \(\chi = - \frac{B}2 xy.\)
+   Notemos que para o obter o gauge de Landau podemos considerar o gauge simétrico e adicionar o gradiente de \(\chi(x,y,z) = -\frac12 B xy\) ao potencial vetor daquele calibre. Isto é, no gauge de Landau, as autofunções de energia \(n = 0\) e momento angular bem definidos são
+   \begin{equation*}
+      \tilde{\Psi}_{0, \mu}(\xi',\eta') = \exp\left(-i \frac12\xi'\eta'\right) \Psi_{0,\mu}(\xi', \eta') = \frac{1}{\sqrt{2\pi \mu!}} \left(\frac{\xi' + i \eta'}{\sqrt{2}}\right)^\mu \exp\left(-\frac{{\xi'}^2 + 2 i \eta' \xi' +  {\eta'}^2}{4}\right).
+   \end{equation*}
+   Consideramos a expansão
+   \begin{equation*}
+      \Phi_{0,\kappa}(\xi', \eta') = \sum_{\mu = 0}^\infty c_{\mu, \kappa}\tilde{\Psi}_{0,\mu}(\xi', \eta')
+   \end{equation*}
+   e desejamos simplificar a relação para determinar os coeficientes \(c_{\mu,\kappa}.\) Começamos dividindo ambos os lados pelo termo de \(\tilde{\Psi}_{0,\mu}\) que não depende de \(\mu,\) e obtemos
+   %%
+   \begin{align*}
+      \pi^{\frac14} \sum_{\mu = 0}^{\infty} \frac{c_{\mu,\kappa}}{\sqrt{\mu!}}\left(\frac{\xi + i \eta}{\sqrt{2}}\right)^\mu 
+      &= \exp\left[i \kappa \xi - \frac12 (\eta + \kappa)^2 + \frac14( \xi^2 + 2 i \eta \xi + \eta^2)\right]\\
+      &= \exp\left[i \kappa (\xi + i \eta) - \frac12 \kappa^2 + \frac14 (\xi^2 + 2i \eta \xi - \eta^2)\right]\\
+      &= \exp\left(-\frac12 \kappa^2\right) \exp\left[i \kappa (\xi + i \eta) + \frac14 (\xi + i \eta)^2\right].
+   \end{align*}
+   Definindo \(\zeta = \xi + i \eta,\) temos
+   \begin{equation*}
+      \exp\left[\frac14 \zeta^2 + i \kappa \zeta\right] = \pi^{\frac14} \exp\left(\frac12 \kappa^2\right) \sum_{\mu = 0}^\infty \frac{c_{\mu, \kappa}}{\sqrt{\mu!}} \left(\frac{\zeta^2}{\sqrt{2}}\right)^\mu
+   \end{equation*}
+   como desejado.
 \end{proof}
