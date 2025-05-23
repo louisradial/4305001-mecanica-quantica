@@ -26,14 +26,57 @@
     \end{align*}
     como desejado.
 
-    Apesar de termos utilizado as identidades específicas de spin \(\frac12\), a expressão acima reflete a transformação de um vetor ordinário \(\vetor{\alpha} \in \mathbb{R}^3\) em três dimensões por uma rotação por um ângulo \(\theta\) em torno do eixo \(\vetor{n},\) a saber\footnote{Ver \href{https://github.com/louisradial/4300429-grupos-e-tensores/releases/tag/lista2}{Exercício 5}}
+    % Apesar de termos utilizado as identidades específicas de spin \(\frac12\), a expressão acima reflete a transformação de um vetor ordinário \(\vetor{\alpha} \in \mathbb{R}^3\) em três dimensões por uma rotação por um ângulo \(\theta\) em torno do eixo \(\vetor{n},\) a saber\footnote{Ver \href{https://github.com/louisradial/4300429-grupos-e-tensores/releases/tag/lista2}{Exercício 5}}
+    % \begin{equation*}
+    %     R(\theta, \vetor{n})\vetor{\alpha} = \cos \theta \vetor{\alpha} + \sin\theta \vetor{n}\times \vetor{\alpha} + (1 - \cos\theta) (\vetor{\alpha} \cdot \vetor{n}) \vetor{n}.
+    % \end{equation*}
+    % Desse modo, para um operador vetorial \(\vetor{V}\), devemos ter
+    % \begin{equation*}
+    %     e^{i \theta \vetor{J}\cdot \vetor{n}}\vetor{V} e^{-i \theta \vetor{J}\cdot \vetor{n}} = \herm{D}(\theta, \vetor{n})\vetor{V}D(\theta, \vetor{n}) = 
+    %     \cos\theta \vetor{V} + \sin\theta \vetor{n} \times \vetor{V} + (1 - \cos\theta) (\vetor{V} \cdot \vetor{n})\vetor{n},
+    % \end{equation*}
+    % em que \(\vetor{J}\) é o momento angular tal que \(\vetor{V} = \lambda \vetor{J}\), para um escalar \(\lambda.\)
+
+    Em vez de utilizar as propriedades específicas de momento angular \(\frac12,\) podemos utilizar as propriedades de momento angular e o lema de Campbell\footnote{Mostrado no \href{https://github.com/louisradial/4305001-mecanica-quantica/releases/tag/lista2}{Exercício 7 da Lista 2,} página 17.},
     \begin{equation*}
-        R(\theta, \vetor{n})\vetor{\alpha} = \cos \theta \vetor{\alpha} + \sin\theta \vetor{n}\times \vetor{\alpha} + (1 - \cos\theta) (\vetor{\alpha} \cdot \vetor{n}) \vetor{n}.
+        e^{tA} B e^{-tA} = B + \sum_{m = 1}^{\infty} \frac{t^m}{m!} \commutator{A}{B}^{[m]},
     \end{equation*}
-    Desse modo, para um operador vetorial \(\vetor{V}\), devemos ter
+    onde \(\commutator{A}{B}^{[1]} = \commutator{A}{B}\) e \(\commutator{A}{B}^{[m+1]} = \commutator{A}{\commutator{A}{B}^{[m]}}\) para todo \(m \in \mathbb{N},\) a fim de generalizar o resultado. Como \(\commutator{\vetor{n}\cdot \vetor{J}}{J^\ell}^{[1]} = i n_a \epsilon\indices{^{a \ell}_{b}} J^b = -i (\vetor{n} \times \vetor{J})^{\ell},\) temos
     \begin{equation*}
-        e^{i \theta \vetor{J}\cdot \vetor{n}}\vetor{V} e^{-i \theta \vetor{J}\cdot \vetor{n}} = \herm{D}(\theta, \vetor{n})\vetor{V}D(\theta, \vetor{n}) = 
-        \cos\theta \vetor{V} + \sin\theta \vetor{n} \times \vetor{V} + (1 - \cos\theta) (\vetor{V} \cdot \vetor{n})\vetor{n},
+        \commutator{\vetor{n}\cdot \vetor{J}}{J^\ell}^{[2]} = - n_c n_a \epsilon\indices{^{a \ell}_{b}} \epsilon\indices{^{c b}_d} J^d = -n_c n_a (\delta\indices{^a_d} \delta\indices{^{\ell c}} - \delta\indices{^{ac}}\delta\indices{^\ell_d}) J^d = \vetor{n} \cdot \vetor{n} J^\ell - n^\ell \vetor{n}\cdot \vetor{J} = J^\ell - n^\ell \vetor{n}\cdot \vetor{J}
     \end{equation*}
-    em que \(\vetor{J}\) é o momento angular tal que \(\vetor{V} = \lambda \vetor{J}\), para um escalar \(\lambda.\)
+    e então
+    \begin{equation*}
+        \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[3]} = \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell} - n^\ell \commutator{\vetor{n}\cdot\vetor{J}}{\vetor{n}\cdot\vetor{J}} = \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[1]}.
+    \end{equation*}
+    Afirmamos, portanto, que
+    \begin{equation*}
+        \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k - 1]} = -i (\vetor{n}\times \vetor{J})^\ell
+        \quad\text{e}\quad
+        \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k]} = \left[\vetor{J} - (\vetor{n}\cdot\vetor{J})\vetor{n}\right]^\ell
+    \end{equation*}
+    para todo \(k \in \mathbb{N}.\) Já mostramos que estas relações valem para \(k = 1,\) portanto resta apenas mostrar o passo indutivo: assumindo válidas para algum \(k \in \mathbb{N},\) temos
+    \begin{equation*}
+        \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k + 1]} = \commutator*{\vetor{n}\cdot\vetor{J}}{\commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k]}} = \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell} = -i(\vetor{n}\times \vetor{J})^\ell
+    \end{equation*}
+    e
+    \begin{equation*}
+        \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k+2]} = \commutator*{\vetor{n}\cdot\vetor{J}}{\commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k+1]}} = \commutator{\vetor{n}\cdot\vetor{J}}{\commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[1]}} = \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2]},
+    \end{equation*}
+    portanto são válidas para \(k + 1,\) concluindo a demonstração da afirmação. Com o lema de Campbell, temos
+    \begin{align*}
+        e^{i \theta \vetor{n}\cdot\vetor{J}} \vetor{J} e^{-i\theta \vetor{n}\cdot\vetor{J}} 
+        &= \vetor{J} + \sum_{m = 1}^\infty{\frac{(i\theta)^m}{m!}\commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[m]} \vetor{e}_\ell}\\
+        &= \vetor{J} + \sum_{k = 1}^\infty{\frac{(i\theta)^{2k-1}}{(2k-1)!}\commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k-1]} \vetor{e}_\ell}+ \sum_{k = 1}^\infty{\frac{(i\theta)^{2k}}{(2k)!}\commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2k]} \vetor{e}_\ell}\\
+        &= \vetor{J} + \left[\frac{1}{i}\sum_{k = 1}^\infty{\frac{(-1)^{k} \theta^{2k -1}}{(2k-1)!}}\right] \commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}\vetor{e}_\ell + \left[\sum_{k = 1}^\infty{\frac{(-1)^{k}\theta^{2k}}{(2k)!}}\right]\commutator{\vetor{n}\cdot\vetor{J}}{J^\ell}^{[2]}\vetor{e}_\ell\\
+        &= \vetor{J} + \left[i \sin\theta \right] \left(-i \vetor{n}\times\vetor{J}\right) + \left[\cos\theta - 1\right] \left[\vetor{J} - (\vetor{n}\cdot\vetor{J})\vetor{n}\right]\\
+        &= \cos\theta\vetor{J} + \sin\theta (\vetor{n}\times\vetor{J}) + (1 - \cos\theta) (\vetor{n}\cdot \vetor{J}) \vetor{n},
+    \end{align*}
+    que é a mesma expressão obtida para momento angular \(\frac12.\)
+
+    Para um operador vetorial \(\vetor{V},\) existe alguma representação irredutível finita de \(\mathrm{SU}(2)\) tal que \(\vetor{V} = \lambda_{V} \vetor{J},\) onde \(\lambda_V\) é um escalar e \(\vetor{J}\) é a representação adequada dos geradores de \(\mathrm{SU}(2)\). Assim, como \(\lambda_V\) é invariante por rotações, comuta com \(\vetor{J},\) e podemos simplesmente multiplicar a relação acima por \(\lambda_V\) para obter
+    \begin{equation*}
+        e^{i\theta \vetor{n}\cdot\vetor{J}} \vetor{V} e^{-i\theta \vetor{n}\cdot \vetor{J}} = \cos\theta \vetor{V} + (1 - \cos\theta)(\vetor{n}\cdot\vetor{V}) \vetor{n} + \sin\theta (\vetor{n}\times\vetor{V})
+    \end{equation*}
+    como a rotação de \(\vetor{V}.\)
 \end{proof}
