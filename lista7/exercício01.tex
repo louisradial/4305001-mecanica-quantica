@@ -1,0 +1,55 @@
+% vim: spl=pt
+\begin{exercício}{Valor esperado da interação para um estado ligado de momento angular nulo}{ex1}
+    Considere um sistema de dois corpos sujeito a uma interação central \(V(r),\) e seja \(\Psi_n(r)\) um autoestado ligado de onda \(s\) qualquer do sistema. Mostre que
+    \begin{equation*}
+        \abs{\Psi_n(0)}^2 = \frac{\mu}{2 \hbar^2\pi} \int \dln3r \abs{\Psi_n(\vetor{r})}^2 \diffp{V}{r}.
+    \end{equation*}
+\end{exercício}
+\begin{proof}[Resolução]
+    Escrevemos \(\Psi_n(\vetor{r}) = R(r) Y_{00}(\vetor{n}),\) então como 
+    \begin{equation*}
+        \nabla^2 = \frac{1}{r^2} \diffp*{}{r} r^2 \diffp*{}{r} - \frac{L^2}{r^2},
+    \end{equation*}
+    temos
+    \begin{equation*}
+        \frac{\hbar^2}{2\mu} \frac{1}{r^2} \diff*{}{r} r^2 \diff*{R(r)}{r} = \left[V(r) - E\right] R(r).
+    \end{equation*}
+    Para um estado ligado, podemos escrever \(R(r) = \frac1r u(r)\) com \(u(r) \to 0\) conforme \(r \to 0,\) já que \(R(r)\) não diverge na origem, e então temos a equação radial
+    \begin{equation*}
+        \frac{\hbar^2}{2\mu} \diff[2]{u}{r} = \left[V(r) - E\right] u(r).
+    \end{equation*}
+    Multiplicando esta equação por \(\diff{\conj{u}}{r}\),
+    \begin{equation*}
+        \frac{\hbar^2}{2\mu} \diff{\conj{u}}{r} \diff[2]{u}{r} = \left[V(r) - E\right] u(r) \diff{\conj{u}}{r},
+    \end{equation*}
+    e somando ao análogo para a equação conjugada, temos
+    \begin{equation*}
+        \frac{\hbar^2}{2\mu} \diff*{\left(\diff{\conj{u}}{r} \diff{u}{r}\right)}{r} = \left[V(r) - E\right] \diff*{\abs{u(r)}^2}{r}.
+    \end{equation*}
+    Integrando esta igualdade, obtemos
+    \begin{equation*}
+        \frac{\hbar^2}{2\mu} \left. \diff{\conj{u}}{r} \diff{u}{r}\right\rvert_0^\infty = \left.\left[V(r) - E\right]\abs{u(r)}^2\right\rvert_0^\infty - \int_0^\infty \dli{r} \diffp{V}{r} \abs{u(r)}^2.
+    \end{equation*}
+    Notemos que a integral corresponde ao valor esperado de \(\diffp{V}{r}\) no estado considerado, pois temos
+    \begin{equation*}
+        \int_0^\infty \dli{r} \diffp{V}{r} \abs{u(r)}^2 = \int_0^\infty r^2\dli{r} \diffp{V}{r} \abs{R(r)}^2 = \int_0^\infty r^2 \dli{r} \int \dli{\Omega} \diffp{V}{r} \abs{R(r) Y_{00}(\vetor{n})}^2 = \int_{\mathbb{R}^3} \dln3r \diffp{V}{r} \abs{\Psi_n(\vetor{r})}^2
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \mean*{\diffp{V}{r}} = \left[\left[V(r) - E\right]\abs{u(r)}^2 - \frac{\hbar^2}{2\mu} \abs*{\diff{u}{r}}^2\right]_0^\infty = \frac{\hbar^2}{2\mu}\left[\conj{u}(r)\diff[2]{u}{r} - \abs*{\diff{u}{r}}^2\right]_0^\infty,
+    \end{equation*}
+    onde substituímos o primeiro termo usando a equação radial multiplicada por \(\conj{u}(r).\)
+    Por ser um estado ligado, deve ser normalizável, portanto no limite \(r \to \infty,\) temos \(\diff[n]{u}{r} \to 0,\) então
+    \begin{equation*}
+        \mean*{\diffp{V}{r}} = \frac{\hbar^2}{2\mu} \left[\abs{u'(0)}^2 - \conj{u}(0) u''(0)\right].
+    \end{equation*}
+    Como por hipótese devemos ter \(u(r) \to 0\) para \(r \to 0,\) podemos escrever \(u(r) \sim c_0 r + O(r^2),\) logo \(u'(r) = c_0 + O(r) \simeq \frac{1}{r} u(r) = R(r)\) e \(u''(r) = O(1),\) e então avaliando na origem temos
+    \begin{equation*}
+        \mean*{\diffp{V}{r}} = \frac{\hbar^2}{2\mu} \abs{c_0}^2 = \frac{\hbar^2}{2\mu} \abs{R(0)}^2.
+    \end{equation*}
+    Multiplicando e dividindo por \(\frac{1}{4\pi} = \abs{Y_{00}}^2,\) obtemos
+    \begin{equation*}
+        \abs{\Psi_n(0)}^2 = \frac{\mu}{2\pi \hbar^2} \mean*{\diffp{V}{r}},
+    \end{equation*}
+    como desejado.
+\end{proof}
