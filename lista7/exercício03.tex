@@ -9,5 +9,72 @@
     \end{equation*}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Suponhamos que existam estados ligados. Consideramos a função de onda de um estado ligado \(\Psi(\vetor{r}) = \frac{u(r)}{r}Y_{\ell m}(\frac{\vetor{r}}{r}),\) então
+    \begin{equation*}
+        -\frac{\hbar^2}{2\mu} \diff[2]{u}{r} + \left[\frac{\hbar^2 \ell (\ell + 1)}{2\mu r^2} + V(r)\right]u(r) = Eu(r)
+    \end{equation*}
+    é a equação radial, sendo \(E\) a energia deste estado. Por conveniência, definimos
+    \begin{equation*}
+        E = -\frac{\hbar^2}{2\mu} \tilde{E}
+        \quad\text{e}\quad
+        V_0 = \frac{\hbar^2}{2\mu} \tilde{V}_0,
+    \end{equation*}
+    de modo que
+    \begin{equation*}
+        \diff[2]{u}{r} + \left[\tilde{V}_0 \theta(a - r) - \frac{\ell(\ell+1)}{r^2}\right]u(r) = \tilde{E} u(r),
+    \end{equation*}
+    onde \(\theta\) é a função de Heaviside, \(\theta(\xi) = 1\) para \(\xi > 0\) and \(\theta(\xi) = 0\) para \(\xi < 0.\) 
+
+    Mostraremos que tanto no domínio \(r \in [0,a)\) e \(r \in (a, \infty)\) esta equação se reduz a uma equação de Bessel. Para isso, escrevemos \(\epsilon = \tilde{V_0}\theta(a - r) - \tilde{E},\) e usamos o ansatz \(u(r) = \sqrt{r} w(r),\) com
+    \begin{equation*}
+        \diff[2]{u}{r} = r^{\frac12} \diff[2]{w}{r} + r^{-\frac12} \diff{w}{r} -\frac14 r^{-\frac32} w(r),
+    \end{equation*}
+    então
+    \begin{equation*}
+        r^{\frac12}\left\{\diff[2]{w}{r} + \frac{1}{r} \diff{w}{r} + \left[\epsilon - \frac{\ell(\ell+1) + \frac14}{r^2}\right] w(r)\right\} = 0 \implies r^2 \diff[2]{w}{r} + r \diff{w}{r} + \left[\epsilon r^2 - \left(\ell + \frac12\right)^2\right]w(r) = 0.
+    \end{equation*}
+    Vamos assumir que \(\epsilon \neq 0\) nos domínios relevantes e usar a substituição \(\rho = \sqrt{\epsilon} r\) com \(\tilde{w}(\rho) = w(r),\) que satisfaz
+    \begin{equation*}
+        r\diff{w}{r} =  \frac{\rho}{\sqrt{\epsilon}} \diff{\tilde{w}}{r} = \rho \diff{\tilde{w}}{\rho},
+    \end{equation*}
+    portanto obtemos
+    \begin{equation*}
+        \rho^2\diff[2]{\tilde{w}}{\rho} + \rho \diff{\tilde{w}}{\rho} + \left[\rho^2 - \left(\ell+\frac12\right)^2\right] \tilde{w}(\rho) = 0
+    \end{equation*}
+    que é uma equação de Bessel de ordem \(\ell + \frac12\). Assim, a solução geral para \(\epsilon \neq 0\) é
+    \begin{equation*}
+        u(r) = \sqrt{r} \left[\alpha J_{\ell + \frac12}(\sqrt{\epsilon} r) + \beta N_{\ell + \frac12}(\sqrt{\epsilon} r)\right].
+    \end{equation*}
+    Para \(\epsilon = 0,\) tentamos o ansatz \(w(r) = r^{\gamma},\) e então vemos que
+    \begin{equation*}
+        \left[\gamma(\gamma - 1) + \gamma - \left(\ell + \frac12\right)^2\right]r^{\gamma} = 0 \implies \gamma = \pm \left(\ell + \frac12\right),
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        u(r) = \alpha_0 r^{1 + \ell} + \beta_0 r^{-\ell}
+    \end{equation*}
+    é a solução geral.
+
+    Como um estado ligado tem função de onda normalizável, podemos facilmente eliminar algumas das soluções em cada um dos domínios. Para \(r \in [0, a]\) temos
+    \begin{equation*}
+        \frac{u(r)}{r} = \begin{cases}
+            \alpha j_{\ell}\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} r\right), &\text{se } E \neq -V_0\\
+            \alpha_0 r^{\ell}, &\text{se } E = -V_0
+        \end{cases}
+    \end{equation*}
+    como as soluções gerais bem definidas na origem, e para \(r \in (a, \infty)\) temos
+    \begin{equation*}
+        \frac{u(r)}{r} = \begin{cases}
+            \tilde{\alpha}j_{\ell}\left(\sqrt{\frac{2\mu E}{\hbar^2}} r\right) + \tilde{\beta} n_{\ell}\left(\sqrt{\frac{2\mu E}{\hbar^2}}r\right),&\text{se } E\neq 0\\
+            \tilde{\beta}_0 r^{-\ell - 1},&\text{se } E = 0
+        \end{cases}
+    \end{equation*}
+    como as soluções gerais que não divergem para \(r \to \infty\). Como o potencial tem descontinuidade finita, segue que \(\frac{u(r)}{r}\) é contínua e tem primeira derivada contínua, logo para \(E \neq -V_0,\) e \(E \neq 0\) devemos ter
+    \begin{equation*}
+        \begin{cases}
+            \alpha j_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) = \tilde{\alpha} j_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) + \tilde{\beta} n_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right)\\
+            \alpha \sqrt{1 + \frac{V_0}{E}}j'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) = \tilde{\alpha} j'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) + \tilde{\beta} n'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right).
+        \end{cases}
+    \end{equation*}
+    O sistema de equações acima determina, para \(\ell\) fixo, os possíveis valores de energia \(E\), dependendo de \(a,\) \(\ell,\) e \(V_0.\)
 \end{proof}
