@@ -8,8 +8,51 @@
            \conj{a} & \conj{b} & E_2
         \end{pmatrix},
     \end{equation*}
-    onde \(E_2 > E_1\). As quantidades \(a\) e \(b\) devem ser vistas como perturubação do sistema que tem a mesma ordem e são muito menores que \(E_2 - E_1.\) Calcule os novos autovalores da energia usando teoria de perturbação para níveis não degenerados. Diagonalize a matriz \(H\) e encontre os autovalores exatos. Calcule novamente os autovalores de energia usando teoria de perturbação para níveis degenerados. Compare os três resultados.
+    onde \(E_2 > E_1\). As quantidades \(a\) e \(b\) devem ser vistas como perturbação do sistema que tem a mesma ordem e são muito menores que \(E_2 - E_1.\) Calcule os novos autovalores da energia usando teoria de perturbação para níveis não degenerados. Diagonalize a matriz \(H\) e encontre os autovalores exatos. Calcule novamente os autovalores de energia usando teoria de perturbação para níveis degenerados. Compare os três resultados.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Escrevemos \(H = H_0 + W,\) onde \(H_0\) é o Hamiltoniano não perturbado e \(W\) é a perturbação. O polinômio característico de \(H\) é
+    \begin{equation*}
+        p_H(\lambda) = (E_1 - \lambda) \left[(E_1 - \lambda) (E_2 - \lambda) - \abs{b}^2\right] - \abs{a}^2 (E_1 - \lambda) = (E_1 - \lambda) \left[\lambda^2 + 2\bar{E} \lambda + E_1 E_2 - \abs{a}^2 + \abs{b}^2\right],
+    \end{equation*}
+    onde \(2\bar{E} = E_1 + E_2,\) portanto o espectro de \(H\) é dado por
+    \begin{equation*}
+        \sigma(H) = \set*{\bar{E} - \epsilon\sqrt{1 + \frac{\abs{a}^2 + \abs{b}^2}{\epsilon^2}}, E_1, \bar{E} + \epsilon\sqrt{1 + \frac{\abs{a}^2 + \abs{b}^2}{\epsilon^2}}},
+    \end{equation*}
+    onde \(2\epsilon = E_2 - E_1\). Para limpar a notação, vamos denotar 
+    \begin{equation*}
+        \kappa = \sqrt{1 + \frac{\abs{a}^2 + \abs{b}^2}{\epsilon^2}},\quad
+        E_- = \bar{E} - \kappa \epsilon,\quad
+        E_0 = \bar{E} + \epsilon = E_1,\quad\text{and}\quad
+        E_+ = \bar{E} + \kappa \epsilon.
+    \end{equation*}
+    Por inspeção, vemos que \(\ket{E_0} = \frac{1}{\abs{a}^2 + \abs{b}^2}\left(\conj{b}\ket{1} - \conj{a}\ket{2}\right)\) é autovetor do Hamiltoniano associado ao autovalor \(E_0,\) já que
+    \begin{equation*}
+        H\ket{E_0} = H_0 \ket{E_0} + W\ket{E_0} = E_0 \ket{E_0} + \frac{\conj{a}\conj{b} - \conj{b}\conj{a}}{\abs{a}^2 + \abs{b}^2}\ket{3} = E_0 \ket{E_0}.
+    \end{equation*}
+    Para os autovetores associados a \(E_\pm,\) temos
+    \begin{equation*}
+        \begin{pmatrix}
+            -(1 \pm \kappa) \epsilon & 0 & a\\
+           0 & -(1 \pm \kappa) \epsilon& b\\
+           \conj{a} & \conj{b} & (1 \mp \kappa) \epsilon
+        \end{pmatrix}
+        \begin{pmatrix}
+            \alpha\\
+            \beta\\
+            \gamma
+        \end{pmatrix} = \begin{pmatrix}
+        0\\0\\0
+        \end{pmatrix} \implies 
+        \begin{cases}
+            \alpha = \frac{a}{\epsilon}\\
+            \beta = \frac{b}{\epsilon}\\
+            \gamma = 1 \pm \kappa,
+        \end{cases}
+    \end{equation*}
+    Normalizando, obtemos
+    \begin{equation*}
+        \ket{E_\pm} = \frac{1}{(1 \pm \kappa)^2 + \kappa^2 - 1}\left(\frac{a}{\epsilon} \ket{1} + \frac{b}{\epsilon} \ket{2} + (1 \pm \kappa) \ket{3}\right)
+    \end{equation*}
+    como os autovetores associados a \(E_\pm.\)
 \end{proof}
