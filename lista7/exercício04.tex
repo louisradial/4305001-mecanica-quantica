@@ -7,5 +7,96 @@
     Resolva o problema em coordenadas cartesianas e em coordenadas esféricas, estudando a degenerescência dos estados.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Escrevendo \(\vetor{r} = x_j \vetor{e}_j\) e \(\vetor{p} = p_j \vetor{e}_j\), temos
+    \begin{equation*}
+        H = \frac1{2\mu} p^2 + \frac12 \mu \omega^2 r^2 = \sum_{j= 1}^3\left(\frac1{2\mu} p_j^2 + \frac12 \mu \omega^2 x_j^2\right) = \frac{\hbar \omega}{2} \sum_{j= 1}^3 \left[\left(\frac1{\sqrt{\mu  \hbar\omega}}p_j\right)^2 + \left(\sqrt{\frac{\mu \omega}{\hbar}}x_j\right)^2\right].
+    \end{equation*}
+    Definindo os operadores de aniquilação e de aniquilação
+    \begin{equation*}
+        a_j = \frac{1}{\sqrt{2}}\left(\sqrt{\frac{\mu\omega}{\hbar}}x_j + \frac{i}{\sqrt{\mu \hbar \omega}}p_j\right)
+        \quad\text{e}\quad
+        \herm{a_j} = \frac{1}{\sqrt{2}}\left(\sqrt{\frac{\mu\omega}{\hbar}}x_j - \frac{i}{\sqrt{\mu \hbar \omega}}p_j\right)
+    \end{equation*}
+    temos
+    \begin{equation*}
+        \sqrt{\frac{\mu\omega}\hbar}x_j = \frac1{\sqrt{2}}\left(a_j + \herm{a_j}\right) \quad\text{e}\quad \frac{1}{\sqrt{\mu \hbar \omega}} p_j = \frac{i}{\sqrt{2}}\left(\herm{a_j} - a_j\right),
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        H = \frac{\hbar \omega}{2} \sum_{j=1}^3 \anticommutator{a_j}{\herm{a_j}}.
+    \end{equation*}
+    Notemos que os operadores de criação e aniquilação satisfazem
+    \begin{align*}
+        \commutator{a_j}{\herm{a_k}} &= \frac12\commutator*{\sqrt{\frac{\mu\omega}{\hbar}}x_j + \frac{i}{\sqrt{\mu \hbar \omega}}p_j}{\sqrt{\frac{\mu\omega}{\hbar}}x_k - \frac{i}{\sqrt{\mu \hbar \omega}}p_k}\\
+                                     &= \frac{i}{2\hbar} \left(\commutator{p_j}{x_k} - \commutator{x_j}{p_k}\right)\\
+                                     &= \frac{1}{i\hbar} \commutator{x_j}{p_j} \delta_{jk}\\
+                                     &= \unity \delta_{jk},
+    \end{align*}
+    portanto
+    \begin{equation*}
+        H = \hbar \omega \sum_{j= 1}^3 \left(\herm{a_j}a_j + \frac12 \unity\right) = \frac{3 \hbar \omega}{2} \unity + \hbar \omega \sum_{j= 1}^3 \herm{a_j}a_j = \frac{3\hbar \omega}{2} \unity + \hbar\omega \sum_{j= 1}^3 N_j,
+    \end{equation*}
+    onde o operador autoadjunto \(N_j = \herm{a_j}a_j\) é o operador de número da direção \(j\). Assim, o espectro de energia é dado por
+    \begin{equation*}
+        E_n = \hbar \omega \left(\frac32 + n\right),
+    \end{equation*}
+    onde \(n \in \setc{n_1 + n_2 + n_3}{n_1, n_2, n_3 \in \mathbb{N}_0}\). É fácil ver que \(n \in \mathbb{N}_0\), já que podemos tomar \(n_2 = n_3 = 0\), portanto podemos indexar os níveis de energia por \(n \in \mathbb{N}_0\), cada um com degenerescência \(g_n\). Seja \(n \in \mathbb{N}_0\), então se fixarmos \(n_1\), temos \(n_2 + n_3 = n - n_1\), logo há \(n - n_1 + 1\) possíveis valores de \(n_2, n_3\) que satisfazem esta relação, já que para cada \(n_2\) há apenas um possível valor de \(n_3\) e podemos tomar \(n_2 \in \set{0, 1,\dots, n - n_1}\). Com isso, a degenerescência é dada por
+    \begin{equation*}
+        g_n = \sum_{n_1 = 0}^{n} (n - n_1 + 1) = (n + 1)^2 - \sum_{n_1 = 0}^n n_1 = (n+1)^2 - \frac{n(n+1)}{2} = \frac{(n+1)(n + 2)}{2}
+    \end{equation*}
+    para todo \(n \in \mathbb{N}_0\).
+
+    Consideramos o problema novamente, com os autovetores \(\ket{n \ell m}\) simultâneos de \(H,\) \(\vetor{L}^2\), e \(L_z\),
+    \begin{equation*}
+        H\ket{n \ell m} = \hbar \omega \left(\frac32 + n\right) \ket{n \ell m},\quad
+        \vetor{L}^2\ket{n \ell m} = \hbar^2 \ell(\ell + 1) \ket{n \ell m},\quad\text{e}\quad
+        L_z\ket{n \ell m} = \hbar \omega \ket{n \ell m}.
+    \end{equation*} 
+    Consideramos a função de onda \(\psi_{n\ell m}(\vetor{r}) = \braket{\vetor{r}}{n \ell m} = \frac{u_{n\ell}(r)}{r} Y_{\ell m}(\theta, \phi)\), então \(u_{n\ell}\) deve satisfazer a equação radial
+    \begin{equation*}
+        -\frac{\hbar^2}{2\mu}\diff[2]{u_{n\ell}}{r} + \left[\frac{\hbar^2\ell(\ell + 1)}{2\mu r^2} + \frac12 \mu \omega^2 r^2 - \hbar\omega \left(\frac{3}{2} + n\right)\right]u_{n \ell}(r) = 0.
+    \end{equation*}
+    Definindo \(\gamma = \sqrt{\frac{\mu \omega}{\hbar}}\), temos
+    \begin{equation*}
+        \diff[2]{u_{n\ell}}{r} + \gamma^2\left[(3 + 2n) - \gamma^2r^2 - \frac{\ell(\ell + 1)}{\gamma^2r^2}\right]u_{n \ell}(r) = 0
+    \end{equation*}
+    portanto escrevendo \(\rho = \gamma r\) e \(u_{n\ell}(r) = w_{n \ell}(\rho)\), temos
+    \begin{equation*}
+        \diff[2]{w_{n\ell}}{\rho} + \left[(3 + 2n)- \rho^2 - \frac{\ell(\ell + 1)}{\rho^2}\right]w_{n \ell}(\rho) = 0.
+    \end{equation*}
+    No limite \(\rho^2 \gg (3+2n) - \frac{\ell(\ell+1)}{\rho^2}\), vemos que \(e^{-\frac{\rho^2}{2}}\) é solução assintótica. Consideremos uma solução do tipo \(w_{n\ell}(\rho) = e^{-\frac{\rho^2}{2}}f_{n \ell}(\rho)\), então
+    \begin{equation*}
+        \diff[2]{w_{n\ell}}{\rho} = e^{-\frac{\rho^2}{2}} \left[\diff[2]{f_{n\ell}}{\rho} - 2\rho \diff{f_{n\ell}}{\rho} + (\rho^2 - 1)f_{n\ell}(\rho)\right],
+    \end{equation*}
+    portanto a equação diferencial se torna
+    \begin{equation*}
+        \diff[2]{f_{n\ell}}{\rho} - 2\rho \diff{f_{n\ell}}{\rho} + \left[2(n+1) - \frac{\ell (\ell + 1)}{\rho^2}\right]f_{n\ell}(\rho) = 0.
+    \end{equation*}
+    No limite \(\rho \ll 1\), vemos que \(\rho^{\ell + 1}\) é solução assintótica, portanto consideramos \(f_{n\ell}(\rho) = \rho^{\ell+1} h_{n\ell}(\rho)\), obtendo
+    \begin{equation*}
+        \diff{f_{n\ell}}{\rho} = (\ell+1) \rho^\ell h_{n\ell}(\rho) + \rho^{\ell + 1}\diff{h_{n\ell}}{\rho}\quad\text{e}\quad
+        \diff[2]{f_{n\ell}}{\rho} = \ell(\ell+1) \rho^{\ell-1} h_{n\ell}(\rho) + 2(\ell + 1)\rho^{\ell}\diff{h_{n\ell}}{\rho} + \rho^{\ell + 1}\diff[2]{h_{n\ell}}{\rho},
+    \end{equation*}
+    e então
+    \begin{equation*}
+        \rho\diff[2]{h_{n\ell}}{\rho} + 2\left[(\ell + 1) - \rho^{2}\right]\diff{h_{n\ell}}{\rho} + 2\left(n  - \ell\right)\rho h_{n\ell}(\rho) = 0.
+    \end{equation*}
+    Notemos que podemos tentar uma solução do tipo \(h_{n\ell}(\rho) = \sum_{k = 0}^\infty \alpha_k \rho^{k}\), donde segue que \(\alpha_1 = 0\) e
+    \begin{equation*}
+        \alpha_{k+2} = \frac{2(\ell + k - n)}{(k + 2\ell + 3)(k + 2)}\alpha_{k}
+    \end{equation*}
+    para todo \(k \in \mathbb{N}_0\), portanto \(\alpha_{2k + 1} = 0.\) Para \(\rho \gg 1\), o comportamento para \(k\) grande é o dominante, e vemos que \(\alpha_{k+2} \sim \frac{2\alpha_k}{k}\), obtendo o comportamento assintótico
+    \begin{equation*}
+        h_{n\ell}(\rho) \propto \sum_{j = 0} \frac{\rho^{2j}}{j!} = \exp(\rho^2),
+    \end{equation*}
+    de forma que \(R_{n\ell}\) não seria normalizável. Devemos ter então \(2j + \ell - n = 0\) com \(j\in \mathbb{N}_0\) de forma que a série se reduza a um polinômio de grau \(2j\) e os autovalores de energia sejam dados por \(\hbar \omega \left(2j + \ell + \frac32\right)\). Assim,
+    dado \(n = 2j + \ell\), a paridade de \(\ell\) é igual a de \(n\), portanto o valor máximo de \(j\) é \(\frac{n}{2}\) se \(n\) é par e \(\frac{n - 1}{2}\) se \(n\) é ímpar. Para cada \(\ell\) correspondem \(2\ell + 1\) possíveis valores de \(m\), portanto a degenerescência do nível de energia \(n\) é
+    \begin{equation*}
+        g_{n} = \sum_{j = 0}^{\frac{n}{2}} [2(n - 2j) + 1] = \frac{(2n + 1)(n + 2)}{2} - 4\sum_{j=1}^{\frac{n}{2}} j = \frac{(2n + 1)(n+2)}{2} - \frac{n(n+2)}{2} = \frac{(n+1)(n+2)}{2},
+    \end{equation*}
+    se \(n\) é par e
+    \begin{equation*}
+        g_{n} = \sum_{j = 0}^{\frac{n - 1}{2}} [2(n-2j) + 1] = \frac{(n+1)(2n+1)}{2} - 4 \sum_{j=1}^{\frac{n-1}{2}} j = \frac{(n+1)(2n+1)}{2} - \frac{(n-1)(n+1)}{2} = \frac{(n+1)(n+2)}{2},
+    \end{equation*}
+    se \(n\) é ímpar. Isto é, \(g_n = \frac12 (n+1)(n+2)\) para todo \(n\), como havíamos encontrado antes.
 \end{proof}
