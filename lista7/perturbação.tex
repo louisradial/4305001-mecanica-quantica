@@ -1,0 +1,119 @@
+% vim: spl=pt
+\begin{theorem}{Teoria de perturbação independente do tempo para estados não degenerados}{perturbação}
+    Seja \(H_0\) um Hamiltoniano não perturbado tal que a base ortonormal \(\set{\ket{n^{(0)}}}\) o diagonalize com
+    \begin{equation*}
+        H_0 \ket{n^{(0)}} = E_n^{(0)} \ket{n^{(0)}}.
+    \end{equation*}
+    Fixemos \(n\) e suponhamos que o autovalor \(E_n^{(0)}\) seja não degenerado. Seja \(H = H_0 + \lambda W\) o Hamiltoniano perturbado com dependência no parâmetro contínuo \(\lambda\) e seja o novo nível de energia dado por
+    \begin{equation*}
+        H \ket{n}_\lambda = \left(E_n^{(0)} + \Delta_n(\lambda)\right)\ket{n}_\lambda,
+    \end{equation*}
+    então este autovetor satisfaz
+    \begin{equation*}
+        \ket{n}_\lambda = \ket{n^{(0)}} + \lambda \frac{\unity - \ketbra{n^{(0)}}{n^{(0)}}}{E_n^{(0)} - H_0} \left(\lambda W - \Delta_n(\lambda)\right)\ket{n}_\lambda,
+    \end{equation*}
+    utilizando a condição de normalização \(\braket{n^{(0)}}{n}_\lambda = 1.\) Temos
+    \begin{equation*}
+        \ket{n}_\lambda = \ket{n^{(0)}} + \lambda \frac{\unity - \ketbra{n^{(0)}}{n^{(0)}}}{E_n^{(0)} - H_0}W\ket{n^{(0)}} + O(\lambda^2)
+    \end{equation*}
+    e
+    \begin{equation*}
+        \Delta_n(\lambda) = \lambda \bra{n^{(0)}} W \ket{n^{(0)}} + \lambda^2 \bra{n^{(0)}} W \frac{\unity - \ketbra{n^{(0)}}{n^{(0)}}}{E_n^{(0)} - H_0} W \ket{n^{(0)}} + O(\lambda^3)
+    \end{equation*}
+    como as expressões perturbativas em até segunda ordem de \(\lambda\) para o desvio da energia.
+\end{theorem}
+\begin{proof}
+    Rearranjando a equação para \(E_n = E_n^{(0)} + \Delta_n(\lambda)\) e tomando o produto escalar com \(\bra{n^{(0)}},\) temos
+    \begin{equation*}
+        \left(E_n^{(0)} - H_0\right) \ket{n} = \left(\lambda W - \Delta_n\right)\ket{n} \implies \Delta_n \braket{n^{(0)}}{n} = \lambda \bra{n^{(0)}}W\ket{n},
+    \end{equation*}
+    o que quer dizer que \((\lambda W - \Delta_n)\ket{n}\) não tem componente em \(\ket{n^{(0)}}.\) Consideramos então o projetor ortogonal do espaço complementar ao espaço gerado por \(\ket{n^{(0)}},\)
+    \begin{equation*}
+        P = \unity - \ketbra{n^{(0)}}{n^{(0)}},
+    \end{equation*}
+    que satisfaz \(P(\lambda W - \Delta_n)\ket{n} = (\lambda W - \Delta_n)\ket{n}.\) Limitando o domínio de \(H_0\) ao subespaço sobre o qual \(P\) projeta, notamos que \(E_n^{(0)}\) está\footnote{Aqui assumimos que \(E_n^{(0)}\) reside no espectro discreto de \(H.\)} no conjunto resolvente de \(H_0\), caso contrário haveria algum vetor ortogonal a \(\ket{n^{(0)}}\) que é autovetor de \(H_0\) associado a \(E_n^{(0)},\) o que contraria a hipótese de degenerescência. Por este argumento, está bem definido o operador resolvente \(\frac{1}{E_n^{(0)} - H_0}\) na imagem de \(P,\) portanto consideramos a sua extensão ao espaço todo auxiliada pelo projetor \(P,\) que denotamos por
+    \begin{equation*}
+        \frac{P}{E_n^{(0)} - H_0} = \frac{1}{E_n^{(0)} - H_0} P.
+    \end{equation*}
+    Como temos a representação espectral de \(H_0,\) é fácil ver que a imagem de \(\frac{P}{E_n^{(0)} - H_0}\) está contida no subespaço no qual \(P\) projeta, portanto
+    \begin{equation*}
+        \frac{P}{E_n^{(0)} - H_0} = P \frac{1}{E_n^{(0)} - H_0}P.
+    \end{equation*}
+    Com isso, obtemos
+    \begin{equation*}
+        \frac{P}{E_n^{(0)}-H_0} (\lambda W - \Delta_n) \ket{n} =  P \frac{1}{E_n^{(0)} - H_0}(\lambda W - \Delta_n)\ket{n} = P \frac{1}{E_n^{(0)} - H_0} (E_n^{(0)} - H_0) \ket{n} = P \ket{n},
+    \end{equation*}
+    assim,
+    \begin{equation*}
+        \ket{n}_\lambda = c_n(\lambda)\ket{n^{(0)}} + \frac{P}{E_n^{(0)} - H_0}\left(\lambda W - \Delta_n(\lambda)\right) \ket{n}_\lambda,
+    \end{equation*}
+    onde \(c_n(\lambda) = \braket{n^{(0)}}{n}.\) Deixando de lado a normalização de \(\ket{n}_\lambda,\) tomamos \(c_n(\lambda) = 1,\) de modo que
+    \begin{equation*}
+        \Delta_n(\lambda) = \lambda \bra{n^{(0)}} W\ket{n}.
+    \end{equation*}
+    Expandindo em potências de \(\lambda\) até uma certa ordem \(N\)
+    \begin{equation*}
+        \ket{n}_\lambda = \ket{n^{(0)}} + \lambda \ket{n^{(1)}} + \lambda^2 \ket{n^{(2)}} + \dots
+        \quad\text{e}\quad
+        \Delta_{n}(\lambda) = \lambda \Delta_{n}^{(1)} + \lambda^2 \Delta_{n}^{(2)} + \dots,
+    \end{equation*}
+    temos
+    \begin{equation*}
+        \lambda \Delta_{n}^{(1)} + \lambda^2 \Delta_{n}^{(2)} + \dots = \lambda \bra{n^{(0)}}W\ket{n^{(0)}} + \lambda^2 \bra{n^{(0)}}W\ket{n^{(1)}} + \dots,
+    \end{equation*}
+    portanto como podemos variar o parâmetro \(\lambda,\) devemos ter
+    \begin{equation*}
+        \Delta_n^{(k)} = \bra{n^{(0)}}W\ket{n^{(k-1)}}
+    \end{equation*}
+    para a ordem \(0\leq k\leq N\). Em particular, a correção em primeira ordem de \(\lambda\) para a energia é apenas o valor esperado \(\lambda\bra{n^{(0)}}W\ket{n^{(0)}}\). Vamos utilizar o mesmo argumento para obter o vetor, separando a equação
+    \begin{equation*}
+        \lambda\ket{n^{(1)}} + \lambda^2 \ket{n^{(1)}} + \dots = \frac{P}{E_n^{(0)} - H_0} \left(\lambda W - \lambda \Delta_n^{(1)} - \lambda^2 \Delta_n^{(2)} + \dots \right)\left(\ket{n^{(0)}} + \lambda \ket{n^{(1)}} + \lambda^2 \ket{n^{(2)}} + \dots\right),
+    \end{equation*}
+    nas ordens desejadas de \(\lambda.\) A equação linear em \(\lambda\) é
+    \begin{equation*}
+        \ket{n^{(1)}} = \frac{P}{E_n^{(0)}- H_0} W \ket{n^{(0)}} - \frac{1}{E_n^{(0)} - H_0}P\ket{n^{(0)}} = \frac{P}{E_n^{(0)}- H_0} W \ket{n^{(0)}}
+    \end{equation*}
+    e, por curiosidade, a quadrática em \(\lambda\) é
+    \begin{align*}
+        \ket{n^{(2)}} &= \frac{P}{E_n^{(0)} - H_0} \left(W - \Delta_n^{(1)}\right)\ket{n^{(1)}} - \Delta_n^{(2)}\frac{1}{E_n^{(0)} - H_0}P\ket{n^{(0)}}\\
+                      &= \frac{P}{E_n^{(0)}- H_0} W \frac{P}{E_n^{(0)} - H_0} W \ket{n^{(0)}} - \frac{P}{E_n^{(0)} - H_0}\bra{n^{(0)}}W\ket{n^{(0)}} \frac{P}{E_n^{(0)} - H_0} W \ket{n^{(0)}}.
+    \end{align*}
+    Obtemos o resultado proposto ao substituir \(\ket{n^{(1)}}\) em \(\Delta_n^{(2)}.\)
+\end{proof}
+
+\begin{theorem}{Teoria de perturbação independente do tempo para estados degenerados}{perturbação_degenerados}
+    Seja \(H_0\) um Hamiltoniano não perturbado tal que a base ortonormal \(\set{\ket{n}}\) o diagonalize com 
+    \begin{equation*}
+        H_0 \ket{n^{(0)}} = E_{n}^{(0)} \ket{n^{(0)}}.
+    \end{equation*}
+    Seja \(D\) o autoespaço de \(H_0\) associado ao autovalor degenerado \(E_D^{(0)},\) seja \(P_0\) o projetor ortogonal cuja imagem é \(D\) e seja \(P_1 = 1 - P_0\) o projetor ortogonal complementar. Seja \(H = H_0 + \lambda W\) o Hamiltoniano perturbado com dependência no parâmetro contínuo \(\lambda\) e seja o novo nível de energia dado por \(H\ket{\ell}_\lambda = E \ket{\ell}_\lambda\) com \(\ket{\ell}_0 \in D\), então valem
+    \begin{equation*}
+        \left(\lambda P_0 W P_0 + \lambda^2 P_0 W P_1 \frac{1}{E - H_0 - \lambda P_1WP_1} P_1 W P_0\right) P_0\ket{\ell}_\lambda = \left(E - E_D^{(0)}\right) P_0\ket{\ell}_\lambda
+    \end{equation*}
+    e
+    \begin{equation*}
+        P_1 \ket{\ell}_\lambda = \lambda P_1 \frac{1}{E - H_0 - \lambda P_1 W P_1} P_1 W P_0 \ket{\ell}_\lambda.
+    \end{equation*}
+    A primeira equação determina o vetor \(P_0\ket{\ell}_\lambda\) como o autovetor de \(H_\mathrm{ef}\) associado ao autovalor \(E - E_D^{(0)},\) onde
+    \begin{equation*}
+        H_\mathrm{ef} = \lambda P_0 W P_0 + \lambda^2 P_0 W P_1 \frac{1}{E - H_0 - \lambda P_1WP_1} P_1 W P_0
+    \end{equation*}
+    é o Hamiltoniano efetivo em \(D\).
+\end{theorem}
+\begin{proof}
+    Como \(D\) é autoespaço de \(H_0,\) é claro que \(P_0\) comuta com \(H_0,\) portanto \(H_0\) também comuta com \(P_1.\) Projetando a equação de autovalores com \(P_i\) temos
+    \begin{equation*}
+        E P_i \ket{\ell}_\lambda = (H_0 P_i + \lambda P_i W)\ket{\ell}_\lambda \implies E P_i \ket{\ell}_\lambda = (E_D^{(0)} P_0 + \lambda P_i W)P_0\ket{\ell}_\lambda + (P_1H_0 + \lambda P_i W) P_1 \ket{\ell}_\lambda
+    \end{equation*}
+    para \(i \in \set{0,1}.\) Como \(P_0\) e \(P_1\) são complementares, podemos separar a equação em
+    \begin{equation*}
+        \left(E_D^{(0)} - E+ \lambda P_0 W P_0\right) P_0 \ket{\ell}_\lambda + \lambda P_0 W P_1 \ket{\ell}_\lambda = 0
+        \quad\text{e}\quad
+        \lambda P_1 W P_0 \ket{\ell}_{\lambda} + (H_0 - E + \lambda P_1 W) P_1 \ket{\ell}_\lambda = 0.
+    \end{equation*}
+    Restringindo o domínio de \(H_0 \lambda P_1 W P_1\) ao subespaço em que \(P_1\) projeta, vemos que \(E\) pertence ao conjunto resolvente, portanto da segunda equação, obtemos
+    \begin{equation*}
+        P_1 \ket{\ell}_{\lambda} = P_1 \frac{\lambda}{E - H_0 - \lambda P_1 W P_1} P_1WP_0\ket{\ell}_\lambda.
+    \end{equation*}
+    Obtemos o resultado proposto substituindo este resultado na outra equação.
+\end{proof}
