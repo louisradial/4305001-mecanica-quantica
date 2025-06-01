@@ -13,7 +13,7 @@
 \begin{proof}[Resolução]
     Escrevemos \(H = H_0 + W,\) onde \(H_0\) é o Hamiltoniano não perturbado e \(W\) é a perturbação. O polinômio característico de \(H\) é
     \begin{equation*}
-        p_H(\lambda) = (E_1 - \lambda) \left[(E_1 - \lambda) (E_2 - \lambda) - \abs{b}^2\right] - \abs{a}^2 (E_1 - \lambda) = (E_1 - \lambda) \left[\lambda^2 + 2\bar{E} \lambda + E_1 E_2 - \abs{a}^2 + \abs{b}^2\right],
+        p_H(\lambda) = (E_1 - \lambda) \left[(E_1 - \lambda) (E_2 - \lambda) - \abs{b}^2\right] - \abs{a}^2 (E_1 - \lambda) = (E_1 - \lambda) \left[\lambda^2 - 2\bar{E} \lambda + E_1 E_2 - \abs{a}^2 - \abs{b}^2\right],
     \end{equation*}
     onde \(2\bar{E} = E_1 + E_2,\) portanto o espectro de \(H\) é dado por
     \begin{equation*}
@@ -54,5 +54,36 @@
     \begin{equation*}
         \ket{E_\pm} = \frac{1}{(1 \pm \kappa)^2 + \kappa^2 - 1}\left(\frac{a}{\epsilon} \ket{1} + \frac{b}{\epsilon} \ket{2} + (1 \pm \kappa) \ket{3}\right)
     \end{equation*}
-    como os autovetores associados a \(E_\pm.\)
+    como os autovetores associados a \(E_\pm.\) A fim de comparar com os resultados obtidos com teoria de perturbação, aproximamos \(\kappa\) em primeira ordem de \(\abs{a}^2 + \abs{b}^2 \ll \epsilon^2\), obtendo
+    \begin{equation*}
+        \kappa \simeq 1 + \frac{\abs{a}^2 + \abs{b}^2}{2\epsilon^2} \implies E_- \simeq E_1 - \frac{\abs{a}^2 + \abs{b}^2}{E_2 - E_1}\quad\text{e}\quad E_+ \simeq E_2 + \frac{\abs{a}^2 + \abs{b}^2}{E_2 - E_1}
+    \end{equation*}
+    como as expressões para os autovalores de energia.
+
+    O desvio em relação à energia \(E_2,\) não degenerada, é dado por
+    \begin{align*}
+        \Delta_2 &= \bra{3} W \ket{3} +\sum_{n = 1}^{2} \frac{\abs{\bra{3}W\ket{n}}^2}{E_2 - E_1}\\
+                 &= \frac{\abs{a}^2 + \abs{b}^2}{E_2 - E_1},
+    \end{align*}
+    que concorda com a aproximação considerada para o valor exato \(E_+.\) Para determinar os desvios em relação ao nível degenerado, consideramos os projetores \(P_1 = \ketbra{3}{3}\) e \(P_0 = 1 - P_1,\) para determinar o Hamiltoniano efetivo no autoespaço de \(H_0\) associado a \(E_1,\)
+    \begin{equation*}
+        H_\mathrm{ef} = P_0 W P_0 + P_0 W P_1 \frac{1}{E - H_0 - P_1 W P_1} P_1 W P_0.
+    \end{equation*}
+    Notemos que \(W\) não tem sequer um elemento de matriz diagonal, portanto \(P_0 W P_0\) e \(P_1 W P_1\) se anulam, portanto a expressão acima se reduz a 
+    \begin{align*}
+        H_\mathrm{ef} &= \frac{1}{E - E_2} P_0 W P_1 W P_0 = \frac{1}{E - E_2} P_0 W \ketbra{3}{3} W P_0 = \frac{1}{E - E_2} \sum_{n = 1}^2 \sum_{m = 1}^2 \ketbra{n}{n} W \ketbra{3}{3} W \ketbra{m}{m}\\
+                      &\doteq \frac{1}{E - E_2}\begin{pmatrix}
+                          \abs{a}^2 && a \conj{b}\\
+                          b\conj{a} && \abs{b}^2
+                      \end{pmatrix}.
+    \end{align*}
+    O polinômio característico desta matriz é dado por
+    \begin{equation*}
+        p_{H_\mathrm{ef}}(x) = \left(\frac{\abs{a}^2}{E - E_2} - x\right)\left(\frac{\abs{b}^2}{E - E_2} - x\right) - \frac{\abs{a}^2 \abs{b}^2}{(E - E_2)^2} = x \left(x - \frac{\abs{a}^2 + \abs{b}^2}{E - E_2}\right),
+    \end{equation*}
+    portanto uma das correções é nula e a outra é dada por
+    \begin{equation*}
+        E = E_1 + \frac{\abs{a}^2 + \abs{b}^2}{E - E_2} \implies E^2 - 2 \bar{E} E + E_1 E_2 - \abs{a}^2 - \abs{b}^2 = 0,
+    \end{equation*}
+    que é justamente \(E_-.\)
 \end{proof}
