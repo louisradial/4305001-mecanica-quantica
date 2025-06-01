@@ -12,5 +12,128 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Consideramos a base que diagonaliza \(H_B = a_1 \sigma_z^{(1)} + a_2 \sigma_z^{(2)}\) com
+   \begin{equation*}
+      H_B\ket{++} = a_+ \ket{++},\quad
+      H_B\ket{+-} = -a_- \ket{+-},\quad
+      H_B\ket{-+} = a_- \ket{-+},\quad\text{e}\quad
+      H_B\ket{--} = -a_+ \ket{--},
+   \end{equation*}
+   onde \(a_\pm = a_2 \pm a_1.\) Assim,
+   \begin{equation*}
+      H_S = \vetor{\sigma}^{(1)} \cdot \vetor{\sigma}^{(2)} \doteq \begin{pmatrix}
+         \sigma_z && \sigma_x -i \sigma_y\\
+         \sigma_x +i \sigma_y && - \sigma_z
+      \end{pmatrix}
+      \doteq
+      \begin{pmatrix}
+         1 && 0 && 0 && 0\\
+         0 && -1 && 2 && 0\\
+         0 && 2 && -1 && 0\\
+         0 && 0 && 0 && 1
+      \end{pmatrix},
+   \end{equation*}
+   então
+   \begin{equation*}
+       H \doteq \begin{pmatrix}
+          a_+B + K && 0 && 0 && 0\\
+         0 && -a_-B-K && 2K && 0\\
+         0 && 2K && a_-B-K && 0\\
+         0 && 0 && 0 && -a_+B + K
+       \end{pmatrix},
+   \end{equation*}
+   O polinômio característico para o Hamiltoniano é dado por
+   \begin{align*}
+      p_H(\lambda) &= (a_+B + K - \lambda)(K - a_+ B - \lambda)\left[-(a_-B + K + \lambda)(a_-B - K - \lambda) -4K^2\right]\\
+                   &= (a_+B + K - \lambda)(K - a_+ B - \lambda)\left[(K+\lambda)^2 - a_-^2 B^2 -4K^2\right]\\
+                   &= (a_+B + K - \lambda)(K - a_+ B - \lambda)\left[\lambda^2 + 2K \lambda - a_-^2 B^2 -3K^2\right]\\
+                   &= (a_+B + K - \lambda)(K - a_+ B - \lambda)\left(\lambda + K + \sqrt{4K^2 + a_-B^2}\right)(\lambda + K - \sqrt{4K^2 + a_-B^2})
+   \end{align*}
+   portanto os níveis de energias exatos para o sistema são
+   \begin{equation*}
+       E_1 = a_+B + K,\quad
+       E_2 = K - a_+B,\quad
+       E_3 = - K + \sqrt{4K^2 + B^2 a_-^2},\quad\text{and}\quad
+       E_4 = - K - \sqrt{4K^2 + B^2 a_-^2}.
+   \end{equation*}
+   No limite \(B \ll K,\) temos 
+   \begin{equation*}
+      E_3 = - K + 2K \sqrt{1 + \frac{B^2 a_-^2}{4K^2}} \simeq K + \frac{B^2a_-^2}{4K}
+      \quad\text{e}\quad
+      E_4 \simeq - 3K - \frac{B^2 a_-^2}{4K}
+   \end{equation*}
+   enquanto que no limite \(K \ll B,\) temos
+   \begin{equation*}
+      E_3 = - K + B a_- \sqrt{1 + \frac{4 K^2}{B^2 a_-^2}} \simeq a_- B - K + \frac{2K^2}{B a_-}
+      \quad\text{e}\quad
+      E_4 \simeq -a_- B - K - \frac{2K^2}{B a_-}.
+   \end{equation*}
+
+   Vamos considerar agora o sistema no limite \(B \ll K\) com teoria de perturbação. 
+   A base que diagonaliza \(H_S\) é
+   \begin{equation*}
+      \ket{11} = \ket{++},\quad
+      \ket{10} = \frac{1}{\sqrt{2}}\left(\ket{+-} + \ket{-+}\right),\quad
+      \ket{1{-1}} = \ket{--},\quad\text{e}\quad
+      \ket{00} = \frac{1}{\sqrt{2}} \left(\ket{+-} - \ket{-+}\right),
+   \end{equation*}
+   com
+   \begin{equation*}
+      H_S\ket{11} = \ket{11},\quad
+      H_S\ket{10} = \ket{10},\quad
+      H_S\ket{1{-1}} = \ket{1{-1}},\quad
+      H_S\ket{00} = -3 \ket{00},
+   \end{equation*}
+   portanto temos um nível de energia não degenerado, \(-3K,\) e um nível de energia \(K\) com degenerescência igual a três. Nesta base, temos
+   \begin{equation*}
+       H_B \doteq \begin{pmatrix}
+          a_+ && 0 && 0 && 0\\
+          0 && 0 && 0 && -a_-\\
+          0 && 0 && -a_+ && 0\\
+          0 && -a_- && 0 && 0
+       \end{pmatrix}.
+   \end{equation*}
+   A correção do acoplamento com o campo magnético fraco para o nível não degenerado é
+   \begin{align*}
+      \Delta_{-3K} &= B\bra{00} H_B\ket{00} - B^2 \frac{\abs{\bra{00}H_B\ket{1{-1}}}^2 +\abs{\bra{00}H_B\ket{10}}^2 +\abs{\bra{00}H_B\ket{11}}^2}{4K}\\
+                   &= -\frac{a_-^2B^2}{4K},
+   \end{align*}
+   que está de acordo com a correção feita no limite \(B \ll K\) para \(E_4.\) Para a correção dos níveis degenerados, consideramos os projetores \(P_1 = \ketbra{00}{00}\) e \(P_0 = 1 - P_1,\) e o Hamiltoniano efetivo,
+   \begin{align*}
+      H_\mathrm{ef} &= B P_0 H_B P_0 + B^2 P_0 H_B P_1 \frac{1}{E - H_0 - B P_1 H_B P_1} P_1 H_B P_0\\
+                    &= B P_0 H_B P_0 + \frac{B^2}{E + 3K} P_0 H_B P_1 H_B P_0,
+   \end{align*}
+   onde usamos que \(P_1 H_B P_1 = 0\) e que \(P_1\frac{1}{E - H_0} P_1 = \frac{1}{E + 3K} P_1.\) Calculando os elementos de matriz, temos
+   \begin{align*}
+      P_0 H_B P_0 &= P_0 H_B \left(\ketbra{11}{11} + \ketbra{10}{10} + \ketbra{1{-1}}{1{-1}}\right)\\
+                  &= P_0  \left(a_+ \ketbra{11}{11} - a_-\ketbra{00}{10}  -a_+\ketbra{1{-1}}{1{-1}}\right)\\
+                  &= a_+ \ketbra{11}{11} - a_+ \ketbra{1{-1}}{1{-1}}
+   \end{align*}
+   e
+   \begin{align*}
+      P_0 H_B P_1 H_B P_0 &= P_0 H_B \ketbra{00}{00} H_B P_0\\
+                          &= a_-^2 P_0 \ketbra{10}{10} P_0\\
+                          &= a_-^2 \ketbra{10}{10},
+   \end{align*}
+   portanto \(H_{\mathrm{ef}}\) é diagonal nesta base com
+   \begin{equation*}
+      H_{\mathrm{ef}} = B a_+ \ketbra{11}{11} + \frac{B^2a_-^2}{E + 3K} \ketbra{10}{10} - B a_+ \ketbra{1{-1}}{1{-1}},
+   \end{equation*}
+   e as correções são \(Ba_+,\) \(- Ba_+\) e \(\frac{B^2 a_-^2}{E + 3K},\) de acordo com as energias \(E_1, E_2\) e \(E_3,\) respectivamente.
+
+   Considerando agora o limite \(K \ll B,\) temos o espectro de \(H_B\) não degenerado se e somente se \(a_1\) e \(a_2\) são não nulos, como facilmente se verifica. Assim, precisamos perturbar cada nível individualmente. Temos
+   \begin{equation*}
+      \Delta_{B a_+} = K\bra{++}H_S\ket{++} + K^2\frac{\abs{\bra{++}H_S\ket{+-}}^2}{Ba_+ + Ba_-} + K^2\frac{\abs{\bra{++}H_S\ket{-+}}^2}{Ba_+ - Ba_-} + K^2\frac{\abs{\bra{++}H_S\ket{--}}^2}{2Ba_+}= K,
+   \end{equation*}
+   \begin{equation*}
+      \Delta_{-B a_-} = K\bra{+-}H_S\ket{+-} - K^2\frac{\abs{\bra{+-}H_S\ket{++}}^2}{Ba_+ + Ba_-} - K^2\frac{\abs{\bra{+-}H_S\ket{-+}}^2}{2Ba_-} + K^2\frac{\abs{\bra{+-}H_S\ket{--}}^2}{Ba_+ - Ba_-}= -K - \frac{2K^2}{Ba_-},
+   \end{equation*}
+   \begin{equation*}
+      \Delta_{B a_-} = K\bra{-+}H_S\ket{-+} + K^2\frac{\abs{\bra{-+}H_S\ket{++}}^2}{Ba_- - Ba_+} + K^2\frac{\abs{\bra{-+}H_S\ket{+-}}^2}{2Ba_-} + K^2\frac{\abs{\bra{-+}H_S\ket{--}}^2}{Ba_- - Ba_+}= -K + \frac{2K^2}{Ba_-},
+   \end{equation*}
+   e
+   \begin{equation*}
+      \Delta_{-B a_+} = K\bra{--}H_S\ket{--} - K^2\frac{\abs{\bra{--}H_S\ket{++}}^2}{2Ba_+} + K^2\frac{\abs{\bra{--}H_S\ket{+-}}^2}{-Ba_+ + Ba_-} - K^2\frac{\abs{\bra{--}H_S\ket{-+}}^2}{Ba_+ + Ba_-} = K,
+   \end{equation*}
+   que estão de acordo com os níveis exatos \(E_1, E_4, E_3,\) e \(E_2,\) respectivamente.
 \end{proof}
