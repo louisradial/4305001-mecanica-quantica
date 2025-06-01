@@ -69,12 +69,22 @@
             \tilde{\beta}_0 r^{-\ell - 1},&\text{se } E = 0
         \end{cases}
     \end{equation*}
-    como as soluções gerais que não divergem para \(r \to \infty\). Como o potencial tem descontinuidade finita, segue que \(\frac{u(r)}{r}\) é contínua e tem primeira derivada contínua, logo para \(E \neq -V_0,\) e \(E \neq 0\) devemos ter
+    como as soluções gerais que não divergem para \(r \to \infty\). Para o estado ligado, consideramos agora apenas o caso \(-V_0 < E < 0\), então podemos escrever a solução para \(r > a\) como apenas uma função de Hankel esférica, já que a outra diverge para \(r \to \infty\) pelo argumento ser puramente imaginário, isto é,
+    \begin{equation*}
+        \frac{u(r)}{r} = \begin{cases}
+            \alpha j_{\ell}\left(\sqrt{\frac{2\mu (V_0 + E)}{\hbar^2}}r\right),&\text{se } 0 \leq r \leq a\\
+            \tilde{\alpha} h^+_{\ell}\left(i\sqrt{\frac{2\mu \abs{E}}{\hbar^2}}r\right),&\text{se } r > a,
+        \end{cases}
+    \end{equation*}
+    com \(\alpha, \tilde{\alpha}\) constantes tais que \(\int_{0}^\infty \dli{r} u(r) = 1.\)
+    Como o potencial tem descontinuidade finita, segue que \(\frac{u(r)}{r}\) é contínua e tem primeira derivada contínua, logo para \(E \neq -V_0,\) e \(E \neq 0\) devemos ter
     \begin{equation*}
         \begin{cases}
-            \alpha j_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) = \tilde{\alpha} j_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) + \tilde{\beta} n_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right)\\
-            \alpha \sqrt{1 + \frac{V_0}{E}}j'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) = \tilde{\alpha} j'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) + \tilde{\beta} n'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right).
+            \alpha j_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) = \tilde{\alpha} h^+_\ell\left(i\sqrt{\frac{2\mu\abs{E}}{\hbar^2}} a\right)\\
+            \alpha \sqrt{1 + \frac{V_0}{E}}j'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right) = \tilde{\alpha} {h^+_\ell}'\left(i\sqrt{\frac{2\mu\abs{E}}{\hbar^2}} a\right).
         \end{cases}
+        \implies
+        \frac{j_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right)}{\sqrt{1 + \frac{V_0}{E}}j'_\ell\left(\sqrt{\frac{2\mu(V_0 + E)}{\hbar^2}} a\right)} = \frac{h^+_\ell\left(i\sqrt{\frac{2\mu\abs{E}}{\hbar^2}} a\right)}{{h^+_\ell}'\left(i\sqrt{\frac{2\mu\abs{E}}{\hbar^2}} a\right)}.
     \end{equation*}
     O sistema de equações acima determina, para \(\ell\) fixo, os possíveis valores de energia \(E\), dependendo de \(a,\) \(\ell,\) e \(V_0.\)
 \end{proof}
