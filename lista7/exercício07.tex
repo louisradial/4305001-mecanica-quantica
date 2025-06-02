@@ -1,6 +1,6 @@
 % vim: spl=pt
-\begin{exercício}{}{ex7}
-    Considere uma partícula de massa \(\mu\) sujeita a se movimentar no plano \(xy\) sobre um círculo centrado na origem e de raio fixo \(\rho\). A úinica variável do sistema é o ângulo \(\alpha\) entre o eixo \(x\) e a posição da partícula no círculo. O estado quântico da partícula é definido pela função de onda \(\psi(\alpha),\) com \(\psi(\alpha + 2\pi) = \psi(\alpha)\) e
+\begin{exercício}{Interações para uma partícula em movimento circular}{ex7}
+    Considere uma partícula de massa \(\mu\) sujeita a se movimentar no plano \(xy\) sobre um círculo centrado na origem e de raio fixo \(\rho\). A única variável do sistema é o ângulo \(\alpha\) entre o eixo \(x\) e a posição da partícula no círculo. O estado quântico da partícula é definido pela função de onda \(\psi(\alpha),\) com \(\psi(\alpha + 2\pi) = \psi(\alpha)\) e
     \begin{equation*}
        \int_0^{2\pi}{\dli\alpha \abs{\psi(\alpha)}^2} = 1.
     \end{equation*}
@@ -8,10 +8,102 @@
        \item Considere o operador \(M = \frac{\hbar}{i} \diff{}{\alpha}\). Calcule os autovalores e as autofunções normalizadas desse operador. Qual o significado físico de \(M\)?
        \item A energia cinética da partícula é dada pelo Hamiltoniano \(H_0 = \frac{M^2}{2 \mu \rho^2}.\) Calcule os autovalores e as autofunções de \(H_0.\) Os níveis de energia encontrados são degenerados?
        \item No instante \(t = 0,\) a partícula tem como função de onda \(N \cos^2 \alpha,\) onde \(N\) é uma constante de normalização. Discuta a localização da partícula sobre o círculo em um instante posterior \(t.\)
-       \item Suponha que a partícula tenha uma carga \(q\) e que ela interaja com um campo elétrico uniforme fraco \(\vetor{E} = E\vetor{e}_x.\) Nesse caso precisamos considerar também a contribuição perturbativa \(W = -q E \rho \cos\alpha.\) Calcule a nova função de onda do nível fundamental em primeira ordem em \(E.\) Determine o coeficiente de sucetibilidade linear \(\chi\) entre o dipolo elétrico paralelo a \(\vetor{e}_x\) adquirido pela partícula e o campo \(\vetor{E}.\)
+       \item Suponha que a partícula tenha uma carga \(q\) e que ela interaja com um campo elétrico uniforme fraco \(\vetor{\mathscr{E}} = \mathscr{E}\vetor{e}_x.\) Nesse caso precisamos considerar também a contribuição perturbativa \(W = -q \mathscr{E} \rho \cos\alpha.\) Calcule a nova função de onda do nível fundamental em primeira ordem em \(\mathscr{E}.\) Determine o coeficiente de suscetibilidade linear \(\chi\) entre o dipolo elétrico paralelo a \(\vetor{e}_x\) adquirido pela partícula e o campo \(\vetor{\mathscr{E}}.\)
        \item Considere a molécula de etano \ce{CH3-CH3}, estamos interessados na rotação de um agrupamento \ce{CH3} com relação ao outro, ao redor da reta que une os dois átomos de carbono. Em primeira aproximação, essa rotação pode se fazer livremente, e o Hamiltoniano \(H_0\) acima descreve a energia cinética de rotação de um dos agrupamentos \ce{CH3} com relação ao outro (é necessário nesse caso substituir \(2 \mu \rho^2\) por \(\lambda I,\) onde \(I\) é o momento de inércia do agrupamento \ce{CH3} com relação ao eixo de rotação e \(\lambda\) uma constante). Para levar em conta a energia de interação eletrostática entre os dois agrupamentos \ce{CH3}, somamos a \(H_0\) um termo sob a forma \(W = b \cos(3\alpha),\) onde \(b\) é uma constante real. Justifique fisicamente a dependência em \(\alpha\) em \(W\). Calcule a energia e a função de onda do nível fundamental, até a primeira ordem em \(b\) para a função de onda e até a segunda ordem para a energia. Interprete o resultado fisicamente.
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Consideramos o operador \(M\) da componente \(z\) do momento angular orbital dado pelo elemento de matriz \(\bra{\alpha} M \ket{\psi} = \frac{\hbar}{i} \diff*{\braket{\alpha}{\psi}}{\alpha}\) e consideramos o autovetor \(\ket{m}\) de \(M\) associado ao autovalor \(\hbar m,\) então
+   \begin{align*}
+      M \ket{m} = \hbar m \ket{m} &\implies \bra{\alpha} M \ket{m} = \hbar m \braket{\alpha}{m}\\
+                                  &\implies \diff*{\braket{\alpha}{m}}{\alpha} = im \braket{\alpha}{m}\\
+                                  &\implies \braket{\alpha}{m} = \frac{1}{\sqrt{2\pi}} e^{i m \alpha},
+   \end{align*}
+   portanto da condição de contorno de \(2\pi\)-periodicidade, concluímos que \(m \in \mathbb{Z}\).
+
+   O Hamiltoniano \(H_0\) de energia cinética da partícula é polinomial em \(M,\) portanto o conjunto de autovetores \(\setc{\ket{m}}{m \in \mathbb{Z}}\) forma uma base ortonormal que diagonaliza \(H_0,\) sendo seu espectro dado por \(\sigma(H_0) = \setc*{\frac{\hbar^2n^2}{2\mu \rho^2}}{n \in \mathbb{N}_0},\) pelo teorema de aplicação espectral. Assim, vemos que a cada nível de energia \(E_n = \frac{\hbar^2n^2}{2\mu \rho^2}\) com \(n \in \mathbb{N}\) corresponde um subespaço linear bidimensional gerado por \(\set{\ket{n}, \ket{-n}}\) e o único nível de energia não degenerado é o estado fundamental \(E_0 = 0.\)
+
+   Consideramos uma partícula no estado \(\ket{\varphi; t}\) com função de onda no instante inicial \(t = 0\) dada por \(\varphi(\alpha, 0) = \braket{\alpha}{\varphi; 0} = N \cos^2 \alpha.\) Notemos que
+   \begin{equation*}
+      \varphi(\alpha, 0) = N\frac{1 + \cos(2\alpha)}{2} = \frac{N\sqrt{2\pi}}{2}\left(\braket{\alpha}{0} + \frac12 \braket{\alpha}{2} + \frac12 \braket{\alpha}{-2}\right),
+   \end{equation*}
+   portanto
+   \begin{equation*}
+      \ket{\varphi; 0} = N\sqrt{\frac{\pi}{2}}\left(\ket{0} + \frac12 \ket{2} + \frac12 \ket{-2}\right)
+   \end{equation*}
+   é seu estado no instante \(t = 0.\) A partir desta equação, é fácil ver que a constante de normalização é definida a menos de uma fase por \(\abs{N}^2 = \frac{4}{3\pi}.\) Num instante posterior, temos
+   \begin{equation*}
+      \ket{\varphi; t} = N\sqrt{\frac{\pi}{2}} \left[\ket{0} + \frac12 \exp\left(-i\frac{E_2}{\hbar}t\right)\left(\ket{2} + \ket{-2}\right)\right],
+   \end{equation*}
+   portanto sua função de onda é dada por
+   \begin{equation*}
+      \varphi(\alpha, t) = \braket{\alpha}{\varphi; t} = \frac{N}{2}\left[1 + \exp\left(-\frac{2i \hbar t}{\mu \rho^2}\right)\cos(2\alpha)\right].
+   \end{equation*}
+   Assim, a densidade de probabilidade da localização da partícula no círculo é dada por
+   \begin{align*}
+      \abs{\varphi(\alpha, t)}^2 &= \frac{\abs{N}^2}{4} \left[1 + \exp\left(-\frac{2i \hbar t}{\mu \rho^2}\right)\cos(2\alpha)\right]\left[1 + \exp\left(\frac{2i \hbar t}{\mu \rho^2}\right)\cos(2\alpha)\right]\\
+                                 &= \frac{1}{3\pi} \left[1 + 2\cos\left(\frac{2 \hbar t}{\mu \rho^2}\right)\cos(2\alpha) + \cos^2(2\alpha)\right]\\
+                                 &= \frac{1}{3\pi} \left[1 + \cos\left(2\alpha+\frac{2 \hbar t}{\mu \rho^2}\right) + \cos\left(2\alpha-\frac{2 \hbar t}{\mu \rho^2}\right) + \cos^2(2\alpha)\right]
+   \end{align*}
+   e vemos que
+   \begin{align*}
+      \diffp{\abs{\varphi(\alpha, t)}^2}{\alpha} = 0 &\iff \sin(2\alpha) \left[\cos\left(\frac{2\hbar t}{\mu \rho^2}\right) + \cos\left(2\alpha\right)\right] = 0\\
+                                                     &\iff \cos(\alpha) \sin(\alpha) \cos\left(\alpha - \frac{\hbar t}{\mu \rho^2}\right) \cos\left(\alpha + \frac{\hbar t}{\mu \rho^2}\right) = 0
+   \end{align*}
+   portanto a densidade probabilidade tem seus extremos dados em 
+   \begin{equation*}
+      \alpha \in \set*{0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}, \frac{\pi}{2} + \frac{\hbar t}{\mu \rho^2}, \frac{\pi}{2} - \frac{\hbar t}{\mu \rho^2}, \frac{3\pi}{2} + \frac{\hbar t}{\mu \rho^2}, \frac{3\pi}{2} - \frac{\hbar t}{\mu \rho^2}}
+   \end{equation*}
+   a menos de múltiplos inteiros de \(2\pi.\)
+
+   Consideramos agora a interação de uma partícula com carga \(q\) com um campo fraco \(\vetor{\mathscr{E}} = \mathscr{E} \vetor{e}_x\) na forma \(W = - q \mathscr{E} \rho \cos \alpha.\) Notemos que
+   \begin{align*}
+      \bra{m}W\ket{0} &= -\frac{q \mathscr{E} \rho}{2\pi} \int_{0}^{2\pi} \dli{\alpha} e^{-im \alpha} \cos(\alpha)\\
+                      &= -\frac{q \mathscr{E} \rho}{4\pi} \int_{0}^{2\pi} \dli{\alpha} \left[e^{-i(m + 1)}  + e^{-i(m - 1)}\right]\\
+                      &= - \frac{q \mathscr{E} \rho}{2} \left(\delta_{m,-1} + \delta_{m,1}\right).
+   \end{align*}
+   A correção do estado fundamental é dada por
+   \begin{align*}
+      \ket{0}_\mathscr{E} &= \ket{0} +  \left(\unity - \ketbra{0}{0}\right)\frac{1}{E_0 - H_0}\left(\unity - \ketbra{0}{0}\right) W\ket{0} + O(\mathscr{E}^2)\\
+                          &= \ket{0} - \sum_{m \in \mathbb{Z}\setminus\set{0}} \frac{1}{E_m}\ketbra{m}{m} W \ket{0}\\
+                          &= \ket{0} - \frac{2\mu\rho^2}{\hbar^2} \sum_{m \in \mathbb{Z}\setminus\set{0}}{\frac{1}{m^2} \ketbra{m}{m} W \ket{0}}\\
+                          &= \ket{0} + \frac{q\mathscr{E} \mu \rho^3}{\hbar^2} \sum_{m \in \mathbb{Z}\setminus\set{0}} \frac{1}{m^2} \left(\delta_{m,-1} + \delta_{m,1}\right)\ket{m}\\
+                          &= \ket{0} + \frac{q \mathscr{E}\mu \rho^3}{\hbar^2}\left(\ket{1} + \ket{-1}\right)
+   \end{align*}
+   em primeira ordem em \(\mathscr{E},\) portanto sua função de onda é
+   \begin{equation*}
+      \Psi^\mathscr{E}_0(\alpha) = C\braket{\alpha}{0}_\mathscr{E} = \frac{C}{\sqrt{2\pi}}\left(1 + \frac{2q \mathscr{E} \mu \rho^3}{\hbar^2} \cos\alpha\right),
+   \end{equation*}
+   onde a constante de normalização \(C\) é dada por 
+   \begin{equation*}
+      \abs{C} = \left(1 + \frac{2q^2 \mathscr{E}^2\mu \rho^3}{\hbar^2}\right)^{-\frac12} = 1 - \frac{q^2 \mathscr{E}^2\mu\rho^3}{\hbar^2} + O(\mathscr{E}^4) = 1 + O(\mathscr{E}^2),
+   \end{equation*}
+   isto é, o estado já está normalizado em primeira ordem em \(\mathscr{E}.\) Assim, o momento de dipolo para uma partícula no estado fundamental é dado por
+   \begin{align*}
+      \vetor{p}_0 &= \int_{0}^{2\pi} \rho(\cos\alpha\vetor{e}_x + \sin\alpha \vetor{e}_y)\dli{\alpha} q\abs{\Psi_0^{\mathscr{E}}(\alpha)}^2\\
+                  &= \frac{\rho q}{2\pi} \int_0^{2\pi} \dli{\alpha} (\cos\alpha\vetor{e}_x + \sin\alpha \vetor{e}_y)\left(1 + \frac{4q \mathscr{E} \mu \rho^3}{\hbar^2} \cos\alpha + O(\mathscr{E}^2)\right)\\
+                  &= \frac{2q^2 \rho^4 \mathscr{E} \mu}{\pi \hbar^2}\int_0^{2\pi}\dli{\alpha}\left(\cos^2\alpha \vetor{e}_x + \sin\alpha \cos\alpha\vetor{e}_y\right)\\
+                  &= \frac{q^2 \rho^4 \mu}{\hbar^2}\vetor{\mathscr{E}},
+   \end{align*}
+   portanto a constante de polarizabilidade é \(\frac{q^2 \rho^4 \mu}{\hbar^2}.\)
+
+   Para uma interação do tipo \(W = b \cos(3\alpha),\) temos
+   \begin{equation*}
+      \bra{m}W\ket{0} = \frac{b}{4\pi} \int_0^{2\pi} \dli{\alpha} \left[e^{-i\alpha (m + 3)} + e^{-i\alpha(m-3)}\right] = \frac{b}{2} \left(\delta_{m,3} + \delta_{m,-3}\right),
+   \end{equation*}
+   portanto o estado fundamental perturbado por essa interação é
+   \begin{equation*}
+      \ket{0}_b = \ket{0} + \frac{\lambda I b}{9\hbar^2} \left(\ket{3} + \ket{-3}\right),
+   \end{equation*}
+   utilizando o mesmo procedimento com o qual obtivemos \(\ket{0}_\mathscr{E},\) e
+   \begin{equation*}
+      \Psi_0^b(\alpha) = \braket{\alpha}{0}_b = \frac{1}{\sqrt{2\pi}}\left[1 + \frac{2\lambda I b}{9\hbar^2}\cos(3\alpha)\right]
+   \end{equation*}
+   é sua função de onda. Assim, a correção para energia é dada por
+   \begin{equation*}
+      \Delta_0(b) = \bra{0}W\ket{0} + \frac{\abs{\bra{0}W\ket{3}}^2 + \abs{\bra{0}W\ket{-3}}^2}{E_0 - E_3} + O(b^3) 
+                  = -\frac{b^2}{E_3}
+                  = -\frac{\lambda I b^2}{9\hbar^2}
+   \end{equation*}
+   em até segunda ordem em \(b.\)
 \end{proof}
