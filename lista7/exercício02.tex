@@ -16,40 +16,30 @@
     \end{equation*}
     Introduzimos agora a mudança de variáveis \(x = 2 \alpha e^{-\frac{\rho}{2}}\) e \(h(x) = w(\rho),\) então de
     \begin{equation*}
-        \diff[2]{w}{\rho} = \diff{\rho}{x}\diff*{\left(\diff{h}{x} \diff{\rho}{x}\right)}{x} = \frac{x}{2} \diff*{\left(\diff{h}{x} \frac{x}{2}\right)}{x} = \frac{x^2}{4}\diff[2]{h}{x} + \frac{x}{2} \diff{h}{x},
+        \diff[2]{w}{\rho} = \diff{\rho}{x}\diff*{\left(\diff{f}{x} \diff{\rho}{x}\right)}{x} = \frac{x}{2} \diff*{\left(\diff{f}{x} \frac{x}{2}\right)}{x} = \frac{x^2}{4}\diff[2]{f}{x} + \frac{x}{4} \diff{f}{x},
     \end{equation*}
     obtemos
     \begin{equation*}
-        x^2 \diff{h}{x} + 2x \diff{h}{x} + x^2 h(x) = 4\beta^2 h(x).
+        x^2 \diff{f}{x} + x \diff{f}{x} + x^2 f(x) = 4\beta^2 f(x),
     \end{equation*}
-    Escrevendo \(f(x) = \sqrt{x} h(x),\) temos
+    que é uma equação de Bessel de ordem \(2 \beta,\) cuja solução geral é dada por
     \begin{equation*}
-        \diff{h}{x} = -\frac12 x^{-\frac32}f(x) + x^{-\frac12} \diff{f}{x}
-        \quad\text{and}\quad
-        \diff[2]{h}{x} = \frac{3}{4} x^{-\frac52} f(x) -  x^{-\frac32} \diff{f}{x}  + x^{-\frac12}\diff[2]{f}{x}
+        f(x) = c_1 J_{2\beta}(x) + c_2 N_{2\beta}(x),
     \end{equation*}
-    portanto obtemos a equação de Bessel,
+    onde \(c_1, c_2 \in \mathbb{C}\) são constantes. Notemos que
     \begin{equation*}
-        x^2 \diff[2]{f}{x} + x \diff{f}{x} + \left[x^2 - \left(4 \beta^2 + \frac14\right)\right] f(x) = 0
-    \end{equation*}
-    cuja solução geral é
-    \begin{equation*}
-        f(x) = c_1 J_{\sigma}(x) + c_2 N_{\sigma}(x),
-    \end{equation*}
-    com \(\sigma^2 = 4\beta^2 + \frac14.\) Notemos que
-    \begin{equation*}
-        \lim_{r\to\infty}{\frac{w(\rho)}{\rho}} = -\lim_{x \to 0}{\frac{h(x)}{\ln\left(\frac{x}{2\alpha}\right)}} = 
+        \lim_{r\to\infty}{\frac{w(\rho)}{\rho}} = -\lim_{x \to 0}{\frac{f(x)}{\ln\left(\frac{x}{2\alpha}\right)}} = 
         % -\lim_{x\to0}{\frac{f(x)}{\sqrt{x} \ln\left(\frac{x}{2\alpha}\right)}}
-        -c_1 \lim_{x\to0}{\frac{j_\sigma(x)}{\ln\left(\frac{x}{2\alpha}\right)}} - c_2 \lim_{x\to0}{\frac{n_\sigma(x)}{\ln\left(\frac{x}{2\alpha}\right)}}
-        = -c_2\lim_{x\to0}{\frac{n_\sigma(x)}{\ln\left(\frac{x}{2\alpha}\right)}},
+        -c_1 \lim_{x\to0}{\frac{J_{2 \beta}(x)}{\ln\left(\frac{x}{2\alpha}\right)}} - c_2 \lim_{x\to0}{\frac{N_{2 \beta}(x)}{\ln\left(\frac{x}{2\alpha}\right)}}
+        = -c_2\lim_{x\to0}{\frac{N_{2 \beta}(x)}{\ln\left(\frac{x}{2\alpha}\right)}},
     \end{equation*}
-    já que as funções de Bessel esféricas são polinomiais na origem, portanto para que a função de onda seja normalizável, devemos ter \(c_2 = 0\) para que \(\frac{u(r)}{r} \to 0\) conforme \(r \to \infty.\) Ainda, a função de onda deve ser regular na origem, portanto \(u(0) = 0,\) isto é,
+    já que as funções de Bessel \(J_{2\beta}\) são polinomiais na origem, portanto para que a função de onda seja normalizável, devemos ter \(c_2 = 0\) para que \(\frac{u(r)}{r} \to 0\) conforme \(r \to \infty.\) Ainda, a função de onda deve ser regular na origem, portanto \(u(0) = 0,\) isto é,
     \begin{equation*}
-        f(2\alpha) = 0 \implies J_\sigma(2 \alpha) = 0 \implies 2\alpha = \xi^m_\sigma, \quad m \in \mathbb{N}
+        f(2\alpha) = 0 \implies J_{2\beta}(2 \alpha) = 0 \implies 2\alpha = \xi^m_{2\beta}, \quad m \in \mathbb{N}
     \end{equation*}
-    onde \(\xi^m_{\sigma}\) é o \(m\)-ésimo zero da função de Bessel \(J_\sigma\). Esta condição determina os níveis de energia para os estados ligados com \(\ell = 0,\) e enumerando-os de forma crescente, temos
+    onde \(\xi^m_{2 \beta}\) é o \(m\)-ésimo zero da função de Bessel \(J_{2\beta}\). Esta condição determina os níveis de energia para os estados ligados com \(\ell = 0,\) e enumerando-os de forma crescente, temos
     \begin{equation*}
-        \braket{\vetor{r}}{n00} = C\frac{j_{\sigma_n}\left(\frac{r_0 a}{\hbar}\sqrt{e^{-\frac{r}{r_0}}\mu}\right)}{r}Y_{00},
+        \braket{\vetor{r}}{n00} = C\frac{J_{2\beta}\left(\frac{r_0 a}{\hbar}\sqrt{e^{-\frac{r}{r_0}}\mu}\right)}{r}Y_{00},
     \end{equation*}
-    onde \(\sigma_n^2 = 4\beta^2 + \frac14\) é tal que \(\xi^m_{\sigma_n} = 2\frac{r_0 a \sqrt{\mu}}{\hbar}\) para algum \(m \in \mathbb{N},\) e \(C\) é a constante de normalização.
+    onde a energia \(E_n = -\frac{\hbar^2 \beta_n^2}{2\mu r_0^2}\) é tal que \(\xi^m_{2 \beta_n} = 2\frac{r_0 a \sqrt{\mu}}{\hbar}\) para algum \(m \in \mathbb{N},\) e \(C\) é a constante de normalização.
 \end{proof}
