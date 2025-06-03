@@ -1,0 +1,28 @@
+% vim: spl=pt
+\begin{exercício}{}{ex2}
+   Este problema lida com pequenas mudanças no autovalor da energia em um campo Coulombiano devido ao tamnho finito da distribuição de carga nuclear. Esse é um efeito muito pequeno para átomos de \(Z\) moderado, mas não quando a partícula satélite é um múon.
+   \begin{enumerate}[label=(\alph*)]
+         \item Assuma que o estado ligado tem um raio \(a\) que é muito menor que o raio nuclear \(R.\) Mostre que apenas estados \(s\) têm uma mudança de nível de energia significativa e que o efeito decresce com a energia de ligação. Mostre que a mudança para uma partícula satélite de massa \(m\) é aproximadamente
+            \begin{equation*}
+               \Delta E \sim \left(\frac{R}{a}\right)^3 \frac{Z e^2}{4\pi R} \sim \left(\frac{R}{a_0}\right)^2 \left(\frac{m}{m_e}\right)^3 Z^4 \mathrm{Ry},
+            \end{equation*}
+            com \(\mathrm{Ry} = \frac12 \alpha^2 m c^2.\)
+         \item Mostre que a fórmula seguinte é exata no limite \(a \gg R\):
+            \begin{equation*}
+               \Delta E_n = \abs{\Psi_{ns}(0)}^2 \int \dln3r \delta V(\vetor{r}),
+            \end{equation*}
+            onde \(\delta V\) é a mudança na energia eletrostática devido a densidade de carga distribuída \(e \rho_N,\)
+            \begin{equation*}
+               \delta V(\vetor{r}) = \frac{Z e^2}{4\pi r} - e^2 \int \dln3{r'} \frac{\rho_N(\vetor{r'})}{4\pi \abs{\vetor{r} - \vetor{r'}}}.
+            \end{equation*}
+            Note que \(\rho_N\) é efetivamente esfericamente simétrica independentemente da forma ou momento angular que o núcleo possa ter. Use isso para mostrar que
+            \begin{equation*}
+               \Delta E_n = \frac16 Z e^2 \mean{r^2}_N \abs{\Psi_{ns}(0)}^2 = \frac{4 Z}{3a_0^2n^3}\left(\frac{Z m}{m_e}\right)^3 \mean{r^2}_N \mathrm{Ry},
+            \end{equation*}
+            onde \(\mean{r^2}_N\) é o raio quadrático médio da distribuição de carga nuclear.
+         \item Avalie o desvio do nível 1s explicitamente para elétrons e múons em \ce{H}, \ce{Fe}, \ce{Pb}, e compare com a estrutura hiperfina do estado fundamental, que é da ordem \(\frac{\lambda_c^2 m_e^2}{mm_N}\abs{\Psi_{1s}(0)}^2.\) Essa fórmula é válida para o desvio de todos esses núcleos para o caso de um elétron? E para o caso de um múon?
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    
+\end{proof}
