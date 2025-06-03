@@ -1,0 +1,18 @@
+% vim: spl=pt
+\begin{exercício}{Operador vetorial em um subespaço de momento angular bem definido}{ex5}
+   Usando o fato que os elementos de matriz de um operador vetorial \(\vetor{V}\) em um subespaço de momento angular total definido são proporcionais aos elementos de matriz de \(\vetor{J},\) mostre que
+   \begin{equation*}
+      j(j +1) \bra{jm}\vetor{V}\ket{j m'} = \bra{jm} (\vetor{V} \cdot\vetor{J})\vetor{J} \ket{jm'}.
+   \end{equation*}
+\end{exercício}
+\begin{proof}[Resolução]
+   Como \(\vetor{V}\) é um operador vetorial, temos \(\vetor{V} = \lambda \vetor{J},\) com \(\lambda\) escalar. Tomando o produto escalar com o \(\vetor{J}\) e multiplicando a direita por \(\vetor{J},\) obtemos
+   \begin{equation*}
+      \vetor{V} \cdot \vetor{J} = \lambda \vetor{J}^2 \implies (\vetor{V} \cdot \vetor{J}) \vetor{J} = \lambda \vetor{J} \vetor{J}^2 = \vetor{V} \vetor{J}^2,
+   \end{equation*}
+   logo
+   \begin{equation*}
+      \bra{jm}(\vetor{V}\cdot\vetor{J})\vetor{J}\ket{jm'} = \bra{jm} \vetor{V} \vetor{J}^2 \ket{jm'} = j(j+1) \bra{jm}\vetor{V} \ket{jm'}
+   \end{equation*}
+   é a relação que determina os elementos de matriz de um operador vetorial no subespaço de momento angular total \(j.\)
+\end{proof}
