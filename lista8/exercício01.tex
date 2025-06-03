@@ -1,0 +1,125 @@
+% vim: spl=pt
+\begin{exercício}{Método variacional para um potencial central linear}{ex1}
+   Considere uma partícula movendo-se em um potencial central \(V(r) = Cr\). Introduzindo uma variável adimensional apropriada \(\rho\) em termos da qual a equação radial é
+   \begin{equation*}
+      \left[\diff*[2]{}{\rho} - \frac{\ell(\ell+1)}{\rho^2} - \rho + \lambda\right]u(\rho) = 0.
+   \end{equation*}
+   Mostre que as energias são relacionadas aos autovalores \(\lambda\) por \(E = -\lambda\sqrt[3]{\frac{\hbar^2 C^2}{2m}}.\) O problema é encontrar os autovalores mais baixos para \(\ell = 0, 1, 2\) pelo método variacional com uma função de prova de um único parâmetro e comparar esse resultado com os valores exatos \(\lambda = 2.338, 3.361,\) e \(4.248.\) Ao escolher uma função de prova lembre-se do comportamento desejado para \(\rho \to 0\). Tente agora calcular a energia do primeiro estado \(s\) excitado escolhendo uma função de prova ortogonal à primeira. Compare seu resultado com o valor exato \(\lambda = 4.088.\)
+\end{exercício}
+\begin{proof}[Resolução]
+   Consideramos um autoestado de energia \(E\) com função de onda \(\psi_{n\ell m}(\vetor{r}) = \frac{w(r)}{r}Y_{\ell m}\left(\frac{\vetor{r}}{r}\right),\) então \(w(r)\) satisfaz as condições de contorno \(w(0) = 0,\) \(\lim_{r\to\infty}{\frac{w(r)}{r}} = 0\) e \(\int_{0}^\infty\dli{r} \abs{w(r)}^2 = 1\) e satisfaz a equação radial
+   \begin{equation*}
+      -\frac{\hbar^2}{2\mu}\diff[2]{w}{r} + \left[\frac{\hbar^2\ell(\ell+1)}{2\mu r^2} + C r\right]w(r) = E w(r).
+   \end{equation*}
+   Introduzimos a mudança de variáveis \(\rho = \alpha r\) e \(u(\rho) = w(r),\) com \(\alpha\) a ser determinada, então de
+   \begin{equation*}
+      \diff*{}{r} = \diff{\rho}{r} \diff*{}{\rho} = \alpha \diff*{}{\rho}
+   \end{equation*}
+   obtemos
+   \begin{equation*}
+      -\frac{\hbar^2\alpha^2}{2\mu} \diff[2]{u}{\rho} + \left[\frac{\hbar^2\alpha^2 \ell(\ell + 1)}{2\mu \rho^2} + \frac{C}{\alpha}\rho - E\right]u(\rho) = 0 \implies
+      \left[\diff*[2]{}{\rho} - \frac{\ell(\ell+1)}{\rho^2} - \frac{2\mu C}{\alpha^3 \hbar^2}\rho + \frac{2\mu E}{\hbar^2 \alpha^2}\right]u(\rho) = 0.
+   \end{equation*}
+   A fim de o coeficiente do termo linear na última equação ser igual a um, temos \(\alpha = \sqrt[3]{\frac{2\mu C}{\hbar^2}},\) portanto tomando
+   \begin{equation*}
+      \lambda = \frac{2\mu E}{\hbar^2 \alpha^2} \iff E = \lambda\sqrt[3]{\frac{\hbar^2C^2}{2\mu}},
+   \end{equation*}
+   obtemos
+   \begin{equation*}
+      \left[\diff*[2]{}{\rho} - \frac{\ell(\ell+1)}{\rho^2} - \rho + \lambda\right]u(\rho) = 0.
+   \end{equation*}
+
+   Vamos analisar os comportamentos assintóticos de \(u(\rho)\) para \(\rho \to 0\) e \(\rho \to \infty.\) No primeiro, podemos desprezar a contribuição \(\lambda - \rho\) da equação diferencial,obtendo
+   \begin{equation*}
+      \diff[2]{u}{\rho} - \frac{\ell(\ell+1)}{\rho^2}u(\rho) \sim 0 \implies \rho^2 \diff[2]{u}{\rho} \sim \ell (\ell + 1) u(\rho) \implies u(\rho) \sim \rho^{\ell+1},
+   \end{equation*}
+   já que \(u\) deve ser regular na origem. No outro limite, desprezamos a contribuição do momento angular e de energia, obtendo a equação de Airy
+   \begin{equation*}
+      \diff[2]{u}{\rho} \sim \rho u(\rho),
+   \end{equation*}
+   cuja solução deve ser a função de Airy de primeiro tipo, que é a solução que satisfaz \(\displaystyle\lim_{\rho\to\infty}{u(\rho)} = 0,\) e que tem comportamento assintótico da forma \(u(\rho)) \sim \rho^{-\frac14} \exp\left(-\frac23 \rho^{\frac32}\right).\)
+
+   Consideramos uma função de prova da forma
+   \begin{equation*}
+      \tilde{u}_{\ell\kappa}(\rho) = N\rho^{\ell+1} \exp\left(-\frac{\kappa}2\rho^2\right),
+   \end{equation*}
+   com \(N\) sendo a constante de normalização, e o funcional
+   \begin{equation*}
+      \lambda_\ell[\xi] = -\frac{\int_0^{\infty} \dli{\rho} \conj{\xi}(\rho) \left(\diff[2]{}{\rho} - \frac{\ell(\ell + 1)}{\rho^2} - \rho\right) \xi(\rho)}{\int_0^\infty \dli{\rho} \abs{\xi}^2}.
+   \end{equation*}
+   Temos
+   \begin{equation*}
+      \diff{\tilde{u}_{\ell \kappa}}{\rho} = N\left[(\ell+1) \rho^{\ell} - \kappa \rho^{\ell + 2}\right]\exp\left(-\frac{\kappa}{2} \rho^2\right) = \left[\frac{\ell + 1}{\rho} - \kappa \rho\right]\tilde{u}_{\ell \kappa}(\rho)
+   \end{equation*}
+   e
+   \begin{align*}
+      \diff[2]{\tilde{u}_{\ell \kappa}}{\rho} &= \left[\frac{\ell + 1}{\rho} - \kappa \rho\right]^2 \tilde{u}_{\ell \kappa}(\rho)-\left[\frac{\ell + 1}{\rho^2} + \kappa\right]\tilde{u}_{\ell \kappa}(\rho)\\
+                                              &= \left[\frac{\ell (\ell+1)}{\rho^2} - (2\ell + 3)\kappa + \kappa^2 \rho^2\right]\tilde{u}_{\ell \kappa}(\rho),
+   \end{align*}
+   portanto
+   \begin{equation*}
+      \left(\diff[2]{}{\rho} - \frac{\ell(\ell + 1)}{\rho^2} - \rho\right)\tilde{u}_{\ell \kappa}(\rho) = \left[\kappa^2 \rho^2 - \rho - (2 \ell + 3) \kappa\right]\tilde{u}_{\ell \kappa}(\rho).
+   \end{equation*}
+   Assim, essa função teste mantém o comportamento assintótico do estado ligado para \(\rho \to 0,\) mas não o comportamento assintótico para \(\rho \to \infty,\) apesar de ainda se anular nesse limite. Para avaliar o funcional, precisamos computar a integral 
+   \begin{equation*}
+      I_{\ell \kappa}(\sigma) = \int_0^\infty\dli{\rho} \rho^{2\ell + 2 + \sigma} e^{-\kappa \rho^2},
+   \end{equation*}
+   já que
+   \begin{equation*}
+      \lambda_\ell[\tilde{u}_{\ell \kappa}] = -\frac{\abs{N}^2\int_0^\infty\dli{\rho} \left[\kappa^2 \rho^2 - \rho - (2 \ell + 3)\kappa\right]\abs{\tilde{u}_{\ell \kappa}(\rho)}^2}{\abs{N}^2\int_0^\infty \dli{\rho} \abs{\tilde{u}_{\ell \kappa}(\rho)}^2} = -\frac{\kappa^2 I_{\ell \kappa}(2) - I_{\ell \kappa}(1) - (2\ell + 3)\kappa I_{\ell \kappa}(0)}{I_{\ell \kappa}(0)}.
+   \end{equation*}
+   Temos
+   \begin{equation*}
+      I_{\ell \kappa}(\sigma) = \frac{\kappa^{-\ell - \frac{1 + \sigma}{2}}}{2\kappa}\int_0^\infty 2\kappa\rho\dli{\rho} (\kappa\rho^2)^{\ell + \frac{1 + \sigma}{2}} e^{- \kappa \rho^2} 
+      = \frac{\kappa^{-\ell - \frac{3 + \sigma}{2}}}{2} \int_0^\infty \dli{x} x^{\ell + \frac{1 + \sigma}{2}} e^{-x} 
+      = \frac{\Gamma\left(\ell + \frac{\sigma + 3}{2}\right)}{2\kappa^{\ell + \frac{3 + \sigma}{2}}},
+   \end{equation*}
+   portanto
+   \begin{equation*}
+      \frac{I_{\ell \kappa}(\sigma)}{I_{\ell \kappa}(0)} = \kappa^{-\frac12 \sigma}\frac{\Gamma\left(\ell + \frac{\sigma + 3}{2}\right)}{\Gamma\left(\ell + \frac32\right)}.
+   \end{equation*}
+   Podemos enfim avaliar o funcional nesta função teste,
+   \begin{align*}
+      \lambda_{\ell}[\tilde{u}_{\ell \kappa}] = &-\frac{\kappa \Gamma\left(\ell + \frac{5}{2}\right) - \kappa^{-\frac12} \Gamma(\ell + 2) - 2\kappa\left(\ell + \frac{3}{2}\right) \Gamma\left(\ell + \frac{3}{2}\right)}{\Gamma\left(\ell + \frac{3}{2}\right)}\\
+      &= \frac{\kappa \left(\ell + \frac32\right) \Gamma\left(\ell + \frac32\right) + \kappa^{-\frac12} (\ell + 1)!}{\Gamma\left(\ell + \frac32\right)}\\
+      &= \left(\ell + \frac32\right)\kappa + \frac{(\ell + 1)!}{\Gamma\left(\ell + \frac32\right)} \kappa^{-\frac12}.
+   \end{align*}
+   Determinamos o parâmetro \(\kappa\) que é ponto crítico do funcional,
+   \begin{equation*}
+      \diffp{\lambda_\ell[\tilde{u}_{\ell \kappa}]}{\kappa} = 0 \implies \ell + \frac32 - \frac{(\ell + 1)!}{2 \Gamma\left(\ell + \frac32\right)} \kappa^{-\frac32} = 0 \implies \kappa_* = \left[\frac{(\ell + 1)!}{2 \Gamma\left(\ell + \frac52\right)}\right]^{\frac23},
+   \end{equation*}
+   e substituímos no funcional,
+   \begin{equation*}
+      \lambda_{\ell}[\tilde{u}_{\ell \kappa_*}] = \left(\ell + \frac32\right)\left[\frac{(\ell + 1)!}{2 \Gamma\left(\ell + \frac52\right)}\right]^{\frac23} + \frac{(\ell + 1)!}{\Gamma\left(\ell + \frac32\right)}\left[\frac{(\ell + 1)!}{2 \Gamma\left(\ell + \frac52\right)}\right]^{-\frac13}.
+   \end{equation*}
+   Substituindo valores de \(\ell,\) obtemos estimativas para os autovalores \(\lambda\) de energia dos estados ligados de energia \(E \propto \lambda\) e momento angular \(\ell\):
+   \begin{equation*}
+      \lambda_{0}[\tilde{u}_{0\kappa_*}] = 3\left(\frac{3}{2\pi}\right)^{\frac13} \simeq 2.345,\quad
+      \lambda_{1}[\tilde{u}_{1\kappa_*}] = 2\left(\frac{15}{\pi}\right)^{\frac13} \simeq 3.368,\quad\text{e}\quad
+      \lambda_{2}[\tilde{u}_{2\kappa_*}] = 6\left(\frac{28}{25\pi}\right)^{\frac13} \simeq 4.254,
+   \end{equation*}
+   que são boas aproximações para os autovalores exatos \(\lambda_0 = 2.338,\) \(\lambda_1 = 3.361,\) e \(\lambda_2 = 4.248.\)
+
+   Consideramos agora a função
+   \begin{equation*}
+      \tilde{v}_{0 \kappa}(\rho) = M\left(8\kappa\rho^3 - 12 \rho\right) \exp\left(-\frac12\kappa \rho^2\right),
+   \end{equation*}
+   onde \(M\) é uma constante de normalização. Notemos que
+   \begin{align*}
+      \int_0^\infty \dli{\rho} \tilde{u}_{0 \kappa}(\rho) \tilde{v}_{0 \kappa} (\rho) 
+      &= \frac{1}{\sqrt{\kappa}}\int_0^\infty \dli{x} \tilde{u}_{0 \kappa}(\kappa^{-\frac12} x) \tilde{v}_{0 \kappa}(\kappa^{-\frac12} x)\\
+      &= NM\int_0^{\infty} \dli{x} e^{-x^2} x (8 x - 12 x^3)\\
+      &= \frac12 NM \int_{\mathbb{R}} \dli{x} e^{-x^2} x (8 x - 12 x^3)\\
+      &= \frac12 NM \int_{\mathbb{R}} \dli{x} e^{-x^2} H_1(x) H_3(x)\\
+      &= 0,
+   \end{align*}
+   onde utilizamos ortogonalidade das funções de Hermite. Assim, \(\tilde{v}_{0 \kappa}(\rho)\) é ortogonal a \(\tilde{u}_{0 \kappa}(\rho)\) e também satisfaz o comportamento assintótico \(\tilde{v}_{0 \kappa}(\rho) \sim \rho\) para \(\rho\) pequeno. Repetindo o mesmo procedimento utilizado para \(\tilde{u}_{\ell \kappa},\) obtemos
+   \begin{equation*}
+      \lambda_0[\tilde{v}_{0 \kappa}] = \frac{\int_0^\infty\dli{\rho} \left(7 \kappa + \rho - \kappa^2 \rho^2\right)\abs{\tilde{v}_{0 \kappa}(\rho)}^2}{\int_0^\infty \dli{\rho} \abs{\tilde{v}_{0 \kappa}(\rho)}^2} = \frac{7}{2} \kappa + \frac{3}{\sqrt{\pi}} \kappa^{-\frac12},
+   \end{equation*}
+   que tem \(\kappa_* = \left(\frac{3}{7\sqrt{\pi}}\right)^{\frac23}\) e obtemos a estimativa 
+   \begin{equation*}
+      \lambda_0[\tilde{v}_0{\kappa_*}] = \frac{3^{\frac53}}{2} \left(\frac{7}{\pi}\right)^{\frac13} \simeq 4.075
+   \end{equation*}
+   para a energia do primeiro estado \(s\) excitado, que é uma boa aproximação para o valor exato \(\lambda = 4.088.\)
+\end{proof}
