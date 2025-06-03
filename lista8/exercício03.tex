@@ -1,0 +1,26 @@
+% vim: spl=pt
+\begin{exercício}{Teorema do virial}{ex3}
+   O teorema do virial vale tanto na mecânica clássica quanto na mecânica quântica. Na primeira ele relaciona a média temporal das energias cinética e potencial. Na mecânica quântica ele relaciona os valores esperados correspondentes em qualquer estado estacionário \(\ket{\Psi},\) e é uma consequência de \(\mean{\commutator{A}{H}}_\Psi = 0\) para qualquer observável \(A.\) Considere um sistema com um Hamiltoniano da forma \(T + V(q_i),\) onde \(T\) é o termo de energia cinética convencional. Tomando \(A = \sum_i q_i p_i\) mostre que
+   \begin{equation*}
+      2 \mean{T} = \sum_i \mean*{q_i \diffp{V}{q_i}}.
+   \end{equation*}
+\end{exercício}
+\begin{proof}[Resolução]
+   Notemos que para um observável \(A,\) temos
+   \begin{equation*}
+      \bra{\Psi} \diff{A}{t}\ket{\Psi} = \frac{1}{i \hbar} \bra{\Psi} AH - HA \ket{\Psi} = 0
+   \end{equation*}
+   sempre que \(\ket{\Psi}\) for um estado estacionário. Assim, tomando \(A = \sum_{i} q_i p_i\) e um Hamiltoniano da forma \(H = T + V(q),\) temos
+   \begin{equation*}
+      i\hbar \diff{A}{t} = \sum_i \commutator{q_i p_i}{T + V(q)} = \sum_i \left(q_i \commutator{p_i}{V(q)} +  \commutator{q_i}{T} p_i\right) = i\hbar\sum_i \left(-q_i \diffp{V}{q_i} + \diffp{T}{p_i}p_i\right).
+   \end{equation*}
+   Para uma energia cinética dada pela forma quadrática \(T = \sum_j \frac{p_j^2}{2m_j},\) temos
+   \begin{equation*}
+      \sum_i \diffp{T}{p_i} p_i = \sum_i \sum_j \frac{p_i p_j \delta_{ij}}{m_j} = 2\sum_i \frac{p_i^2}{2m_i} = 2T,
+   \end{equation*}
+   portanto 
+   \begin{equation*}
+      \diff{A}{t} = 2T - \sum_{i} q_i \diffp{V}{q_i}.
+   \end{equation*}
+   Tomando o valor esperado em um estado estacionário, obtemos o resultado desejado.
+\end{proof}
