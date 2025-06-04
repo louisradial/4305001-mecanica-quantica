@@ -1,0 +1,87 @@
+% vim: spl=pt
+\section{Problema de dois corpos}
+Consideramos duas partículas \(A\) e \(B\) e o Hamiltoniano
+\begin{equation*}
+   H = \frac{\vetor{p}_A^2}{2m_A} + \frac{\vetor{p}_B^2}{2m_B} + V(\vetor{r}_A, \vetor{r}_B),
+\end{equation*}
+onde os operadores de posição e momento satisfazem \(\commutator{r^i_A}{p^j_A} = \commutator{r^i_B}{p^j_B} = i\hbar\delta^{ij}\) e todas as outras relações de comutação são nulas. 
+Estamos interessados na classe de problemas com potenciais centrais, isto é, 
+\begin{equation*}
+   V(\vetor{r}_A, \vetor{r}_B) = V(\norm{\vetor{r}_A - \vetor{r}_B}),
+\end{equation*}
+portanto introduzimos os operadores de posição relativa e posição do centro de massa,
+\begin{equation*}
+   \vetor{r} = \vetor{r}_A - \vetor{r}_B\quad\text{e}\quad
+   \vetor{R} = \frac{\mu}{m_B}\vetor{r}_A + \frac{\mu}{m_A}\vetor{r}_B,
+\end{equation*}
+onde \(\mu = \frac{m_A m_B}{M}\) é a massa reduzida, com \(M = m_A + m_B\) a massa total, portanto podemos escrever o potencial \(V(\vetor{r}_A, \vetor{r}_B) = V(r),\) onde \(r = \norm{\vetor{r}}\) é a distância relativa. 
+Definimos também os operadores de momento relativo e de momento do centro de massa,
+\begin{equation*}
+   \vetor{p} = \frac{\mu}{m_A}\vetor{p}_A - \frac{\mu}{m_B} \vetor{p}_B\quad\text{e}\quad
+   \vetor{P} = \vetor{p}_A + \vetor{p}_B,
+\end{equation*}
+e temos as relações de comutação
+\begin{align*}
+   \commutator{r^i}{p^j} &= \commutator*{r_A^i - r_B^i}{\frac{\mu}{m_A}p_A^j - \frac{\mu}{m_B}p_B^j}&
+   \commutator{R^i}{P^j} &= \commutator*{\frac{\mu}{m_A}r_A^i + \frac{\mu}{m_B}r_B^i}{p_A^j + p_B^j}\\
+                         &= \frac{\mu}{m_A}\commutator{r_A^i}{p_A^j} + \frac{\mu}{m_B} \commutator{r_B^i}{p_A^j}&
+                         &= \frac{\mu}{m_A}\commutator{r_A^i}{p_A^j} + \frac{\mu}{m_B} \commutator{r_B^i}{p_A^j}\\
+                         &= \left(\frac{\mu}{m_A} + \frac{\mu}{m_B} \right)i \hbar \delta^{ij}&
+                         &= \left(\frac{\mu}{m_A} + \frac{\mu}{m_B} \right)i \hbar \delta^{ij}\\
+                         &= i \hbar \delta^{ij}&
+                         &= i \hbar \delta^{ij},
+\end{align*}
+com as demais relações todas nulas. Notamos que
+\begin{equation*}
+   \vetor{r}_A = \vetor{R} + \frac{\mu}{m_A}\vetor{r},\quad
+   \vetor{r}_B = \vetor{R} - \frac{\mu}{m_B}\vetor{r},\quad
+   \vetor{p}_A = \frac{\mu}{m_B}\vetor{P} + \vetor{p},\quad\text{e}\quad
+   \vetor{p}_B = \frac{\mu}{m_A}\vetor{P} - \vetor{p}
+\end{equation*}
+são as equações que nos permitem escrever os operadores de cada partícula em termos dos operadores de centro de massa e relativo.
+
+
+Essas definições desacoplam o Hamiltoniano em um Hamiltoniano para a dinâmica do centro de massa e a dinâmica relativa, pois temos
+\begin{align*}
+   \frac{\vetor{P}^2}{2M} + \frac{\vetor{p}^2}{2\mu} 
+   &= \frac{\vetor{p}_A^2 + \vetor{p}_B^2 + 2 \vetor{p}_A \cdot \vetor{p}_B}{2M} + \frac{\frac{\mu^2}{m_A^2}\vetor{p}_A^2 + \frac{\mu^2}{m_B^2} \vetor{p}_B^2 - 2\frac{\mu^2}{m_A m_B}\vetor{p}_A \cdot \vetor{p}_B}{2\mu}\\
+   &= \left(\frac{1}{2M} + \frac{\mu}{2m_A^2}\right)\vetor{p}_A^2 + \left(\frac{1}{2M} + \frac{\mu}{2m_B^2}\right)\vetor{p}_B^2 + \left(\frac{1}{M} - \frac{\mu}{m_A m_B}\right)\vetor{p}_A \cdot \vetor{p}_B\\
+   &= \frac12\left(\frac{m_A^2 + M\mu}{Mm_A^2}\right)\vetor{p}_A^2 + \frac12\left(\frac{m_B^2 + M\mu}{Mm_B^2}\right)\vetor{p}_B^2\\
+   &= \frac{\vetor{p}_A^2}{2m_A} + \frac{\vetor{p}_B^2}{2m_B},
+\end{align*}
+isto é,
+\begin{equation*}
+   H = \frac{\vetor{P}^2}{2 M} + \frac{\vetor{p}^2}{2 \mu} + V(r)
+\end{equation*}
+é o Hamiltoniano do sistema em termo desses operadores. Dessa expressão, é fácil ver que \(\vetor{P}\) é uma constante de movimento, portanto podemos tratar o problema relativo com Hamiltoniano
+\begin{equation*}
+   H_\mathrm{rel} = \frac{\vetor{p}^2}{2\mu} + V(r)
+\end{equation*}
+separadamente. 
+
+O momento angular orbital do sistema \(\hbar\vetor{L}\) é a soma dos momentos angulares orbitais relativo \(\hbar\vetor{L}_\mathrm{rel} = \vetor{r}\times \vetor{p}\) e do centro de massa \(\hbar\vetor{L}_\mathrm{CM} = \vetor{R} \times \vetor{P},\) pois temos
+\begin{align*}
+   \hbar\vetor{L} &= \vetor{r}_A \times \vetor{p}_A + \vetor{r}_B \times \vetor{p}_B\\
+                  &= \left(\vetor{R} + \frac{\mu}{m_A} \vetor{r}\right)\times \left(\frac{\mu}{m_B}\vetor{P} + \vetor{p}\right) + \left(\vetor{R} - \frac{\mu}{m_B} \vetor{r}\right)\times \left(\frac{\mu}{m_A}\vetor{P} - \vetor{p}\right)\\
+                  &= \left(\frac{\mu}{m_B} + \frac{\mu}{m_A}\right)\vetor{R} \times\vetor{P} + \left(\frac{\mu}{m_A} + \frac{\mu}{m_B}\right)\vetor{r}\times\vetor{p} + \left(1 - 1\right)\vetor{R} \times \vetor{p} + \left(\frac{\mu^2}{m_Am_B} - \frac{\mu^2}{m_B m_A}\right)\vetor{r}\times\vetor{P}\\
+                  &= \hbar\vetor{L}_\mathrm{rel} + \hbar\vetor{L}_\mathrm{CM}.
+\end{align*}
+Ainda, estes momentos angulares comutam entre si, com
+\begin{equation*}
+   \hbar^2\commutator{L_{\mathrm{CM}}^i}{L_{\mathrm{rel}}^j} = \epsilon\indices{^i_{mn}} \epsilon\indices{^j_{k\ell}}\commutator{R^m P^n}{r^k p^\ell} = 0,
+\end{equation*}
+e são constantes de movimento, pois
+\begin{equation*}
+   \hbar\commutator{L^i_{\mathrm{CM}}}{H} = \epsilon\indices{^i_{jk}} \commutator{R^j P^k}{H}
+   = \epsilon\indices{^i_{jk}} \commutator*{R^j}{\frac{\vetor{P}^2}{2M}} P^k
+   = \frac{1}{M}\epsilon\indices{^i_{jk}} P^j P^k
+   = 0
+\end{equation*}
+e
+\begin{align*}
+   \hbar\commutator{L^i_{\mathrm{rel}}}{H} &= \epsilon\indices{^i_{jk}} \commutator{r^j p^k}{H}\\
+                                      &= \epsilon\indices{^i_{jk}} \left(\commutator*{r^j}{\frac{\vetor{p}^2}{2\mu} + V(r)} p^k + r^j \commutator*{p^k}{\frac{\vetor{p}^2}{2\mu} + V(r)}\right)\\
+                                      &= \epsilon\indices{^i_{jk}} \left(\frac{1}{\mu} p^j p^k - r^j \diffp{V(r)}{r^j}\right)\\
+                                      &= 0.
+\end{align*}
+Assim, podemos tratar o momento angular separadamente e temos \(\vetor{r}\) e \(\vetor{p}\) como operadores vetoriais em relação ao momento angular relativo \(\vetor{L}_\mathrm{rel}.\)
