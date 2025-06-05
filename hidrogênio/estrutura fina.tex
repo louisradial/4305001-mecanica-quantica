@@ -1,2 +1,111 @@
 % vim: spl=pt
 \section{Estrutura fina do átomo de hidrogênio}
+Tratamos o átomo de hidrogênio como uma perturbação do problema de Kepler
+\begin{equation*}
+   H_0 = \frac{\vetor{p}^2}{2\mu} - \frac{Ze^2}{r},
+\end{equation*}
+onde \(\mu = \frac{Mm}{m + M} \simeq m,\) \(e^2 = \frac{q_e^2}{4\pi \epsilon_0}\) e \(Z q_e\) é a carga total do núcleo. Assim, sabemos que o espectro não perturbado é dado por energias \(E^{(0)}_n\) com \(n \in \mathbb{N}\) iguais a
+\begin{equation*}
+   E^{(0)}_n = -\frac{\mu (Z e^2)^2}{2\hbar^2 n^2} = - \frac{(Z \alpha)^2 \mu c^2}{2n^2} ,
+\end{equation*}
+onde \(\alpha = \frac{e^2}{\hbar c}\) é a constante de estrutura fina. A fim de utilizar operadores adimensionais para limpar a notação, definimos as quantidades características,
+\begin{equation*}
+   r_0 = \frac{\hbar}{Z\alpha \mu c},\quad
+   p_0 = Z \alpha \mu c,\quad
+   E_0 = 2 Z^2 \mathrm{Ry},\quad\text{e}\quad
+   \mathrm{Ry} = \frac12 \alpha^2 \mu c^2
+\end{equation*}
+então o hamiltoniano não perturbado é dado por
+\begin{equation*}
+   H_0 = E_0 \left(\frac{\vetor{p}^2}{4\mu Z^2 \mathrm{Ry}} - \frac{Z e^2}{2 Z^2 \mathrm{Ry} r}\right)A = E_0 \left(\frac{\vetor{p}^2}{2Z^2\alpha^2 \mu^2 c^2} - \frac{\hbar}{Z \alpha \mu c r}\right) = E_0 \left(\frac{\vetor{p}^2}{2p_0^2} - \frac{r_0}{r}\right).
+\end{equation*}
+Eventualmente trocaremos \(\frac{r^i}{r_0} \to r^i,\) \(\frac{p^i}{p_0} \to p^i\) e \(\frac{H_0}{E_0} \to H_0,\) mas antes vamos obter a relação entre as correções de interação nestas unidades.
+
+A correção do termo cinético pode ser obtida pela equação de Dirac, mas podemos expandir a relação de dispersão relativística para obter a correção de menor ordem,
+\begin{equation*}
+   \left(\sqrt{1 + \frac{\vetor{p}^2c^2}{\mu^2 c^4}} - 1\right)\mu c^2 \simeq \left(\frac{\vetor{p}^2}{2\mu^2 c^2} - \frac{\vetor{p}^4}{8\mu^4 c^4}\right) \mu c^2 = \frac{\vetor{p}^2}{2\mu} - \frac{\vetor{p}^4}{8\mu^3 c^2} = \frac{\vetor{p}^2}{2\mu} - (Z \alpha)^2\frac{\vetor{p}^4}{8\mu p_0^2} = E_0 \left[\frac{\vetor{p}^2}{2p_0^2} - \frac{(Z \alpha)^2 \vetor{p}^4}{8p_0^4}\right]
+\end{equation*}
+\todo[Vamos considerar átomos em que \(\mu \simeq m_e\) é uma boa aproximação,] portanto a interação spin-órbita \todo[é dada por]
+\begin{equation*}
+   H_{Ls} = \frac12 \lambdabar^2 \frac{1}{r} \diff{V}{r} \vetor{L} \cdot \vetor{s} = \frac{Z e^2\hbar^2}{2m^2 c^2r^3} \vetor{L} \cdot \vetor{s} = \frac{E_0 (Z \alpha)^2r_0^3}{2r^3}\vetor{L}\cdot\vetor{s},
+\end{equation*}
+onde usamos que o momento de dipolo magnético do elétron é dado por
+\begin{equation*}
+   \vetor{\mu}_e = \frac{e \hbar g_e}{2m c} \vetor{s},
+\end{equation*}
+e aproximamos \(g_e \simeq 2.\) \todo[A correção de Darwin] é dada por
+% https://ocw.mit.edu/courses/8-06-quantum-physics-iii-spring-2018/439fc15f7ed10dd76c69dc3f7fea600e_MIT8_06S18ch2.pdf
+\begin{equation*}
+   H_\mathrm{D} = \frac12 \pi e \lambdabar_c^2 \nabla \cdot \vetor{E} = \frac{1}{2} \pi \frac{Z\hbar^2e^2}{m_e^2 c^2} \delta(\vetor{r}) = \frac12 E_0(Z \alpha)^2\pi r_0^3\delta(\vetor{r}) = \frac\pi2 E_0 (Z \alpha)^2 \delta\left(\frac{\vetor{r}}{r_0}\right).
+\end{equation*}
+Essas correções são todas em primeira ordem de \((Z\alpha)^2,\) e são as correções de estrutura fina,
+\begin{equation*}
+   H_\mathrm{fs} = H_\mathrm{D} + H_{sL} +  H_\mathrm{cin} = (Z \alpha)^2E_0 \left[\frac{\pi}{2} \delta\left(\frac{\vetor{r}}{r_0}\right) + \frac12\left(\frac{r_0}{r}\right)^3 \vetor{L}\cdot\vetor{s} - \frac{1}{8} \left(\frac{\vetor{p}}{p_0}\right)^4\right].
+\end{equation*}
+
+As correções de estrutura hiperfina são resultado de interações do núcleo com o elétron em ordens mais altas na expansão de multipolos elétrico e magnético. Essa interação é da forma \(\vetor{\mu} \cdot \vetor{B} + \vetor{d} \cdot \vetor{E} + \dots,\) portanto como o eletromagnetismo é invariante por reflexões espaciais, segue que \(\vetor{\mu}\) é axial enquanto que \(\vetor{d}\) é polar, portanto \(\vetor{d}\) tem valor esperado nulo em estados de paridade bem definida, pelo seguinte argumento. Se \(A\) é um operador e \(\ket{\psi}\) é um autoestado de paridade \(\Pi \ket{\psi} = \pi_\psi \ket{\psi},\) com \(\pi_\psi^2 = 1,\) então
+\begin{equation*}
+   \bra{\psi}A \ket{\psi} = \bra{\psi}\pi_\psi A \pi_\psi \ket{\psi} = \bra{\psi} \herm{\Pi} A \Pi \ket{\psi} \implies \bra{\psi}A - \herm{\Pi}A\Pi \ket{\psi} = 0,
+\end{equation*}
+portanto se \(\herm{\Pi}A \ket{\Pi} = - A,\) temos \(\bra{\psi}A\ket{\psi} = 0.\) \todo[A invariância por reflexão espacial da interação forte e do eletromagnetismo impõe a restrição nos estados nucleares de tal sorte que esses sejam todos autoestados de paridade]. Assim, as contribuições para a estrutura hiperfina são dadas pela interação do dipolo magnético, pelo quadrupolo elétrico e assim por diante. Consideraremos apenas os efeitos até a ordem de quadrupolo elétrico, sendo o efeito do dipolo magnético mais significativo, por conta da expansão multipolar ser uma expansão em potências inversas da distância núcleo-elétron. Em breve mostraremos que a contribuição do termo de dipolo magnético é da ordem \(\sim \frac{\mu_N \mu_B}{r^3} = \frac{m_N}{Zm_n} (Z \alpha)^2 E_0 \frac{r_0^3}{r^3},\) portanto é da ordem de \(\frac{m_e}{Zm_N}\) vezes menor do que os efeitos de estrutura fina, e podemos considerar a estrutura hiperfina como uma perturbação sobre a estrutura fina.
+
+Para determinar os efeitos de estrutura fina, utilizamos os operadores adimensionais e escrevemos
+\begin{equation*}
+   H = H_0 + H_{\mathrm{fs}} + H_\mathrm{hfs} = \frac{\vetor{p}^2}{2} - \frac{1}{r} + (Z \alpha)^2\left[\frac{\pi}{2} \delta(\vetor{r}) + \frac1{2 r^3} \vetor{L} \cdot \vetor{s} - \frac{\vetor{p}^4}{8}\right] + H_\mathrm{hfs},
+\end{equation*}
+e desconsideramos os efeitos de \(H_\mathrm{hfs}.\) Tendo em vista que correções de ordem superior exigiriam correções que têm a ver com a quantização do campo eletromagnético, trataremos esse problema em primeira ordem de teoria de perturbação, portanto precisamos diagonalizar as interações nos subespaços \(2n^2\) degenerados de energia \(E_n^{(0)} = -\frac{1}{2n^2},\) onde a multiplicidade 2 se dá pelo spin do elétron. Notando que \(H_\mathrm{cin}\) e \(H_\mathrm{D}\) são invariantes por rotações espaciais e que a interação spin-órbita é invariante por rotações geradas pelo momento angular total \(\vetor{j} = \vetor{L} + \vetor{s},\) segue que \(\mathrm{H}_{\mathrm{fs}}\) comuta com \(\vetor{j}\). Neste subespaço, consideramos a base \(\ket{n j \ell s m_j}\) então
+\begin{equation*}
+   \vetor{L}\cdot \vetor{S} \ket{n j \ell s m_j} = \frac12 \left(\vetor{j}^2 - \vetor{L}^2 - \vetor{s}^2\right)\ket{n j \ell s m_j} %= \frac{j (j+1) - \ell (\ell + 1) - s(s + 1)}{2}\ket{n j \ell s m_j} 
+   = \frac{j(j+1) - \ell (\ell + 1) - \frac34}{2}\ket{nj\ell s m_j}.
+\end{equation*}
+Para \(\ell = 0,\) temos \(j = s,\) logo a expressão acima se anula, enquanto que para \(\ell > 0\) temos \(j = \ell \pm \frac12,\) e então
+\begin{equation*}
+    j(j + 1) - \ell (\ell + 1) - \frac34 = \pm \frac12  + \left(\ell \pm \frac12\right)^2 - \ell^2 - \frac34 = \pm \frac12 - \frac12 \pm \ell = \begin{cases}
+       \ell,&\text{se }j = \ell + \frac12\\
+       - (\ell + 1),&\text{se} j = \ell - \frac12.
+    \end{cases}
+\end{equation*}
+Assim, para \(\ell > 0\) a interação de spin-órbita é não nula e dada por
+\begin{align*}
+   \mean{H_{Ls}}_{nj \ell} &= \frac14 (Z \alpha)^2 \mean{r^{-3}}_{n\ell}
+   \begin{cases}
+      \ell,&\text{se }j = \ell + \frac12\\
+      - (\ell + 1),&\text{se} j = \ell - \frac12,
+   \end{cases} 
+   = \frac{(Z \alpha)^2}{4n^3} 
+   \begin{cases}
+      \frac{1}{(\ell + 1)(\ell + \frac12)},&\text{se }j = \ell + \frac12\\
+      - \frac{1}{\ell (\ell + \frac12)},&\text{se} j = \ell - \frac12,
+   \end{cases}\\
+                           &= \pm\frac{(Z \alpha)^2}{4n^3 (j + \frac12)(\ell + \frac12)}
+\end{align*}
+onde o sinal corresponde ao sinal de \(j = \ell \pm \frac12.\) Ao contrário da interação spin-órbita, o termo de Darwin \todo[só é não nulo para \(\ell = 0\)], e corresponde à contribuição
+\begin{equation*}
+   \mean{H_\mathrm{D}}_{n0} = \frac{\pi}{2}(Z \alpha)^2 \abs{\Psi_{n0}(0)}^2 = \frac{(Z \alpha)^2}{2n^3}.
+\end{equation*}
+Por fim, a correção relativística é dada por
+\begin{align*}
+   \mean{H_\mathrm{cin}}_{n\ell} &= -\frac{(Z\alpha)^2}{2}\mean*{\left(\frac{\vetor{p}^2}{2}\right)^2}_{n\ell}\\
+                                 &= - \frac{(Z \alpha)^2}{2} \mean*{\left(H_0 + \frac{1}{r}\right)^2}_{n\ell}\\
+                                 &= -\frac{(Z \alpha)^2}{2} \left(\frac{1}{4n^4} - \frac{1}{n^2}\mean{r^{-1}}_{n\ell} + \mean{r^{-2}}_{n\ell}\right)\\
+                                 &= - \frac{(Z \alpha)^2}{2n^2} \left(\frac{1}{4n^2} - \frac{1}{n^2} + \frac{1}{n ( \ell + \frac12)}\right)\\
+                                 &= -\frac{(Z \alpha)^2}{2n^4}\left[\frac{n}{\ell + \frac12} - \frac34\right].
+\end{align*}
+No caso \(\ell = 0,\) temos
+\begin{equation*}
+   \mean{H_\mathrm{fs}}_{nj0} = \mean{H_\mathrm{D}}_{n 0} + \mean{H_\mathrm{cin}}_{n 0} = \frac{(Z \alpha)^2}{2n^3} - \frac{(Z \alpha)^2}{n^3} + \frac{3(Z \alpha)^2}{8n^4} = E_n\frac{(Z \alpha)^2}{n^2}\left(n - \frac34\right) = E_n^{(0)} \frac{(Z \alpha)^2}{n^2} \left(\frac{n}{j + \frac12} - \frac34\right),
+\end{equation*}
+e no caso \(\ell > 0,\) temos
+\begin{align*}
+   \mean{H_\mathrm{fs}}_{nj \ell} = \mean{H_{Ls}}_{nj \ell} + \mean{H_\mathrm{cin}}_{n\ell} 
+   &= -\frac{(Z \alpha)^2}{2n^2}\left[\frac{\mp1}{2n (j+\frac12) (\ell + \frac12)} + \frac{1}{n(\ell + \frac12)} - \frac3{4n^2}\right] \\
+   &= E_n^{(0)} (Z \alpha)^2\left[\frac{2j + 1 \mp 1}{2n(j + \frac12)(\ell + \frac12)} - \frac3{4n^2}\right]\\
+   &= E_n^{(0)} (Z \alpha)^2\left[\frac{2\ell \pm 1 + 1 \mp 1}{n(j + \frac12)(2\ell + 1)} - \frac3{4n^2}\right]\\
+   &= E_n^{(0)} (Z \alpha)^2\left[\frac{1}{n(j + \frac12)} - \frac3{4n^2}\right]\\
+   &= E_n^{(0)} \frac{(Z \alpha)^2}{n^2}\left[\frac{n}{j + \frac12} - \frac34\right],
+\end{align*}
+isto é, o espectro de energia de estrutura fina é dado por
+\begin{equation*}
+   E_\mathrm{fs}(nj\ell) = E_n^{(0)}\left[1 + \frac{(Z\alpha)^2}{n^2}\left(\frac{n}{j + \frac12} - \frac34\right)\right],
+\end{equation*}
+que é independente de \(\ell.\)

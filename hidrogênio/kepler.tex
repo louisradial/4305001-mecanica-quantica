@@ -10,7 +10,7 @@ onde \(k\) é uma constante, que será tomada posteriormente como \(k = \frac{Ze
 \end{equation*}
 que sabemos que é uma constante de movimento do problema clássico. Nesta forma, este operador é manifestamente hermitiano, já que para observáveis vetoriais \(\vetor{A}\) e \(\vetor{B},\) temos
 \begin{equation*}
-   \herm{(\vetor{A}\times\vetor{B})} = \vetor{e}_i\herm{\epsilon\indices{^i_{jk}}A^j B^k} = \vetor{e}_i  \epsilon\indices{^i_{jk}} B^k A^j = - \vetor{B} \times \vetor{A},
+   \herm{(\vetor{A}\times\vetor{B})} = \vetor{e}_i\herm{(\epsilon\indices{^i_{jk}}A^j B^k)} = \vetor{e}_i  \epsilon\indices{^i_{jk}} B^k A^j = - \vetor{B} \times \vetor{A},
 \end{equation*}
 portanto \(\herm{\vetor{M}} = \vetor{M}.\) Antes de prosseguir, vamos precisar reunir alguns resultados.
 \begin{lemma}{Relações entre operadores de posição, momento e momento angular orbital}{kepler1}
@@ -82,7 +82,7 @@ portanto \(\herm{\vetor{M}} = \vetor{M}.\) Antes de prosseguir, vamos precisar r
 
 Utilizando a relação (a), podemos escrever o vetor de Laplace-Runge-Lenz como
 \begin{equation*}
-   \vetor{M} = -k\frac{\vetor{r}}{r} + \frac{\hbar}{\mu} \vetor{p} \times\vetor{L} - \frac{i}{\mu}\vetor{p},
+   \vetor{M} = -k\frac{\vetor{r}}{r} + \frac{\hbar}{\mu} \vetor{p} \times\vetor{L} - \frac{i \hbar}{\mu}\vetor{p},
 \end{equation*}
 que poderia ter sido o ponto de partida, com a ressalva de que esta forma não é tão fácil de ver de que este operador é um observável, tampouco é fácil de ver a relação com a quantidade conservada do problema clássico.
 
@@ -92,20 +92,20 @@ que poderia ter sido o ponto de partida, com a ressalva de que esta forma não �
       \vetor{M} = -k \frac{\vetor{r}}{r} + \frac{\hbar}{2\mu} \left(\vetor{p} \times \vetor{L} - \vetor{L} \times \vetor{p}\right),
    \end{equation*}
    satisfaz
-   \begin{equation*}
-      \vetor{M}^2 = \frac{2\hbar^2}{m} H(\vetor{L}^2 + 1) + k^2,\quad
-      \vetor{M}\cdot\vetor{L} = 0 = \vetor{L}\cdot\vetor{M},
-      \quad\text{e}\quad
-      \commutator{M^i}{M^j} = -\frac{2i \hbar}{m} \epsilon\indices{^{ij}_k} H L^k,
-   \end{equation*}
-   é uma constante de movimento, e é um operador vetorial.
+   \begin{enumerate}[label=(\alph*)]
+       \item \(\vetor{M}^2 = \frac{2\hbar^2}{\mu} H(\vetor{L}^2 + 1) + k^2\);
+       \item \(\vetor{M} \cdot \vetor{L} = 0 = \vetor{L}\cdot\vetor{M}\);
+       \item \(\commutator{M^i}{M^j} = -\frac{2i \hbar^2}{\mu} \epsilon\indices{^{ij}_k} H L^k\);
+       \item \(\commutator{M^i}{H} = 0\); e 
+       \item \(\commutator{M^i}{L^j} = i \epsilon\indices{^{ij}_\ell} M^\ell\).
+   \end{enumerate}
 \end{theorem}
 \begin{proof}
    Nesta demonstração utilizamos unidades naturais em que \(\hbar = 1.\) Precisaremos do seguinte resultado
    \begin{equation*}
       \frac{\vetor{r}}{r} \cdot \vetor{p} - \vetor{p}\cdot \frac{\vetor{r}}{r} = \delta_{ij} \left( \frac{r^i}{r} p^j- p^j\frac{r^i}{r}\right) = \delta_{ij} \commutator*{\frac{r^i}{r}}{p^j} = i\delta_{ij} \left(\frac{\delta^{ij}}{r} - \frac{r^i r^j}{r^3} \right) = \frac{2i}{r}.
    \end{equation*}
-   Com a notação \(\vetor{A} \odot \vetor{B} = \vetor{A} \cdot \vetor{B} + \vetor{B} \cdot \vetor{A},\) segue do \cref{lem:kepler1} que
+   Escrevamos brevemente \(\vetor{A} \odot \vetor{B} = \vetor{A} \cdot \vetor{B} + \vetor{B} \cdot \vetor{A},\) então segue do \cref{lem:kepler1} que
    \begin{align*}
       \vetor{M}^2 &= k^2 + \frac{1}{\mu^2} (\vetor{p}\times\vetor{L})^2 - \frac{\vetor{p}^2}{\mu^2}  - \frac{k}{\mu} \frac{\vetor{r}}{r} \odot (\vetor{p}\times\vetor{L}) - \frac{i}{\mu^2} (\vetor{p}\times\vetor{L}) \odot \vetor{p} + \frac{ik}{\mu} \frac{\vetor{r}}{r} \odot \vetor{p}\\
                   &= k^2 + \frac{\vetor{p}^2 \vetor{L}^2}{\mu^2} - \frac{\vetor{p}^2}{\mu^2} - \frac{k}{\mu} \left(\frac{1}{r}\vetor{L}^2 + \vetor{L}^2\frac{1}{r} + 2i\vetor{p}\cdot\frac{\vetor{r}}{r}\right) + \frac{2}{\mu^2} \vetor{p}^2 + \frac{ik}{\mu} \left(\frac{\vetor{r}}{r} \cdot \vetor{p} + \vetor{p}\cdot\frac{\vetor{r}}{r}\right)\\
@@ -181,9 +181,122 @@ que poderia ter sido o ponto de partida, com a ressalva de que esta forma não �
    Ainda, temos os produtos escalares nulos
    \begin{equation*}
       \vetor{M} \cdot \vetor{L} = - k\frac{\vetor{r}}{r} \cdot \vetor{L} + \frac1\mu (\vetor{p}\times\vetor{L}) \cdot \vetor{L} - \frac{i}{\mu} \vetor{p} \cdot \vetor{L} = 0,
+      \quad\text{e}\quad
+      \vetor{L} \cdot \vetor{M} = - k\vetor{L} \cdot \frac{\vetor{r}}{r}+ \frac1\mu \vetor{L} \cdot (\vetor{p}\times\vetor{L}) - \frac{i}{\mu} \vetor{L} \cdot \vetor{p} =  0 
    \end{equation*}
-   usando propriedades análogas às identidades (d) e (f) do \cref{lem:kepler1}, e
+   usando propriedades análogas às identidades (d) e (f) do \cref{lem:kepler1}.
+
+   Utilizando as identidades até agora determinadas, temos
+   \begin{align*}
+      \commutator{M^i}{M^j} &= -k\commutator*{M^i}{\frac{r^j}{r}} + \frac1{\mu} \epsilon\indices{^j_{k \ell}}\commutator{M^i}{p^k L^\ell} - \frac{i}{\mu} \commutator{M^i}{p^j}\\
+                            &= -k\commutator*{M^i}{\frac{r^j}{r}} + \frac{1}{\mu} \epsilon\indices{^j_{k\ell}} \left(\commutator{M^i}{p^k} L^\ell + p^k \commutator{M^i}{L^\ell}\right) - \frac{i}{\mu} \commutator{M^i}{p^j}\\
+                            &= -k \commutator*{M^i}{\frac{r^j}{r}} + \frac{1}{\mu}\commutator{M^i}{p^k}\left(\epsilon\indices{^j_{k \ell}} L^\ell - i \delta\indices{^j_k}\right) + \frac{i}{\mu} \epsilon\indices{^j_{k\ell}} \epsilon\indices{^{i\ell}_m}p^k M^m\\
+                            &= -k \commutator*{M^i}{\frac{r^j}{r}} + \frac{1}{\mu}\commutator{M^i}{p^k}\left(\epsilon\indices{^j_{k \ell}} L^\ell - i \delta\indices{^j_k}\right) + \frac{i}{\mu} \left(p^i M^j - \delta^{ij} \vetor{p} \cdot \vetor{M}\right).
+   \end{align*}
+   Notando que \(\vetor{r}\) é um operador vetorial e \(\frac{1}{r}\) é um operador escalar, segue que \(\frac{\vetor{r}}{r}\) é um operador vetorial, portanto
+   \begin{align*}
+      \mu\commutator*{M^i}{\frac{r^j}{r}} &= \epsilon\indices{^i_{mn}}\commutator*{p^m L^n}{\frac{r^j}{r}} - i \commutator*{p^i}{\frac{r^j}{r}}\\
+                                          &= \epsilon\indices{^i_{mn}} \left(\commutator*{p^m}{\frac{r^j}{r}} L^n + p^m \commutator*{L^n}{\frac{r^j}{r}}\right) + \frac{r^i r^j}{r^3} - \frac{\delta^{ij}}{r}\\
+                                          &= \epsilon\indices{^i_{mn}} \left[i\left(\frac{r^j r^m}{r^3} - \frac{\delta^{mj}}{r}\right)L^n +i \epsilon\indices{^{nj}_a} p^m \frac{r^a}{r}\right] + \frac{r^i r^j}{r^3} - \frac{\delta^{ij}}{r}\\
+                                          &= -i\epsilon\indices{^{ij}_\ell} \frac{L^\ell}{r} + i\epsilon\indices{^i_{mn}} \frac{r^j r^m}{r^3} L^n + i \left(\delta^{ij} \vetor{p} \cdot \frac{\vetor{r}}{r} - p^j\frac{r^i}{r}\right) + \frac{r^i r^j}{r^3} - \frac{\delta^{ij}}{r}\\
+                                          &= -i\epsilon\indices{^{ij}_\ell} \frac{L^\ell}{r} + i\epsilon\indices{^i_{mn}} \frac{r^j r^m}{r^3} L^n + \delta^{ij} \left(i \vetor{p} \cdot \frac{\vetor{r}}{r} - \frac{1}{r}\right) + \frac{r^i r^j}{r^3} - i p^j \frac{r^i}{r}.
+   \end{align*}
+   A outra relação de comutação que precisamos computar é
+   \begin{align*}
+      \commutator{M^i}{p^k} &= -k\commutator*{\frac{r^i}{r}}{p^k} + \frac{1}{\mu} \epsilon\indices{^i_{ab}}\commutator{p^a L^b}{p^k}\\
+                            &= -ik \left(\frac{\delta^{ik}}{r} - \frac{r^i r^k}{r^3}\right) + \frac{i}{\mu} \epsilon\indices{^i_{ab}} \epsilon\indices{^{bk}_c} p^a p^c\\
+                            &= -ik \left(\frac{\delta^{ik}}{r} - \frac{r^i r^k}{r^3}\right) +i\delta^{ik}\frac{\vetor{p}^2}{\mu} - \frac{i}{\mu} p^k p^i,
+   \end{align*}
+   então
+   \begin{align*}
+      \commutator{M^i}{p^k}\left(\epsilon\indices{^j_{k\ell}} L^\ell - i \delta\indices{^j_k}\right)
+      &= \left(-ik \left(\frac{\delta^{ik}}{r} - \frac{r^i r^k}{r^3}\right) + \delta^{ik}\frac{\vetor{p}^2}{\mu} - \frac{1}{\mu} p^k p^i\right)\left(\epsilon\indices{^j_{k\ell}} L^\ell - i \delta\indices{^j_k}\right)\\
+      % &= i k \epsilon\indices{^{ij}_{\ell}} \frac{L^\ell}{r} + ik \frac{r^i}{r^3} \epsilon\indices{^j_{k \ell}}r^k L^\ell - \epsilon\indices{^{ij}_\ell} \frac{\vetor{p}^2}{\mu} L^\ell - \frac{1}{\mu} \epsilon\indices{^j_{k\ell}} p^i p^k L^\ell - k \left(\frac{\delta^{ij}}{r} -\frac{r^i r^j}{r^3}\right) -i \delta^{ij} \frac{\vetor{p}^2}{\mu} - \frac{i}{\mu} p^i p^j
+      &= i\epsilon\indices{^{ij}_\ell}\left(\frac{k}{r} - \frac{\vetor{p}^2}{\mu}\right)L^\ell + \epsilon\indices{^j_{k\ell}}\left(\frac{ikr^i r^k}{r^3} - \frac{p^i p^k}{\mu}\right)L^\ell - \delta^{ij} \left(\frac{k}{r} + \frac{i \vetor{p}^2}{\mu}\right) + \frac{kr^i r^j}{r^3} + \frac{i p^i p^j}{\mu}.
+   \end{align*}
+   Juntamos os resultados preliminares a fim de simplificar a expressão obtida
+   \begin{align*}
+      \mu\commutator{M^i}{M^j} &= k\left[i\epsilon\indices{^{ij}_\ell} \frac{L^\ell}{r} - i\epsilon\indices{^i_{mn}} \frac{r^j r^m}{r^3} L^n - \delta^{ij} \left(i \vetor{p} \cdot \frac{\vetor{r}}{r} - \frac{1}{r}\right) - \frac{r^i r^j}{r^3} + i p^j \frac{r^i}{r}\right]+ i \left(p^i M^j - \delta^{ij} \vetor{p} \cdot \vetor{M}\right) + \\
+                            &{} \phantom{=} + i\epsilon\indices{^{ij}_\ell}\left(\frac{k}{r} - \frac{\vetor{p}^2}{\mu}\right)L^\ell + \epsilon\indices{^j_{k\ell}}\left(\frac{ikr^i r^k}{r^3} - \frac{p^i p^k}{\mu}\right)L^\ell - \delta^{ij} \left(\frac{k}{r} + \frac{i \vetor{p}^2}{\mu}\right) + \frac{kr^i r^j}{r^3} + \frac{i p^i p^j}{\mu}\\
+                            &=-2i \epsilon\indices{^{ij}_\ell} H L^\ell - i\delta^{ij}\left(k \vetor{p} \cdot \frac{\vetor{r}}{r}  + \frac{\vetor{p}^2}{\mu} - \vetor{p}\cdot\vetor{M}\right) - ik \epsilon\indices{^i_{k \ell}} \frac{r^j r^k}{r^3} L^\ell + ik p^j \frac{r^i}{r}+ ik\epsilon\indices{^j_{k\ell}}\frac{r^i r^k}{r^3}L^\ell\\
+                            &{}\phantom{=2}+ i p^i \left(M^j - \frac{1}{\mu}\epsilon\indices{^j_{k\ell}} p^k L^\ell + \frac{i}{\mu} p^j\right).
+   \end{align*}
+   Notemos que o termo que acompanha \(\delta^{ij}\) se anula já que \(\vetor{p}\cdot(\vetor{p}\times\vetor{L}) = 0,\) então
+   \begin{align*}
+      \mu \commutator{M^i}{M^j} &= -2i \epsilon\indices{^{ij}_\ell} HL^\ell + ik\left[\frac{1}{r^3} \left(\epsilon\indices{^j_{k\ell}}r^i-\epsilon\indices{^i_{k \ell}} r^j\right)r^k L^\ell + p^j\frac{r^i}{r} - p^i \frac{r^j}{r}\right]\\
+                                &= -2i \epsilon\indices{^{ij}_\ell} HL^\ell + ik \left[\frac{r^i}{r^3} (\vetor{r} \times \vetor{L})^j - \frac{r^j}{r^3} (\vetor{r}\times \vetor{L})^i + p^j\frac{r^i}{r} - p^i\frac{r^j}{r}\right].
+   \end{align*}
+   Observamos que
    \begin{equation*}
-      \vetor{L} \cdot \vetor{M} = - k\vetor{L} \cdot \frac{\vetor{r}}{r}+ \frac1\mu \vetor{L} \cdot (\vetor{p}\times\vetor{L}) - \frac{i}{\mu} \vetor{L} \cdot \vetor{p} = 
+      (\vetor{r}\times \vetor{L})^a = \epsilon\indices{^a_{bc}} \epsilon\indices{^c_{mn}} r^b r^m p^n = r^a \vetor{r}\cdot\vetor{p} - \vetor{r}^2 p^a,
    \end{equation*}
+   portanto os termos com \(\vetor{r}\cdot\vetor{p}\) se cancelam a obtemos
+   \begin{equation*}
+      \frac{r^i}{r^3} (\vetor{r}\times \vetor{L})^j - \frac{r^j}{r^3} (\vetor{r} \times \vetor{L})^i = \left(\frac{r^ir^j}{r^3} - \frac{r^jr^i}{r^3}\right)\vetor{r}\cdot\vetor{p} - \vetor{r}^2\left(\frac{r^i}{r^3}p^j - \frac{r^j}{r^3} p^i\right) = \frac{r^j}{r} p^i - \frac{r^i}{r}p^j.
+   \end{equation*}
+   Por fim, obtemos
+   \begin{align*}
+      \commutator{M^i}{M^j} &= -\frac{2i}{\mu} \epsilon\indices{^{ij}_\ell} HL^\ell + \frac{ik}{\mu}\left(\commutator*{\frac{r^j}{r}}{p^i} + \commutator*{p^j}{\frac{r^i}{r}}\right) = -\frac{2i}{\mu} \epsilon\indices{^{ij}_\ell} HL^\ell
+   \end{align*}
+   como a relação de comutação entre as componentes de \(\vetor{M}.\)
 \end{proof}
+
+Os resultados mostrados acima estabelecem que a álgebra de Lie gerada pelo Hamiltoniano, pelo vetor de Laplace-Runge-Lenz e pelo momento angular orbital é fechada e formada por constantes de movimento. Isto permite resolver o espectro do problema de Kepler quando nos limitamos aos subespaços de energia \(E\) bem definida. Para ver isso, consideramos o operador vetorial neste subespaço definido por
+\begin{equation*}
+   \vetor{K} = \left(-\frac{2 \hbar^2 E}{\mu}\right)^{-\frac12} \vetor{M},\quad\text{com}\quad \commutator{K^i}{K^j}= i \epsilon\indices{^{ij}_\ell} L^\ell,
+\end{equation*}
+então 
+\begin{equation*}
+   \vetor{M}^2 = k^2 + \frac{2\hbar^2}{\mu}H(\vetor{L}^2 + 1) \implies \vetor{K}^2 + \vetor{L}^2 + 1 = -\frac{\mu k^2}{2 \hbar^2 E}.
+\end{equation*}
+Como \(\vetor{M} \cdot \vetor{L} = \vetor{L}\cdot \vetor{M} = 0,\) temos \(\vetor{K}^2 + \vetor{L}^2 = (\vetor{K} + \vetor{L})^2,\) o que motiva a definição
+\begin{equation*}
+   \vetor{J}_{\pm} = \frac12\left(\vetor{L} \pm \vetor{K}\right) \implies \begin{cases}
+      \vetor{L} = \vetor{J}_+ + \vetor{J}_-\\
+      \vetor{K} = \vetor{J}_+ - \vetor{J}_-.
+   \end{cases}
+\end{equation*}
+Estes operadores satisfazem as relações de comutação
+\begin{align*}
+   \commutator{J_\pm^i}{J_\pm^j} &= \frac14 \commutator{L^i \pm K^i}{L^j \pm K^j}&
+   \commutator{J_\pm^i}{J_\mp^j} &= \frac14 \commutator{L^i\pm K^i}{L^j \mp K^j}\\
+                                 &= \frac14 i \epsilon\indices{^{ij}_\ell} \left(L^\ell \pm K^\ell + L^\ell \pm K^\ell\right)&
+                                 &= \frac14 i \epsilon\indices{^{ij}_\ell}\left(L^\ell \mp K^\ell \pm K^\ell - L^\ell\right)\\
+                                 &= i \epsilon\indices{^{ij}_\ell} J_{\pm}^\ell&
+                                 &= 0,
+\end{align*}
+isto é, \(\vetor{J}_{+}\) e \(\vetor{J}_{-}\) geram duas álgebras de momento angular que comutam entre si. Notemos que
+\begin{equation*}
+   (\vetor{J}_-)^2 = \frac{1}{4}\left(\vetor{K}^2 + \vetor{L}^2 - \vetor{L}\cdot\vetor{K} - \vetor{K} \cdot \vetor{L}\right) = \frac14 \left(\vetor{L}^2 + \vetor{K}^2\right) = (\vetor{J}_+)^2,
+\end{equation*}
+portanto na base desacoplada \(\ket{j_+ m_+ j_- m_-}\) para esse subespaço de energia \(E\), onde
+\begin{equation*}
+   J_\pm^3\ket{j_+ m_+ j_- m_-} = j_{\pm} \ket{j_+ m_+ j_- m_-}
+   \quad\text{e}\quad
+   \vetor{J}_\pm^2\ket{j_+ m_+ j_- m_-} = j_{\pm}(j_\pm + 1)\ket{j_+ m_+ j_- m_-},
+\end{equation*}
+devemos ter \(j_+ = j_- = j\) e \(-j \leq m_\pm \leq j.\) Neste subespaço, porém, \(j\) assume o valor bem definido dado por
+\begin{equation*}
+   (2\vetor{J}_+)^2 + 1 = -\frac{\mu k^2}{2\hbar^2 E} \implies 4 j(j+1) + 1 = -\frac{\mu k^2}{2\hbar^2 E} \implies (2j + 1)^2 = -\frac{\mu k^2}{2\hbar^2 E},
+\end{equation*}
+com \(j\) inteiro ou semi-inteiro não negativo. Disso, sabemos que o nível de energia \(E\) é \((2j + 1)^2\) vezes degenerado, já que os autovalores \(m_-\) e \(m_+\) são independentes e podem assumir \(2j + 1\) valores. Sabemos também que o espectro do Hamiltoniano é agora dado por
+\begin{equation*}
+   \sigma(H) = \setc*{-\frac{\mu k^2}{2 \hbar^2 n^2}}{n \in \mathbb{N}},
+\end{equation*}
+com cada nível de energia \(n^2\) vezes degenerado. Como \(\vetor{L}\) é a soma dos momentos angulares \(\vetor{J}_+\) e \(\vetor{J}_-,\) sabemos que o momento angular orbital pode assumir valores iguais a \(\ell = \set{0, 1,\dots, n-1},\) já que \(n = 2j + 1.\)
+
+O estado fundamental do problema de Kepler é dado por \(n = 1 \iff j = 0,\) e então temos \(\ell = 0.\) Por este motivo, temos 
+\begin{equation*}
+   \vetor{J}_\pm \ket{1} = 0 \land \vetor{L}\ket{1} = 0 \implies \vetor{M} \ket{1} = 0 \implies \left(\frac{i \hbar}{\mu}\vetor{p} + k \frac{\vetor{r}}{r}\right) \ket{1} = 0.
+\end{equation*}
+Assim, a função de onda \(\psi_{1}(\vetor{r'}) = \braket{\vetor{r'}}{1}\) satisfaz a equação diferencial
+\begin{equation*}
+   \left(\nabla' + \frac{\mu k}{\hbar^2} \frac{\vetor{r'}}{r'}\right)\psi_1(\vetor{r'}) = 0 \implies \frac{\vetor{r'}}{r'}\left(\diff*{}{r'} + \frac{\mu k}{\hbar^2}\right)\psi_1(r') = 0,
+\end{equation*}
+onde usamos a simetria esférica deste estado, por termos \(\ell = 0.\) Assim, a função de onda do estado fundamental é dada por
+\begin{equation*}
+   \psi_1(\vetor{r'}) = \frac{1}{\sqrt{\pi}}\left(\frac{\mu k}{\hbar^2}\right)^{\frac32}\exp\left(-\frac{\mu k}{\hbar^2}r'\right),
+\end{equation*}
+que só é normalizável para \(k > 0.\)
+
+\todo[Estados excitados]
