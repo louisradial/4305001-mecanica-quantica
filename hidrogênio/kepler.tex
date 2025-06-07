@@ -293,10 +293,45 @@ Assim, a função de onda \(\psi_{1}(\vetor{r'}) = \braket{\vetor{r'}}{1}\) sati
 \begin{equation*}
    \left(\nabla' + \frac{\mu k}{\hbar^2} \frac{\vetor{r'}}{r'}\right)\psi_1(\vetor{r'}) = 0 \implies \frac{\vetor{r'}}{r'}\left(\diff*{}{r'} + \frac{\mu k}{\hbar^2}\right)\psi_1(r') = 0,
 \end{equation*}
-onde usamos a simetria esférica deste estado, por termos \(\ell = 0.\) Assim, a função de onda do estado fundamental é dada por
+onde usamos a simetria esférica deste estado, por termos \(\ell = 0.\) Para que a função de onda seja normalizável devemos ter \(k > 0,\) e então a função de onda do estado fundamental é dada por
 \begin{equation*}
-   \psi_1(\vetor{r'}) = \frac{1}{\sqrt{\pi}}\left(\frac{\mu k}{\hbar^2}\right)^{\frac32}\exp\left(-\frac{\mu k}{\hbar^2}r'\right),
+   \psi_1(\vetor{r'}) = \frac{1}{\sqrt{\pi a^3}}\exp\left(-\frac{r'}{a}\right),
 \end{equation*}
-que só é normalizável para \(k > 0.\)
+onde introduzimos o raio característico \(a = \frac{\hbar^2}{\mu k}.\)
 
-\todo[Estados excitados]
+Os estados excitados com \(\ell = n - 1\) e \(m = \ell\) são únicos e satisfazem
+\begin{equation*}
+   (J^1_{\pm} + i J^2_{\pm}) \ket{n, n-1, n-1} = 0
+   \quad\text{e}\quad
+   (L^1 + i L^2) \ket{n, n-1, n-1} = 0,
+\end{equation*}
+portanto este estado pode ser obtido analogamente ao estado fundamental segundo a equação
+\begin{equation*}
+   (M^1 + i M^2) \ket{n, n-1, n-1} = 0.
+\end{equation*}
+Entretanto é mais conveniente resolver a equação radial, obtendo
+\begin{equation*}
+   \psi_{n\ell m}(\vetor{r}) = \sqrt{\left(\frac{2}{n a}\right)^3\frac{(n - \ell - 1)!}{2n (\ell + n)!}} \left(\frac{2r}{n a}\right)^\ell L_{n - \ell - 1}^{(2\ell + 1)}\left(\frac{2r}{n a}\right) \exp\left(-\frac{r}{na}\right)Y_{\ell m}\left(\frac{\vetor{r}}{r}\right)
+\end{equation*}
+onde \(L^{\alpha}_b(x)\) é o o polinômio de Laguerre associado. Este resultado é de importância para determinar as correções de estrutura fina e hiperfina ao átomo de hidrogênio, pois precisamos de alguns resultados como o valor das funções de onda na origem, assim como alguns valores esperados. Por conta do termo \(r^\ell\) da função de onda, os únicos estados que não se anulam na origem são aqueles com \(\ell = 0,\) e temos
+\begin{equation*}
+   \abs{\psi_{n00}(0)}^2 = \frac{1}{4\pi}\left(\frac{2}{n a}\right)^3 \frac{(n - 1)!}{2n(n!)}\left[L_{n - 1}^{(1)}(0)\right]^2 = \frac{1}{\pi n^3 a^3}.
+\end{equation*}
+Além disso, precisamos determinar os valores esperados \(\mean{r^{-1}}_{n\ell},\) \(\mean{r^{-2}}_{n\ell}\) e \(\mean{r^{-3}}_{n\ell}.\) Avaliamos este último explicitamente, e obtemos
+\begin{equation*}
+   \mean{r^{-3}}_{n\ell} = \frac{1}{a^3n^3 (\ell + 1) (\ell + \frac12) \ell}.
+\end{equation*}
+Os outros valores esperados podem ser obtidos com o teorema de Hellmann-Feynman,
+\begin{equation*}
+   \mean{r^{-2}}_{n\ell} = \frac{\mu}{\hbar^2 (\ell + \frac12)} \diffp{E_n}{\ell}[n] = \frac{\mu}{\hbar^2 (\ell + \frac12)} \diffp{E_n}{n}[\ell] = \frac{\mu^2k^2}{\hbar^4 n^3 (\ell + \frac12)} = \frac{1}{a^2 n^3 (\ell + \frac12)}
+\end{equation*}
+e
+\begin{equation*}
+   \mean{r^{-1}}_{n\ell} = -\diffp{E_n}{k} = \frac{\mu k}{\hbar^2 n^2} = \frac{1}{a n^2}.
+\end{equation*}
+
+% \begin{align*}
+%    (M^1 + i M^2) \ket{n, n-1, n-1} = 0 &\implies \left[i p_z (L_x + i L_y) - i (p_x + i p_y)(L_z + 1) -\frac{\hbar}{a}\frac{x + i y}{r}\right]\ket{n, n-1,n-1} = 0\\
+%                                        &\implies \left[\frac{1}{a}\frac{x' + i y'}{r'} + n\left(\diffp{}{x'} + i \diffp{}{y'}\right)\right]\psi_{n,n-1,n-1}(r')
+% \end{align*}
+% \todo[Estados excitados]

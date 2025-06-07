@@ -1,2 +1,91 @@
 % vim: spl=pt
 \section{Estrutura hiperfina do átomo de hidrogênio}
+Já discutimos que a contribuição mais significativa da estrutura hiperfina se dá pelo termo de dipolo magnético, com o momento de dipolo magnético do núcleo dado por
+\begin{equation*}
+   \vetor{\mu} = g_N \mu_N \vetor{I},
+\end{equation*}
+onde \(\vetor{I}\) é o spin do núcleo, \(g_N\) é o fator giromagnético do núcleo e \(\mu_N\) é o magneton nuclear,
+\begin{equation*}
+   \mu_N = \frac{q_e \hbar}{2m_p} = \frac{m_e}{m_p}\mu_B,
+\end{equation*}
+e \(\mu_B\) é o magneton de Bohr. Por invariância de rotação, a interação deve ser da forma \(H_{M1} = \vetor{\mu} \cdot \vetor{\Lambda},\) onde \(\vetor{\Lambda}\) é um operador vetorial no subespaço do elétron, portanto podemos escrever
+\begin{equation*}
+   H_{M1} = \lambda(r) \vetor{\mu} \cdot \vetor{j},
+\end{equation*}
+onde fatoramos a dependência escalar \(\vetor{\Lambda} = \lambda(r)\vetor{j}.\) Em subespaços de momento angular bem definido, temos
+\begin{equation*}
+   \lambda(r) = \frac{\mean{\vetor{j} \cdot \vetor{\Lambda}}_{j\ell}}{j (j + 1)},
+\end{equation*}
+portanto a correção de estrutura hiperfina deve ser da forma
+\begin{equation*}
+   \mean{H_{M1}}_{FInj\ell} = \frac12 g_N \mu_N \mean{\lambda(r)}_{nj\ell} \left[F(F+1) - I(I + 1) - j(j+1)\right].
+\end{equation*}
+
+Vamos agora determinar explicitamente a interação e, como consequência, determinar \(\vetor{\Lambda}\). Para um dipolo magnético \(\vetor{\mu}\) na origem, temos
+\begin{equation*}
+   \vetor{A}(\vetor{r}) = \frac{\mu_0}{4\pi r^3} \vetor{\mu} \times \vetor{r}\quad\text{e}\quad
+   \vetor{B}(\vetor{r}) = \mu_0 \left[\frac{3 (\vetor{r} \cdot \vetor{\mu})\vetor{r} - r^2\vetor{\mu}}{4\pi r^5} + \frac23\vetor{\mu} \delta(\vetor{r})\right]
+\end{equation*}
+como as expressões para o potencial vetor no gauge de Coulomb e o campo magnético na posição \(\vetor{r}.\) Com o acoplamento mínimo \(\vetor{p} \to \vetor{p} - q_e \vetor{A}\), temos, desprezando o termo \(\frac{q_e^2}{2\mu} \vetor{A}^2\),
+\begin{equation*}
+   H_0 \to H_0 + \frac{q_e}{\mu}\vetor{p} \cdot \vetor{A}(\vetor{r}) - \vetor{\mu}_e \cdot \vetor{B},
+\end{equation*}
+onde \(\vetor{\mu}_e = - g_e \mu_B \vetor{s}\) é o momento de dipolo magnético do elétron. Notemos que
+\begin{align*}
+   \frac{q_e}{\mu}\vetor{p} \cdot \vetor{A} &= \frac{g_e \mu_B\mu_0}{4\pi\hbar} \vetor{p} \cdot \vetor{\mu} \times \frac{\vetor{r}}{r^3}\\
+                                            &= \frac{g_N  g_e \mu_N\mu_B \mu_0}{4\pi\hbar} \epsilon_{ijk} I^j p^i \frac{r^k}{r^3}\\
+                                            &= \frac{g_N  g_e \mu_N\mu_B \mu_0}{4\pi\hbar} \epsilon_{jki} I^j \left(\frac{r^k}{r^3} p^i - i \hbar \delta^{ik}\right)\\
+                                            &= \frac{g_N g_e\mu_N \mu_B \mu_0}{4\pi r^3} \vetor{I} \cdot \vetor{L},
+\end{align*}
+e que
+\begin{equation*}
+   -\vetor{\mu}_e \cdot \vetor{B} = g_Ng_e \mu_B\mu_N \mu_0 \left[\frac{3(\vetor{n} \cdot \vetor{I})(\vetor{n}\cdot \vetor{s}) - \vetor{s}\cdot\vetor{I}}{4\pi r^3} + \frac23 \vetor{s}\cdot\vetor{I} \delta(\vetor{r})\right],
+\end{equation*}
+onde \(\vetor{n} = \frac{\vetor{r}}{r},\) então
+\begin{equation*}
+   H_{M1} = g_N g_e \mu_B \mu_N \mu_0\left[\frac{\vetor{I} \cdot \vetor{L} + 3 (\vetor{n}\cdot\vetor{s})(\vetor{n} \cdot \vetor{I}) - \vetor{s} \cdot \vetor{I}}{4\pi r^3} + \frac23 \vetor{s} \cdot \vetor{I} \delta(\vetor{r})\right]
+\end{equation*}
+é a expressão para a interação e 
+\begin{equation*}
+   \vetor{\Lambda} = g_e \mu_B \mu_0 \left[\frac{\vetor{L} + 3(\vetor{n}\cdot \vetor{s})\vetor{n} - \vetor{s}}{4\pi r^3} + \frac23 \vetor{s} \delta(\vetor{r})\right]
+\end{equation*}
+é o operador vetorial que havíamos discutido tendo apenas simetria como base. Como esboçamos antes, temos
+\begin{equation*}
+   \frac{\mu_B \mu_N\mu_0}{4\pi r_0^3} = E_0\frac{e^2 \hbar^2}{4m_p m_e c^3 E_0r_0^3} = \frac14 E_0(Z \alpha)^2\left(\frac{m_e}{Zm_p}\right),
+\end{equation*}
+portanto
+\begin{equation*}
+   H_{M1} = (Z\alpha)^2 \left(\frac{m_e}{Z m_p}\right)g_e g_N\left[\frac{\vetor{I} \cdot \vetor{L} + 3 (\vetor{n}\cdot\vetor{s})(\vetor{n} \cdot \vetor{I}) - \vetor{s} \cdot \vetor{I}}{4r^3} + \frac{2\pi}3 \vetor{s} \cdot \vetor{I} \delta\left(r\right)\right]
+\end{equation*}
+é a interação nas unidades características do sistema. Definindo os tensores
+\begin{equation*}
+   N_{ij} = 3 n_i n_j - \delta_{ij}
+   \quad\text{e}\quad
+   \Sigma^{ij} = \frac32 (s^i I^j + s^j I^i) - \delta^{ij} \vetor{s} \cdot \vetor{I},
+\end{equation*}
+temos
+\begin{equation*}
+   N_{ij} \Sigma^{ij} = 3 (\vetor{n} \cdot \vetor{s}) (\vetor{n} \cdot \vetor{I}) - \vetor{s} \cdot \vetor{I},
+\end{equation*}
+então como \(N_{ij}\) só \todo[apresenta valores esperados não nulos para \(\ell > 0\),] a contribuição dessa interação nos estados \(s\) é dada por
+\begin{align*}
+   \mean{H_{M1}}_{nFI j 0} &= \frac{2(Z \alpha)^2}{3n^3}  \left(\frac{m_e}{Z m_p}\right) g_e g_N \left[F(F+1) - I(I+1) -\frac34\right]\\
+                           &= E^{(0)}_n\frac{4 (Z \alpha)^2}{3n}\left(\frac{m_e}{Z m_p}\right) g_e g_N \left[F(F + 1) - I(I + 1) - \frac34\right]\\
+                           &= E^{(0)}_n(Z \alpha)^2\left(\frac{m_e}{Z m_p}\right) g_e g_N\frac{F(F + 1) - I(I + 1) - j(j+1)}{j(j+1)(2\ell + 1)}\delta_{\ell 0}.
+\end{align*}
+Para \(\ell > 0,\) temos nos subespaços de interesse que \(j(j+1)\vetor{\Lambda} = (\vetor{\Lambda} \cdot \vetor{j})\vetor{j}\), então
+\begin{align*}
+   \mean{H_{M1}}_{nFI j\ell} &= \mean{\vetor{\Lambda}\cdot \vetor{I}}_{nFIj\ell}\\
+                             &= \frac{\mean*{(\vetor{\Lambda}\cdot\vetor{j})(\vetor{j}\cdot\vetor{I})}_{nFIj\ell}}{j(j+1)}\\
+                             &= (Z \alpha)^2 \left(\frac{m_e}{Z m_p}\right)g_e g_N \mean{r^{-3}}_{n\ell} \frac{F(F+1) - I(I+1) - j(j+1)}{4j(j+1)}\mean{(\vetor{L} - \vetor{s})\cdot\vetor{j} + 3(\vetor{n}\cdot\vetor{s})(\vetor{n}\cdot \vetor{j})}_{nFIj\ell}\\
+                             &= (Z \alpha)^2 \left(\frac{m_e}{Z m_p}\right)g_e g_N \mean{r^{-3}}_{n\ell} \frac{F(F+1) - I(I+1) - j(j+1)}{4j(j+1)}\left[\ell(\ell + 1) - \frac{3}{4} + 3\mean{n_i n_j s^i s^j}_{nFIj\ell}\right]\\
+                             &= (Z \alpha)^2 \left(\frac{m_e}{Z m_p}\right) g_e g_N \frac{F(F + 1) - I (I + 1) - j(j+1)}{2n^3(2\ell + 1) j (j+1)}\\
+                             &= E^{(0)}_n (Z\alpha)^2 \left(\frac{m_e}{Z m_p}\right) g_e g_N\frac{F(F+1) - I(I+1) - j(j+1)}{n (2\ell + 1) j(j+1)}.
+\end{align*}
+Em particular, o espectro do átomo de hidrogênio é dado por
+\begin{equation*}
+   E_\mathrm{hfs}(nFIj\ell) = E_n^{(0)}\left\{1 + (Z\alpha)^2\left[\frac{1}{n^2}\left(\frac{n}{j + \frac12} - \frac34\right) + \left(\frac{g_e g_N m_e}{Z m_p}\right) \frac{F(F+1) - I(I+1) - j(j+1)}{n(2\ell + 1) j(j+1)}\right]\right\} + \Delta E_{\mathrm{Lamb}},
+\end{equation*}
+já que não há contribuição de multipolos de ordens superiores para o núcleo de apenas um próton, de spin \(I = \frac12.\)
+
+Consideramos agora átomos hidrogenoides em que o termo de quadrupolo existe.
