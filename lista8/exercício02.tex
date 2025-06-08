@@ -125,4 +125,42 @@
                                            = \frac{4Z}{3 a_0^2 n^3}\left(\frac{Z m}{m_e}\right)^3 \mean{r^2}_N \delta_{\ell 0} \mathrm{Ry}
    \end{align*}
    como a correção de energia.
+
+   Vamos utilizar que o raio nuclear do hidrogênio é \(\sqrt{\mean{r^2}_N^{\ce{H}}} = \SI{0.84}{\femto\meter}\), do ferro é \(\sqrt{\mean{r^2}_N^{\ce{H}}} = \SI{4.6}{\femto\meter}\) e do chumbo é \(\sqrt{\mean{r^2}_N^{\ce{Pb}}} = \SI{7.1}{\femto\meter}\). Consideramos primeiro átomos eletrônicos, em que as correções são dadas por
+   \begin{equation*}
+      \Delta E_{1s}(\ce{H}, e^{-}) = \SI{3.36e-10}{Ry},\quad
+      \Delta E_{1s}(\ce{Fe}, e^{-}) = \SI{4.60e-3}{Ry},\quad\text{e}\quad
+      \Delta E_{1s}(\ce{Pb}, e^{-}) = \SI{1.09}{Ry},
+   \end{equation*}
+   que são comparadas com a ordem de grandeza das correções de estrutura hiperfina,
+   \begin{equation*}
+      \Delta E^{\mathrm{hfs}}_{1s}(\ce{H}, e^{-}) = \SI{3.64e-7}{Ry},\quad
+      \Delta E^{\mathrm{hfs}}_{1s}(\ce{H}, e^{-}) = \SI{1.14e-4}{Ry},\quad\text{e}\quad
+      \Delta E^{\mathrm{hfs}}_{1s}(\ce{H}, e^{-}) = \SI{9.61e-4}{Ry}.
+   \end{equation*}
+   Para átomos muônicos, temos
+   \begin{equation*}
+      \Delta E_{1s}(\ce{H}, \mu^-) = \SI{2.97e-3}{Ry},\quad
+      \Delta E_{1s}(\ce{Fe}, \mu^-) = \SI{4.07e4}{Ry},\quad\text{e}\quad
+      \Delta E_{1s}(\ce{Pb},\mu^-) = \SI{9.59e6}{Ry},
+   \end{equation*}
+   e as correções de estrutura hiperfina são
+   \begin{equation*}
+      \Delta E^{\mathrm{hfs}}_{1s}(\ce{H}, \mu^{-}) = \SI{15.6e-3}{Ry},\quad
+      \Delta E^{\mathrm{hfs}}_{1s}(\ce{H}, \mu^{-}) = \SI{4.89}{Ry},\quad\text{e}\quad
+      \Delta E^{\mathrm{hfs}}_{1s}(\ce{H}, \mu^{-}) = \SI{41.11}{Ry}.
+   \end{equation*}
+   Notemos, entretanto, que para átomos eletrônicos os raios atômicos são
+   \begin{equation*}
+      a(\ce{H},e^-) = \SI{5.29e4}{\femto\meter},\quad
+      a(\ce{Fe},e^-) = \SI{2.04e3}{\femto\meter},\quad\text{e}\quad
+      a(\ce{Pb},e^-) = \SI{645}{\femto\meter},
+   \end{equation*}
+   e que para átomos muônicos os raios atômicos são
+   \begin{equation*}
+      a(\ce{H},\mu^-) = \SI{255.9}{\femto\meter},\quad
+      a(\ce{Fe},\mu^-) = \SI{9.8}{\femto\meter},\quad\text{e}\quad
+      a(\ce{Pb},\mu^-) = \SI{3.1}{\femto\meter},
+   \end{equation*}
+   portanto a correção encontrada não se aplica para os átomos muônicos com os núcleos de ferro e de chumbo, já que o raio atômico é da mesma ordem de grandeza que o raio nuclear.
 \end{proof}
