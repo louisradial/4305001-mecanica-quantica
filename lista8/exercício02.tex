@@ -1,8 +1,8 @@
 % vim: spl=pt
-\begin{exercício}{Efeito }{ex2}
+\begin{exercício}{Correção para a energia devido à distribuição não pontual do núcleo}{ex2}
    Este problema lida com pequenas mudanças no autovalor da energia em um campo Coulombiano devido ao tamanho finito da distribuição de carga nuclear. Esse é um efeito muito pequeno para átomos de \(Z\) moderado, mas não quando a partícula satélite é um múon.
    \begin{enumerate}[label=(\alph*)]
-         \item Assuma que o estado ligado tem um raio \(a\) que é muito menor que o raio nuclear \(R.\) Mostre que apenas estados \(s\) têm uma mudança de nível de energia significativa e que o efeito decresce com a energia de ligação. Mostre que a mudança para uma partícula satélite de massa \(m\) é aproximadamente
+         \item Assuma que o estado ligado tem um raio \(a\) que é muito maior que o raio nuclear \(R.\) Mostre que apenas estados \(s\) têm uma mudança de nível de energia significativa e que o efeito decresce com a energia de ligação. Mostre que a mudança para uma partícula satélite de massa \(m\) é aproximadamente
             \begin{equation*}
                \Delta E \sim \left(\frac{R}{a}\right)^3 \frac{Z e^2}{4\pi R} \sim \left(\frac{R}{a_0}\right)^2 \left(\frac{m}{m_e}\right)^3 Z^4 \mathrm{Ry},
             \end{equation*}
@@ -24,5 +24,105 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Para uma distribuição de cargas nucleares \(\rho_N,\) a interação de Coulomb para a partícula satélite é dada por
+   \begin{equation*}
+      V(\vetor{r}) = -\frac{q_e}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{r'} \frac{\rho_N(\vetor{r'})}{\norm{\vetor{r} - \vetor{r'}}},
+   \end{equation*}
+   que se reduz à interação \(V(\vetor{r}) = -\frac{Ze^2}{r}\) no caso \(\rho_N(\vetor{r}) = Z q_e \delta(\vetor{r}).\) Sabemos o espectro para este caso, portanto consideramos
+   \begin{equation*}
+      \delta V(\vetor{r}) = V(\vetor{r}) + \frac{Ze^2}{r} = \frac{Z e^2}{r} - \frac{q_e}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{r'}\frac{\rho_N(\vetor{r}')}{\norm{\vetor{r} - \vetor{r'}}}
+   \end{equation*}
+   como perturbação.
+
+   Como uma estimativa para a ordem de grandeza do efeito dessa perturbação, vamos considerar uma distribuição uniforme de carga total \(Z q_e,\) isto é, \(\rho_N = \frac{3Z q_e}{4\pi R_N^3}\). Da lei de Gauss, o campo elétrico gerado por essa distribuição é dado por
+   \begin{equation*}
+      \vetor{E}(\vetor{r}) = \begin{cases}
+         \frac{Z q_e \vetor{r}}{4\pi \epsilon_0 r^3},&\text{se }r \geq R_N\\
+         \frac{\rho_N}{3 \epsilon_0}\vetor{r},&\text{se }r < R_N,
+      \end{cases}
+   \end{equation*}
+   portanto o potencial eletrostático é dado por
+   \begin{equation*}
+      \Phi(\vetor{r}) = \frac{Z q_e}{4\pi \epsilon_0 r}
+   \end{equation*}
+   para \(r \geq R_N\) e
+   \begin{equation*}
+      \Phi(\vetor{r}) = \frac{Z q_e}{4\pi \epsilon_0 R_N} -\int_{R_N}^{r} \dli{r} \frac{Z q_e r}{4\pi \epsilon_0R_N^3} = \frac{Z q_e}{8\pi \epsilon_0 R_N^3} \left(3R_N^2 - r^2\right)
+   \end{equation*}
+   para \(r < R_N.\) Assim, a perturbação é dada por
+   \begin{equation*}
+      \delta V(\vetor{r}) = \frac{Ze^2}{r} - q_e \Phi(\vetor{r}) = Z e^2\left[\frac{1}{r} + \frac{r^2 - 3 R_N^2}{2 R_N^3}\right]\theta(R_N - r) = Ze^2 \frac{r^3 - 3R_N^2 r + 2 R_N^3}{2 R_N^3 r} \theta(R_N - r)
+   \end{equation*}
+   no caso considerado. Com isso, a correção do espectro é dada por
+   \begin{align*}
+      \bra{n \ell m} \delta V(\vetor{r}) \ket{n \ell m} &= \frac{Ze^2}{2 R_N^3} \mean*{\frac{r^3 - 3 R_N^2 r + 2 R_N^3}{r}\theta(R_N - r)}_{n\ell}\\
+                                                        &= \frac{Ze^2}{2 R_N^3} \int_0^{R_N}\dli{\tilde{r}} \left(\tilde{r}^3 - 3R_N^2\tilde{r} + 2R_N^3\right) \tilde{r} \abs{R_{n\ell}(\tilde{r})}^2,
+   \end{align*}
+   onde \(\braket{\vetor{\tilde{r}}}{n\ell m} = \psi_{n\ell m}(\vetor{\tilde{r}}) = R_{n\ell}(\tilde{r})Y_{\ell m}\left(\frac{\vetor{r}}{r}\right).\) Como \(R_N \ll a,\) e como \(R_{n\ell}(\tilde{r}) \sim \left(\frac{\tilde{r}}{n a}\right)^{\ell} \exp\left(-\frac{\tilde{r}}{n a}\right)\) no limite \(r \lesssim a,\) vamos tomar \(\abs{R_{n\ell}(\tilde{r})}^2 \simeq \abs{R_{n\ell}(0)}^2 = 4\pi \abs{\psi_{n\ell m}(0)}^2\) na integral acima, obtendo
+   \begin{align*}
+      \mean*{\delta V(\vetor{r})}_{n\ell m} &= \frac{2\pi Ze^2}{R_N^3} \abs{\psi_{n\ell m}(0)}^2\int_0^{R_N} \dli{\tilde{r}} \left(\tilde{r}^4 - 3R_N^2 \tilde{r}^2 + 2R_N^3 \tilde{r}\right)\\
+                                            &= \frac25\pi R_N^2 Ze^2 \abs{\psi_{n\ell m}(0)}^2\\
+                                            &= \frac{2 R_N^2 Z e^2}{5 n^3 a^3} \delta_{\ell 0},
+   \end{align*}
+   já que apenas os estados \(s\) têm funções de onda não nulas na origem, com \(\abs{\psi_{n 0 0}(0)}^2 = \frac{1}{\pi n^3a^3}\). Assim, vemos que
+   \begin{equation*}
+      \Delta E \sim \left(\frac{R_N}{a}\right)^3 \frac{Z e^2}{R_N} = \left(\frac{R_N}{a_0}\right)^3\left(\frac{Z m}{m_e}\right)^3 \frac{Z e^2}{R_N} = \left(\frac{R_N}{a_0}\right)^2 \left(\frac{m}{m_e}\right)^3 \frac{Z^4 e^2}{a_0} = 2\left(\frac{R_N}{a_0}\right)^2 \left(\frac{m}{m_e}\right)^3 Z^4 \mathrm{Ry}
+   \end{equation*}
+   é a ordem de grandeza para o efeito da distribuição finita do núcleo.
+
+
+   Vamos considerar agora apenas que a distribuição tem um raio característico finito \(R_N > 0,\) isto é, que a distribuição de cargas nucleares está localizada no interior da esfera centrada na origem de raio \(R_N,\) \(\Omega_N = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{x} \leq R_N}.\) Da lei de Gauss temos que para \(\vetor{x} \notin \Omega_N\)
+   \begin{equation*}
+      \int_{\mathbb{R}^3} \dln3{r'} \frac{\rho_N(\vetor{r'})}{\norm{\vetor{\tilde{r}} - \vetor{r'}}} = \frac{Z q_e}{\tilde{r}},
+   \end{equation*}
+   então \(\delta V(\vetor{r})\) se anula sempre que \(r > R_N.\) Com isso, temos
+   \begin{align*}
+      \mean{\delta V(\vetor{r})}_{n\ell m} = \int_{\mathbb{R}^3}\dln3{r'} \abs{\psi_{n\ell m}(\vetor{r'})}^2\delta V(\vetor{r'}) = \int_{\Omega_N} \dln3{r'} \abs{\psi_{n\ell m}(\vetor{r'})}^2 \delta V(\vetor{r'}).
+   \end{align*}
+   Como já discutimos para o caso de distribuição uniforme, nesse volume podemos aproximar \(\abs{\psi_{n\ell m}(\vetor{r'})}^2 \simeq \abs{\psi_{n00}(0)}^2 \delta_{\ell 0},\) e então
+   \begin{equation*}
+      \mean{\delta V(\vetor{r})}_{n\ell m} = \abs{\psi_{n00}(0)}^2 \delta_{\ell 0}\int_{\Omega_N} \dln3{r'}\delta V(\vetor{r'}) = \delta_{\ell 0}\abs{\psi_{n00}(0)}^2 \int_{\mathbb{R}^3} \dln3{r'} \delta V(\vetor{r'}),
+   \end{equation*}
+   onde usamos no último passo que \(\delta V(\vetor{r})\) se anula em \(\mathbb{R}^3 \setminus \Omega_N.\) 
+
+   Podemos obter uma forma explícita para a correção no caso de uma distribuição esfericamente simétrica, \(\rho_N(\vetor{r'}) = \rho_N(r')\). Utilizando a expansão multipolar temos
+   \begin{equation*}
+      \mean{\delta V(\vetor{r})}_{n\ell m} = \abs{ \psi_{n\ell m}(0)}^2\int_{\Omega_N} \dln3{\tilde{r}} \left[\frac{Z e^2}{\tilde{r}} - \frac{e^2}{q_e}\int_{\mathbb{R}^3} \dln3{r'}\frac{\rho_N(r')}{r_>}\sum_{k = 0}^\infty{\left(\frac{r_<}{r_>}\right)^k P_k \left(\frac{\vetor{r'}}{r'}\cdot\frac{\vetor{\tilde{r}}}{\tilde{r}}\right)}\right],
+                                           % &= \abs{\psi_{n\ell m}(0)}^2 \int_{\Omega_N} \dln3{\tilde{r}} \left[\frac{Z e^2}{\tilde{r}} - \frac{e^2}{q_e}\int_{\mathbb{R}^3} \dln3{r'}\frac{\rho_N(r')}{r_>}\right]\\
+   \end{equation*}
+   onde \(r_> = \max\set{\tilde{r}, r'},\) \(r_< = \min\set{\tilde{r},r'}\) e \(P_k\) é o \(k\)-ésimo polinômio de Legendre. O único termo da expansão que contribui é o de \(k = 0,\) 
+   \begin{align*}
+      \mean{\delta V(\vetor{r})}_{n\ell m} &= \abs{\psi_{n \ell m}(0)}^2 \int_{\Omega_N} \dln3{\tilde{r}} \left[\frac{Z e^2}{\tilde{r}} - \frac{e^2}{q_e} \int_{\mathbb{R}^3} \dln3{r'} \frac{\rho_N(r')}{r_>}\right]\\
+                                           &= 4\pi \abs{\psi_{n\ell m}(0)}^2\int_0^R \tilde{r}^2\dli{\tilde{r}} \left[\frac{Z e^2}{\tilde{r}} - \frac{4\pi e^2}{q_e} \int_0^\infty {r'}^2 \dli{r'}\frac{\rho_N(r')}{r_>}\right],
+   \end{align*}
+   pois podemos orientar eixos de coordenadas de tal sorte que o eixo \(z\) coincida com \(\vetor{\tilde{r}},\) e então
+   \begin{align*}
+      \int_{\mathbb{R}^3} \dln3{r'} \frac{\rho_N(r')}{r_>} \sum_{k = 0}^\infty \left(\frac{r_<}{r_>}\right)^k P_k\left(\frac{\vetor{r'}}{r'}\cdot \frac{\vetor{\tilde{r}}}{\tilde{r}}\right)
+      &= \int_0^\infty \dli{r} \int_0^{\pi} r\dli{\theta} \int_0^{2\pi} r\sin\theta \dli{\varphi} \frac{\rho_N(r)}{r_>}\sum_{k = 0}^\infty\left(\frac{r_<}{r_>}\right)^k P_k(\cos\theta)\\
+      &= 2\pi \int_0^\infty \dli{r} \frac{\rho_N(r) {r}^2}{r_>}\sum_{k = 0}^\infty\left(\frac{r_<}{r_>}\right)^k\int_{-1}^{1} \dli{(\cos\theta)} P_k(\cos\theta) P_0(\cos\theta)\\
+      &= 4\pi \int_0^\infty r\dli{r} \frac{\rho_N(r)}{r_>} \sum_{k=0}^\infty \left(\frac{r_<}{r_>}\right)^k \delta_{k0}\\
+      &= 4\pi \int_0^\infty {r}^2 \dli{r} \frac{\rho_N(r)}{r_>}\\
+      &= \int_{\mathbb{R}^3} \dln3{r'} \frac{\rho_N(r')}{r_>},
+   \end{align*}
+   onde utilizamos a relação de ortogonalidade \(\int_{-1}^1 \dli{x} P_\alpha(x) P_\beta(x) = \frac{2}{2\alpha+ 1} \delta_{\alpha \beta}.\) Como a distribuição de cargas é localizada em \(\Omega_N,\) temos
+   \begin{align*}
+      \mean{\delta V(\vetor{r})}_{n\ell m} &= 4\pi \abs{\psi_{n\ell m}(0)}^2 \int_0^{R_N}\dli{\tilde{r}}\left[Ze^2 \tilde{r} - \frac{4\pi e^2}{q_e} \int_0^{R_N}\dli{r'} \rho_N(r') \frac{(r' \tilde{r})^2}{r_>}\right]\\
+                                           &= 4\pi \abs{\psi_{n\ell m}(0)}^2 \left[\frac12 R_N^2 Z e^2 - \frac{4\pi e^2}{q_e} \int_0^{R_N} \dli{\tilde{r}} \int_0^{R_N} \dli{r'} \rho_N(r') \frac{(r' \tilde{r})^2}{r_>}\right]\\
+                                           &= 4\pi \abs{\psi_{n\ell m}(0)}^2 \left[\frac12 R_N^2 Z e^2 - \frac{4\pi e^2}{q_e} \int_0^{R_N} \dli{r'} r' \rho_N(r')\left(\int_0^{r'}\dli{\tilde{r}}\frac{(r' \tilde{r})^2}{r'} + \int_{r'}^{R_N} \dli{\tilde{r}}\frac{(r' \tilde{r})^2}{\tilde{r}}\right)\right]\\
+                                           &= 4\pi \abs{\psi_{n\ell m}(0)}^2 \left[\frac12 R_N^2Ze^2 - \frac{4\pi e^2}{q_e}\int_0^{R_N}\dli{r'} r' \rho_N(r') \left(\frac{{r'}^3}{3} + \frac{r' R_N^2}{2} - \frac{{r'}^3}{2}\right)\right]\\
+                                           &= 4\pi \abs{\psi_{n\ell m}(0)}^2 \left[\frac12 R_N^2 Z e^2 + \frac{e^2}{q_e} \int_{\mathbb{R}^3} \dln3{r'} \rho_N(\vetor{r'}) \left( \frac{\vetor{r'}^2}{6} - \frac{R_N^2}{2}\right)\right]\\
+                                           &= \frac{4\pi e^2}{6 q_e}\abs{\psi_{n\ell m}(0)}^2  \int_{\mathbb{R}^3}\dln3{r'} \rho_N(\vetor{r'}) \vetor{r'}^2.
+   \end{align*}
+   Definindo o raio quadrático médio da distribuição de carga nuclear,
+   \begin{equation*}
+      \mean{r^2}_N = \frac{1}{Z q_e}\int_{\mathbb{R}^3} \dln3r \rho_N(\vetor{r}) \vetor{r}^2,
+   \end{equation*}
+   obtemos
+   \begin{align*}
+      \mean{\delta V(\vetor{r})}_{n\ell m} = \frac{2\pi Ze^2}{3}\abs{\psi_{n\ell m}(0)}^2 \mean{r^2}_N
+                                           = \frac{2Z e^2}{3n^3 a^3} \mean{r^2}_N \delta_{\ell 0}
+                                           % = \frac{Z e^2}{6a_0^3}\left(\frac{Z m}{m_e}\right)^3 \mean{r^2}_N \delta_{\ell 0}
+                                           = \frac{4Z}{3 a_0^2 n^3}\left(\frac{Z m}{m_e}\right)^3 \mean{r^2}_N \delta_{\ell 0} \mathrm{Ry}
+   \end{align*}
+   como a correção de energia.
 \end{proof}
