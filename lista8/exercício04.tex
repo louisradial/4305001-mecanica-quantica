@@ -15,5 +15,65 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Do problema de Kepler, sabemos que para cada \(n \in \mathbb{N},\) temos \(\ell \in \set{0, 1, \dots, n -1}.\) O momento angular total do sistema é dado por \(\vetor{j} = \vetor{L} + \vetor{s},\) onde \(\vetor{s} = \vetor{s}^+ + \vetor{s}^-,\) portanto no singleto de spin, temos \(s = 0\) logo \(\vetor{j} = \vetor{L}\), enquanto que no tripleto de spin, temos \(s = 1,\) portanto \(j\) assume os valores dados pela adição de momento angular \(\ell \otimes \vetor{1}.\) Assim, até \(n = 3,\) temos os estados com o singleto de spin \(1^1s_0\), \(2^1s_0\), \(2^1p_1\), \(3^1s_0\), \(3^1p_1\), e \(3^1d_2\) e os estados com o tripleto de spin, \(1^3s_1\), \(2^3s_1\), \(2^3p_{0,1,2}\), \(3^3s_1\), \(3^3p_{0,1,2}\), e \(3^3d_{1,2,3}.\)
+
+   Sendo \(\mu = \frac12 m_e\) a massa reduzida para o positrônio, as unidades características de energia e comprimento são \(E_0 = \alpha^2 \mu c^2 = \mathrm{Ry}\) e \(r_0 = \frac{\hbar^2}{\mu e^2} = 2 a_0,\) onde \(e^2 = \frac{q_e^2}{4\pi \epsilon_0}.\) Notemos que
+   \begin{equation*}
+      \mu_0 \mu_B^2 = \frac{4\pi \mu_0\epsilon_0\left(\frac{q_e \hbar}{2m_e }\right)^2}{4\pi \epsilon_0\left(\alpha^2 \mu c^2\right)\left(\frac{\hbar^2}{\mu e^2}\right)^3} E_0 r_0^3 = \frac{\pi \mu^2 e^8}{m_e^2 \alpha^2 \mu c^4 \hbar^4}E_0 r_0^3 = \frac14 \pi \alpha^2 E_0 r_0^3.
+   \end{equation*}
+   Assim sendo, temos
+   \begin{equation*}
+      H_{\mathrm{ehf}} = \mu_B^2 \mu_0\left[\frac38 + \frac{14}3\vetor{s}^+ \cdot \vetor{s}^-\right] \delta(\vetor{r}) = \frac14 \alpha^2 \pi \left[\frac38 + \frac{14}3\vetor{s}^+ \cdot \vetor{s}^-\right] \delta\left(\frac{\vetor{r}}{r_0}\right) E_0
+   \end{equation*}
+   e então
+   \begin{equation*}
+      \mean{H_{\mathrm{ehf}}}_{1^js_j} = \frac14 \alpha^2 \pi \left[\frac38 + \frac73 \left(j^2+j - \frac64\right)\right] \frac{1}{\pi n^3}E_0 = \frac14 \alpha^2 \left[\frac38 + \frac73 \left(j^2 + j - \frac64\right)\right]E_0.
+   \end{equation*}
+   Assim, a diferença entre as energias dos estados \(1s\) é dada por
+   \begin{equation*}
+      \Delta_\mathrm{ehf} = \frac{1}{4}\alpha^2\left\{\left[\frac38 + \frac73\left(2 - \frac64\right)\right] - \left[\frac38 - \frac73\cdot \frac64\right]\right\}E_0 = \frac7{6} \alpha^2 \mathrm{Ry}.
+   \end{equation*}
+
+   Para os estados \(1s,\) o efeito Zeeman é resultado do termo de interação
+   \begin{equation*}
+      H_Z = 2\mu_B B \left(s^-_z - s^+_z\right)
+   \end{equation*}
+   para um campo magnético externo \(\vetor{B} = B\vetor{e}_z\). Como o campo magnético externo quebra a isotropia mas mantém a simetria de rotação em relação ao seu eixo, temos a regra de seleção \(\Delta m = 0,\) já que 
+   \begin{equation*}
+      \bra{j'm'}H\ket{jm} = \bra{j'm'}e^{i\phi J_z} H e^{-i\phi J_z} \ket{jm} = e^{i\phi(m' - m)} \bra{j'm'}H\ket{jm}
+   \end{equation*}
+   implica que ou \(\bra{j'm'}H\ket{jm} = 0\) ou \(m' = m.\) Assim, os estados com \(m = \pm1\) do tripleto não se misturam com os outros estados e temos os valores esperados nulos, já que
+   \begin{equation*}
+      H_Z\ket{1^3s_1,\pm1} = 2\mu_B B (s_z^- - s_z^+) \ket{\pm}\ket{\pm} = 0.
+   \end{equation*}
+   Os demais estados se misturam e temos
+   \begin{equation*}
+      H_Z \ket{1^1s_0} = \frac{2}{\sqrt{2}}\mu_BB(s_z^- - s_z^+) (\ket{+}\ket{-} - \ket{-}\ket{+}) = \frac{2}{\sqrt{2}} \mu_BB(\ket{+}\ket{-} + \ket{-}\ket{+}) = 2\mu_BB \ket{1^3s_1,0}
+   \end{equation*}
+   e
+   \begin{equation*}
+      H_Z \ket{1^3s_1,0} = \frac{2}{\sqrt{2}}\mu_BB(s_z^- - s_z^+) (\ket{+}\ket{-} + \ket{-}\ket{+}) = \frac{2}{\sqrt{2}} \mu_BB(\ket{+}\ket{-} - \ket{-}\ket{+}) = 2\mu_BB \ket{1^1s_0,0},
+   \end{equation*}
+   isto é, 
+   \begin{equation*}
+       H_Z \doteq 2\mu_B B\begin{pmatrix}
+          0 && 1\\
+          1 && 0
+       \end{pmatrix}
+   \end{equation*}
+   é a representação na base \(\set{\ket{1^3s_1,0}, \ket{1^1s_0}}\) de \(H_Z\) no subespaço de \(m = 0\) dos estados \(1s.\) Nesse subespaço temos
+   \begin{equation*}
+      H_\mathrm{ehf} + H_Z \doteq \begin{pmatrix}
+         E_{\mathrm{ehf}}(1^1s_0) && 2\mu_B B\\
+      2\mu_B B && E_{\mathrm{ehf}}(1^1s_0) + \Delta_{\mathrm{ehf}}
+   \end{pmatrix} = W
+   \end{equation*}
+   portanto as correções de energia serão dadas pelos autovalores de \(W\). Resolvendo sua equação secular, temos
+   \begin{align*}
+      \epsilon^2 - \Tr(W) \epsilon + \det(W) = 0 &\implies \epsilon = \frac12\Tr(W) \pm \frac12 \sqrt{\Tr(W)^2 - 4\det(W)}\\
+                                                 &\implies \epsilon = E_{\mathrm{ehf}}(1^1s_0) + \frac{\Delta_{\mathrm{ehf}}}{2} \pm \frac12 
+                                                 \sqrt{\Delta_{\mathrm{ehf}}^2 + 16\mu_B^2 B^2}\\
+                                                 &\implies \epsilon = E_{\mathrm{ehf}}(1^1s_0) + \frac12 \Delta_{\mathrm{ehf}} \left[1 \pm \sqrt{1 + \left(\frac{4\mu_B B}{\Delta_{\mathrm{ehf}}}\right)^2}\right],
+   \end{align*}
+   portanto em relação a \(E_{\mathrm{ehf}}(1^1s_0)\) temos as energias \(E_{\pm} = \frac12 \Delta_{\mathrm{ehf}}\left[1 \pm \sqrt{1 + \left(\frac{4\mu_B B}{\Delta_{\mathrm{ehf}}}\right)^2}\right].\)
 \end{proof}
