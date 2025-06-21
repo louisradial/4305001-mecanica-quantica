@@ -16,5 +16,75 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+   O campo elétrico quebra a isotropia e a substitui por simetria de rotações em relação ao eixo definido pelo campo, portanto temos a regra de seleção \(\Delta m_j = 0.\) Como o momento de dipolo é um vetor polar, os elementos de matriz da interação \(W = eEz\) se anulam entre estados de mesma paridade. Com essas considerações, vemos que os elementos de matriz não nulos da interação são aqueles com \(\Delta m_j = 0\) e \(\Delta \ell = \pm 1,\) logo podemos desconsiderar os estados de \(\abs{m_j} = \frac32,\) permitidos apenas em \(2 p_{\frac32}\). Assim, devemos calcular os elementos de matriz
+   \begin{equation*}
+      \bra{2s_{\frac12}, m}W\ket{2p_{\frac32},m}\quad\text{e}\quad
+      \bra{2s_{\frac12}, m}W\ket{2p_{\frac12},m}
+   \end{equation*}
+   no subespaço de \(m = \pm\frac12\), onde os demais elementos de matriz são obtidos ou pelo complexo conjugado ou são nulos pelas regras de seleção. Consideramos a expansão na base desacoplada para \(m = \pm \frac12\), 
+   \begin{equation*}
+      \ket{s_{\frac12}, m} = \ket{00}\ket{m},\;
+      \ket*{p_{\frac12}, \pm \frac12} = \conj{\beta}_\pm \ket{10}\ket*{\pm\frac12} + \conj{\alpha}_\pm \ket{1 {\pm1}} \ket*{\mp \frac12},
+      \;\text{e}\;
+      \ket*{p_{\frac32}, \pm \frac12} = \alpha_\pm \ket{10}\ket*{\pm\frac12} - \beta_\pm \ket{1 {\pm1}} \ket*{\mp \frac12},
+   \end{equation*}
+   então como temos as regras de seleção \(\Delta m_\ell = 0\) por \(z\) ser a componente zero de um operador vetorial espacial e \(\Delta \ell = \pm1\) por \(z\) ser polar, apenas os termos de \(m_\ell = 0\) contribuem para os elementos de matriz considerados, e temos
+   \begin{equation*}
+      \bra{2s_{\frac12}, m}W\ket{2p_{\frac32},m} = \alpha_{m} \bra{20}r\ket{21}_{n\ell} \bra{00}\cos\theta\ket{10}_{\ell m_\ell} = -\sqrt{6} \epsilon
+   \end{equation*}
+   e
+   \begin{equation*}
+      \bra{2s_{\frac12}, m}W\ket{2p_{\frac12},m} = \conj{\beta}_{m} \bra{20}r\ket{21}_{n\ell} \bra{00}\cos\theta\ket{10}_{\ell m_\ell} = \sqrt{3} \epsilon,
+   \end{equation*}
+   onde utilizamos os resultados de coeficientes de Clebsch-Gordan \(\alpha_m\) e \(\beta_m^*,\) assim como os demais elementos de matriz de \(r\) e de \(\cos\theta\). Como a base acoplada diagonaliza \(H_\mathrm{fs},\) temos
+   \begin{equation*}
+      W \doteq \begin{pmatrix}
+      0 && \sqrt{3} \epsilon && -\sqrt{6} \epsilon\\
+      \sqrt{3} \epsilon && 0 && 0\\
+      -\sqrt{6} \epsilon && 0 && 0\\
+      \end{pmatrix} \implies
+      H_\mathrm{fs} + W \doteq E(2p_{\frac12})\unity + \begin{pmatrix}
+      \Delta_1 && \sqrt{3} \epsilon && -\sqrt{6} \epsilon\\
+      \sqrt{3} \epsilon && 0 && 0\\
+      -\sqrt{6} \epsilon && 0 && \Delta_2\\
+      \end{pmatrix},
+   \end{equation*}
+   onde representamos a matriz na base \(\set{\ket{2s_\frac12,m}, \ket{2p_{\frac12}, m}, \ket{2p_{\frac32},m}}.\) 
 
+   Vamos considerar o limite de campo fraco, \(\epsilon \ll \Delta_2\). Por conta da estrutura fina, o estado \(\ket{2p_{\frac32},m}\) é não degenerado, portanto o desvio de energia é dado por
+   \begin{equation*}
+      \Delta E_\mathrm{Stark}(2p_{\frac32}) = \frac{\abs{\bra{2s_{\frac12},m}W\ket{2p_{\frac32},m}}^2}{E(2p_{\frac32}) - E(2s_{\frac12})} = \frac{6 \epsilon^2}{\Delta_2 - \Delta_1}.
+   \end{equation*}
+   Para os demais estados, temos dois limites: para \(\epsilon \ll \Delta_1\) os estados \(2s_{\frac12}\) e \(2p_{\frac12}\) são não degenerados, enquanto que para \(\Delta_1 \ll \epsilon\) estes estados podem ser considerados como degenerados. No limite de campo extremamente fraco \(\epsilon \ll \Delta_1\), podemos usar a perturbação não degenerada e obtemos
+   \begin{equation*}
+      \Delta E_\mathrm{Stark}(2s_{\frac12}) = \frac{\abs{\bra{2p_{\frac32},m}W\ket{2p_{\frac12},m}}^2}{E(2s_{\frac12}) - E(2p_{\frac32})} + \frac{\abs{\bra{2p_{\frac12},m}W\ket{2p_{\frac12},m}}^2}{E(2s_{\frac12}) - E(2p_{\frac12})}= \frac{6 \epsilon^2}{\Delta_1 - \Delta_2} + \frac{3 \epsilon^2}{\Delta_1}
+   \end{equation*}
+   e
+   \begin{equation*}
+      \Delta E_\mathrm{Stark}(2p_{\frac12}) = \frac{\abs{\bra{2s_{\frac12},m}W\ket{2p_{\frac12},m}}^2}{E(2p_{\frac12}) - E(2s_{\frac12})} = -\frac{6 \epsilon^2}{\Delta_1},
+   \end{equation*}
+   isto é, a perturbação é quadrática no campo neste caso. No caso de campo fraco \(\Delta_1 \ll \epsilon \ll \Delta_2,\) os estados \(2s_{\frac12}\) e \(2p_{\frac12}\) são quase degenerados com \(\Delta_1 \sim 0\), portanto diagonalizamos \(W\) no subespaço gerado por estes estados e determinamos, ao comparar seus elementos de matriz com \(\sigma_x\), que as correções são \(\pm \sqrt{3} \epsilon\).
+
+   No limite de campo forte, \(\epsilon \gg \Delta_2,\) devemos primeiro diagonalizar a interação \(W.\) Notemos que o polinômio característico de \(W\) é
+   \begin{equation*}
+       p_W(\lambda) = \lambda(9\epsilon^2 - \lambda^2) = -\lambda(\lambda - 3\epsilon)(\lambda + 3 \epsilon),
+   \end{equation*}
+   portanto \(\delta E \in \set{- 3 \epsilon, 0, 3 \epsilon}\) são os autovalores de \(W.\) Por inspeção, vemos que
+   \begin{equation*}
+      \ket{0} = \sqrt{\frac23}\ket{2p_{\frac12}} + \sqrt{\frac13}\ket{2p_{\frac32}},
+      \quad\text{e}\quad
+      \ket{\pm3\epsilon} = \frac{1}{\sqrt{2}} \ket{2s_{\frac12}} \pm \frac{1}{\sqrt{6}}\left( \ket{2p_{\frac12}} - \sqrt{2} \ket{2p_{\frac32}}\right)
+   \end{equation*}
+   são os autovetores de \(W\) e temos
+   \begin{align*}
+      \bra{0}H_\mathrm{fs}\ket{0} &= \frac23 E(2p_\frac12) + \frac13 E(p_\frac32)&
+      \bra{\pm3 \epsilon}H_\mathrm{fs}\ket{\pm 3 \epsilon} &= \frac12 E(2s_{\frac12}) + \frac16 E(2p_{\frac12}) + \frac13 E(p_{\frac32})\\
+                                                           &= E(2p_\frac12) + \frac13 \Delta_2&
+                                                           &= \frac12 \Delta_1 + E(2p_\frac12) + \frac13 \Delta_2.
+   \end{align*}
+   Neste limite podemos tomar a perturbação em ordem linear com
+   \begin{equation*}
+      W + H_\mathrm{fs} \mathrel{\dot{\simeq}} \operatorname{diag}\left(3\epsilon + \bra{3 \epsilon}H_\mathrm{fs}\ket{3\epsilon},\bra{0}H_\mathrm{fs}\ket{0}, -3 \epsilon + \bra{-3 \epsilon}H_\mathrm{fs}\ket{-3\epsilon}\right),
+   \end{equation*}
+   e então as correções são \(\pm3 \epsilon + \frac12 \Delta_1 + E(2p_\frac12) + \frac13 \Delta_2\) e \(E(2p_\frac12) + \frac13 \Delta_2.\) 
 \end{proof}
