@@ -1,0 +1,23 @@
+% vim: spl=pt
+\begin{exercício}{Forças de van der Waals}{ex1}
+   As forças de van der Waals entre dois átomos neutros são causadas pelas interações entre momentos de dipolo induzidos. Vamos avaliar no caso de dois átomos de hidrogênio no seu estado fundamental \(\ket{0}.\)
+   \begin{enumerate}[label=(\alph*)]
+      \item Os prótons dos dois átomos de hidrogênio se encontram a uma distância \(R \gg a_0,\) sendo \(a_0\) o raio de Bohr. Seja \(\vetor{R}\) o vetor que aponta do próton 1 ao próton 2 e orientemos os eixos de forma que \(\vetor{R} = R\vetor{e}_z.\) Definimos \(\vetor{r}_i\) como o vetor que aponta do elétron \(i\) ao próton \(i\) e \(\vetor{d}_i = q \vetor{r}_i\) é o momento de dipolo elétrico do átomo \(i\). Mostre que na física clássica a energia de interação dos dois dipolos é
+         \begin{equation*}
+            W = \frac{e^2}{R^3}\left[\vetor{r}_1 \cdot \vetor{r}_2 - 3 \left(\vetor{r}_1 \cdot \frac{\vetor{R}}{R}\right)\left(\vetor{r}_2 \cdot \frac{\vetor{R}}{R}\right)\right] = \frac{e^2}{R^3} \left[x_1x_2 + y_1 y_2 - 2z_1 z_2\right].
+         \end{equation*}
+      \item Para obter a expressão quântica de \(W,\) utilizamos o princípio de correspondência e substituímos os números \(x_1, \dots, z_2\) pelos operadores \(X_1, \dots, Z_2\)
+         \begin{equation*}
+             W = \frac{e^2}{R^3} \left[X_1X_2 + Y_1 Y_2 - 2Z_1 Z_2\right].
+         \end{equation*}
+         Mostre que o autovalor esperado de \(W\) é nulo em primeira ordem de teoria de perturbação, isto é, que \(\bra{0_1 0_2}W\ket{0_1 0_2} = 0.\)
+      \item Em segunda ordem, se \(\ket{\alpha}\) representa um estado excitado ou um estado do contínuo de energia \(E_\alpha\), a correção da energia é
+         \begin{equation*}
+            E_2 = \sum_{\alpha_1,\alpha_2} \frac{\abs{\bra{\alpha_1 \alpha_2} W \ket{0_1 0_2}}^2}{-2 R_\infty - E_{\alpha_1} - E_{\alpha_2}},
+         \end{equation*}
+         onde \(R_\infty\) é a constante de Rydberg. Para obter uma ordem de grandeza de \(E_2,\) ignoramos \(E_{\alpha_1}\) e \(E_{\alpha_2}\) no denominador. Deduzimos que \(E_2 \sim -6 \frac{e^2 a_0^5}{R^6},\) isto é, a energia de interação varia com \(R^{-5}\) e a força como \(R^{-6}.\) Mostre que a estimativa precedente não é válida se \(R \gtrsim \frac{\hbar c}{R_\infty}\) e que para distâncias \(R \gg \frac{\hbar c}{R_\infty}\) a força se comporta como \(R^{-7}.\)
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    
+\end{proof}
