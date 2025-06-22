@@ -8,7 +8,7 @@ onde \(\vetor{I}\) é o spin do núcleo, \(g_N\) é o fator giromagnético do n�
 \begin{equation*}
    \mu_N = \frac{q_e \hbar}{2m_p} = \frac{m_e}{m_p}\mu_B,
 \end{equation*}
-e \(\mu_B\) é o magneton de Bohr. Por invariância de rotação, a interação deve ser da forma \(H_{M1} = \vetor{\mu} \cdot \vetor{\Lambda},\) onde \(\vetor{\Lambda}\) é um operador vetorial no subespaço do elétron, portanto podemos escrever
+e \(\mu_B = \frac{q_e \hbar}{2m_e}\) é o magneton de Bohr. Por invariância de rotação, a interação deve ser da forma \(H_{M1} = \vetor{\mu} \cdot \vetor{\Lambda},\) onde \(\vetor{\Lambda}\) é um operador vetorial no subespaço do elétron, portanto podemos escrever
 \begin{equation*}
    H_{M1} = \lambda(r) \vetor{\mu} \cdot \vetor{j},
 \end{equation*}
@@ -57,35 +57,92 @@ portanto
 \begin{equation*}
    H_{M1} = (Z\alpha)^2 \left(\frac{m_e}{Z m_p}\right)g_e g_N\left[\frac{\vetor{I} \cdot \vetor{L} + 3 (\vetor{n}\cdot\vetor{s})(\vetor{n} \cdot \vetor{I}) - \vetor{s} \cdot \vetor{I}}{4r^3} + \frac{2\pi}3 \vetor{s} \cdot \vetor{I} \delta\left(r\right)\right]
 \end{equation*}
-é a interação nas unidades características do sistema. Definindo os tensores
+é a interação nas unidades características do sistema. Consideramos \(H_{M1} = (Z \alpha)^2 (\frac{m_e}{Z m_p})g_e g_N \vetor{\tilde{\Lambda}}\cdot\vetor{I},\) com
 \begin{equation*}
-   N_{ij} = 3 n_i n_j - \delta_{ij}
-   \quad\text{e}\quad
-   \Sigma^{ij} = \frac32 (s^i I^j + s^j I^i) - \delta^{ij} \vetor{s} \cdot \vetor{I},
+   \vetor{\tilde{\Lambda}} = \frac{\vetor{L} - \vetor{s} + 3 (\vetor{n}\cdot\vetor{s}) \vetor{n}}{4r^3} + \frac{2\pi}3 \vetor{s} \delta(\vetor{r}),
 \end{equation*}
-temos
+então 
+\begin{align*}
+   \vetor{\tilde{\Lambda}} \cdot \vetor{j}
+   &= \frac{(\vetor{L} - \vetor{s})\cdot \vetor{j} + 3(\vetor{n}\cdot \vetor{s})(\vetor{n} \cdot \vetor{j})}{4r^3} + \frac{2\pi}3  \delta(\vetor{r})\vetor{s}\cdot \vetor{j}\\
+   &= \frac{\vetor{L}^2 - \vetor{s}^2 + 3(\vetor{n} \cdot \vetor{s})^2}{4r^3} + \frac{2\pi}{3} \delta(\vetor{r}) (\vetor{s}\cdot\vetor{L} + \vetor{s}^2)\\
+   &= \frac{\vetor{L}^2 - \frac34 + \frac{3}{4} \delta_{ij} \delta_{k\ell} n^i n^k \sigma^j \sigma^\ell}{4r^3} + \frac{\pi}{3}\delta(\vetor{r}) (\vetor{j}^2 - \vetor{L}^2 + \vetor{s}^2)\\
+   &= \frac{\vetor{L}^2}{4r^3} + \frac{\pi}{3} \delta(\vetor{r}) \left(\vetor{j}^2 - \vetor{L}^2 + \frac34\right),
+\end{align*}
+onde usamos que \(\vetor{n} \cdot \vetor{L} = 0\) e que \(\sigma^a \sigma^b = \delta^{ab} + i \epsilon\indices{_c^{ab}} \sigma^c\). Pelo lema da projeção, temos
 \begin{equation*}
-   N_{ij} \Sigma^{ij} = 3 (\vetor{n} \cdot \vetor{s}) (\vetor{n} \cdot \vetor{I}) - \vetor{s} \cdot \vetor{I},
+   \mean{\vetor{\tilde{\Lambda}}\cdot\vetor{I}}_{nFIj\ell} = \mean*{\frac{\vetor{\tilde{\Lambda}}\cdot \vetor{j}}{j(j+1)}\vetor{j} \cdot \vetor{I}}_{nFIj\ell} = \frac{F(F+1) - I(I+1) - j(j+1)}{2j(j+1)}\mean{\vetor{\tilde{\Lambda}}\cdot \vetor{j}}_{nj\ell},
 \end{equation*}
-então como \(N_{ij}\) só \todo[apresenta valores esperados não nulos para \(\ell > 0\),] a contribuição dessa interação nos estados \(s\) é dada por
-\begin{align*}
-   \mean{H_{M1}}_{nFI j 0} &= \frac{2(Z \alpha)^2}{3n^3}  \left(\frac{m_e}{Z m_p}\right) g_e g_N \left[F(F+1) - I(I+1) -\frac34\right]\\
-                           &= E^{(0)}_n\frac{4 (Z \alpha)^2}{3n}\left(\frac{m_e}{Z m_p}\right) g_e g_N \left[F(F + 1) - I(I + 1) - \frac34\right]\\
-                           &= E^{(0)}_n(Z \alpha)^2\left(\frac{m_e}{Z m_p}\right) g_e g_N\frac{F(F + 1) - I(I + 1) - j(j+1)}{j(j+1)(2\ell + 1)}\delta_{\ell 0}.
-\end{align*}
-Para \(\ell > 0,\) temos nos subespaços de interesse que \(j(j+1)\vetor{\Lambda} = (\vetor{\Lambda} \cdot \vetor{j})\vetor{j}\), então
-\begin{align*}
-   \mean{H_{M1}}_{nFI j\ell} &= \mean{\vetor{\Lambda}\cdot \vetor{I}}_{nFIj\ell}\\
-                             &= \frac{\mean*{(\vetor{\Lambda}\cdot\vetor{j})(\vetor{j}\cdot\vetor{I})}_{nFIj\ell}}{j(j+1)}\\
-                             &= (Z \alpha)^2 \left(\frac{m_e}{Z m_p}\right)g_e g_N \mean{r^{-3}}_{n\ell} \frac{F(F+1) - I(I+1) - j(j+1)}{4j(j+1)}\mean{(\vetor{L} - \vetor{s})\cdot\vetor{j} + 3(\vetor{n}\cdot\vetor{s})(\vetor{n}\cdot \vetor{j})}_{nFIj\ell}\\
-                             &= (Z \alpha)^2 \left(\frac{m_e}{Z m_p}\right)g_e g_N \mean{r^{-3}}_{n\ell} \frac{F(F+1) - I(I+1) - j(j+1)}{4j(j+1)}\left[\ell(\ell + 1) - \frac{3}{4} + 3\mean{n_i n_j s^i s^j}_{nFIj\ell}\right]\\
-                             &= (Z \alpha)^2 \left(\frac{m_e}{Z m_p}\right) g_e g_N \frac{F(F + 1) - I (I + 1) - j(j+1)}{2n^3(2\ell + 1) j (j+1)}\\
-                             &= E^{(0)}_n (Z\alpha)^2 \left(\frac{m_e}{Z m_p}\right) g_e g_N\frac{F(F+1) - I(I+1) - j(j+1)}{n (2\ell + 1) j(j+1)}.
-\end{align*}
-Em particular, o espectro do átomo de hidrogênio é dado por
+portanto como
 \begin{equation*}
-   E_\mathrm{hfs}(nFIj\ell) = E_n^{(0)}\left\{1 + (Z\alpha)^2\left[\frac{1}{n^2}\left(\frac{n}{j + \frac12} - \frac34\right) + \left(\frac{g_e g_N m_e}{Z m_p}\right) \frac{F(F+1) - I(I+1) - j(j+1)}{n(2\ell + 1) j(j+1)}\right]\right\} + \Delta E_{\mathrm{Lamb}},
+   \mean{\vetor{\tilde{\Lambda}}\cdot\vetor{j}}_{nj\ell} = \frac{\ell(\ell + 1)}{4}\mean{r^{-3}}_{n\ell} + \frac{\delta_{\ell 0}}{2n^3} = \frac{\ell(\ell + 1)}{4}\mean{r^{-3}}_{n\ell} + \frac{\delta_{\ell 0}}{2n^3(2\ell + 1)} = \frac{1}{2n^3(2\ell + 1)},
+\end{equation*}
+obtemos o valor esperado
+\begin{align*}
+   \mean{H_{M1}}_{nFIj \ell} &= (Z \alpha)^2\left(\frac{m_e}{Z m_p}\right)g_e g_N \frac{F(F+1) - I(I+1) - j(j+1)}{4n^3j(j+1)(2\ell+1)}\\
+                             &= E^{(0)}_n (Z \alpha)^2\left(\frac{m_e}{Zm_p}\right)g_eg_N\frac{F(F+1) - I(I+1) - j(j+1)}{n j(j+1)(2\ell+1)}.
+\end{align*}
+Assim, o espectro de estrutura hiperfina para o átomo de hidrogênio é
+\begin{equation*}
+   E_{\mathrm{hfs}}(nFIj\ell) = E_{n}^{(0)}\left\{1 + (Z \alpha)^2 \left[\frac{1}{n^2}\left(\frac{n}{j + \frac12} - \frac34\right) + \left(\frac{g_e g_N m_e}{Z m_p}\right)\frac{F(F+1) - I(I+1) - j(j+1)}{n(2\ell + 1) j(j+1)}\right]\right\} + \Delta E_{\mathrm{Lamb}},
 \end{equation*}
 já que não há contribuição de multipolos de ordens superiores para o núcleo de apenas um próton, de spin \(I = \frac12.\)
 
-Consideramos agora átomos hidrogenoides em que o termo de quadrupolo existe.
+Consideramos agora átomos hidrogenoides em que o spin nuclear é maior que \(\frac12\). A energia de interação entre a distribuição nuclear e a distribuição eletrônica é
+\begin{align*}
+   H_E &= \frac{1}{4\pi \epsilon_0}\int_{\mathbb{R}^3} \dln3r \int_{\mathbb{R}^3} \dln3R \frac{\rho_N(R) \rho_e(r)}{ \norm{\vetor{R} - \vetor{r}}}\\
+       &\simeq \frac{1}{4\pi \epsilon_0} \sum_{\ell = 0}^\infty \int_\mathbb{R}^3\dln3r\rho_e(\vetor{r}) \int_{\mathbb{R}^3} \dln3R \rho_N(\vetor{r})\frac{R^\ell}{r^{\ell +1}} P_\ell\left(\frac{\vetor{R}}{R} \cdot \frac{\vetor{r}}{r}\right)\\
+       &= \sum_{\ell = 0}^\infty \frac{\mu_0 c^2}{2\ell + 1}\sum_{m = -\ell}^\ell \int_{\mathbb{R}^3} \dln3r \rho_e(\vetor{r})\int_{\mathbb{R}^3} \dln3R \rho_N(\vetor{R})\frac{R^\ell}{r^{\ell + 1}} Y_{\ell m}\left(\frac{\vetor{R}}{R}\right)\conj{Y}_{\ell m}\left(\frac{\vetor{r}}{r}\right),
+\end{align*}
+onde usamos a expansão multipolar para \(r \gg R.\) O termo de monopolo \(\ell = 0\) corresponde ao problema de Kepler em si, portanto apenas os termos superiores \(\ell > 0\) são responsáveis para a estrutura hiperfina. Tomando o valor esperado dessa expressão num estado nuclear de paridade bem definida, vemos que apenas os termos com \(\ell\) par contribuem, como mencionado anteriormente. Assim, a primeira contribuição eletrostática é o termo de quadrupolo \(\ell = 2,\)
+\begin{align*}
+   H_{E2} &= \frac{1}{4\pi \epsilon_0}\int_{\mathbb{R}^3}\dln3r  \rho_e(\vetor{r}) r^{-3} \int_{\mathbb{R}^3} \dln3R \rho_N(\vetor{R})R^2 P_2\left(\frac{\vetor{R}}{R}\cdot \frac{\vetor{r}}{r}\right)\\
+          &= \frac1{8\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3r  \rho_e(\vetor{r}) r^{-3} \int_{\mathbb{R}^3} \dln3R \rho_N(\vetor{R}) R^{2} \left[3\left(\frac{\vetor{R}}{R}\cdot\frac{\vetor{r}}{r}\right)^2 - 1\right].
+\end{align*}
+Denotando \(N^i = \frac{R^i}{R}\) e \(n^i = \frac{r^i}{r},\) temos
+\begin{align*}
+   \delta_{ac} \delta_{bd} (3N^a N^b - \delta^{ab})(3n^c n^d - \delta^{cd}) 
+   &= \delta_{ac}\delta_{bd} (9N^a N^b n^c n^d - 3 N^a N^b \delta^{c d} - 3 n^c n^d \delta^{ab} + \delta^{ab}\delta^{cd})\\
+   &= [9 (\vetor{N} \cdot \vetor{n})^2 - 3 \vetor{N}\cdot \vetor{N} - 3 \vetor{n} \cdot \vetor{n} + 3]\\
+   &= 3[3(\vetor{N}\cdot \vetor{n})^2 - 1],
+\end{align*}
+portanto
+\begin{equation*}
+   H_{E2} = \frac{1}{24 \pi \epsilon_0} \left[\int_{\mathbb{R}^3} \dln3r r^{-3}\rho_e(\vetor{r}) (3n^c n^d - \delta^{cd})\right] \delta_{ac} \delta_{bd} \left[\int_{\mathbb{R}^3} \dln3R R^2 \rho_N(\vetor{R}) (3 N^a N^b - \delta^{ab})\right].
+\end{equation*}
+O tensor de quadrupolo nuclear é definido como
+\begin{equation*}
+   Q^{(N)}_{ab} = \int_{\mathbb{R}^3} \dln3R R^2\rho_N(\vetor{R}) (3N_a N_b - \delta_{ab}),
+\end{equation*}
+e é um tensor de traço nulo de segunda ordem em relação ao momento angular nuclear \(\vetor{I},\) portanto em subespaços de spin \(I\) bem definido, podemos escrever
+\begin{equation*}
+   Q_{ab}^{(N)} = \lambda_N\left[\anticommutator{I_a}{I_b} - \frac23 \delta_{ab} I(I+1)\right]
+\end{equation*}
+com 
+\begin{equation*}
+   \lambda_N = \frac{3 Q_N}{2I(2I - 1)},
+\end{equation*}
+onde o valor tabulado de quadrupolo \(Q_N\) é o valor esperado de \(Q_{33}\) em um estado com \(I_3 = I.\) Similarmente, definimos o tensor de quadrupolo eletrônico como 
+\begin{equation*}
+   Q_{cd}^{(e)} = -q_e\mean{3n_c n_d - \delta_{cd}},
+\end{equation*}
+com 
+\begin{equation*}
+   Q^{(e)}_{cd} = - \frac{3Q_e}{2j(2j - 1)}\left[\anticommutator{j_c}{j_d} - \frac23 \delta_{cd} j(j+1)\right]
+\end{equation*}
+em subespaços de \(j\) bem definido, onde \(Q_e\) é definido de forma similar a \(Q_N.\) Reunindo essas definições e tomando o valor esperado na base acoplada \(\ket{n FI j \ell m_F},\) temos
+\begin{equation*}
+   \mean{H_{E2}}_{nFIj\ell m_F} = -\frac{\mean{r^{-3}}_{n\ell}}{24\pi \epsilon_0}\frac{Q_e}{2j(2j - 1)} \frac{Q_N}{2I(2I - 1)} \underbrace{\mean*{\left[\anticommutator{j^a}{j^b} - \frac23 \delta^{ab} j(j+1)\right]\left[\anticommutator{I_a}{I_b} - \frac23 \delta_{ab} I(I+1)\right]}_{FIj}}_{\zeta(FIj)}.
+\end{equation*}
+Para determinar \(\zeta(FIj),\) vamos escrever \(A_{FIj} = 2 \mean{\vetor{I}\cdot \vetor{j}}_{FIj} = F(F+1) - I(I+1) - j(j+1)\) então
+\begin{align*}
+   \zeta(FIj) &= \left[\anticommutator{j^a}{j^b} - \frac23 \delta^{ab} j(j+1)\right]\left[\anticommutator{I_a}{I_b} - \frac23 \delta_{ab} I(I+1)\right]\\
+              &= \anticommutator{j^a}{j^b} \anticommutator{I_a}{I_b} - \frac43 \vetor{j}^2 I(I+1) - \frac43 \vetor{I}^2 j(j+1) + \frac{12}9 j(j+1) I(I+1)\\
+              &= j^a j^b I_a I_b + j^a j^b I_b I_a + j^b j^a I_a I_b + j^b j^a I_b I_a - \frac43 j(j+1) I(I+1)\\
+              &= 2 (\vetor{j} \cdot \vetor{I})^2 + j^a j^b I_b I_a + j^b j^a I_a I_b - \frac43 j(j+1) I(I+1)\\
+              &= 4 (\vetor{j} \cdot \vetor{I})^2 + i \epsilon\indices{_c^{ab}}j^c (I_b I_a - I_a I_b) - \frac43 j(j+1) I(I+1)\\
+              &= A_{FIj}^2 - \epsilon\indices{_c^{ab}} \epsilon\indices{^d_{ba}} j^cI_d - \frac43 j(j+1) I(I+1)\\
+              &= A_{FIj}^2 + 2 \vetor{j} \cdot \vetor{I} - \frac43 j(j+1) I(I+1)\\
+              &= A_{FIj}^2 + A_{FIj} - \frac43 j(j+1) I(I+1)
+\end{align*}
+onde, em todos os passos, omitimos a notação de valor esperado.
