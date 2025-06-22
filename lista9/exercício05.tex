@@ -12,5 +12,34 @@
    onde \(X = \sum_i x_i\) e \(E_n\) são as energias dos estados estacionários não perturbados \(\ket{n}.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+     Escrevendo o termo de interação como \(W = q_e X \epsilon,\) onde \(-q_e X\) é o momento de dipolo elétrico na direção do campo, vemos que a correção em primeira ordem em \(\epsilon\) se anula no estado fundamental, já que os elementos de matriz de \(X\) se anulam entre estados de mesma paridade. Assim, a energia corrigida para o estado fundamental é
+     \begin{equation*}
+        \Delta E = \sum_{n \neq 0} \frac{\abs{\bra{n}q_e\epsilon X\ket{0}}^2}{E_0 - E_n} = q_e^2 \epsilon^2 \sum_{n \neq 0} \frac{\abs{\bra{0}X\ket{n}}^2}{E_0 - E_n}
+     \end{equation*}
+     logo o dipolo induzido é
+     \begin{equation*}
+        D = - \diffp{\Delta E}{\epsilon} = 2 q_e^2 \epsilon \sum_{n \neq 0} \frac{\abs{\bra{0}X\ket{n}}^2}{E_n - E_0}.
+     \end{equation*}
+
+     Podemos obter esse resultado determinando o estado fundamental perturbado em primeira ordem. Tomando a condição de normalização \(\braket{0}{0}_\epsilon = 1,\) temos
+     \begin{equation*}
+        \ket{0}_\epsilon = \ket{0} + \sum_{n \neq 0} \frac{1}{E_0 - E_n}\ketbra{n}{n}q_e \epsilon X\ket{0} + O(\epsilon^2),
+     \end{equation*}
+     com
+     \begin{align*}
+        _\epsilon\braket{0}{0}_\epsilon = {}_\epsilon\braket{0}{0} + \sum_{n \neq 0} \frac{1}{E_0 - E_n} {}_\epsilon\braket{0}{n}\bra{n}q_e \epsilon X\ket{0}
+                                        = 1 + \sum_{n \neq 0} \frac{q_e^2 \epsilon^2\abs{\bra{n}X\ket{0}}^2}{(E_0 - E_n)^2}
+                                        = 1 + O(\epsilon^2),
+     \end{align*}
+     isto é, normalizado em primeira ordem. Neste estado, temos
+     \begin{align*}
+        _\epsilon\bra{0}X\ket{0}_\epsilon &= \bra{0}X\ket{0}_\epsilon + \sum_{n\neq0} \frac{1}{E_0 - E_n} \bra{0} q_e \epsilon X \ket{n} \bra{n} X \ket{0}_\epsilon\\
+                                          &= \bra{0} X \ket{0} + 2q_e \epsilon \sum_{n \neq 0} \frac{\abs{\bra{0}X\ket{n}}^2}{E_0 - E_n} + q_e^2 \epsilon^2\sum_{n \neq 0}\sum_{m \neq 0} \frac{\bra{0}X\ketbra{n}{n} X \ketbra{m}{m}X\ket{0}}{(E_0 - E_n)(E_0 - E_m)}\\
+                                          &= -2q_e \epsilon \sum_{n \neq 0}\frac{\abs{\bra{0}X\ket{n}}^2}{E_n - E_0} + O(\epsilon^2)
+     \end{align*}
+     portanto
+     \begin{equation*}
+        D = -q_e {}_\epsilon\bra{0}X\ket{0}_{\epsilon} = 2 q_e^2 \epsilon \sum_{n \neq 0} \frac{\abs{\bra{0}X\ket{n}}^2}{E_n - E_0}
+     \end{equation*}
+     é o momento de dipolo induzido.
 \end{proof}
