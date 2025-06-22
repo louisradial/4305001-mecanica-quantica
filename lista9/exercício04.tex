@@ -3,5 +3,29 @@
    Calcule o efeito Zeeman quadrático para o estado fundamental do átomo de hidrogênio devido ao termo diamagnético, \(\frac{e^2\vetor{A}^2}{2m_e c^2}\), usualmente ignorado no Hamiltoniano de interação. Escreva o desvio da energia como \(\Delta = -\frac12 \chi \vetor{B}^2\) e obtenha uma expressão para a suscetibilidade magnética \(\chi.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   No gauge simétrico, temos \(\vetor{A} = \frac12 \vetor{B} \times \vetor{r},\) portanto
+   \begin{equation*}
+      H_{Z2} = \frac{q_e^2}{2m}\left[\norm{\vetor{r}}^2 \norm{\vetor{B}}^2 - (\vetor{r}\cdot \vetor{B})^2\right]
+   \end{equation*}
+   é o termo diamagnético do efeito Zeeman. Orientando os eixos de sorte que \(\vetor{B} = B \vetor{e}_z,\) temos
+   \begin{equation*}
+      H_{Z2} = \frac{2m \mu_B^2B^2}{\hbar^2}r^2\left[1 - \cos^2\theta\right],
+   \end{equation*}
+   portanto
+   \begin{equation*}
+      \mean{H_{Z2}}_{nj\ell} = \frac{2m \mu_B^2 B^2}{\hbar^2} \mean{r^2}_{n\ell} \mean{\sin^2\theta}_{\ell}
+   \end{equation*}
+   são as correções para esse efeito. Para estados \(s,\) temos 
+   \begin{equation*}
+      \mean{\sin^2\theta}_0 = \frac1{4\pi}\int_{-1}^1 \dli{(\cos\theta)} \int_{0}^{2\pi} \dli{\varphi} \sin^2\theta = \frac23,
+   \end{equation*}
+   e para o estado \(1s\) temos
+   \begin{equation*}
+      \mean{r^2}_{10} = \frac{4}{a_0^3} \int_0^{\infty} \dli{r} r^4 \exp\left(-\frac{2r}{a_0}\right) = \frac{a_0^2}{8} \int_0^\infty \dli{\rho} \rho^4 e^{-\rho} = 3 a_0^2,
+   \end{equation*}
+   portanto o efeito Zeeman quadrático no estado fundamental é dado pela correção
+   \begin{equation*}
+      \Delta(1s_{\frac12}) = \frac{4m a_0^2\mu_B^2B^2}{\hbar^2}.
+   \end{equation*}
+   Assim, a susceptibilidade magnética é dada por \(\chi = - \frac{8m a_0^2 \mu_B^2}{\hbar^2}.\) 
 \end{proof}
