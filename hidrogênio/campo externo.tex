@@ -1,2 +1,54 @@
 % vim: spl=pt
 \section{Efeitos Zeeman e Stark}
+Na presença de campos externos \(\vetor{E}\) e \(\vetor{B},\) consideramos o hamiltoniano
+\begin{equation*}
+   H = \frac1{2m} \left(\vetor{p} + q_e\vetor{A}\right)^2 - \frac{Z e^2}{r} + q_e\vetor{r}\cdot \vetor{E} + g_e \mu_B \vetor{s} \cdot \vetor{B} + H_{\mathrm{fs}},
+\end{equation*}
+onde \(H_\mathrm{fs}\) é o hamiltoniano de estrutura fina. \todo[Ordem de grandeza]
+
+Para o efeito Zeeman, consideramos o campo magnético uniforme \(\vetor{B}\) e o gauge simétrico \(\vetor{A} = \frac12 \vetor{B} \times \vetor{r},\) então
+\begin{equation*}
+   \commutator{p_i}{A_j} = - i\hbar \diffp{A_j}{r_i} = -\frac12 i\hbar \epsilon_{ijk} B_k \implies \vetor{p}\cdot \vetor{A} = \vetor{A}\cdot \vetor{p} = \frac{\hbar}2 \epsilon_{ijk} B_j r_k p_i = \frac12 B_j L_j = \frac{\hbar}2 \vetor{B} \cdot \vetor{L}
+\end{equation*}
+e obtemos
+\begin{align*}
+   H &= \frac{\vetor{p}^2}{2m} - \frac{Ze^2}{r} + H_{\mathrm{fs}} + g_e\mu_B \vetor{s} \cdot \vetor{B} + \frac{\hbar q_e}{2m} \vetor{L} \cdot \vetor{B} +  \frac{\hbar^2q_e^2}{2m}\norm{\vetor{r}\times\vetor{B}}^2\\
+     &= H_0 + H_\mathrm{fs} + \mu_B (\vetor{L} + g_e \vetor{s}) \cdot \vetor{B} + 2m \mu_B^2 \norm{\vetor{r}\times \vetor{B}}^2,
+\end{align*}
+onde \(H_0\) é a hamiltoniana do problema de Kepler. Vamos desconsiderar o termo diamagnético \(\sim \vetor{A}^2\) e orientar os eixos de sorte que \(\vetor{B} = B \vetor{e}_z,\) isto é, vamos tratar o termo
+\begin{equation*}
+   H_Z = \mu_BB(L_z + g_e s_z) = \mu_B B \left[J_z + (g_e - 1)s_z\right].
+\end{equation*}
+Como o campo magnético externo quebra a isotropia mas mantém a simetria de rotação em relação ao seu eixo, temos a regra de seleção \(\Delta m_j = 0,\) já que
+\begin{equation*}
+   \bra{j'm'}H\ket{jm} = \bra{j'm'} e^{i J_z \phi} H e^{-iJ_z \phi}\ket{jm} = e^{i\phi (m' - m)} \bra{j'm'}H\ket{jm},
+\end{equation*}
+então ou \(m' = m\) ou \(\bra{j'm'}H\ket{jm} = 0.\) Como \(\vetor{L}\) e \(\vetor{s}\) são vetores axiais, os únicos elementos de matriz de \(H_Z\) não nulos são aqueles de mesma paridade, portanto temos \(\Delta \ell = 0.\) Ainda, por ser a componente zero de um operador vetorial em relação a \(\vetor{j},\) temos \(\Delta j = 0, \pm1.\) Temos os valores esperados dados por
+\begin{align*}
+   \mean{H_Z}_{nj\ell m_j} &= \mu_B B \bra{j\ell m_j}L_z + g_e s_z\ket{j\ell m_j}\\
+                           &= \mu_B B \bra{j\ell m_j}\frac{(\vetor{L} + g_e \vetor{s})\cdot \vetor{j}}{j(j+1)} j_z \ket{j\ell m_j}\\
+                           &= \frac{\mu_B B m_j}{j(j+1)} \bra{j\ell m_j}\left[\vetor{j}^2 +(g_e - 1) \vetor{s}\cdot \vetor{j}\right]\ket{j\ell m_j}\\
+                           &= \frac{\mu_B B m_j}{j(j+1)} \bra{j\ell m_j}\left[\vetor{j}^2 +(g_e - 1) \frac{\vetor{j}^2 - \vetor{L}^2 + \vetor{s}^2}{2}\right]\ket{j\ell m_j}\\
+                           &= \mu_B B m_j \left[1 + (g_e - 1)\frac{j(j+1) - \ell(\ell + 1) + \frac34}{2j(j+1)}\right],
+\end{align*}
+onde o termo em colchetes é chamado de fator \(g_{j\ell}\) de Landé. Em primeira ordem de perturbação no limite de campo fraco, \(\mu_B B \ll (Z \alpha)^2 E_n^{(0)},\) esses valores determinam a correção do efeito Zeeman, enquanto que os demais regimes devem ser feitos para cada multipleto, caso a caso.
+
+Vamos considerar o multipleto \(n = 2\) do átomo de hidrogênio, com os estados \(2p_{\frac12},\) \(2s_{\frac12}\) e \(2p_{\frac32}\) em ordem crescente de energia. Das regras de seleção, o campo magnético só mistura os estados \(2p\) com \(m = \pm\frac12,\) portanto os demais estados sofrem correções segundo a expressão obtida para o limite de campo fraco. Para o subespaço gerado por \(2p_\frac12\) e \(2p_\frac32\) com \(m = \pm\frac12,\) temos 
+\begin{equation*}
+   \bra{2p_{\frac12}, m}s_z\ket{2p_{\frac32}, m} = \bra{2p_\frac12,m}s_z \left(\alpha_{m} \ket{1{\pm1}}\ket{-m} + \beta_{m}\ket{1 0}\ket{m}\right) = -2m \beta_m \alpha_m = - \frac{\sqrt{2}}{3},
+\end{equation*}
+onde usamos que os coeficientes de Clebsch-Gordan para a expansão. Dessa forma, tomando \(g_e \simeq 2\) por simplicidade, devemos diagonalizar a matriz
+\begin{equation*}
+   \mathcal{H}_{2p,m_j} \doteq \begin{pmatrix}
+      \frac43\mu_B B m_j + \Delta && - \frac{\sqrt{2}}{3} \mu_B B\\
+      - \frac{\sqrt{2}}{3}\mu_B B && \frac23\mu_B B m_j
+   \end{pmatrix} = \left(\mu_B Bm_j + \frac12\Delta\right)\unity + \begin{pmatrix}
+      \frac13\mu_B B m_j + \frac12\Delta && - \frac{\sqrt{2}}{3} \mu_B B\\
+      - \frac{\sqrt{2}}{3}\mu_B B && -\frac13\mu_B B m_j - \frac12 \Delta
+   \end{pmatrix},
+\end{equation*}
+onde \(\Delta = E_{\mathrm{fs}}(2p_\frac32) - E_\mathrm{fs}(2p_\frac12),\) tomando \(E_\mathrm{fs}(2p_\frac12)\) como a energia de ponto zero. Resolvendo sua equação secular, temos
+\begin{equation*}
+   \epsilon^2 - \Tr(\mathcal{H}_{2p, m_j}) \epsilon + \det(\mathcal{H}_{2p,m_j}) = 0 \implies \epsilon_\pm = \mu_B B m_j + \frac12 \Delta \pm \frac12\sqrt{\mu_B^2 B^2 + \frac43 \mu_B B m_j \Delta + \Delta^2}
+\end{equation*}
+como os desvios de energia.
