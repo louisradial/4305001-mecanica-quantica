@@ -1,7 +1,36 @@
 % vim: spl=pt
 \begin{exercício}{Estrutura hiperfina para níveis \(n = 2\) do deutério}{ex2}
-   O deutério tem spin 1, momento magnético \(0.857\mu_N,\) e momento de quadrupolo elétrico \(\SI{0.28}{\femto\meter^2}\). Avalie e faça um gráfico dos desvios de estrutura hiperfina para níveis \(n = 2\) do deutério.
+   O dêuteron tem spin 1, momento magnético \(0.857\mu_N,\) e momento de quadrupolo elétrico \(\SI{0.28}{\femto\meter^2}\). Avalie e faça um gráfico dos desvios de estrutura hiperfina para níveis \(n = 2\) do deutério.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Para determinar os efeitos de quadrupolo nuclear no multipleto \(n = 2\) do deutério. Os estados eletrônicos de estrutura fina são, em ordem crescente de energia, \(2p_{\frac12},\) \(2s_{\frac12}\) e \(2p_{\frac32}\). Precisamos avaliar os valores esperados
+   \begin{equation*}
+      Q_e(j) = -q_e\mean{3\cos^2\theta - 1}_{m_j = j}
+   \end{equation*}
+   e para isso precisamos determinar os elementos de matriz
+   \begin{equation*}
+      \bra{\ell m_\ell'} 3\cos^2\theta - 1\ket{\ell m_\ell}.
+   \end{equation*}
+   Notemos que \(3\cos^2\theta - 1 \sim Y_{20}(\theta)\) é invariante por rotações geradas por \(L_z,\) então esses elementos de matriz só não são nulos entre estados com \(m_\ell = m_\ell'.\) Ainda, vemos que não há correção para o estado \(2s_\frac12,\) portanto precisamos considerar apenas os estados \(p.\) Os elementos de matriz relevantes são
+   \begin{align*}
+      \bra{1 1}3\cos^2\theta - 1\ket{11} &= \int_{-1}^{1} \dli{(\cos\theta)}\int_0^{2\pi} \dli{\phi} \conj{Y}_{11}(\theta,\phi) (3\cos^2\theta - 1) Y_{11}(\theta,\phi)\\
+                                         &= -1 + \frac{9}{4}\int_{-1}^{1} \dli{(\cos\theta)} \cos^2\theta \sin^2\theta\\
+                                         &= - \frac25
+   \end{align*}
+   e
+   \begin{align*}
+      \bra{10}3\cos^2\theta - 1\ket{10} &= \int_{-1}^{1} \dli{(\cos\theta)}\int_0^{2\pi} \dli{\phi} \conj{Y}_{10}(\theta,\phi) (3\cos^2\theta - 1) Y_{10}(\theta,\phi)\\
+                                        &= \frac3{2} \int_{-1}^{1} \dli{(\cos\theta)} \cos^2\theta(3\cos^2\theta - 1)\\
+                                        &= \frac45.
+   \end{align*}
+   Assim, para o estado \(2p_{\frac32}\) com \(m_j = \frac32\) temos
+   \begin{equation*}
+      \ket*{\frac32, \frac32} = \ket{11}\ket{+} \implies Q_e(2p_{\frac32}) = \frac{2q_e}{5}
+   \end{equation*}
+   e para o estado \(2p_{\frac12}\) com \(m_j = \frac12\) temos
+   \begin{equation*}
+      \ket*{\frac12, \frac12} = \sqrt{\frac23}\ket{11}\ket{-} - \sqrt{\frac13} \ket{10}\ket{+} 
+      \implies Q_e(2p_{\frac12}) = -q_e\left[ \frac23\cdot\left(-\frac25\right) + \frac13\cdot \left(\frac45\right) \right] = 0,
+   \end{equation*}
+   logo o termo de quadrupolo nuclear afeta apenas os estados \(2p_{\frac32}\). Isso é esperado, pois sabemos que distribuições de spin \(\frac12\) podem ter até termo de dipolo, mas não de quadrupolo.
 \end{proof}
